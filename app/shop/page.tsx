@@ -14,6 +14,7 @@ const PRODUCTS = [
   { id: 6, name: "Bob First Team — Noir",        cat: "Accessoires",  price: 28, img: "/images/page-shop/bob-b.png",         hoverImg: null,                                  isNew: false, sizes: ["Unique"] },
   { id: 7, name: "Tote Bag First Team",          cat: "Accessoires",  price: 22, img: "/images/page-shop/bag.png",           hoverImg: null,                                  isNew: false, sizes: ["Unique"] },
   { id: 8, name: "Short Basket — Blanc",         cat: "Shorts",       price: 55, img: "/images/page-shop/short-a.png",      hoverImg: null,                                  isNew: true,  sizes: ["S","M","L","XL"] },
+  { id: 9, name: "Short Basket — Noir",          cat: "Shorts",       price: 55, img: "/images/page-shop/short-b.png",      hoverImg: null,                                  isNew: false, sizes: ["S","M","L","XL"] },
 ];
 
 const CATS = ["Tout", "T-Shirts", "Accessoires", "Shorts"] as const;

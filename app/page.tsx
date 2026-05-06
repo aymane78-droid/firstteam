@@ -469,11 +469,11 @@ function BuzzedVideo() {
             </a>
           </div>
 
-          {/* Colonne droite — 3 miniatures empilées, remplissent exactement la hauteur de la grande */}
-          <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
+          {/* Colonne droite — 3 miniatures 16:9 strictement, largeur calculée par l'aspect-ratio */}
+          <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column" as const, gap: 8, alignItems: "flex-start" }}>
             {BUZZED_VIGNETTES.map((src, i) => (
               <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                style={{ display: "block", flex: "1 1 0", borderRadius: 6, overflow: "hidden", position: "relative" as const, textDecoration: "none", minHeight: 0 }}
+                style={{ display: "block", flex: "1 1 0", aspectRatio: "16/9", minHeight: 0, borderRadius: 6, overflow: "hidden", position: "relative" as const, textDecoration: "none" }}
               >
                 <img src={src} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.3s ease" }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}

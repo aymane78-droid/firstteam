@@ -391,56 +391,35 @@ export default function ContenusPage() {
           </div>
         </div>
 
-        {/* Section sombre — même layout que BuzzedVideo : Edgar-Yves (2/3) + 3 vignettes empilées (1/3) */}
+        {/* Section sombre — Des invités de marque + 3 vignettes en ligne + photos slidables */}
         <div style={{ background: "#0A0A0A", padding: "60px 60px 28px" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto" }}>
             <p style={{ fontFamily: "Awesome, Georgia, serif", fontWeight: 700, fontStyle: "italic", fontSize: 22, color: "rgba(255,255,255,0.85)", marginBottom: 28 }}>Des invités de marque</p>
 
-            {/* Edgar-Yves (2/3) + 3 miniatures empilées (1/3), hauteur parfaitement alignée */}
-            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "stretch", marginBottom: 24 }}>
-              {/* Edgar-Yves — grande vignette 16:9, définit la hauteur */}
-              <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                style={{ display: "block", position: "relative" as const, aspectRatio: "16/9", borderRadius: 8, overflow: "hidden", textDecoration: "none" }}
-              >
-                <img src="/images/vignettes/edgar-yves.jpg" alt="Edgar & Yves — Offense" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.4s ease" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.03)"}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-                />
-                <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.22)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.06)"}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.22)"}
+            {/* 3 vignettes épisodes en ligne */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 20 }}>
+              {[
+                "/images/vignettes/VIGNETTE_OFFENSE_EP05.jpg",
+                "/images/vignettes/VIGNETTE_RIOLO.jpg",
+                "/images/offense/offense-thumbnail.png",
+              ].map((src, i) => (
+                <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+                  style={{ display: "block", position: "relative" as const, borderRadius: 6, overflow: "hidden", textDecoration: "none", aspectRatio: "16/9" }}
                 >
-                  <div style={{ width: 68, height: 68, borderRadius: "50%", background: "#EDDBC5", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 0 10px rgba(237,219,197,0.15)" }}>
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#DB5224"><path d="M8 5v14l11-7z" /></svg>
-                  </div>
-                </div>
-              </a>
-
-              {/* 3 miniatures empilées — remplissent exactement la hauteur d'Edgar-Yves */}
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
-                {[
-                  "/images/vignettes/VIGNETTE_OFFENSE_EP05.jpg",
-                  "/images/vignettes/VIGNETTE_RIOLO.jpg",
-                  "/images/offense/offense-thumbnail.png",
-                ].map((src, i) => (
-                  <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "block", flex: "1 1 0", position: "relative" as const, borderRadius: 6, overflow: "hidden", textDecoration: "none", minHeight: 0 }}
+                  <img src={src} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.3s ease" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
+                  />
+                  <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.22)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.08)"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.22)"}
                   >
-                    <img src={src} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.3s ease" }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
-                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-                    />
-                    <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.22)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.06)"}
-                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.22)"}
-                    >
-                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#DB5224", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
-                      </div>
+                    <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#DB5224", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
                     </div>
-                  </a>
-                ))}
-              </div>
+                  </div>
+                </a>
+              ))}
             </div>
 
             {/* Photos offense slidables */}
