@@ -450,9 +450,9 @@ function BuzzedVideo() {
           </div>
         </div>
 
-        {/* Layout 2 colonnes : vignette principale (gauche) + 3 vignettes (droite, même hauteur) */}
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20, alignItems: "stretch" }}>
-          {/* Vignette principale — glow rouge réduit */}
+        {/* Layout 2 colonnes : grande vignette (2/3) + 3 miniatures empilées (1/3, même hauteur exacte) */}
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "stretch" }}>
+          {/* Grande vignette — 16:9, définit la hauteur de la rangée */}
           <div style={{ borderRadius: 8, overflow: "hidden", boxShadow: "0 0 36px 10px rgba(254,0,0,0.18), 0 0 72px 20px rgba(254,0,0,0.08)", position: "relative", aspectRatio: "16/9" }}>
             <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
               onMouseEnter={() => setHovered(true)}
@@ -460,7 +460,7 @@ function BuzzedVideo() {
               style={{ position: "absolute", inset: 0, display: "block", cursor: "pointer", textDecoration: "none" }}
             >
               <img src="/images/vignettes/itw-wemby.png" alt="Interview Wembanyama"
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", objectPosition: "center top" }} />
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", objectPosition: "center top" }} />
               <div style={{ position: "absolute" as const, inset: 0, background: hovered ? "rgba(0,0,0,0.18)" : "rgba(0,0,0,0.35)", transition: "background 0.2s ease", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <div style={{ width: 72, height: 72, borderRadius: "50%", background: hovered ? "#FE0000" : "rgba(254,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", transform: hovered ? "scale(1.1)" : "scale(1)", transition: "all 0.2s ease", boxShadow: hovered ? "0 0 0 16px rgba(254,0,0,0.15)" : "none" }}>
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
@@ -469,14 +469,20 @@ function BuzzedVideo() {
             </a>
           </div>
 
-          {/* Colonne droite — 3 vignettes, hauteur alignée sur la grande vignette */}
-          <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column" as const, gap: 8, height: "100%" }}>
+          {/* Colonne droite — 3 miniatures empilées, remplissent exactement la hauteur de la grande */}
+          <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
             {BUZZED_VIGNETTES.map((src, i) => (
               <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                style={{ display: "block", flex: "1", borderRadius: 6, overflow: "hidden", position: "relative" as const, textDecoration: "none" }}
+                style={{ display: "block", flex: "1 1 0", borderRadius: 6, overflow: "hidden", position: "relative" as const, textDecoration: "none", minHeight: 0 }}
               >
-                <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img src={src} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.3s ease" }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
+                />
+                <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.18)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.06)"}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.18)"}
+                >
                   <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#FE0000", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
                   </div>
