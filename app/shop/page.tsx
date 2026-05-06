@@ -9,14 +9,11 @@ const AWESOME = (w: number) => ({ fontFamily: "Awesome, Georgia, serif", fontWei
 
 const PRODUCTS = [
   { id: 1, name: "T-Shirt First Team — Blanc",   cat: "T-Shirts",     price: 35, img: "/images/page-shop/tshirt-a-face.png", hoverImg: "/images/page-shop/tshirt-a-dos.png", isNew: true,  sizes: ["S","M","L","XL"] },
-  { id: 2, name: "T-Shirt First Team — Noir",    cat: "T-Shirts",     price: 35, img: "/images/page-shop/tshirt-a-face.png", hoverImg: "/images/page-shop/tshirt-a-dos.png", isNew: true,  sizes: ["S","M","L","XL"] },
   { id: 3, name: "T-Shirt Capsule — Coloris 1",  cat: "T-Shirts",     price: 39, img: "/images/page-shop/tshirt-b-face.png", hoverImg: "/images/page-shop/tshirt-b-dos.png", isNew: false, sizes: ["S","M","L","XL"] },
-  { id: 4, name: "T-Shirt Capsule — Coloris 2",  cat: "T-Shirts",     price: 39, img: "/images/page-shop/tshirt-b-face.png", hoverImg: "/images/page-shop/tshirt-b-dos.png", isNew: false, sizes: ["S","M","L","XL"] },
   { id: 5, name: "Bob First Team — Naturel",     cat: "Accessoires",  price: 28, img: "/images/page-shop/bob-a.png",         hoverImg: null,                                  isNew: true,  sizes: ["Unique"] },
   { id: 6, name: "Bob First Team — Noir",        cat: "Accessoires",  price: 28, img: "/images/page-shop/bob-b.png",         hoverImg: null,                                  isNew: false, sizes: ["Unique"] },
   { id: 7, name: "Tote Bag First Team",          cat: "Accessoires",  price: 22, img: "/images/page-shop/bag.png",           hoverImg: null,                                  isNew: false, sizes: ["Unique"] },
   { id: 8, name: "Short Basket — Blanc",         cat: "Shorts",       price: 55, img: "/images/page-shop/short-a.png",      hoverImg: null,                                  isNew: true,  sizes: ["S","M","L","XL"] },
-  { id: 9, name: "Short Basket — Noir",          cat: "Shorts",       price: 55, img: "/images/page-shop/short-b.png",      hoverImg: null,                                  isNew: false, sizes: ["S","M","L","XL"] },
 ];
 
 const CATS = ["Tout", "T-Shirts", "Accessoires", "Shorts"] as const;
@@ -132,7 +129,7 @@ function PresentationSection() {
         {/* Photo lifestyle */}
         <div style={{ position: "relative" as const, minHeight: 560, overflow: "hidden" }}>
           <img
-            src="/images/page-shop/lifestyle/lifestyle-basket-1.jpg"
+            src="/images/page-shop/lifestyle/lifestyle-dressed-1.jpg"
             alt=""
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
           />
@@ -255,6 +252,35 @@ function ProductsGrid() {
               onLeave={() => setHoveredId(null)}
             />
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LifestyleSection() {
+  return (
+    <section style={{ background: "#0A0A0A", padding: "0 0 80px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: 12 }}>
+          <div style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "4/3" }}>
+            <img src="/images/page-shop/lifestyle/lifestyle-shop-1.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
+            />
+          </div>
+          <div style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "4/3" }}>
+            <img src="/images/page-shop/lifestyle/lifestyle-shop-2.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
+            />
+          </div>
+          <div style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "4/3" }}>
+            <img src="/images/page-shop/lifestyle/lifestyle-shop-3.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -432,6 +458,7 @@ export default function ShopPage() {
       <EditoBand />
       <PresentationSection />
       <ProductsGrid />
+      <LifestyleSection />
       <InfoBand />
       <FeaturedProducts />
       <BigMarquee />

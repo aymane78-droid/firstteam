@@ -96,7 +96,7 @@ const NAV_LINKS = [
 const CATEGORIES = [
   { label: "Contenus",    href: "/contenus",        photo: "/images/differentes-pages/contenus.jpg" },
   { label: "L'équipe",    href: "/qui-nous-sommes", photo: "/images/differentes-pages/equipe.jpg" },
-  { label: "Merch",       href: "#",                photo: "/images/differentes-pages/merchandising.png" },
+  { label: "Merch",       href: "/shop",             photo: "/images/differentes-pages/merchandising.png" },
   { label: "Travel",      href: "#",                photo: "/images/differentes-pages/travel.jpg" },
   { label: "Partenaires", href: "/partenaires",     photo: "/images/differentes-pages/partenaires.jpg" },
 ];
@@ -378,7 +378,7 @@ function OffenseBanner() {
         <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {/* Grosse vignette avec glow orange */}
           <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-            style={{ display: "block", position: "relative", borderRadius: 4, overflow: "hidden", textDecoration: "none", boxShadow: "0 0 40px 12px rgba(237,219,197,0.55), 0 0 80px 24px rgba(237,219,197,0.28)" }}
+            style={{ display: "block", position: "relative", borderRadius: 4, overflow: "hidden", textDecoration: "none", boxShadow: "0 0 14px 3px rgba(237,219,197,0.18), 0 0 28px 6px rgba(237,219,197,0.08)" }}
           >
             <img src="/images/vignettes/edgar-yves.jpg" alt="Offense — Edgar-Yves" style={{ width: "100%", display: "block", objectFit: "cover", aspectRatio: "16/9" }} />
             <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.22)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
@@ -391,32 +391,34 @@ function OffenseBanner() {
             </div>
           </a>
 
-          {/* Slider drag — 3 photos visibles, 1 hors champ — avec glow orange */}
-          <div
-            ref={sliderRef}
-            style={{
-              display: "flex", gap: 6,
-              overflowX: "auto", scrollbarWidth: "none",
-              cursor: isDragging ? "grabbing" : "grab",
-              userSelect: "none",
-              boxShadow: "0 0 24px 6px rgba(237,219,197,0.35)",
-              borderRadius: 4,
-            }}
-            onMouseDown={onMouseDown}
-            onMouseMove={onMouseMove}
-            onMouseUp={onMouseUp}
-            onMouseLeave={onMouseUp}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onMouseUp}
-          >
-            {OFFENSE_PHOTOS.map((src, i) => (
-              <div key={i} style={{ flexShrink: 0, width: "calc(33.33% - 4px)" }}>
-                <img src={src} alt="" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", borderRadius: 2, pointerEvents: "none", userSelect: "none" }} draggable={false} />
-              </div>
-            ))}
+          {/* Slider drag — 3 photos visibles, 4ème en débord — frame + cue */}
+          <div style={{ position: "relative", borderRadius: 4, border: "1.5px solid rgba(237,219,197,0.25)", overflow: "hidden" }}>
+            <div
+              ref={sliderRef}
+              style={{
+                display: "flex", gap: 6,
+                overflowX: "auto", scrollbarWidth: "none",
+                cursor: isDragging ? "grabbing" : "grab",
+                userSelect: "none",
+              }}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={onMouseUp}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onMouseUp}
+            >
+              {OFFENSE_PHOTOS.map((src, i) => (
+                <div key={i} style={{ flexShrink: 0, width: "calc(30% - 4px)" }}>
+                  <img src={src} alt="" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", pointerEvents: "none", userSelect: "none" }} draggable={false} />
+                </div>
+              ))}
+            </div>
+            {/* Right fade to hint scrollability */}
+            <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 40, background: "linear-gradient(to right, transparent, rgba(10,10,10,0.7))", pointerEvents: "none" }} />
           </div>
-          <style>{`.offense-slider::-webkit-scrollbar { display: none; }`}</style>
+          <style>{`div::-webkit-scrollbar { display: none; }`}</style>
         </div>
       </div>
     </section>
@@ -451,11 +453,11 @@ function BuzzedVideo() {
         {/* Layout 2 colonnes : vignette principale (gauche) + 3 vignettes (droite, même hauteur) */}
         <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20, alignItems: "stretch" }}>
           {/* Vignette principale — glow rouge réduit */}
-          <div style={{ borderRadius: 8, overflow: "hidden", boxShadow: "0 0 36px 10px rgba(254,0,0,0.18), 0 0 72px 20px rgba(254,0,0,0.08)", height: 520 }}>
+          <div style={{ borderRadius: 8, overflow: "hidden", boxShadow: "0 0 36px 10px rgba(254,0,0,0.18), 0 0 72px 20px rgba(254,0,0,0.08)", position: "relative", aspectRatio: "16/9" }}>
             <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
-              style={{ display: "block", position: "relative" as const, cursor: "pointer", textDecoration: "none", height: "100%" }}
+              style={{ position: "absolute", inset: 0, display: "block", cursor: "pointer", textDecoration: "none" }}
             >
               <img src="/images/vignettes/itw-wemby.png" alt="Interview Wembanyama"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", objectPosition: "center top" }} />
@@ -512,7 +514,7 @@ function RecentVideos() {
                 onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.boxShadow = `0 0 28px 6px ${glow}45, 0 0 56px 10px ${glow}18`; }}
               >
                 <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
-                  <img src={v.thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <img src={v.thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", background: "#111" }} />
                   <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.28)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <div style={{ width: 40, height: 40, borderRadius: "50%", background: glow, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
@@ -692,15 +694,18 @@ function MerchSection() {
   return (
     <section className="r-sec-xl" style={{ padding: "120px 40px", background: "#0A0A0A" }}>
       <div className="r-grid-merch" style={{ maxWidth: 1200, margin: "0 auto", gap: 40 }}>
-        <div style={{ background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)" }}>
+        <Link href="/shop" style={{ display: "block", background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none", transition: "transform 0.2s ease, border-color 0.2s ease" }}
+          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(254,208,0,0.4)"; }}
+          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(255,255,255,0.1)"; }}
+        >
           <img src="/images/differentes-pages/merchandising.png" alt="Maison First Team" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block" }} />
           <div style={{ padding: "32px 36px 36px" }}>
             <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 2, textTransform: "uppercase" as const, color: "#FED000", display: "block", marginBottom: 12 }}>BOUTIQUE</span>
             <h3 style={{ ...ANTON, fontSize: 36, textTransform: "uppercase" as const, color: "#fff", marginBottom: 16, lineHeight: 0.95 }}>Maison<br />First Team.</h3>
             <p style={{ ...MANROPE(400), fontSize: 14, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.6 }}>T-shirts, hoodies, casquettes — pour porter les couleurs de la culture basket française.</p>
-            <span className="pill-btn pill-btn-yellow" style={{ cursor: "not-allowed", opacity: 0.6 }}>Bientôt disponible</span>
+            <span className="pill-btn pill-btn-yellow">Découvrir la boutique →</span>
           </div>
-        </div>
+        </Link>
         <div style={{ background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)" }}>
           <img src="/images/homepage/new-york.jpg" alt="First Team Travels — New York" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center center", display: "block" }} />
           <div style={{ padding: "32px 36px 36px" }}>

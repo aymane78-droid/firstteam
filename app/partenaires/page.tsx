@@ -80,17 +80,15 @@ export default function PartenairesPage() {
       </section>
 
       {/* KPI BAND */}
-      <section style={{ position: "relative", padding: "80px 40px", overflow: "hidden" }}>
-        <img src="/images/basket/fans-arena.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.93)", zIndex: 1 }} />
-        <div style={{ display: "flex", height: 4, position: "absolute", top: 0, left: 0, right: 0, zIndex: 3 }}>
+      <section style={{ background: "#fff", padding: "80px 40px", overflow: "hidden", position: "relative" }}>
+        <div style={{ display: "flex", height: 4, position: "absolute", top: 0, left: 0, right: 0 }}>
           <div style={{ flex: 1, background: "#FE0000" }} /><div style={{ flex: 1, background: "#FED000" }} /><div style={{ flex: 1, background: "#002EFE" }} />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 2 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto" }}>
           {KPI.map((k, i) => (
-            <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
-              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#fff", lineHeight: 1, letterSpacing: "-1px" }}>{k.v}</span>
-              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(255,255,255,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.l}</span>
+            <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(0,0,0,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
+              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.v}</span>
+              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(0,0,0,0.5)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.l}</span>
             </div>
           ))}
         </div>

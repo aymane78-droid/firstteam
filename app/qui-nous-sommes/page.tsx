@@ -22,16 +22,16 @@ function useReveal() {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const TIMELINE = [
-  { year: "2016", label: "Les débuts",         desc: "Premières vidéos basket publiées, passion pure sans structure.",          accent: "#FE0000" },
-  { year: "2017", label: "Premier studio",     desc: "Installation d'un setup fixe, débuts des émissions régulières.",          accent: "#002EFE" },
-  { year: "2018", label: "10K abonnés",        desc: "Cap symbolique franchi, la communauté prend forme.",                      accent: "#FED000" },
-  { year: "2019", label: "Couverture NBA",     desc: "Premiers déplacements aux États-Unis pour couvrir la NBA.",               accent: "#FE0000" },
-  { year: "2020", label: "Création officielle",desc: "First Team devient une structure médiatique professionnelle.",            accent: "#002EFE" },
-  { year: "2021", label: "100K YouTube",       desc: "Premier grand cap symbolique franchi sur la chaîne.",                    accent: "#FED000" },
-  { year: "2022", label: "Partenariat NBA FR", desc: "First Team devient partenaire officiel NBA France.",                      accent: "#FE0000" },
-  { year: "2023", label: "Mondial Berlin",     desc: "Envoyés spéciaux en Allemagne pour la Coupe du Monde FIBA.",             accent: "#002EFE" },
-  { year: "2024", label: "JO Paris + 500K",   desc: "Présents aux JO & 500K abonnés — premier média basket FR à franchir le cap.", accent: "#FED000" },
-  { year: "2025", label: "Lancement Offense",  desc: "Nouvelle émission sport & culture avec SDM, Riolo & invités.",           accent: "#FE0000" },
+  { year: "2016", label: "Les débuts",         desc: "Premières vidéos basket publiées, passion pure sans structure.",          accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
+  { year: "2017", label: "Premier studio",     desc: "Installation d'un setup fixe, débuts des émissions régulières.",          accent: "#002EFE", photo: "/images/homepage/photo-studio.png" },
+  { year: "2018", label: "10K abonnés",        desc: "Cap symbolique franchi, la communauté prend forme.",                      accent: "#FED000", photo: "/images/à propos/team-ft.jpg" },
+  { year: "2019", label: "Couverture NBA",     desc: "Premiers déplacements aux États-Unis pour couvrir la NBA.",               accent: "#FE0000", photo: "/images/à propos/erwan-thomas-batum.jpg" },
+  { year: "2020", label: "Création officielle",desc: "First Team devient une structure médiatique professionnelle.",            accent: "#002EFE", photo: "/images/à propos/erwan-thomas.jpg" },
+  { year: "2021", label: "100K YouTube",       desc: "Premier grand cap symbolique franchi sur la chaîne.",                    accent: "#FED000", photo: "/images/à propos/erwan-firstdayshow.jpg" },
+  { year: "2022", label: "Partenariat NBA FR", desc: "First Team devient partenaire officiel NBA France.",                      accent: "#FE0000", photo: "/images/à propos/lnb-dazn-club.jpg" },
+  { year: "2023", label: "Mondial Berlin",     desc: "Envoyés spéciaux en Allemagne pour la Coupe du Monde FIBA.",             accent: "#002EFE", photo: "/images/à propos/nbahouse-carmeloanthony.jpg" },
+  { year: "2024", label: "JO Paris + 500K",   desc: "Présents aux JO & 500K abonnés — premier média basket FR à franchir le cap.", accent: "#FED000", photo: "/images/à propos/thomas-tony-parker.jpg" },
+  { year: "2025", label: "Lancement Offense",  desc: "Nouvelle émission sport & culture avec SDM, Riolo & invités.",           accent: "#FE0000", photo: "/images/offense/offense-thumbnail.png" },
 ];
 
 const FONDATEURS = [
@@ -114,6 +114,7 @@ export default function QuiNousSommesPage() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [hoveredTimeline, setHoveredTimeline] = useState<number | null>(null);
 
   const onMouseDown = (e: React.MouseEvent) => {
     if (!timelineRef.current) return;
@@ -204,8 +205,15 @@ export default function QuiNousSommesPage() {
         </div>
       </section>
 
+      {/* TRICOLOR STRIP */}
+      <div style={{ display: "flex", height: 4 }}>
+        <div style={{ flex: 1, background: "#FE0000" }} />
+        <div style={{ flex: 1, background: "#FED000" }} />
+        <div style={{ flex: 1, background: "#002EFE" }} />
+      </div>
+
       {/* FRISE HISTORIQUE */}
-      <section style={{ background: "#111", padding: "100px 0", borderTop: "1px solid #1a1a1a" }}>
+      <section style={{ background: "#111", padding: "100px 0", borderTop: "none" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", paddingBottom: 40, paddingLeft: 40, paddingRight: 40 }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 16 }}>NOTRE PARCOURS</p>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 16, marginBottom: 48 }}>
@@ -230,16 +238,27 @@ export default function QuiNousSommesPage() {
             {/* Timeline line */}
             <div style={{ position: "absolute" as const, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.08)", top: 56 }} />
             <div style={{ display: "flex", alignItems: "flex-start", width: "max-content" }}>
-              {TIMELINE.map((item, i) => (
-                <div key={i} style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", flexShrink: 0, width: 280 }}>
-                  <p style={{ ...ANTON, fontSize: 40, color: "#fff", lineHeight: 1, marginBottom: 10 }}>{item.year}</p>
-                  <div style={{ position: "relative" as const, zIndex: 10, width: 14, height: 14, borderRadius: "50%", marginBottom: 20, flexShrink: 0, background: item.accent, boxShadow: `0 0 0 4px #111, 0 0 0 6px ${item.accent}` }} />
-                  <div style={{ background: "#1a1a1a", padding: "16px 18px", marginLeft: 8, marginRight: 8, width: "calc(100% - 16px)", borderTop: `3px solid ${item.accent}`, borderRadius: "0 0 4px 4px" }}>
-                    <p style={{ ...MANROPE(700), fontSize: 11, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 1, marginBottom: 6 }}>{item.label}</p>
-                    <p style={{ ...MANROPE(400), fontSize: 11, color: "rgba(255,255,255,0.4)", lineHeight: 1.5 }}>{item.desc}</p>
+              {TIMELINE.map((item, i) => {
+                const isHov = hoveredTimeline === i;
+                return (
+                  <div key={i}
+                    style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", flexShrink: 0, width: 280, cursor: "pointer" }}
+                    onMouseEnter={() => setHoveredTimeline(i)}
+                    onMouseLeave={() => setHoveredTimeline(null)}
+                  >
+                    {/* Photo — apparaît au hover */}
+                    <div style={{ overflow: "hidden", borderRadius: 4, marginBottom: 8, width: "calc(100% - 16px)", maxHeight: isHov ? 130 : 0, opacity: isHov ? 1 : 0, transition: "max-height 0.35s ease, opacity 0.25s ease" }}>
+                      <img src={item.photo} alt="" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
+                    </div>
+                    <p style={{ ...ANTON, fontSize: isHov ? 52 : 40, color: isHov ? item.accent : "#fff", lineHeight: 1, marginBottom: 10, transition: "font-size 0.2s ease, color 0.2s ease" }}>{item.year}</p>
+                    <div style={{ position: "relative" as const, zIndex: 10, width: 14, height: 14, borderRadius: "50%", marginBottom: 20, flexShrink: 0, background: item.accent, boxShadow: `0 0 0 4px #111, 0 0 0 6px ${item.accent}`, transform: isHov ? "scale(1.4)" : "scale(1)", transition: "transform 0.2s ease" }} />
+                    <div style={{ background: isHov ? "#222" : "#1a1a1a", padding: "16px 18px", marginLeft: 8, marginRight: 8, width: "calc(100% - 16px)", borderTop: `3px solid ${item.accent}`, borderRadius: "0 0 4px 4px", transition: "background 0.2s ease" }}>
+                      <p style={{ ...MANROPE(700), fontSize: isHov ? 13 : 11, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 1, marginBottom: 6, transition: "font-size 0.2s ease" }}>{item.label}</p>
+                      <p style={{ ...MANROPE(400), fontSize: isHov ? 12 : 11, color: isHov ? "rgba(255,255,255,0.65)" : "rgba(255,255,255,0.4)", lineHeight: 1.5, transition: "font-size 0.2s ease, color 0.2s ease" }}>{item.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

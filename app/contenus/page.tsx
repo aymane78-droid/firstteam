@@ -152,6 +152,7 @@ const SOCIAL_LINKS = [
 
 export default function ContenusPage() {
   const [tab, setTab] = useState<string>("FDS");
+  const [hoveredConceptIdx, setHoveredConceptIdx] = useState<number | null>(null);
   const active = CONCEPTS[tab];
 
   return (
@@ -285,18 +286,17 @@ export default function ContenusPage() {
               </div>
             </div>
 
-            {/* Vignettes épisodes récents */}
+            {/* Vignettes épisodes récents — 3 seulement, centre agrandi au hover */}
             <div style={{ padding: "28px 32px 32px", borderTop: "1px solid #1a1a1a" }}>
               <p style={{ ...MANROPE(700), fontSize: 11, letterSpacing: 2, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 16 }}>Derniers épisodes</p>
               <div style={{ display: "flex", gap: 12, overflowX: "auto", scrollbarWidth: "none" as const, paddingBottom: 4 }}>
-                {(CONCEPT_VIGNETTES[tab] || []).map((src, i) => (
+                {(CONCEPT_VIGNETTES[tab] || []).slice(0, 3).map((src, i) => (
                   <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "block", flex: "1 0 calc(25% - 9px)", borderRadius: 6, overflow: "hidden", aspectRatio: "16/9", position: "relative" as const, textDecoration: "none" }}
+                    onMouseEnter={() => setHoveredConceptIdx(i)}
+                    onMouseLeave={() => setHoveredConceptIdx(null)}
+                    style={{ display: "block", flex: "1 0 calc(33.33% - 8px)", borderRadius: 6, overflow: "hidden", aspectRatio: "16/9", position: "relative" as const, textDecoration: "none", transform: hoveredConceptIdx === i && i === 1 ? "scale(1.06)" : "scale(1)", transition: "transform 0.3s ease", zIndex: hoveredConceptIdx === i && i === 1 ? 2 : 1 }}
                   >
-                    <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.3s ease" }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.05)"}
-                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-                    />
+                    <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                     <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.12)" }} />
                   </a>
                 ))}
@@ -349,9 +349,9 @@ export default function ContenusPage() {
       {/* OFFENSE */}
       <section id="offense" style={{ overflow: "hidden", background: "#0A0A0A" }}>
 
-        {/* Bandeau descriptif — fond uni #DB5224, 2 colonnes : texte gauche + photos offense droite */}
+        {/* Bandeau descriptif — fond #DB5224 : texte gauche + Edgar-Yves 16:9 droite */}
         <div style={{ background: "#DB5224" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
             {/* Texte */}
             <div>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 24, background: "rgba(255,255,255,0.18)", padding: "6px 16px", borderRadius: 2 }}>
@@ -363,57 +363,54 @@ export default function ContenusPage() {
               <p style={{ ...AWESOME(700), fontSize: 18, marginBottom: 16, lineHeight: 1.5, fontStyle: "italic", color: "rgba(255,255,255,0.9)" }}>
                 Ce qu'on n'ose jamais demander sur le sport, Offense y répond !
               </p>
-              <p style={{ ...MANROPE(400), fontSize: 14, lineHeight: 1.8, marginBottom: 0, color: "rgba(255,255,255,0.82)" }}>
+              <p style={{ ...MANROPE(400), fontSize: 14, lineHeight: 1.8, marginBottom: 28, color: "rgba(255,255,255,0.82)" }}>
                 Aux commandes, Tom Ciaravino avec des visages bien connus de First Team — Thomas, Erwan, Stephen Brun ou Mehdi Maizi — et des invités de prestige. Portraits, long formats, immersions.
               </p>
-            </div>
-            {/* Photos offense — grille 2×2 avec titre */}
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: 12, alignItems: "flex-end" }}>
-              <p style={{ fontFamily: "Awesome, Georgia, serif", fontWeight: 700, fontStyle: "italic", fontSize: 16, color: "rgba(255,255,255,0.85)", margin: 0, alignSelf: "flex-start" as const }}>Avec des invités de marque</p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, maxWidth: 380, width: "100%" }}>
-                {OFFENSE_PHOTOS.map((src, i) => (
-                  <div key={i} style={{ aspectRatio: "4/3", overflow: "hidden", borderRadius: 6 }}>
-                    <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.4s ease" }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.06)"}
-                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Vignettes 2 colonnes — hauteurs alignées, CTA dessous */}
-        <div style={{ background: "#0A0A0A", padding: "60px 60px 28px" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 28, alignItems: "stretch" }}>
-
-            {/* Gauche — Edgar-Yves avec glow orange */}
-            <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-              style={{ display: "block", position: "relative", borderRadius: 8, overflow: "hidden", textDecoration: "none", boxShadow: "0 0 50px 14px rgba(237,219,197,0.55), 0 0 100px 28px rgba(237,219,197,0.28)" }}>
-              <img src="/images/vignettes/edgar-yves.jpg" alt="Edgar & Yves — Offense" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
-              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.28)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.12)"}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.28)"}
+              <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 14, background: "#EDDBC5", color: "#DB5224", padding: "12px 24px", borderRadius: 999, textDecoration: "none", transition: "transform 0.15s ease" }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
               >
-                <div style={{ width: 72, height: 72, borderRadius: "50%", background: "#EDDBC5", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                Découvrir Offense →
+              </a>
+            </div>
+            {/* Edgar-Yves — 16:9 gros */}
+            <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+              style={{ display: "block", position: "relative", borderRadius: 8, overflow: "hidden", textDecoration: "none", boxShadow: "0 8px 40px rgba(0,0,0,0.4)" }}
+            >
+              <img src="/images/vignettes/edgar-yves.jpg" alt="Edgar & Yves — Offense" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
+              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.22)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.08)"}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.22)"}
+              >
+                <div style={{ width: 68, height: 68, borderRadius: "50%", background: "#EDDBC5", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 0 10px rgba(237,219,197,0.2)" }}>
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="#DB5224"><path d="M8 5v14l11-7z" /></svg>
                 </div>
               </div>
             </a>
+          </div>
+        </div>
 
-            {/* Droite — 3 vignettes hauteur alignée */}
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: 8, height: "100%" }}>
+        {/* Section sombre — Des invités de marque + 3 vignettes + photos slidables */}
+        <div style={{ background: "#0A0A0A", padding: "60px 60px 28px" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <p style={{ fontFamily: "Awesome, Georgia, serif", fontWeight: 700, fontStyle: "italic", fontSize: 22, color: "rgba(255,255,255,0.85)", marginBottom: 28 }}>Des invités de marque</p>
+
+            {/* 3 vignettes épisodes en ligne */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 20 }}>
               {[
                 "/images/vignettes/VIGNETTE_OFFENSE_EP05.jpg",
                 "/images/vignettes/VIGNETTE_RIOLO.jpg",
                 "/images/offense/offense-thumbnail.png",
               ].map((src, i) => (
                 <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                  style={{ display: "block", flex: "1", borderRadius: 6, overflow: "hidden", position: "relative" as const, textDecoration: "none" }}
+                  style={{ display: "block", position: "relative" as const, borderRadius: 6, overflow: "hidden", textDecoration: "none", aspectRatio: "16/9" }}
                 >
                   <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                  <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.20)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.22)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.08)"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.22)"}
+                  >
                     <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#DB5224", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
                     </div>
@@ -421,10 +418,19 @@ export default function ContenusPage() {
                 </a>
               ))}
             </div>
+
+            {/* Photos offense slidables */}
+            <div style={{ display: "flex", gap: 8, overflowX: "auto", scrollbarWidth: "none" as const, paddingBottom: 4 }}>
+              {OFFENSE_PHOTOS.map((src, i) => (
+                <div key={i} style={{ flexShrink: 0, width: "calc(28% - 6px)" }}>
+                  <img src={src} alt="" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", borderRadius: 4 }} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* CTA centré sous les vignettes */}
+        {/* CTA */}
         <div style={{ background: "#0A0A0A", padding: "20px 60px 80px", display: "flex", justifyContent: "flex-end", maxWidth: 1200, margin: "0 auto" }}>
           <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: 10, ...MANROPE(700), fontSize: 14, background: "#DB5224", color: "#fff", padding: "13px 24px", borderRadius: 999, textDecoration: "none", transition: "transform 0.15s ease" }}
