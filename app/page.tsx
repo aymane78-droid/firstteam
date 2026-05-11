@@ -47,6 +47,12 @@ const PARTNER_LOGOS = [
   { name: "Influx",         src: "/images/partners/influx-logo.jpeg" },
 ];
 
+const BIG_SPONSORS = [
+  { name: "Winamax",  src: "/images/partners/logo-winamax.png",  desc: "Partenaire officiel — paris sportifs & poker en ligne" },
+  { name: "NBA",      src: "/images/partners/NBA_Logo.svg.png",  desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
+  { name: "NordVPN",  src: "/images/partners/nordvpn-logo.png",  desc: "Partenaire officiel — sécurité et confidentialité en ligne" },
+];
+
 const TEAM = [
   { num: "01.", name: "Erwan Abautret", role: "Co-fondateur", color: "#FE0000", photo: "/images/equipe/erwan.jpg" },
   { num: "02.", name: "Thomas Dufant",  role: "Co-fondateur", color: "#002EFE", photo: "/images/equipe/thomas.jpg" },
@@ -740,9 +746,10 @@ function TeamCard({ member }: { member: typeof TEAM[0] }) {
   );
 }
 
-// ── 11. SPONSORS — logos cadres blancs ────────────────────────────────
+// ── 11. SPONSORS ──────────────────────────────────────────────────────
 function SponsorsSection() {
   const ref = useReveal();
+  const [hovered, setHovered] = useState<number | null>(null);
   return (
     <section className="r-sec-lg" style={{ padding: "100px 40px", background: "#002EFE" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -750,7 +757,7 @@ function SponsorsSection() {
           <p style={{ ...MANROPE(800), fontSize: 12, letterSpacing: 2, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>PARTENAIRES & SPONSORS</p>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap" as const, gap: 24 }}>
             <h2 style={{ ...ANTON, fontSize: "clamp(36px, 5vw, 64px)", lineHeight: 0.92, textTransform: "uppercase" as const, letterSpacing: "-0.5px", color: "#fff" }}>
-              Ils nous ont<br />fait confiance.
+              Ils nous font<br />confiance.
             </h2>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
               <Link href="/partenaires" className="pill-btn pill-btn-yellow">Voir nos sponsors →</Link>
@@ -758,13 +765,22 @@ function SponsorsSection() {
             </div>
           </div>
         </div>
-        <div className="r-grid-logos" style={{ gap: 8 }}>
-          {PARTNER_LOGOS.map((p, i) => (
-            <div key={i} style={{ background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px 20px", aspectRatio: "2/1", borderRadius: 6 }}>
-              <div style={{ position: "relative", width: 120, height: 40 }}>
-                <Image src={p.src} alt={p.name} fill style={{ objectFit: "contain" }} />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+          {BIG_SPONSORS.map((sp, i) => (
+            <Link key={i} href="/partenaires"
+              style={{ textDecoration: "none", display: "block", background: "#fff", borderRadius: 12, overflow: "hidden", transition: "transform 0.22s ease, box-shadow 0.22s ease", transform: hovered === i ? "translateY(-6px)" : "translateY(0)", boxShadow: hovered === i ? "0 16px 40px rgba(0,0,0,0.22)" : "none" }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "52px 40px" }}>
+                <div style={{ position: "relative", width: "100%", height: 72 }}>
+                  <Image src={sp.src} alt={sp.name} fill style={{ objectFit: "contain" }} />
+                </div>
               </div>
-            </div>
+              <div style={{ padding: "0 32px 28px", overflow: "hidden", maxHeight: hovered === i ? 80 : 0, opacity: hovered === i ? 1 : 0, transition: "max-height 0.3s ease, opacity 0.3s ease" }}>
+                <p style={{ ...MANROPE(600), fontSize: 13, color: "#333", lineHeight: 1.5, margin: 0 }}>{sp.desc}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
