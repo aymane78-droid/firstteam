@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { VideoModal } from "../components/VideoModal";
 import { fetchLatestLongVideos, fetchPlaylistVideos, FIRST_TEAM_CHANNEL_ID, OFFENSE_CHANNEL_ID } from "../lib/youtube";
@@ -33,6 +33,123 @@ const PLAYLISTS: Record<string, string> = {
   // VLOG:  "à_ajouter",
   // TLIST: "à_ajouter",
 };
+
+// ── Planning de la semaine ─────────────────────────────────────────────
+interface PlanTile {
+  accent: string;
+  photoCls: string;
+  time: string;
+  status: string;
+  statusReplay?: boolean;
+  logo?: string;
+  logoText?: string;      // placeholder texte si pas de logo image
+  logoTextColor?: string;
+  nameMain?: string;
+  nameAccent: string;
+  isOffense?: boolean;
+  meta: string;
+  desc: string;
+  cta: string;
+  href: string;
+}
+interface PlanDay { label: string; tiles: PlanTile[]; }
+
+const PLANNING_DAYS: PlanDay[] = [
+  {
+    label: "Lundi",
+    tiles: [{
+      accent: "#FE0000", photoCls: "pt-ph-red",
+      time: "20H00", status: "LIVE",
+      logo: "/images/emission/libreantenne.png",
+      nameMain: "Libre", nameAccent: "Antenne",
+      meta: "90 min · En direct",
+      desc: "L'émission phare du lundi soir. Analyse live de la nuit NBA, débats sans filtre.",
+      cta: "Rejoindre le live", href: "https://www.twitch.tv/firstteam_nba",
+    }],
+  },
+  {
+    label: "Mardi",
+    tiles: [{
+      accent: "#CD4D22", photoCls: "pt-ph-orange",
+      time: "09H00", status: "REPLAY", statusReplay: true,
+      logo: "/images/emission/libreantenne.png",
+      nameMain: "Libre", nameAccent: "Antenne",
+      meta: "2H · Podcast NBA",
+      desc: "Replay du podcast matinal. Toute l'actu NBA décortiquée, coups de cœur et coups de gueule.",
+      cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
+    }],
+  },
+  {
+    label: "Mercredi",
+    tiles: [
+      {
+        accent: "#CD4D22", photoCls: "pt-ph-orange",
+        time: "09H00", status: "REPLAY", statusReplay: true,
+        logo: "/images/emission/libreantenne.png",
+        nameMain: "Libre", nameAccent: "Antenne",
+        meta: "2H · Podcast NBA",
+        desc: "Transferts, blessures et premiers verdicts de la nuit.",
+        cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
+      },
+      {
+        accent: "#002EFE", photoCls: "pt-ph-clutch",
+        time: "17H00", status: "NOUVEAU", statusReplay: true,
+        logoText: "CLUTCH", logoTextColor: "#002EFE",
+        nameMain: "Clutch", nameAccent: "Winamax",
+        meta: "45 min · Débat",
+        desc: "Trois analystes, dix minutes par thème, zéro langue de bois.",
+        cta: "Voir l'épisode", href: "https://youtube.com/@firstteam",
+      },
+    ],
+  },
+  {
+    label: "Jeudi",
+    tiles: [{
+      accent: "#FED000", photoCls: "pt-ph-violet",
+      time: "18H00", status: "LIVE",
+      logo: "/images/emission/firstdayshow.png",
+      nameMain: "First Day", nameAccent: "Show",
+      meta: "60 min · En direct",
+      desc: "Le rendez-vous fun du jeudi. Jeux, invités surprises — le basket entre potes.",
+      cta: "Rejoindre le live", href: "https://www.twitch.tv/firstteam_nba",
+    }],
+  },
+  {
+    label: "Vendredi",
+    tiles: [
+      {
+        accent: "#FF6A2E", photoCls: "pt-ph-offense",
+        time: "09H00", status: "INÉDIT",
+        logo: "/images/emission/OFFENSE.png",
+        nameAccent: "Offense", isOffense: true,
+        meta: "42 min · Long format",
+        desc: "Portraits, immersions, long format — la chaîne de ceux qui osent.",
+        cta: "Voir l'épisode", href: "https://youtube.com/@offense",
+      },
+      {
+        accent: "#002EFE", photoCls: "pt-ph-clutch",
+        time: "17H00", status: "LIVE",
+        logoText: "CLUTCH", logoTextColor: "#002EFE",
+        nameMain: "Clutch", nameAccent: "Winamax",
+        meta: "45 min · En direct",
+        desc: "Bilan de semaine, montée en puissance et prévisions pour le week-end.",
+        cta: "Rejoindre le live", href: "https://youtube.com/@firstteam",
+      },
+    ],
+  },
+  {
+    label: "Samedi",
+    tiles: [{
+      accent: "#CD4D22", photoCls: "pt-ph-orange",
+      time: "09H00", status: "REPLAY", statusReplay: true,
+      logo: "/images/emission/libreantenne.png",
+      nameMain: "Libre", nameAccent: "Antenne",
+      meta: "2H · Podcast NBA",
+      desc: "Le récap de la semaine. Temps forts, prépa week-end NBA et vos messages.",
+      cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
+    }],
+  },
+];
 
 // Vignettes statiques en fallback si la playlist n'est pas encore configurée
 const CONCEPT_VIGNETTES: Record<string, string[]> = {
@@ -215,13 +332,106 @@ export default function ContenusPage() {
       </section>
 
       {/* ── PLANNING SEMAINE ── */}
-      <section style={{ background: "#fff", padding: "80px 40px", borderBottom: "1px solid #e5e5e5" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <img
-            src="/images/page-contenus/planning-semaine.png"
-            alt="Planning de la semaine First Team"
-            style={{ width: "100%", display: "block", borderRadius: 8, boxShadow: "0 0 40px 10px rgba(254,0,0,0.12), 0 0 80px 20px rgba(254,0,0,0.06)" }}
-          />
+      <section className="pt-section">
+        <div style={{ maxWidth: 1640, margin: "0 auto" }}>
+          <div className="pt-eyebrow">Programmation hebdo</div>
+          <h2 className="pt-title">
+            Le programme<br />de la <span style={{ color: "#FE0000" }}>semaine.</span>
+          </h2>
+
+          <div className="pt-grid">
+            {PLANNING_DAYS.map((day, di) => (
+              <div key={di} className="pt-day-col">
+                <div className="pt-day-header">
+                  <span className="pt-day-label">{day.label}</span>
+                </div>
+                {day.tiles.map((tile, ti) => (
+                  <article
+                    key={ti}
+                    className="pt-tile"
+                    style={{ "--pt-accent": tile.accent } as React.CSSProperties}
+                  >
+                    {/* gradient background */}
+                    <div className={`pt-photo ${tile.photoCls}`} />
+                    <div className="pt-veil" />
+                    <div className="pt-accent" />
+
+                    {/* time */}
+                    <span className="pt-time">{tile.time}</span>
+
+                    {/* status */}
+                    <span className={`pt-status${tile.statusReplay ? " pt-replay" : ""}`}>
+                      {tile.status}
+                    </span>
+
+                    {/* emission logo */}
+                    {tile.logo && (
+                      <div className="pt-logo-wrap">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={tile.logo} alt={tile.nameAccent} />
+                      </div>
+                    )}
+                    {!tile.logo && tile.logoText && (
+                      <div className="pt-logo-wrap">
+                        <span style={{
+                          fontFamily: "var(--font-anton), Anton, sans-serif",
+                          fontSize: 13, letterSpacing: 2, color: "#fff",
+                          background: tile.logoTextColor ?? "#333",
+                          padding: "3px 8px", borderRadius: 2,
+                        }}>
+                          {tile.logoText}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* content */}
+                    <div className="pt-content">
+                      {tile.isOffense ? (
+                        <h3 className="pt-show-name-offense">
+                          {tile.nameMain && <>{tile.nameMain} </>}
+                          <span style={{ color: "#FF6A2E" }}>{tile.nameAccent}</span>
+                          <span style={{ color: "#FF6A2E" }}>.</span>
+                        </h3>
+                      ) : (
+                        <h3 className="pt-show-name">
+                          {tile.nameMain && <>{tile.nameMain} </>}
+                          <span style={{ color: `var(--pt-accent, ${tile.accent})` }}>
+                            {tile.nameAccent}
+                          </span>
+                        </h3>
+                      )}
+                      <div className="pt-show-meta">{tile.meta}</div>
+                      <p className="pt-show-desc">{tile.desc}</p>
+                      <a
+                        href={tile.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pt-show-cta"
+                      >
+                        {tile.cta} <span className="pt-arrow">→</span>
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* légende */}
+          <div className="pt-legend">
+            <div className="pt-legend-items">
+              <span className="pt-legend-item">
+                <span className="pt-legend-dot pt-ld-live" />En direct
+              </span>
+              <span className="pt-legend-item">
+                <span className="pt-legend-dot pt-ld-replay" />Replay
+              </span>
+              <span className="pt-legend-item">
+                <span className="pt-legend-dot pt-ld-new" />Nouveau
+              </span>
+            </div>
+            <span>Horaires en heure de Paris (UTC+2)</span>
+          </div>
         </div>
       </section>
 
