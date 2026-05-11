@@ -696,76 +696,19 @@ export default function ContenusPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── PODCAST — épisode (slab noir) ── */}
-      <section style={{ background: "#0A0A0A", padding: "56px 56px", position: "relative", overflow: "hidden" }}>
-        {/* Barre rouge top */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: "#FE0000" }} />
-
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div className="pod-ep-grid">
-
-            {/* Pochette épisode */}
-            <div style={{ width: 168, height: 168, borderRadius: 4, overflow: "hidden", position: "relative", flexShrink: 0, background: "linear-gradient(135deg,#001033 0%,#0033cc 60%,#00bfff 100%)" }}>
-              <div style={{ position: "absolute", top: "22%", left: 0, right: 0, height: 28, background: "#FED000" }} />
-              <div style={{ position: "absolute", top: "22%", left: 0, right: 0, height: 28, background: "#002EFE", transform: "translateY(28px)" }} />
-              <span style={{ position: "absolute", bottom: 30, left: 12, right: 12, ...MANROPE(800), fontSize: 9, color: "rgba(255,255,255,0.7)", letterSpacing: 2, textTransform: "uppercase" as const, display: "block" }}>L'entretien</span>
-              <div style={{ position: "absolute", bottom: 12, left: 12, right: 12, ...ANTON, fontSize: 22, color: "#fff", textTransform: "uppercase" as const, lineHeight: 0.95 }}>
-                Maxime<br />Raynaud
-              </div>
-            </div>
-
-            {/* Métadonnées épisode */}
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 14, ...MANROPE(700), fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2, textTransform: "uppercase" as const, marginBottom: 14, flexWrap: "wrap" as const }}>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.08)", padding: "5px 10px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.12)" }}>
-                  <svg viewBox="0 0 24 24" width={11} height={11} fill="white"><path d="M17.5 12.5c0-1.7.8-3.2 2-4.1-.8-1.1-2-1.8-3.3-1.9-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.7.7 2.8.7 1.2 0 1.9-1.1 2.6-2.2.6-.9 1.1-1.8 1.3-2.9-1.2-.6-2-1.8-2-3.2zM14.8 5.4c.6-.7 1-1.7 1-2.6-.8.1-1.7.5-2.3 1.2-.5.6-1 1.6-.9 2.6.9.1 1.7-.4 2.2-1.2z"/></svg>
-                  Apple Podcasts
-                </span>
-                <span>26 avril</span>
-                <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
-                <span>57 min</span>
-              </div>
-              <h3 style={{ ...ANTON, fontSize: "clamp(20px,1.8vw,26px)", textTransform: "uppercase" as const, color: "#fff", lineHeight: 1.1, letterSpacing: 0.3, marginBottom: 12 }}>
-                Maxime Raynaud, l'entretien : son duel avec Wembanyama, les secrets de Westbrook, l'équipe de France
-              </h3>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 13, color: "rgba(255,255,255,0.45)" }}>
-                <div style={{ width: 18, height: 2, background: "#FED000", flexShrink: 0 }} />
-                First Team
-              </div>
-            </div>
-
-            {/* Actions */}
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, alignItems: "flex-end" }}>
-              <a href="https://podcasts.apple.com/fr/podcast/maxime-raynaud-lentretien-son-duel-avec-wembanyama/id1686408209?i=1000763653287"
-                target="_blank" rel="noopener noreferrer" className="pod-ep-play">
-                <svg viewBox="0 0 12 12" width={12} height={12} fill="white"><path d="M2 1l9 5-9 5z"/></svg>
-                Lecture
-              </a>
-              <a href="https://shows.acast.com/first-team" target="_blank" rel="noopener noreferrer" className="pod-ep-more">
-                Afficher plus ↗
-              </a>
-            </div>
-          </div>
-
-          {/* Iframe Apple Podcasts */}
-          <div style={{ marginTop: 32 }}>
+          {/* Iframe Apple Podcasts — fond crème */}
+          <div style={{ marginTop: 48 }}>
             <iframe
               src="https://embed.podcasts.apple.com/fr/podcast/maxime-raynaud-lentretien-son-duel-avec-wembanyama/id1686408209?i=1000763653287"
               height="175"
               frameBorder={0}
               sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-              style={{ width: "100%", borderRadius: 8, border: "none", display: "block" }}
+              style={{ width: "100%", borderRadius: 12, border: "none", display: "block" }}
               title="Podcast First Team — Maxime Raynaud"
             />
           </div>
-
-          <p style={{ ...MANROPE(400), fontSize: 11, color: "rgba(255,255,255,0.3)", textAlign: "right" as const, marginTop: 20 }}>
-            Découvrez comment sont gérées vos données…
-          </p>
         </div>
       </section>
 

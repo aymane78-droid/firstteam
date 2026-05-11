@@ -48,9 +48,9 @@ const PARTNER_LOGOS = [
 ];
 
 const BIG_SPONSORS = [
-  { name: "Winamax",  src: "/images/partners/logo-winamax.png",  desc: "Partenaire officiel — paris sportifs & poker en ligne" },
-  { name: "NBA",      src: "/images/partners/NBA_Logo.svg.png",  desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
-  { name: "NordVPN",  src: "/images/partners/nordvpn-logo.png",  desc: "Partenaire officiel — sécurité et confidentialité en ligne" },
+  { name: "Winamax",  color: "#FED000", src: "/images/partners/logo-winamax.png",  desc: "Partenaire officiel — paris sportifs & poker en ligne" },
+  { name: "NBA",      color: "#FE0000", src: "/images/partners/NBA_Logo.svg.png",  desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
+  { name: "NordVPN",  color: "#002EFE", src: "/images/partners/nordvpn-logo.png",  desc: "Partenaire officiel — sécurité et confidentialité en ligne" },
 ];
 
 const TEAM = [
@@ -766,20 +766,33 @@ function SponsorsSection() {
             </div>
           </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
           {BIG_SPONSORS.map((sp, i) => (
             <Link key={i} href="/partenaires"
-              style={{ textDecoration: "none", display: "block", background: "#fff", borderRadius: 12, overflow: "hidden", transition: "transform 0.22s ease, box-shadow 0.22s ease", transform: hovered === i ? "translateY(-6px)" : "translateY(0)", boxShadow: hovered === i ? "0 16px 40px rgba(0,0,0,0.22)" : "none" }}
+              style={{
+                textDecoration: "none", display: "block",
+                background: "#111", borderRadius: 12, overflow: "hidden",
+                boxShadow: hovered === i
+                  ? `0 0 48px 12px ${sp.color}55, 0 0 96px 24px ${sp.color}22`
+                  : `0 0 32px 8px ${sp.color}30, 0 0 64px 16px ${sp.color}14`,
+                transform: hovered === i ? "translateY(-6px)" : "translateY(0)",
+                transition: "box-shadow 0.3s ease, transform 0.22s ease",
+              }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
             >
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "52px 40px" }}>
+              <div style={{ height: 3, background: sp.color }} />
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "52px 40px 36px" }}>
                 <div style={{ position: "relative", width: "100%", height: 72 }}>
-                  <Image src={sp.src} alt={sp.name} fill style={{ objectFit: "contain" }} />
+                  <Image src={sp.src} alt={sp.name} fill style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }} />
                 </div>
               </div>
-              <div style={{ padding: "0 32px 28px", overflow: "hidden", maxHeight: hovered === i ? 80 : 0, opacity: hovered === i ? 1 : 0, transition: "max-height 0.3s ease, opacity 0.3s ease" }}>
-                <p style={{ ...MANROPE(600), fontSize: 13, color: "#333", lineHeight: 1.5, margin: 0 }}>{sp.desc}</p>
+              <div style={{ padding: "0 36px 44px" }}>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: sp.color, padding: "4px 12px", borderRadius: 999, marginBottom: 16 }}>
+                  <span style={{ ...MANROPE(800), fontSize: 9, color: sp.color === "#FED000" ? "#0A0A0A" : "#fff", textTransform: "uppercase" as const, letterSpacing: 1.5 }}>Partenaire officiel</span>
+                </div>
+                <h3 style={{ ...ANTON, fontSize: 28, textTransform: "uppercase" as const, color: "#fff", letterSpacing: "0.5px", lineHeight: 1, marginBottom: 12 }}>{sp.name}</h3>
+                <p style={{ ...MANROPE(400), fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.55, margin: 0 }}>{sp.desc}</p>
               </div>
             </Link>
           ))}
