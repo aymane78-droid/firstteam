@@ -376,6 +376,85 @@ export default function ContenusPage() {
         {conceptModalId && <VideoModal videoId={conceptModalId} onClose={() => setConceptModalId(null)} />}
       </section>
 
+      {/* ── PODCAST ── */}
+      <section style={{ background: "#fafafa", padding: "100px 40px", borderTop: "1px solid #e5e5e5" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 16 }}>PODCAST</p>
+
+          {/* 2-col: cover + info */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center", marginBottom: 48 }}>
+            {/* Cover */}
+            <div style={{ position: "relative", aspectRatio: "1/1", borderRadius: 20, overflow: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.14)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://picsum.photos/seed/podcast-ft/600/600" alt="Le Podcast First Team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            </div>
+
+            {/* Info */}
+            <div>
+              <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: "-0.5px", lineHeight: 0.95, marginBottom: 28 }}>
+                Le Podcast<br />First Team
+              </h2>
+
+              {/* Platform logos */}
+              <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap" as const, alignItems: "center" }}>
+                {/* Acast */}
+                <div style={{ height: 32, padding: "0 12px", background: "#F55200", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg height="16" viewBox="0 0 60 24" fill="white"><text y="18" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="18">acast</text></svg>
+                </div>
+                {/* Spotify */}
+                <div style={{ height: 32, width: 32, background: "#1DB954", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg viewBox="0 0 24 24" width="18" height="18"><path fill="white" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                </div>
+                {/* Apple Podcasts */}
+                <div style={{ height: 32, width: 32, background: "#8B5CF6", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg viewBox="0 0 24 24" width="18" height="18"><path fill="white" d="M12 1a11 11 0 1 0 0 22A11 11 0 0 0 12 1zm0 4.5a6.5 6.5 0 0 1 0 13 6.5 6.5 0 0 1 0-13zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/></svg>
+                </div>
+                {/* Amazon Music */}
+                <div style={{ height: 32, width: 32, background: "#FF9900", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg viewBox="0 0 24 24" width="18" height="18"><path fill="white" d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.047-.872-1.234-1.276-1.813-2.106-1.73 1.765-2.958 2.294-5.204 2.294-2.657 0-4.726-1.641-4.726-4.921 0-2.563 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.06-1.642-.384-2.294-.385-.581-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.899-.054.285-.261.567-.547.582l-3.065-.331c-.259-.057-.548-.266-.472-.66C5.77 1.783 8.757.937 11.432.937c1.401 0 3.231.374 4.334 1.438 1.401 1.308 1.268 3.051 1.268 4.95v4.481c0 1.348.558 1.94 1.084 2.668.185.261.225.573-.012.771l-2.962 2.55zm3.186-12.494c.407.516.631 1.131.631 1.759 0 1.52-1.237 2.756-2.759 2.756a2.756 2.756 0 0 1-2.756-2.756c0-.628.224-1.243.631-1.759A2.756 2.756 0 0 1 18.49.937a2.756 2.756 0 0 1 1.84 4.364z"/></svg>
+                </div>
+                {/* Deezer */}
+                <div style={{ height: 32, width: 32, background: "#A238FF", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="14" width="3" height="6" rx="1" fill="white" opacity="0.6"/><rect x="7.5" y="10" width="3" height="10" rx="1" fill="white" opacity="0.75"/><rect x="12" y="6" width="3" height="14" rx="1" fill="white"/><rect x="16.5" y="3" width="3" height="17" rx="1" fill="white"/></svg>
+                </div>
+              </div>
+
+              {/* Rating */}
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+                <div style={{ display: "flex", gap: 2 }}>
+                  {[0,1,2,3,4].map(i => (
+                    <svg key={i} viewBox="0 0 24 24" width="16" height="16"><path fill="#FED000" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  ))}
+                </div>
+                <span style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A" }}>4,9</span>
+                <span style={{ ...MANROPE(400), fontSize: 13, color: "#666" }}>· 1k auditeurs</span>
+              </div>
+
+              {/* Description */}
+              <p style={{ ...MANROPE(400), fontSize: 15, lineHeight: 1.75, color: "#444", marginBottom: 32 }}>
+                Des interviews longues, des analyses approfondies et les meilleures discussions autour du basketball. Chaque semaine, First Team reçoit les acteurs qui font le basket français et international.
+              </p>
+
+              {/* CTA */}
+              <a href="https://shows.acast.com/first-team" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-black">
+                Écouter le podcast →
+              </a>
+            </div>
+          </div>
+
+          {/* Apple Podcasts iframe player */}
+          <iframe
+            src="https://embed.podcasts.apple.com/fr/podcast/maxime-raynaud-lentretien-son-duel-avec-wembanyama/id1686408209?i=1000763653287"
+            height="175"
+            frameBorder={0}
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            style={{ width: "100%", borderRadius: 12, border: "none", display: "block" }}
+            title="Podcast First Team — Maxime Raynaud"
+          />
+        </div>
+      </section>
+
       {/* ── KPI BAND ── */}
       <section style={{ position: "relative", padding: "80px 40px", overflow: "hidden" }}>
         <img src="/images/basket/ball-closeup.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
