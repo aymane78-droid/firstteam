@@ -34,6 +34,30 @@ const PLAYLISTS: Record<string, string> = {
   // TLIST: "à_ajouter",
 };
 
+// ── Podcast platforms ──────────────────────────────────────────────────
+const PODCAST_PLATFORMS = [
+  {
+    label: "Acast", bg: "#EE5128", href: "https://shows.acast.com/first-team",
+    icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>,
+  },
+  {
+    label: "Spotify", bg: "#1DB954", href: "https://open.spotify.com/show/firstteam",
+    icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.41c-.2.31-.59.41-.91.21-2.5-1.52-5.64-1.86-9.34-1.02-.36.08-.71-.14-.79-.5-.08-.36.14-.71.5-.79 4.05-.92 7.52-.53 10.33 1.19.31.2.41.59.21.91zm1.22-2.72c-.25.39-.76.51-1.14.26-2.85-1.75-7.19-2.26-10.56-1.24-.43.13-.89-.11-1.02-.54-.13-.43.11-.89.54-1.02 3.85-1.17 8.63-.6 11.91 1.41.39.25.51.76.27 1.14zm.11-2.84c-3.41-2.03-9.04-2.21-12.3-1.22-.51.15-1.05-.13-1.2-.64-.15-.51.13-1.05.64-1.2 3.75-1.14 9.95-.92 13.87 1.41.46.27.61.86.34 1.32-.27.46-.86.61-1.35.33z"/></svg>,
+  },
+  {
+    label: "Apple", bg: "#9E5BF1", href: "https://podcasts.apple.com/fr/podcast/first-team/id1686408209",
+    icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="2.4" fill="#9E5BF1"/><path d="M9.4 13.6h5.2l-.6 5.4h-4z" fill="#9E5BF1"/></svg>,
+  },
+  {
+    label: "Deezer", bg: "#EF5C66", href: "https://www.deezer.com/show/firstteam",
+    icon: <svg width="14" height="10" viewBox="0 0 24 14" fill="white"><rect x="0" y="10" width="4" height="4"/><rect x="5" y="10" width="4" height="4"/><rect x="10" y="10" width="4" height="4"/><rect x="15" y="10" width="4" height="4"/><rect x="20" y="10" width="4" height="4"/><rect x="5" y="5" width="4" height="4"/><rect x="10" y="5" width="4" height="4"/><rect x="15" y="5" width="4" height="4"/><rect x="20" y="5" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/></svg>,
+  },
+  {
+    label: "RSS", bg: "#F59E0B", href: "https://feeds.acast.com/public/shows/first-team",
+    icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M4 4v3a14 14 0 0 1 14 14h3A17 17 0 0 0 4 4zm0 6v3a8 8 0 0 1 8 8h3a11 11 0 0 0-11-11zm2 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>,
+  },
+];
+
 // ── Planning de la semaine ─────────────────────────────────────────────
 interface PlanTile {
   accent: string;
@@ -586,82 +610,162 @@ export default function ContenusPage() {
         {conceptModalId && <VideoModal videoId={conceptModalId} onClose={() => setConceptModalId(null)} />}
       </section>
 
-      {/* ── PODCAST ── */}
-      <section style={{ background: "#fafafa", padding: "100px 40px", borderTop: "1px solid #e5e5e5" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 16 }}>PODCAST</p>
+      {/* ── PODCAST — hero (crème) ── */}
+      <section style={{ background: "#F4F2EE", padding: "80px 56px", position: "relative" }}>
+        {/* Barre tricolore */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, display: "flex" }}>
+          <div style={{ flex: 1, background: "#FE0000" }} />
+          <div style={{ flex: 1, background: "#FED000" }} />
+          <div style={{ flex: 1, background: "#002EFE" }} />
+        </div>
 
-          {/* 2-col: cover + info */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center", marginBottom: 48 }}>
-            {/* Cover */}
-            <div style={{ position: "relative", aspectRatio: "1/1", borderRadius: 20, overflow: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.14)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://picsum.photos/seed/podcast-ft/600/600" alt="Le Podcast First Team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div className="pod-grid">
 
-            {/* Info */}
-            <div>
-              <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: "-0.5px", lineHeight: 0.95, marginBottom: 28 }}>
-                Le Podcast<br />First Team
-              </h2>
-
-              {/* Platform logos */}
-              <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap" as const, alignItems: "center" }}>
-                {/* Acast */}
-                <div style={{ height: 32, padding: "0 12px", background: "#F55200", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg height="16" viewBox="0 0 60 24" fill="white"><text y="18" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="18">acast</text></svg>
+            {/* ── Cover gauche ── */}
+            <div style={{ position: "relative" }}>
+              {/* Ombre jaune décalée */}
+              <div style={{ position: "absolute", top: 18, left: 18, width: "100%", height: "100%", background: "#FED000", borderRadius: 6, zIndex: 0 }} />
+              {/* Photo cover */}
+              <div style={{ position: "relative", zIndex: 1, aspectRatio: "1/1", borderRadius: 6, overflow: "hidden", background: "linear-gradient(135deg,#1a1300 0%,#3d2800 55%,#5a3a12 100%)", boxShadow: "0 24px 60px -20px rgba(0,0,0,0.35)" }}>
+                {/* Badge coin */}
+                <div style={{ position: "absolute", top: 16, left: 16, display: "flex", alignItems: "center", gap: 8, background: "rgba(10,10,10,0.72)", backdropFilter: "blur(8px)", padding: "6px 12px", borderRadius: 999, zIndex: 2 }}>
+                  <div className="pod-live-dot" />
+                  <span style={{ ...MANROPE(800), fontSize: 10, color: "#fff", letterSpacing: 1.5, textTransform: "uppercase" as const }}>Nouveau · Hebdo</span>
                 </div>
-                {/* Spotify */}
-                <div style={{ height: 32, width: 32, background: "#1DB954", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg viewBox="0 0 24 24" width="18" height="18"><path fill="white" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                </div>
-                {/* Apple Podcasts */}
-                <div style={{ height: 32, width: 32, background: "#8B5CF6", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg viewBox="0 0 24 24" width="18" height="18"><path fill="white" d="M12 1a11 11 0 1 0 0 22A11 11 0 0 0 12 1zm0 4.5a6.5 6.5 0 0 1 0 13 6.5 6.5 0 0 1 0-13zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/></svg>
-                </div>
-                {/* Amazon Music */}
-                <div style={{ height: 32, width: 32, background: "#FF9900", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg viewBox="0 0 24 24" width="18" height="18"><path fill="white" d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.047-.872-1.234-1.276-1.813-2.106-1.73 1.765-2.958 2.294-5.204 2.294-2.657 0-4.726-1.641-4.726-4.921 0-2.563 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.06-1.642-.384-2.294-.385-.581-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.899-.054.285-.261.567-.547.582l-3.065-.331c-.259-.057-.548-.266-.472-.66C5.77 1.783 8.757.937 11.432.937c1.401 0 3.231.374 4.334 1.438 1.401 1.308 1.268 3.051 1.268 4.95v4.481c0 1.348.558 1.94 1.084 2.668.185.261.225.573-.012.771l-2.962 2.55zm3.186-12.494c.407.516.631 1.131.631 1.759 0 1.52-1.237 2.756-2.759 2.756a2.756 2.756 0 0 1-2.756-2.756c0-.628.224-1.243.631-1.759A2.756 2.756 0 0 1 18.49.937a2.756 2.756 0 0 1 1.84 4.364z"/></svg>
-                </div>
-                {/* Deezer */}
-                <div style={{ height: 32, width: 32, background: "#A238FF", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="14" width="3" height="6" rx="1" fill="white" opacity="0.6"/><rect x="7.5" y="10" width="3" height="10" rx="1" fill="white" opacity="0.75"/><rect x="12" y="6" width="3" height="14" rx="1" fill="white"/><rect x="16.5" y="3" width="3" height="17" rx="1" fill="white"/></svg>
+                {/* Bande tricolore bas */}
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 6, display: "flex", zIndex: 2 }}>
+                  <div style={{ flex: 1, background: "#FE0000" }} />
+                  <div style={{ flex: 1, background: "#FED000" }} />
+                  <div style={{ flex: 1, background: "#002EFE" }} />
                 </div>
               </div>
+            </div>
 
-              {/* Rating */}
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+            {/* ── Copie droite ── */}
+            <div>
+              {/* Eyebrow */}
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+                <div style={{ width: 32, height: 3, background: "#FE0000", flexShrink: 0 }} />
+                <span style={{ ...MANROPE(800), fontSize: 11, color: "#FE0000", letterSpacing: 3, textTransform: "uppercase" as const }}>Podcast</span>
+              </div>
+
+              {/* Titre */}
+              <h2 style={{ ...ANTON, fontSize: "clamp(54px,7vw,104px)", lineHeight: 0.88, letterSpacing: "-1.5px", textTransform: "uppercase" as const, color: "#0A0A0A", marginBottom: 36 }}>
+                Le podcast<br /><span style={{ color: "#FE0000" }}>First Team</span>
+              </h2>
+
+              {/* Chips plateformes */}
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" as const, marginBottom: 28 }}>
+                {PODCAST_PLATFORMS.map((pf, i) => (
+                  <a key={i} href={pf.href} target="_blank" rel="noopener noreferrer"
+                    className="pod-chip" style={{ background: pf.bg }}>
+                    {pf.icon}
+                    {pf.label}
+                  </a>
+                ))}
+              </div>
+
+              {/* Note */}
+              <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 28 }}>
                 <div style={{ display: "flex", gap: 2 }}>
                   {[0,1,2,3,4].map(i => (
-                    <svg key={i} viewBox="0 0 24 24" width="16" height="16"><path fill="#FED000" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg key={i} viewBox="0 0 20 20" width={18} height={18}>
+                      <path fill="#FED000" d="M10 1l2.6 5.3 5.9.9-4.3 4.2 1 5.8L10 14.5l-5.2 2.7 1-5.8L1.5 7.2l5.9-.9z" />
+                    </svg>
                   ))}
                 </div>
-                <span style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A" }}>4,9</span>
-                <span style={{ ...MANROPE(400), fontSize: 13, color: "#666" }}>· 1k auditeurs</span>
+                <span style={{ ...ANTON, fontSize: 22, color: "#0A0A0A", letterSpacing: 0.5 }}>4,9</span>
+                <span style={{ ...MANROPE(600), fontSize: 13, color: "rgba(10,10,10,0.45)" }}>· 1k auditeurs</span>
               </div>
 
               {/* Description */}
-              <p style={{ ...MANROPE(400), fontSize: 15, lineHeight: 1.75, color: "#444", marginBottom: 32 }}>
+              <p style={{ ...MANROPE(400), fontSize: 17, lineHeight: 1.7, color: "rgba(10,10,10,0.7)", maxWidth: 520, marginBottom: 40 }}>
                 Des interviews longues, des analyses approfondies et les meilleures discussions autour du basketball. Chaque semaine, First Team reçoit les acteurs qui font le basket français et international.
               </p>
 
-              {/* CTA */}
-              <a href="https://shows.acast.com/first-team" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-black">
-                Écouter le podcast →
+              {/* CTA row */}
+              <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" as const }}>
+                <a href="https://shows.acast.com/first-team" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-black">
+                  Écouter le podcast →
+                </a>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, ...MANROPE(700), fontSize: 12, color: "rgba(10,10,10,0.4)", textTransform: "uppercase" as const, letterSpacing: 1.5 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#FE0000", flexShrink: 0 }} />
+                  1 épisode / semaine
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PODCAST — épisode (slab noir) ── */}
+      <section style={{ background: "#0A0A0A", padding: "56px 56px", position: "relative", overflow: "hidden" }}>
+        {/* Barre rouge top */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: "#FE0000" }} />
+
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div className="pod-ep-grid">
+
+            {/* Pochette épisode */}
+            <div style={{ width: 168, height: 168, borderRadius: 4, overflow: "hidden", position: "relative", flexShrink: 0, background: "linear-gradient(135deg,#001033 0%,#0033cc 60%,#00bfff 100%)" }}>
+              <div style={{ position: "absolute", top: "22%", left: 0, right: 0, height: 28, background: "#FED000" }} />
+              <div style={{ position: "absolute", top: "22%", left: 0, right: 0, height: 28, background: "#002EFE", transform: "translateY(28px)" }} />
+              <span style={{ position: "absolute", bottom: 30, left: 12, right: 12, ...MANROPE(800), fontSize: 9, color: "rgba(255,255,255,0.7)", letterSpacing: 2, textTransform: "uppercase" as const, display: "block" }}>L'entretien</span>
+              <div style={{ position: "absolute", bottom: 12, left: 12, right: 12, ...ANTON, fontSize: 22, color: "#fff", textTransform: "uppercase" as const, lineHeight: 0.95 }}>
+                Maxime<br />Raynaud
+              </div>
+            </div>
+
+            {/* Métadonnées épisode */}
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 14, ...MANROPE(700), fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2, textTransform: "uppercase" as const, marginBottom: 14, flexWrap: "wrap" as const }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.08)", padding: "5px 10px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.12)" }}>
+                  <svg viewBox="0 0 24 24" width={11} height={11} fill="white"><path d="M17.5 12.5c0-1.7.8-3.2 2-4.1-.8-1.1-2-1.8-3.3-1.9-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.7.7 2.8.7 1.2 0 1.9-1.1 2.6-2.2.6-.9 1.1-1.8 1.3-2.9-1.2-.6-2-1.8-2-3.2zM14.8 5.4c.6-.7 1-1.7 1-2.6-.8.1-1.7.5-2.3 1.2-.5.6-1 1.6-.9 2.6.9.1 1.7-.4 2.2-1.2z"/></svg>
+                  Apple Podcasts
+                </span>
+                <span>26 avril</span>
+                <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
+                <span>57 min</span>
+              </div>
+              <h3 style={{ ...ANTON, fontSize: "clamp(20px,1.8vw,26px)", textTransform: "uppercase" as const, color: "#fff", lineHeight: 1.1, letterSpacing: 0.3, marginBottom: 12 }}>
+                Maxime Raynaud, l'entretien : son duel avec Wembanyama, les secrets de Westbrook, l'équipe de France
+              </h3>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 13, color: "rgba(255,255,255,0.45)" }}>
+                <div style={{ width: 18, height: 2, background: "#FED000", flexShrink: 0 }} />
+                First Team
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, alignItems: "flex-end" }}>
+              <a href="https://podcasts.apple.com/fr/podcast/maxime-raynaud-lentretien-son-duel-avec-wembanyama/id1686408209?i=1000763653287"
+                target="_blank" rel="noopener noreferrer" className="pod-ep-play">
+                <svg viewBox="0 0 12 12" width={12} height={12} fill="white"><path d="M2 1l9 5-9 5z"/></svg>
+                Lecture
+              </a>
+              <a href="https://shows.acast.com/first-team" target="_blank" rel="noopener noreferrer" className="pod-ep-more">
+                Afficher plus ↗
               </a>
             </div>
           </div>
 
-          {/* Apple Podcasts iframe player */}
-          <iframe
-            src="https://embed.podcasts.apple.com/fr/podcast/maxime-raynaud-lentretien-son-duel-avec-wembanyama/id1686408209?i=1000763653287"
-            height="175"
-            frameBorder={0}
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-            style={{ width: "100%", borderRadius: 12, border: "none", display: "block" }}
-            title="Podcast First Team — Maxime Raynaud"
-          />
+          {/* Iframe Apple Podcasts */}
+          <div style={{ marginTop: 32 }}>
+            <iframe
+              src="https://embed.podcasts.apple.com/fr/podcast/maxime-raynaud-lentretien-son-duel-avec-wembanyama/id1686408209?i=1000763653287"
+              height="175"
+              frameBorder={0}
+              sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+              allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+              style={{ width: "100%", borderRadius: 8, border: "none", display: "block" }}
+              title="Podcast First Team — Maxime Raynaud"
+            />
+          </div>
+
+          <p style={{ ...MANROPE(400), fontSize: 11, color: "rgba(255,255,255,0.3)", textAlign: "right" as const, marginTop: 20 }}>
+            Découvrez comment sont gérées vos données…
+          </p>
         </div>
       </section>
 
