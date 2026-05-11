@@ -154,12 +154,15 @@ body {
   min-width: 60px;
   display: block;
   text-decoration: none;
+  contain: layout;
+  backface-visibility: hidden;
 }
 .format-panel:hover { flex: 3.2; }
 .format-panel .panel-bg {
   position: absolute; inset: 0;
-  background-size: cover; background-position: center;
   transition: transform 0.5s ease;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 .format-panel:hover .panel-bg { transform: scale(1.06); }
 .format-panel .panel-overlay {
@@ -322,3 +325,27 @@ body {
   .pill-btn      { min-height: 48px; }
   .cube-card     { min-height: 240px; }
 }
+
+/* ── Shop page ───────────────────────────────────────────────── */
+
+/* EditoBand: descriptions sur une ligne en desktop */
+@media (min-width: 769px) {
+  .shop-edito-desc { white-space: nowrap; }
+}
+
+/* InfoBand: grille 2×2 sur mobile */
+@media (max-width: 768px) {
+  .shop-info-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .shop-info-item { border-right: none !important; }
+  .shop-info-item:nth-child(odd)  { border-right: 1px solid rgba(0,0,0,0.12) !important; }
+  .shop-info-item:nth-child(-n+2) { border-bottom: 1px solid rgba(0,0,0,0.12); }
+}
+
+/* EditoBand: colonne sur mobile */
+@media (max-width: 768px) {
+  .shop-edito-grid { flex-direction: column !important; gap: 24px !important; }
+}
+
+/* PhotoSlider: drag souris */
+.photo-slider-track { cursor: grab; user-select: none; }
+.photo-slider-track:active { cursor: grabbing; }

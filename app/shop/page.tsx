@@ -82,7 +82,7 @@ function Hero() {
         <span style={{ ...MANROPE(700), fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 1.5 }}>CAPSULE · 10 ANS</span>
       </div>
 
-      <div ref={ref} className="reveal" style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "0 40px 80px" }}>
+      <div ref={ref} className="reveal" style={{ position: "relative", zIndex: 2, width: "100%", padding: "0 40px 80px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
           <div style={{ width: 44, height: 2, background: "#FE0000" }} />
           <span style={{ ...MANROPE(800), fontSize: 11, color: "rgba(255,255,255,0.75)", letterSpacing: 3, textTransform: "uppercase" as const }}>Capsule des 10 ans · Saison 2026</span>
@@ -107,13 +107,13 @@ function EditoBand() {
   ];
   return (
     <section style={{ background: "#F2EEE6", padding: "36px 40px", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+      <div className="shop-edito-grid" style={{ display: "flex", justifyContent: "space-between", gap: 32 }}>
         {items.map((it, i) => (
-          <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", paddingLeft: 20, borderLeft: `3px solid ${it.color}` }}>
+          <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", paddingLeft: 20, borderLeft: `3px solid ${it.color}`, flex: "1 1 0" }}>
             <span style={{ ...ANTON, fontSize: 13, color: it.color, letterSpacing: 1.5, marginTop: 2 }}>{it.tag}</span>
             <div>
               <h3 style={{ ...ANTON, fontSize: 20, textTransform: "uppercase" as const, color: "#0A0A0A", letterSpacing: 0.5, marginBottom: 5 }}>{it.title}</h3>
-              <p style={{ ...MANROPE(400), fontSize: 13, color: "rgba(0,0,0,0.55)", lineHeight: 1.5 }}>{it.desc}</p>
+              <p className="shop-edito-desc" style={{ ...MANROPE(400), fontSize: "clamp(0.85rem, 1.2vw, 1rem)", color: "rgba(0,0,0,0.55)", lineHeight: 1.5 }}>{it.desc}</p>
             </div>
           </div>
         ))}
@@ -259,30 +259,137 @@ function ProductsGrid() {
   );
 }
 
-function LifestyleSection() {
+const LIFESTYLE_SLIDES = [
+  "https://picsum.photos/seed/ls1/800/640",
+  "https://picsum.photos/seed/ls2/800/640",
+  "https://picsum.photos/seed/ls3/800/640",
+  "https://picsum.photos/seed/ls4/800/640",
+  "https://picsum.photos/seed/ls5/800/640",
+  "https://picsum.photos/seed/ls6/800/640",
+  "https://picsum.photos/seed/ls7/800/640",
+  "https://picsum.photos/seed/ls8/800/640",
+];
+
+function usePerView(): number {
+  const [perView, setPerView] = useState(4);
+  useEffect(() => {
+    const update = () => setPerView(window.innerWidth < 768 ? 2 : window.innerWidth < 1024 ? 3 : 4);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return perView;
+}
+
+function PhotoSlider() {
+  const perView = usePerView();
+  const n = LIFESTYLE_SLIDES.length;
+  const maxCurrent = Math.max(0, n - perView);
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const mouseStartX = useRef<number | null>(null);
+
+  // Clamp current si le viewport rétrécit
+  useEffect(() => { setCurrent(c => Math.min(c, maxCurrent)); }, [maxCurrent]);
+
+  // Autoplay
+  useEffect(() => {
+    if (paused) return;
+    const t = setTimeout(() => setCurrent(c => c >= maxCurrent ? 0 : c + 1), 4500);
+    return () => clearTimeout(t);
+  }, [current, paused, maxCurrent]);
+
+  const prev = () => setCurrent(c => Math.max(0, c - 1));
+  const next = () => setCurrent(c => Math.min(maxCurrent, c + 1));
+
   return (
-    <section style={{ background: "#0A0A0A", padding: "0 0 80px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: 12 }}>
-          <div style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "4/3" }}>
-            <img src="/images/page-shop/lifestyle/lifestyle-shop-1.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-            />
-          </div>
-          <div style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "4/3" }}>
-            <img src="/images/page-shop/lifestyle/lifestyle-shop-2.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-            />
-          </div>
-          <div style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "4/3" }}>
-            <img src="/images/page-shop/lifestyle/lifestyle-shop-3.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-            />
-          </div>
+    <section
+      style={{ background: "#0A0A0A", padding: "40px 0 52px" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Bande de photos */}
+      <div style={{ position: "relative" as const, overflow: "hidden" }}>
+        <div
+          className="photo-slider-track"
+          style={{
+            display: "flex",
+            transform: `translateX(-${current * 100 / n}%)`,
+            transition: "transform 0.55s cubic-bezier(0.4,0,0.2,1)",
+          }}
+          onMouseDown={e => { mouseStartX.current = e.clientX; }}
+          onMouseUp={e => {
+            if (mouseStartX.current === null) return;
+            const dx = mouseStartX.current - e.clientX;
+            if (Math.abs(dx) > 40) dx > 0 ? next() : prev();
+            mouseStartX.current = null;
+          }}
+          onMouseLeave={() => { mouseStartX.current = null; }}
+          onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
+          onTouchEnd={e => {
+            if (touchStartX.current === null) return;
+            const dx = touchStartX.current - e.changedTouches[0].clientX;
+            if (Math.abs(dx) > 50) dx > 0 ? next() : prev();
+            touchStartX.current = null;
+          }}
+        >
+          {LIFESTYLE_SLIDES.map((src, i) => (
+            <div
+              key={i}
+              style={{
+                flex: `0 0 calc(100% / ${perView})`,
+                aspectRatio: "5/4",
+                padding: "0 5px",
+                boxSizing: "border-box" as const,
+              }}
+            >
+              <img
+                src={src}
+                alt=""
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 3 }}
+              />
+            </div>
+          ))}
         </div>
+
+        {/* Flèche gauche */}
+        {current > 0 && (
+          <button onClick={prev} aria-label="Précédent" style={{
+            position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", zIndex: 2,
+            background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.3)",
+            color: "#fff", width: 48, height: 48, borderRadius: "50%", cursor: "pointer",
+            fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center",
+            backdropFilter: "blur(4px)",
+          }}>←</button>
+        )}
+        {/* Flèche droite */}
+        {current < maxCurrent && (
+          <button onClick={next} aria-label="Suivant" style={{
+            position: "absolute", right: 16, top: "50%", transform: "translateY(-50%)", zIndex: 2,
+            background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.3)",
+            color: "#fff", width: 48, height: 48, borderRadius: "50%", cursor: "pointer",
+            fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center",
+            backdropFilter: "blur(4px)",
+          }}>→</button>
+        )}
+      </div>
+
+      {/* Dots */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 18 }}>
+        {Array.from({ length: maxCurrent + 1 }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Position ${i + 1}`}
+            style={{
+              width: i === current ? 24 : 8, height: 8, borderRadius: 999,
+              padding: 0, border: "none", cursor: "pointer",
+              background: i === current ? "#fff" : "rgba(255,255,255,0.3)",
+              transition: "all 0.3s ease",
+            }}
+          />
+        ))}
       </div>
     </section>
   );
@@ -297,11 +404,11 @@ function InfoBand() {
   ];
   return (
     <section style={{ background: "#FED000", borderTop: "2px solid #0A0A0A", borderBottom: "2px solid #0A0A0A" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
+      <div className="shop-info-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
         {items.map((it, i) => (
-          <div key={i} style={{ padding: "28px 32px", display: "flex", alignItems: "center", gap: 14, borderRight: i < 3 ? "1px solid rgba(0,0,0,0.12)" : "none" }}>
-            <span style={{ fontSize: 20 }}>{it.icon}</span>
-            <span style={{ ...MANROPE(800), fontSize: 13, color: "#0A0A0A", letterSpacing: 0.3, lineHeight: 1.3 }}>{it.label}</span>
+          <div key={i} className="shop-info-item" style={{ padding: "28px 20px", display: "flex", alignItems: "center", gap: 12, borderRight: i < 3 ? "1px solid rgba(0,0,0,0.12)" : "none" }}>
+            <span style={{ fontSize: 20, flexShrink: 0 }}>{it.icon}</span>
+            <span style={{ ...MANROPE(800), fontSize: "clamp(0.75rem, 1.1vw, 0.875rem)", color: "#0A0A0A", letterSpacing: 0.3, whiteSpace: "nowrap" as const }}>{it.label}</span>
           </div>
         ))}
       </div>
@@ -309,57 +416,6 @@ function InfoBand() {
   );
 }
 
-function FeaturedProducts() {
-  const ref = useReveal();
-  const featured = PRODUCTS.filter(p => p.cat === "Shorts" || p.id === 7);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-
-  return (
-    <section style={{ background: "#0A0A0A", padding: "100px 40px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div ref={ref} className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 48, gap: 20, flexWrap: "wrap" as const }}>
-          <div>
-            <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FED000", display: "block", marginBottom: 12 }}>· Sur le court</span>
-            <h2 style={{ ...ANTON, fontSize: "clamp(36px, 4vw, 60px)", textTransform: "uppercase" as const, letterSpacing: -1, lineHeight: 0.92, color: "#fff" }}>
-              Conçu pour jouer.<br /><span style={{ color: "#FED000" }}>Fait pour rester.</span>
-            </h2>
-          </div>
-          <a href="#produits" style={{ ...MANROPE(700), fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.6)", textDecoration: "underline", textUnderlineOffset: 4 }}>Voir tous les produits →</a>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-          {featured.map(p => (
-            <a
-              key={p.id}
-              href="#"
-              style={{ display: "block", textDecoration: "none", color: "#fff" }}
-              onMouseEnter={() => setHoveredId(p.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              <div style={{ position: "relative" as const, aspectRatio: "4/5", background: "#ECE7DD", overflow: "hidden", borderRadius: 4 }}>
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.6s ease", transform: hoveredId === p.id ? "scale(1.05)" : "scale(1)" }}
-                />
-                {p.isNew && (
-                  <span style={{ position: "absolute", top: 12, left: 12, background: "#FE0000", color: "#fff", ...ANTON, fontSize: 10, letterSpacing: 1.5, padding: "4px 10px", textTransform: "uppercase" as const }}>Nouveau</span>
-                )}
-              </div>
-              <div style={{ paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
-                <div>
-                  <h3 style={{ ...MANROPE(700), fontSize: 14, color: "#fff", marginBottom: 4 }}>{p.name}</h3>
-                  <p style={{ ...MANROPE(500), fontSize: 11, color: "rgba(255,255,255,0.4)" }}>{p.cat}</p>
-                </div>
-                <span style={{ ...ANTON, fontSize: 20, color: "#FED000" }}>{p.price}€</span>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function StudioSection() {
   const ref = useReveal();
@@ -459,9 +515,8 @@ export default function ShopPage() {
       <EditoBand />
       <PresentationSection />
       <ProductsGrid />
-      <LifestyleSection />
       <InfoBand />
-      <FeaturedProducts />
+      <PhotoSlider />
       <BigMarquee />
       <StudioSection />
       <Newsletter />

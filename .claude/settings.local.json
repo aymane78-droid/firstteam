@@ -19,7 +19,25 @@
       "Bash(npx next *)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Bash(file /Users/aymane/first-team-site-v2/public/images/differentes-pages/*.jpg /Users/aymane/first-team-site-v2/public/images/differentes-pages/*.png)",
+      "Bash(sips -Z 1600 equipe.jpg --out equipe_opt.jpg)",
+      "Bash(sips -Z 1600 partenaires.jpg --out partenaires_opt.jpg)",
+      "Bash(sips -Z 1600 contenus.jpg --out contenus_opt.jpg)",
+      "Bash(sips -Z 1600 travel.jpg --out travel_opt.jpg)",
+      "Bash(sips -Z 1600 -s format jpeg merchandising.png --out merchandising_opt.jpg)",
+      "Bash(node *)",
+      "Bash(grep -v \"^$)",
+      "Bash(git commit -m ' *)",
+      "Bash(node_modules/.bin/next build *)",
+      "WebFetch(domain:api.anthropic.com)",
+      "WebFetch(domain:claude.ai)",
+      "Read(//tmp/**)",
+      "Bash(cp /tmp/planning_decoded.html /tmp/planning_decoded.html.gz)",
+      "Bash(gunzip -f /tmp/planning_decoded.html.gz)",
+      "Read(//private/tmp/**)",
+      "Bash(mkdir -p design_bundle)",
+      "Bash(tar -xf planning_decoded.html -C design_bundle)"
     ]
   }
 }

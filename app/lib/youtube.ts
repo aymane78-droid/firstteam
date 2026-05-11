@@ -1,132 +1,254 @@
-import { unstable_cache } from "next/cache";
+// Clé API YouTube Data v3 — restreinte au domaine en production
+export const YOUTUBE_API_KEY = "AIzaSyDIYcG894LtXuZ07FrFd8-PjXHWUATPsAM";
 
-export type YouTubeVideo = {
+export const FIRST_TEAM_CHANNEL_ID = "UCVVngTl-rdwFeFBUTdW5G5w";
+export const OFFENSE_CHANNEL_ID    = "UCltzJogga-SMLbzpVI_527g";
+
+const CACHE_TTL_MS = 60 * 60 * 1000; // 1 heure
+// Incrémenter cette version invalide tous les caches localStorage existants
+const CACHE_VERSION = "v3";
+
+export interface YTVideo {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+}
+
+// Alias de compatibilité pour les anciens composants
+export interface YouTubeVideo {
   id: string;
   title: string;
   thumbnail: string;
   duration: string;
   url: string;
   publishedAt: string;
-};
-
-const FALLBACK_VIDEOS: YouTubeVideo[] = [
-  {
-    id: "1",
-    title: "LA GRANDE PREVIEW NBA 2025-26",
-    thumbnail:
-      "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=225&fit=crop",
-    duration: "1:44:34",
-    url: "https://youtube.com",
-    publishedAt: "2026-04-12",
-  },
-  {
-    id: "2",
-    title: "UNE BONNE SAISON POUR LES SPURS ?",
-    thumbnail:
-      "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=400&h=225&fit=crop",
-    duration: "1:21:11",
-    url: "https://youtube.com",
-    publishedAt: "2026-04-10",
-  },
-  {
-    id: "3",
-    title: "R.C. BUFORD — L'ENTRETIEN EXCLUSIF",
-    thumbnail:
-      "https://images.unsplash.com/photo-1504450758481-7338bbe75c8e?w=400&h=225&fit=crop",
-    duration: "19:00",
-    url: "https://youtube.com",
-    publishedAt: "2026-04-08",
-  },
-  {
-    id: "4",
-    title: "LE BRAQUAGE DE TYRESE HALIBURTON",
-    thumbnail:
-      "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?w=400&h=225&fit=crop",
-    duration: "37:10",
-    url: "https://youtube.com",
-    publishedAt: "2026-04-05",
-  },
-];
-
-function formatDuration(iso: string): string {
-  const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  if (!match) return "";
-  const h = parseInt(match[1] ?? "0");
-  const m = parseInt(match[2] ?? "0");
-  const s = parseInt(match[3] ?? "0");
-  if (h > 0)
-    return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-  return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-async function fetchFromYouTube(
-  channelId: string,
-  apiKey: string
-): Promise<YouTubeVideo[]> {
-  const channelRes = await fetch(
-    `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${apiKey}`
-  );
-  if (!channelRes.ok) throw new Error("Channel fetch failed");
-  const channelData = await channelRes.json();
-  const uploadsId =
-    channelData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-  if (!uploadsId) throw new Error("No uploads playlist");
+function bestThumb(thumbs: Record<string, { url: string }> = {}): string {
+  return (thumbs.maxres ?? thumbs.standard ?? thumbs.high ?? thumbs.medium ?? thumbs.default)?.url ?? "";
+}
 
-  const playlistRes = await fetch(
-    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=4&key=${apiKey}`
-  );
-  if (!playlistRes.ok) throw new Error("Playlist fetch failed");
-  const playlistData = await playlistRes.json();
-  const items: {
-    snippet: {
-      title: string;
-      resourceId: { videoId: string };
-      thumbnails: { high?: { url: string }; default?: { url: string } };
-      publishedAt: string;
-    };
-  }[] = playlistData.items ?? [];
+// Convertit un Channel ID (UC...) en playlist UULF (longues vidéos seulement, pas de Shorts)
+// UC + 22 chars → UULF + 22 chars
+function uulfPlaylistId(channelId: string): string {
+  return "UULF" + channelId.slice(2);
+}
 
-  const videoIds = items
-    .map((item) => item.snippet.resourceId.videoId)
-    .join(",");
+// ── Filtrage (playlists manuelles uniquement) ─────────────────────────────
 
-  const detailsRes = await fetch(
-    `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoIds}&key=${apiKey}`
-  );
-  const detailsData = detailsRes.ok
-    ? await detailsRes.json()
-    : { items: [] };
-  const durationMap: Record<string, string> = {};
-  for (const v of detailsData.items ?? []) {
-    durationMap[v.id] = formatDuration(v.contentDetails.duration);
+function parseDuration(iso: string): number {
+  const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+  if (!m) return 0;
+  return (parseInt(m[1] || "0") * 3600) + (parseInt(m[2] || "0") * 60) + parseInt(m[3] || "0");
+}
+
+// Filtre de sécurité pour les playlists manuelles :
+// durée > 180s ET thumbnail horizontal (width > height)
+function isLongVideo(
+  thumbs: Record<string, { url: string; width?: number; height?: number }>,
+  durationIso: string,
+  title: string
+): boolean {
+  const t = thumbs.high ?? thumbs.medium ?? thumbs.default;
+  const w = t?.width  ?? 0;
+  const h = t?.height ?? 0;
+  const isHorizontal = w > 0 && h > 0 && w > h;
+  const duration = parseDuration(durationIso);
+  const isLongEnough = duration > 180;
+  const keep = isHorizontal && isLongEnough;
+
+  if (keep) {
+    console.log(`[YT-PL] ✅ KEEP  "${title}" — ${duration}s — ${w}×${h}`);
+  } else {
+    const reason = !isHorizontal ? `portrait ${w}×${h}` : `trop court ${duration}s`;
+    console.log(`[YT-PL] ❌ SKIP  "${title}" — ${reason}`);
   }
 
-  return items.map((item) => {
-    const { snippet } = item;
-    const videoId = snippet.resourceId.videoId;
-    return {
-      id: videoId,
-      title: snippet.title,
-      thumbnail:
-        snippet.thumbnails?.high?.url ?? snippet.thumbnails?.default?.url ?? "",
-      duration: durationMap[videoId] ?? "",
-      url: `https://www.youtube.com/watch?v=${videoId}`,
-      publishedAt: snippet.publishedAt,
-    };
-  });
+  return keep;
 }
 
-export const getLatestVideos = unstable_cache(
-  async (): Promise<YouTubeVideo[]> => {
-    const apiKey = process.env.YOUTUBE_API_KEY;
-    const channelId = process.env.YOUTUBE_CHANNEL_ID;
-    if (!apiKey || !channelId) return FALLBACK_VIDEOS;
-    try {
-      return await fetchFromYouTube(channelId, apiKey);
-    } catch {
-      return FALLBACK_VIDEOS;
+// ── Cache localStorage ────────────────────────────────────────────────
+
+function cacheKey(raw: string): string {
+  return `${raw}_${CACHE_VERSION}`;
+}
+
+function readCache(key: string): YTVideo[] | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const { data, ts } = JSON.parse(raw) as { data: YTVideo[]; ts: number };
+    if (Date.now() - ts > CACHE_TTL_MS) { localStorage.removeItem(key); return null; }
+    return data;
+  } catch { return null; }
+}
+
+function writeCache(key: string, data: YTVideo[]) {
+  if (typeof window === "undefined") return;
+  try { localStorage.setItem(key, JSON.stringify({ data, ts: Date.now() })); } catch {}
+}
+
+// ── Helper : contentDetails pour filtre durée (playlists manuelles) ──────
+
+async function fetchDurations(ids: string[]): Promise<Map<string, string>> {
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${ids.join(",")}&key=${YOUTUBE_API_KEY}`
+  );
+  if (!res.ok) throw new Error(`YouTube API ${res.status}`);
+  const json = await res.json();
+  const map = new Map<string, string>();
+  for (const item of (json.items ?? [])) {
+    map.set(item.id, item.contentDetails.duration);
+  }
+  return map;
+}
+
+// ── UULF : log de surveillance ────────────────────────────────────────────
+
+function logUulfItem(item: any) {
+  const thumb = item.snippet?.thumbnails?.high ?? item.snippet?.thumbnails?.medium;
+  const w = thumb?.width  ?? 0;
+  const h = thumb?.height ?? 0;
+  console.log(`[YT-UULF] ✅ ${item.snippet?.title} — ${w}×${h}`);
+  // Garde-fou : ne devrait JAMAIS se produire avec une playlist UULF
+  if (w > 0 && h > 0 && h > w) {
+    console.error(`[YT-UULF] ⚠️ SHORT DETECTED IN UULF: ${item.snippet?.title}`);
+  }
+}
+
+// ── Appels API publics ────────────────────────────────────────────────
+
+// Garde sans filtre — utilisé pour les vidéos Wemby (IDs fixes).
+export async function fetchVideosByIds(ids: string[]): Promise<(YTVideo | null)[]> {
+  const key = cacheKey(`yt_ids_${ids.join(",")}`);
+  const cached = readCache(key);
+  if (cached) return ids.map(id => cached.find(v => v.id === id) ?? null);
+
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${ids.join(",")}&key=${YOUTUBE_API_KEY}`
+  );
+  if (!res.ok) throw new Error(`YouTube API ${res.status}`);
+  const json = await res.json();
+
+  const videos: YTVideo[] = (json.items ?? []).map((item: any) => ({
+    id:          item.id,
+    title:       item.snippet.title,
+    description: item.snippet.description ?? "",
+    thumbnail:   bestThumb(item.snippet.thumbnails),
+  }));
+
+  writeCache(key, videos);
+  return ids.map(id => videos.find(v => v.id === id) ?? null);
+}
+
+// Utilise la playlist UULF (longues vidéos uniquement, pas de Shorts garantis par YouTube).
+// Remplace l'ancienne version UU + filtre maison.
+export async function fetchLatestVideos(channelId: string, maxResults = 4): Promise<YTVideo[]> {
+  const playlistId = uulfPlaylistId(channelId);
+  const key = cacheKey(`yt_uulf_${channelId}_${maxResults}`);
+  const cached = readCache(key);
+  if (cached) return cached;
+
+  console.log(`[YT-UULF] Fetching from playlist: ${playlistId} (maxResults=${maxResults})`);
+
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${maxResults}&key=${YOUTUBE_API_KEY}`
+  );
+  if (!res.ok) throw new Error(`YouTube API ${res.status}`);
+  const json = await res.json();
+
+  const videos: YTVideo[] = (json.items ?? []).map((item: any) => {
+    logUulfItem(item);
+    return {
+      id:          item.snippet.resourceId.videoId,
+      title:       item.snippet.title,
+      description: item.snippet.description ?? "",
+      thumbnail:   bestThumb(item.snippet.thumbnails),
+    };
+  });
+
+  writeCache(key, videos);
+  return videos;
+}
+
+// Utilise la playlist UULF — YouTube garantit zéro Short dans cette playlist.
+// Plus besoin de filtrer : maxResults vidéos directement.
+export async function fetchLatestLongVideos(channelId: string, count: number): Promise<YTVideo[]> {
+  const playlistId = uulfPlaylistId(channelId);
+  const key = cacheKey(`yt_uulf_long_${channelId}_${count}`);
+  const cached = readCache(key);
+  if (cached) return cached;
+
+  console.log(`[YT-UULF] Fetching from playlist: ${playlistId} (count=${count})`);
+
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${count}&key=${YOUTUBE_API_KEY}`
+  );
+  if (!res.ok) throw new Error(`YouTube API ${res.status}`);
+  const json = await res.json();
+
+  const videos: YTVideo[] = (json.items ?? []).map((item: any) => {
+    logUulfItem(item);
+    return {
+      id:          item.snippet.resourceId.videoId,
+      title:       item.snippet.title,
+      description: item.snippet.description ?? "",
+      thumbnail:   bestThumb(item.snippet.thumbnails),
+    };
+  });
+
+  writeCache(key, videos);
+  return videos;
+}
+
+// Playlists MANUELLES (concepts + Offense L'Émission) — double filtre conservé
+// car ces playlists sont créées manuellement et peuvent contenir des Shorts par erreur.
+export async function fetchPlaylistVideos(playlistId: string, maxResults = 10): Promise<YTVideo[]> {
+  const key = cacheKey(`yt_pl_${playlistId}_${maxResults}`);
+  const cached = readCache(key);
+  if (cached) return cached;
+
+  console.log(`[YT-PL] Fetching manual playlist: ${playlistId} (maxResults=${maxResults})`);
+
+  const results: YTVideo[] = [];
+  let pageToken: string | undefined;
+
+  while (results.length < maxResults) {
+    const params = new URLSearchParams({
+      part: "snippet", playlistId, maxResults: "50", key: YOUTUBE_API_KEY,
+      ...(pageToken ? { pageToken } : {}),
+    });
+    const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?${params}`);
+    if (!res.ok) throw new Error(`YouTube API ${res.status}`);
+    const json = await res.json();
+    const items: any[] = json.items ?? [];
+    if (!items.length) break;
+
+    // Batch contentDetails pour le filtre durée
+    const ids = items.map((it: any) => it.snippet.resourceId.videoId);
+    const durations = await fetchDurations(ids);
+
+    for (const item of items) {
+      const videoId = item.snippet.resourceId.videoId;
+      const iso = durations.get(videoId) ?? "PT0S";
+      if (isLongVideo(item.snippet.thumbnails, iso, item.snippet.title)) {
+        results.push({
+          id: videoId,
+          title: item.snippet.title,
+          description: item.snippet.description ?? "",
+          thumbnail: bestThumb(item.snippet.thumbnails),
+        });
+        if (results.length >= maxResults) break;
+      }
     }
-  },
-  ["youtube-latest-videos"],
-  { revalidate: 3600 }
-);
+
+    pageToken = json.nextPageToken;
+    if (!pageToken) break;
+  }
+
+  const videos = results.slice(0, maxResults);
+  writeCache(key, videos);
+  return videos;
+}
