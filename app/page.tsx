@@ -106,13 +106,14 @@ const NAV_LINKS = [
   { label: "Nos Contenus",  href: "/contenus" },
   { label: "L'équipe",      href: "/qui-nous-sommes" },
   { label: "Sponsors",      href: "/partenaires" },
+  { label: "Travel",        href: "/travel" },
 ];
 
 const CATEGORIES = [
   { label: "Contenus",    href: "/contenus",        photo: "/images/differentes-pages/contenus.jpg" },
   { label: "L'équipe",    href: "/qui-nous-sommes", photo: "/images/differentes-pages/equipe.jpg" },
   { label: "Merch",       href: "/shop",             photo: "/images/differentes-pages/merchandising.jpg" },
-  { label: "Travel",      href: "#",                photo: "/images/differentes-pages/travel.jpg" },
+  { label: "Travel",      href: "/travel",           photo: "/images/differentes-pages/travel.jpg" },
   { label: "Partenaires", href: "/partenaires",     photo: "/images/differentes-pages/partenaires.jpg" },
 ];
 

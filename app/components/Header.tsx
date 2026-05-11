@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "L'équipe",     href: "/qui-nous-sommes" },
   { label: "Sponsors",     href: "/partenaires" },
   { label: "Shop",         href: "/shop" },
+  { label: "Travel",       href: "/travel" },
 ];
 
 export default function Header() {
