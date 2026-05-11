@@ -2,6 +2,9 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { VideoModal } from "./components/VideoModal";
+import { fetchLatestVideos, fetchVideosByIds, fetchLatestLongVideos, FIRST_TEAM_CHANNEL_ID, OFFENSE_CHANNEL_ID } from "./lib/youtube";
+import type { YTVideo } from "./lib/youtube";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -63,6 +66,12 @@ const BUZZED_VIGNETTES = [
   "/images/vignettes-emissions/VIGNETTE - BULLS.jpg",
 ];
 
+// IDs fixes des vidéos Wemby (ordre : grande vignette, puis 3 miniatures)
+const WEMBY_VIDEO_IDS = ["RHXv9kQ6WQE", "ikNtmOoKNSE", "CziJAOPlLG0", "6fHPGzpxETk"];
+
+// Couleurs alternées pour les vidéos dynamiques "Nos dernières vidéos"
+const VIDEO_COLORS = ["#FE0000", "#002EFE", "#C89000", "#555555"];
+
 // 4 photos pour le slider offense (3 visibles, 1 hors champ)
 const OFFENSE_PHOTOS = [
   "/images/offense-photos/couvreur.jpg",
@@ -96,7 +105,7 @@ const NAV_LINKS = [
 const CATEGORIES = [
   { label: "Contenus",    href: "/contenus",        photo: "/images/differentes-pages/contenus.jpg" },
   { label: "L'équipe",    href: "/qui-nous-sommes", photo: "/images/differentes-pages/equipe.jpg" },
-  { label: "Merch",       href: "/shop",             photo: "/images/differentes-pages/merchandising.png" },
+  { label: "Merch",       href: "/shop",             photo: "/images/differentes-pages/merchandising.jpg" },
   { label: "Travel",      href: "#",                photo: "/images/differentes-pages/travel.jpg" },
   { label: "Partenaires", href: "/partenaires",     photo: "/images/differentes-pages/partenaires.jpg" },
 ];
@@ -289,7 +298,13 @@ function CategoryPanels() {
     <section style={{ height: "80vh", minHeight: 500, display: "flex", background: "#0A0A0A" }}>
       {CATEGORIES.map((c, i) => (
         <Link key={i} href={c.href} className="format-panel">
-          <div className="panel-bg" style={{ backgroundImage: `url(${c.photo})` }} />
+          <div className="panel-bg">
+            <Image src={c.photo} alt={c.label} fill
+              sizes="(max-width: 768px) 50vw, 20vw"
+              style={{ objectFit: "cover" }}
+              priority={i === 0}
+            />
+          </div>
           <div className="panel-overlay" />
           <div className="panel-plus">+</div>
           <div className="panel-label">{c.label}</div>
@@ -313,6 +328,14 @@ function OffenseBanner() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [latestOffense, setLatestOffense] = useState<YTVideo | null>(null);
+  const [modalVideoId, setModalVideoId] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchLatestVideos(OFFENSE_CHANNEL_ID, 1)
+      .then(videos => { if (videos.length > 0) setLatestOffense(videos[0]); })
+      .catch(() => {});
+  }, []);
 
   const onMouseDown = (e: React.MouseEvent) => {
     if (!sliderRef.current) return;
@@ -339,13 +362,12 @@ function OffenseBanner() {
     sliderRef.current.scrollLeft = scrollLeft - (x - startX);
   };
 
+  const offenseThumb = latestOffense?.thumbnail || "/images/vignettes/edgar-yves.jpg";
+
   return (
     <section style={{ overflow: "hidden", position: "relative", minHeight: 720 }}>
-      {/* Photo background */}
       <img src="/images/offense/fond.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
-      {/* Gradient orange — nouveau #DB5224 */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(219,82,36,0.80) 0%, rgba(219,82,36,0.80) 38%, rgba(219,82,36,0.55) 52%, rgba(219,82,36,0.14) 68%, rgba(219,82,36,0) 80%)", zIndex: 1 }} />
-      {/* Accent strip */}
       <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "#EDDBC5", zIndex: 2 }} />
 
       <div ref={ref} className="reveal" style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 40px 120px 20px", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 60, alignItems: "start", position: "relative", zIndex: 2 }}>
@@ -355,7 +377,6 @@ function OffenseBanner() {
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#DB5224" }} />
             <span style={{ ...MANROPE(800), fontSize: 11, color: "#DB5224", letterSpacing: 2, textTransform: "uppercase" as const }}>NOTRE DERNIER GROS PROJET</span>
           </div>
-          {/* Logo Offense */}
           <div style={{ marginBottom: 20, position: "relative", height: 104, width: 312 }}>
             <img src="/images/logo/offense.png" alt="Offense" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
           </div>
@@ -365,7 +386,7 @@ function OffenseBanner() {
           <p style={{ ...MANROPE(400), fontSize: 15, lineHeight: 1.8, marginBottom: 36, maxWidth: 440, color: "rgba(255,255,255,0.85)" }}>
             Aux commandes, Tom Ciaravino avec des visages bien connus de First Team — Thomas, Erwan, Stephen Brun ou Mehdi Maizi — et des invités de prestige. Portraits, long formats, immersions : le basket comme tu ne l'as jamais vu. Un épisode tous les quinze jours, une conversation qui dure.
           </p>
-          <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.youtube.com/@offense" target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 15, background: "#EDDBC5", color: "#DB5224", padding: "14px 28px", borderRadius: 999, textDecoration: "none", transition: "transform 0.15s ease" }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
@@ -374,13 +395,16 @@ function OffenseBanner() {
           </a>
         </div>
 
-        {/* Right — vignette principale + slider drag */}
+        {/* Right — vignette dynamique + slider drag */}
         <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {/* Grosse vignette avec glow orange */}
-          <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+          {/* Dernière vidéo Offense — dynamique */}
+          <a
+            href={latestOffense ? `https://www.youtube.com/watch?v=${latestOffense.id}` : "https://youtube.com/@offense"}
+            target="_blank" rel="noopener noreferrer"
+            onClick={latestOffense ? (e) => { e.preventDefault(); setModalVideoId(latestOffense.id); } : undefined}
             style={{ display: "block", position: "relative", borderRadius: 4, overflow: "hidden", textDecoration: "none", boxShadow: "0 0 14px 3px rgba(237,219,197,0.18), 0 0 28px 6px rgba(237,219,197,0.08)" }}
           >
-            <img src="/images/vignettes/edgar-yves.jpg" alt="Offense — Edgar-Yves" style={{ width: "100%", display: "block", objectFit: "cover", aspectRatio: "16/9" }} />
+            <img src={offenseThumb} alt={latestOffense?.title || "Offense — dernière vidéo"} style={{ width: "100%", display: "block", objectFit: "cover", aspectRatio: "16/9" }} />
             <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.22)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.10)"}
               onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.22)"}
@@ -391,16 +415,11 @@ function OffenseBanner() {
             </div>
           </a>
 
-          {/* Slider drag — 3 photos visibles, 4ème en débord — frame + cue */}
+          {/* Slider drag — photos backstage statiques */}
           <div style={{ position: "relative", borderRadius: 4, border: "1.5px solid rgba(237,219,197,0.25)", overflow: "hidden" }}>
             <div
               ref={sliderRef}
-              style={{
-                display: "flex", gap: 6,
-                overflowX: "auto", scrollbarWidth: "none",
-                cursor: isDragging ? "grabbing" : "grab",
-                userSelect: "none",
-              }}
+              style={{ display: "flex", gap: 6, overflowX: "auto", scrollbarWidth: "none", cursor: isDragging ? "grabbing" : "grab", userSelect: "none" }}
               onMouseDown={onMouseDown}
               onMouseMove={onMouseMove}
               onMouseUp={onMouseUp}
@@ -415,12 +434,13 @@ function OffenseBanner() {
                 </div>
               ))}
             </div>
-            {/* Right fade to hint scrollability */}
             <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 40, background: "linear-gradient(to right, transparent, rgba(10,10,10,0.7))", pointerEvents: "none" }} />
           </div>
           <style>{`div::-webkit-scrollbar { display: none; }`}</style>
         </div>
       </div>
+
+      {modalVideoId && <VideoModal videoId={modalVideoId} onClose={() => setModalVideoId(null)} />}
     </section>
   );
 }
@@ -429,6 +449,17 @@ function OffenseBanner() {
 function BuzzedVideo() {
   const ref = useReveal();
   const [hovered, setHovered] = useState(false);
+  const [wembyVideos, setWembyVideos] = useState<(YTVideo | null)[]>([null, null, null, null]);
+  const [modalVideoId, setModalVideoId] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchVideosByIds(WEMBY_VIDEO_IDS)
+      .then(setWembyVideos)
+      .catch(() => {});
+  }, []);
+
+  const mainThumb = wembyVideos[0]?.thumbnail || "/images/vignettes/itw-wemby.png";
+
   return (
     <section style={{ padding: "80px 40px", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -445,21 +476,23 @@ function BuzzedVideo() {
             </div>
             <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
               <span style={{ ...MANROPE(700), fontSize: 13, color: "rgba(0,0,0,0.35)" }}>1.2M vues · 48K likes</span>
-              <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-red" style={{ fontSize: 13, padding: "10px 20px" }}>Voir sur YouTube →</a>
+              <a href={`https://www.youtube.com/watch?v=${WEMBY_VIDEO_IDS[0]}`} target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-red" style={{ fontSize: 13, padding: "10px 20px" }}>Voir sur YouTube →</a>
             </div>
           </div>
         </div>
 
-        {/* Layout 2 colonnes : grande vignette (2/3) + 3 miniatures empilées (1/3, même hauteur exacte) */}
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "stretch" }}>
-          {/* Grande vignette — 16:9, définit la hauteur de la rangée */}
+          {/* Grande vignette */}
           <div style={{ borderRadius: 8, overflow: "hidden", boxShadow: "0 0 36px 10px rgba(254,0,0,0.18), 0 0 72px 20px rgba(254,0,0,0.08)", position: "relative", aspectRatio: "16/9" }}>
-            <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+            <a
+              href={`https://www.youtube.com/watch?v=${WEMBY_VIDEO_IDS[0]}`}
+              target="_blank" rel="noopener noreferrer"
+              onClick={e => { e.preventDefault(); setModalVideoId(WEMBY_VIDEO_IDS[0]); }}
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
               style={{ position: "absolute", inset: 0, display: "block", cursor: "pointer", textDecoration: "none" }}
             >
-              <img src="/images/vignettes/itw-wemby.png" alt="Interview Wembanyama"
+              <img src={mainThumb} alt="Interview Wembanyama"
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", objectPosition: "center top" }} />
               <div style={{ position: "absolute" as const, inset: 0, background: hovered ? "rgba(0,0,0,0.18)" : "rgba(0,0,0,0.35)", transition: "background 0.2s ease", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <div style={{ width: 72, height: 72, borderRadius: "50%", background: hovered ? "#FE0000" : "rgba(254,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", transform: hovered ? "scale(1.1)" : "scale(1)", transition: "all 0.2s ease", boxShadow: hovered ? "0 0 0 16px rgba(254,0,0,0.15)" : "none" }}>
@@ -469,29 +502,38 @@ function BuzzedVideo() {
             </a>
           </div>
 
-          {/* Colonne droite — 3 miniatures 16:9 strictement, largeur calculée par l'aspect-ratio */}
+          {/* Colonne droite — 3 miniatures */}
           <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column" as const, gap: 8, alignItems: "flex-start" }}>
-            {BUZZED_VIGNETTES.map((src, i) => (
-              <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                style={{ display: "block", flex: "1 1 0", aspectRatio: "16/9", minHeight: 0, borderRadius: 6, overflow: "hidden", position: "relative" as const, textDecoration: "none" }}
-              >
-                <img src={src} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.3s ease" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-                />
-                <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.18)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.06)"}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.18)"}
+            {[0, 1, 2].map(i => {
+              const videoId = WEMBY_VIDEO_IDS[i + 1];
+              const thumb = wembyVideos[i + 1]?.thumbnail || BUZZED_VIGNETTES[i];
+              return (
+                <a key={i}
+                  href={`https://www.youtube.com/watch?v=${videoId}`}
+                  target="_blank" rel="noopener noreferrer"
+                  onClick={e => { e.preventDefault(); setModalVideoId(videoId); }}
+                  style={{ display: "block", flex: "1 1 0", aspectRatio: "16/9", minHeight: 0, borderRadius: 6, overflow: "hidden", position: "relative" as const, textDecoration: "none" }}
                 >
-                  <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#FE0000", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
+                  <img src={thumb} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.3s ease" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
+                  />
+                  <div style={{ position: "absolute" as const, inset: 0, background: "rgba(0,0,0,0.18)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s ease" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.06)"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.18)"}
+                  >
+                    <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#FE0000", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
+
+      {modalVideoId && <VideoModal videoId={modalVideoId} onClose={() => setModalVideoId(null)} />}
     </section>
   );
 }
@@ -499,6 +541,15 @@ function BuzzedVideo() {
 // ── 7. NOS DERNIÈRES VIDÉOS ───────────────────────────────────────────
 function RecentVideos() {
   const titleRef = useReveal();
+  const [dynamicVideos, setDynamicVideos] = useState<YTVideo[] | null>(null);
+  const [modalVideoId, setModalVideoId] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchLatestLongVideos(FIRST_TEAM_CHANNEL_ID, 4)
+      .then(setDynamicVideos)
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="r-sec-xl" style={{ padding: "120px 40px", background: "#0A0A0A", borderTop: "1px solid #1a1a1a" }}>
       <div className="r-hub-inner" style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -511,26 +562,51 @@ function RecentVideos() {
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 28, marginBottom: 48 }}>
-          {RECENT_VIDEOS.map((v, i) => {
-            const glow = v.color;
-            return (
-              <a key={i} href={v.href} target="_blank" rel="noopener noreferrer"
-                style={{ textDecoration: "none", display: "block", background: "#111", borderRadius: 10, overflow: "hidden", boxShadow: `0 0 28px 6px ${glow}45, 0 0 56px 10px ${glow}18`, transition: "box-shadow 0.3s ease, transform 0.2s ease" }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-5px)"; el.style.boxShadow = `0 0 40px 10px ${glow}65, 0 0 80px 18px ${glow}28`; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.boxShadow = `0 0 28px 6px ${glow}45, 0 0 56px 10px ${glow}18`; }}
-              >
-                <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
-                  <img src={v.thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", background: "#111" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.28)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <div style={{ width: 40, height: 40, borderRadius: "50%", background: glow, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
+          {dynamicVideos
+            ? dynamicVideos.map((v, i) => {
+                const glow = VIDEO_COLORS[i % 4];
+                return (
+                  <a key={i}
+                    href={`https://www.youtube.com/watch?v=${v.id}`}
+                    target="_blank" rel="noopener noreferrer"
+                    onClick={e => { e.preventDefault(); setModalVideoId(v.id); }}
+                    style={{ textDecoration: "none", display: "block", background: "#111", borderRadius: 10, overflow: "hidden", boxShadow: `0 0 28px 6px ${glow}45, 0 0 56px 10px ${glow}18`, transition: "box-shadow 0.3s ease, transform 0.2s ease" }}
+                    onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-5px)"; el.style.boxShadow = `0 0 40px 10px ${glow}65, 0 0 80px 18px ${glow}28`; }}
+                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.boxShadow = `0 0 28px 6px ${glow}45, 0 0 56px 10px ${glow}18`; }}
+                  >
+                    <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
+                      <img src={v.thumbnail} alt={v.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.28)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <div style={{ width: 40, height: 40, borderRadius: "50%", background: glow, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <span style={{ position: "absolute" as const, top: 10, left: 10, background: glow, color: "#fff", ...MANROPE(800), fontSize: 10, padding: "4px 10px", borderRadius: 999, letterSpacing: 0.5, textTransform: "uppercase" as const }}>{v.emission}</span>
-                </div>
-              </a>
-            );
-          })}
+                    <div style={{ padding: "12px 16px 14px", background: "#111" }}>
+                      <p style={{ ...MANROPE(700), fontSize: 12, color: "rgba(255,255,255,0.75)", lineHeight: 1.4, margin: 0 }}>{v.title}</p>
+                    </div>
+                  </a>
+                );
+              })
+            : RECENT_VIDEOS.map((v, i) => {
+                const glow = v.color;
+                return (
+                  <a key={i} href={v.href} target="_blank" rel="noopener noreferrer"
+                    style={{ textDecoration: "none", display: "block", background: "#111", borderRadius: 10, overflow: "hidden", boxShadow: `0 0 28px 6px ${glow}45, 0 0 56px 10px ${glow}18`, transition: "box-shadow 0.3s ease, transform 0.2s ease" }}
+                    onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-5px)"; el.style.boxShadow = `0 0 40px 10px ${glow}65, 0 0 80px 18px ${glow}28`; }}
+                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.boxShadow = `0 0 28px 6px ${glow}45, 0 0 56px 10px ${glow}18`; }}
+                  >
+                    <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
+                      <img src={v.thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", background: "#111" }} />
+                      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.28)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <div style={{ width: 40, height: 40, borderRadius: "50%", background: glow, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z" /></svg>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
         </div>
 
         {/* Social strip */}
@@ -553,6 +629,7 @@ function RecentVideos() {
           ))}
         </div>
       </div>
+      {modalVideoId && <VideoModal videoId={modalVideoId} onClose={() => setModalVideoId(null)} />}
     </section>
   );
 }
