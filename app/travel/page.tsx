@@ -10,7 +10,7 @@ const TRIPS = [
     city: "New York",
     label: "New York City",
     subtitle: "Madison Square Garden",
-    img: "/images/homepage/new-york.jpg",
+    img: "/images/voyage/new%20york.avif",
     date: "Janv. 2025",
     desc: "Une nuit de rêve au Madison Square Garden face aux New York Knicks. Accès premium, cocktail de bienvenue et ambiance exceptionnelle.",
     matches: "New York Knicks vs Boston Celtics",
@@ -20,7 +20,7 @@ const TRIPS = [
     city: "Los Angeles",
     label: "Los Angeles",
     subtitle: "Crypto.com Arena",
-    img: "https://picsum.photos/seed/la-travel/800/600",
+    img: "/images/voyage/los%20angeles.avif",
     date: "Fév. 2025",
     desc: "La capitale du showbiz et des Lakers — vivez l'expérience LA avec les meilleures places au Crypto.com Arena.",
     matches: "Los Angeles Lakers vs Golden State Warriors",
@@ -30,7 +30,7 @@ const TRIPS = [
     city: "Las Vegas",
     label: "Las Vegas",
     subtitle: "T-Mobile Arena",
-    img: "https://picsum.photos/seed/lv-travel/800/600",
+    img: "/images/voyage/las%20vegas.jpg",
     date: "Mars 2025",
     desc: "Le NBA In-Season Tournament en plein cœur de Las Vegas. Show total garanti, du début à la fin.",
     matches: "NBA In-Season Tournament Final",
@@ -40,7 +40,7 @@ const TRIPS = [
     city: "San Antonio",
     label: "San Antonio",
     subtitle: "Frost Bank Center",
-    img: "https://picsum.photos/seed/sa-travel/800/600",
+    img: "/images/voyage/san%20antonio.webp",
     date: "Avr. 2025",
     desc: "Aller voir Wembanyama jouer à San Antonio — l'expérience ultime pour tout fan de basket.",
     matches: "San Antonio Spurs vs Oklahoma City Thunder",
@@ -58,6 +58,7 @@ const KEY_POINTS = [
 function TripCard({ trip }: { trip: typeof TRIPS[0] }) {
   const barRef = useRef<HTMLDivElement>(null);
   const [filled, setFilled] = useState(false);
+  const [imgHovered, setImgHovered] = useState(false);
 
   useEffect(() => {
     const el = barRef.current;
@@ -72,11 +73,14 @@ function TripCard({ trip }: { trip: typeof TRIPS[0] }) {
   return (
     <div style={{ background: "#111", borderRadius: 14, overflow: "hidden", cursor: "not-allowed", opacity: 0.85 }}>
       {/* Photo */}
-      <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}>
+      <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}
+        onMouseEnter={() => setImgHovered(true)}
+        onMouseLeave={() => setImgHovered(false)}
+      >
         <img
           src={trip.img}
           alt={trip.city}
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transform: imgHovered ? "scale(1.04)" : "scale(1)", transition: "transform 0.5s ease" }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 100%)" }} />
 
@@ -173,9 +177,13 @@ export default function TravelPage() {
       </section>
 
       {/* ── MASSIVE TEXT BANNER ── */}
-      <section style={{ background: "#111", padding: "80px 48px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <h2 style={{ ...ANTON, fontSize: "clamp(1.8rem, 6vw, 5rem)", lineHeight: 1.05, textTransform: "uppercase" as const, color: "#fff", letterSpacing: "-1px", margin: 0, maxWidth: 1200, marginLeft: "auto", marginRight: "auto" }}>
-          De nouveaux voyages<br />First Team dès la<br />saison prochaine
+      <section style={{ background: "#111", padding: "80px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <h2 style={{ ...ANTON, fontSize: "clamp(1.8rem, 6vw, 5rem)", lineHeight: "clamp(2rem, 7vw, 5.5rem)", textTransform: "uppercase" as const, letterSpacing: "-1px", margin: 0 }}>
+          <span style={{ color: "#fff" }}>DE NOUVEAUX </span>
+          <span style={{ color: "#FE0000" }}>VOYAGES FIRST TEAM</span>
+          <br />
+          <span style={{ color: "#fff" }}>DÈS LA </span>
+          <span style={{ color: "#FED000" }}>SAISON PROCHAINE</span>
         </h2>
       </section>
 
