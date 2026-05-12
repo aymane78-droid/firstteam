@@ -304,7 +304,7 @@ function CategoryPanels() {
   return (
     <section style={{ height: "80vh", minHeight: 500, display: "flex", background: "#0A0A0A" }}>
       {CATEGORIES.map((c, i) => (
-        <Link key={i} href={c.href} className="format-panel">
+        <Link key={i} href={c.href} className="format-panel" aria-label={`Voir la page ${c.label}`}>
           <div className="panel-bg">
             <Image src={c.photo} alt={c.label} fill
               sizes="(max-width: 768px) 50vw, 20vw"
@@ -819,15 +819,24 @@ function MerchSection() {
             <span className="pill-btn pill-btn-yellow">Découvrir la boutique →</span>
           </div>
         </Link>
-        <div style={{ background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)" }}>
-          <img src="/images/homepage/new-york.jpg" alt="First Team Travels — New York" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center center", display: "block" }} />
+        <Link href="/travel" aria-label="Voir la page Travel"
+          style={{ display: "block", background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none", transition: "transform 0.2s ease, border-color 0.2s ease", cursor: "pointer" }}
+          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(254,0,0,0.4)"; }}
+          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(255,255,255,0.1)"; }}
+        >
+          <div style={{ position: "relative", width: "100%", height: 280, overflow: "hidden" }}>
+            <img src="/images/voyage/new%20york.avif" alt="First Team Travels — New York" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", display: "block", transition: "transform 0.5s ease" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
+            />
+          </div>
           <div style={{ padding: "32px 36px 36px" }}>
             <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 2, textTransform: "uppercase" as const, color: "#FE0000", display: "block", marginBottom: 12 }}>VOYAGES</span>
             <h3 style={{ ...ANTON, fontSize: 36, textTransform: "uppercase" as const, color: "#fff", marginBottom: 16, lineHeight: 0.95 }}>First Team<br />Travels.</h3>
             <p style={{ ...MANROPE(400), fontSize: 14, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.6 }}>Las Vegas, Paris, Madrid — les meilleurs matchs, avec la communauté First Team à tes côtés.</p>
-            <span className="pill-btn pill-btn-red" style={{ cursor: "not-allowed", opacity: 0.6 }}>Bientôt disponible</span>
+            <span className="pill-btn pill-btn-red">Voir les voyages →</span>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );
