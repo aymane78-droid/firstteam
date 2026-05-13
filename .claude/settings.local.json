@@ -37,7 +37,12 @@
       "Bash(gunzip -f /tmp/planning_decoded.html.gz)",
       "Read(//private/tmp/**)",
       "Bash(mkdir -p design_bundle)",
-      "Bash(tar -xf planning_decoded.html -C design_bundle)"
+      "Bash(tar -xf planning_decoded.html -C design_bundle)",
+      "Bash(mkdir -p /tmp/apropos_bundle)",
+      "Bash(gunzip -c /tmp/apropos_bundle.gz)",
+      "Bash(tar -x -C /tmp/apropos_bundle)",
+      "Bash(next build *)",
+      "Bash(sips -Z 1600 --setProperty formatOptions 75 \"/Users/aymane/first-team-site-v2/public/images/à propos/team-ft.jpg\" --out \"/Users/aymane/first-team-site-v2/public/images/à propos/team-ft-web.jpg\")"
     ]
   }
 }

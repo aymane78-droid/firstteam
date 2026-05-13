@@ -667,36 +667,116 @@ function KpiBand() {
   );
 }
 
-// ── 9. 10 ANS DE PASSION ──────────────────────────────────────────────
+// ── 9. À PROPOS ───────────────────────────────────────────────────────
 function AboutSection() {
   const ref = useReveal();
-  const [slide, setSlide] = useAutoSlide(ABOUT_SLIDES.length);
   return (
-    <section className="r-sec-xl" style={{ padding: "120px 40px", background: "#fff" }}>
-      <div className="r-grid-about" style={{ gap: 80, alignItems: "center", maxWidth: 1200, margin: "0 auto" }}>
-        <div ref={ref} className="reveal">
-          <p style={{ ...MANROPE(800), fontSize: 12, letterSpacing: 2, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 20 }}>À PROPOS</p>
-          <h2 style={{ ...ANTON, fontSize: "clamp(36px, 4.5vw, 62px)", lineHeight: 0.92, textTransform: "uppercase" as const, letterSpacing: "-0.5px", marginBottom: 32 }}>
-            10 ans de passion<br />et d'expertise.
-          </h2>
-          <p style={{ ...MANROPE(400), fontSize: 17, lineHeight: 1.75, color: "#333", maxWidth: 480, marginBottom: 24 }}>
-            Fondé par d'anciens basketteurs — Erwan Abautret, Thomas Dufant, Stephen Brun — First Team est le premier média basket 100% numérique en France. On décrypte, on débat, on kiffe.
-          </p>
-          <p style={{ ...MANROPE(700), fontSize: 16, color: "#0A0A0A", marginBottom: 36, fontStyle: "italic" }}>
-            "On parle basket comme entre potes, parce qu'on vient du terrain."
-          </p>
-          <Link href="/qui-nous-sommes" className="pill-btn pill-btn-black">Qui sommes-nous →</Link>
+    <section style={{ position: "relative" as const, padding: "120px 40px", background: "#fff", overflow: "hidden" }}>
+      {/* Dotted grid */}
+      <div style={{
+        position: "absolute" as const, inset: 0,
+        backgroundImage: "radial-gradient(rgba(10,10,10,0.08) 1px, transparent 1px)",
+        backgroundSize: "22px 22px",
+        WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 100%)",
+        maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 100%)",
+        pointerEvents: "none" as const, zIndex: 0,
+      }} />
+      {/* Ghost FT */}
+      <div style={{
+        position: "absolute" as const, top: -40, right: -20,
+        ...ANTON, fontSize: 520, color: "rgba(10,10,10,0.035)",
+        lineHeight: 1, userSelect: "none" as const, pointerEvents: "none" as const, zIndex: 0,
+      }}>FT</div>
+
+      <div ref={ref} className="reveal" style={{ maxWidth: 1200, margin: "0 auto", position: "relative" as const, zIndex: 1 }}>
+        {/* Header row */}
+        <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 32 }}>
+          <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", margin: 0 }}>À PROPOS</p>
+          <div style={{ flex: 1, height: 1, background: "rgba(10,10,10,0.12)" }} />
         </div>
-        <div className="r-hide-mobile" style={{ position: "relative" as const }}>
-          <div style={{ position: "absolute" as const, top: -20, right: -20, width: "100%", height: "100%", background: "#FED000", borderRadius: 4, zIndex: 0 }} />
-          <div style={{ position: "relative" as const, zIndex: 1, borderRadius: 4, overflow: "hidden", aspectRatio: "4/3" }}>
-            {ABOUT_SLIDES.map((src, i) => (
-              <img key={i} src={src} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: i === slide ? 1 : 0, transition: "opacity 0.8s ease" }} />
+
+        {/* Title */}
+        <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 88px)", lineHeight: 0.92, textTransform: "uppercase" as const, letterSpacing: "-1px", margin: "0 0 40px", display: "flex", flexWrap: "wrap" as const, alignItems: "center", gap: "0.15em" }}>
+          <span>Média</span>
+          <span style={{ position: "relative" as const, display: "inline-block" }}>
+            <span style={{ position: "absolute" as const, inset: "-4px -8px", background: "#FED000", transform: "skew(-6deg)", zIndex: 0, borderRadius: 2 }} />
+            <span style={{ position: "relative" as const, zIndex: 1 }}>100%</span>
+          </span>
+          <span>
+            Basket.
+            <span style={{ display: "inline-block", width: 12, height: 12, borderRadius: "50%", background: "#FE0000", marginLeft: 6, verticalAlign: "middle", transform: "translateY(-4px)" }} />
+          </span>
+        </h2>
+
+        {/* Tricolor divider */}
+        <div style={{ display: "flex", gap: 6, marginBottom: 56 }}>
+          <div style={{ width: 40, height: 6, borderRadius: 999, background: "#FE0000" }} />
+          <div style={{ width: 40, height: 6, borderRadius: 999, background: "#FED000" }} />
+          <div style={{ width: 40, height: 6, borderRadius: 999, background: "#002EFE" }} />
+        </div>
+
+        {/* Body grid */}
+        <div className="r-grid-about" style={{ gap: 88, alignItems: "start" }}>
+          {/* Left: lead text + pillars */}
+          <div>
+            <p style={{ ...MANROPE(400), fontSize: 18, lineHeight: 1.75, color: "#0A0A0A", marginBottom: 48 }}>
+              Fondé par d&apos;anciens basketteurs,{" "}
+              <span style={{ background: "linear-gradient(transparent 62%, #FED000 62%, #FED000 92%, transparent 92%)" }}>
+                First Team est le premier média basket 100% indépendant en France
+              </span>
+              {" "}— on décrypte, on débat, on kiffe le jeu.
+            </p>
+            {[
+              { num: "01", color: "#FE0000", title: "Indépendance", body: "Aucun actionnaire extérieur. Nos opinions n'appartiennent qu'à nous." },
+              { num: "02", color: "#FED000", title: "Profondeur", body: "Analyses tactiques, entretiens longs, contexte historique — pas de titres racoleurs." },
+              { num: "03", color: "#002EFE", title: "Communauté", body: "Construits avec notre audience, pour notre audience. Vous êtes First Team." },
+            ].map((p) => (
+              <div key={p.num} style={{ borderTop: "1px solid rgba(10,10,10,0.1)", paddingTop: 20, paddingBottom: 20, display: "grid", gridTemplateColumns: "48px 1fr", gap: 20, alignItems: "start" }}>
+                <span style={{ ...ANTON, fontSize: 22, color: p.color, lineHeight: 1 }}>{p.num}</span>
+                <div>
+                  <p style={{ ...ANTON, fontSize: 22, color: "#0A0A0A", lineHeight: 1, marginBottom: 8, textTransform: "uppercase" as const }}>{p.title}</p>
+                  <p style={{ ...MANROPE(400), fontSize: 14, lineHeight: 1.65, color: "rgba(10,10,10,0.6)", margin: 0 }}>{p.body}</p>
+                </div>
+              </div>
             ))}
-            <div style={{ position: "absolute", bottom: 14, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 6, zIndex: 5 }}>
-              {ABOUT_SLIDES.map((_, i) => (
-                <button key={i} onClick={() => setSlide(i)} style={{ width: i === slide ? 20 : 7, height: 7, borderRadius: 999, background: i === slide ? "#FE0000" : "rgba(255,255,255,0.7)", border: "none", cursor: "pointer", padding: 0, transition: "all 0.3s ease" }} />
-              ))}
+            <div style={{ marginTop: 36 }}>
+              <Link href="/qui-nous-sommes" className="pill-btn pill-btn-black">Qui sommes-nous →</Link>
+            </div>
+          </div>
+
+          {/* Right: visual composition */}
+          <div className="r-hide-mobile" style={{ position: "relative" as const, minHeight: 640 }}>
+            <img
+              src="/images/à propos/team-ft.jpg"
+              alt="First Team"
+              style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", objectFit: "cover" as const, borderRadius: 4 }}
+            />
+            {/* Tricolor flag */}
+            <div style={{ position: "absolute" as const, top: 0, right: "4%", width: 56, height: 92, display: "flex", flexDirection: "column" as const, overflow: "hidden", borderRadius: "0 0 4px 4px" }}>
+              <div style={{ flex: 1, background: "#FE0000" }} />
+              <div style={{ flex: 1, background: "#FED000" }} />
+              <div style={{ flex: 1, background: "#002EFE" }} />
+            </div>
+            {/* Sticker */}
+            <div style={{
+              position: "absolute" as const, bottom: "22%", left: "-5%",
+              width: 100, height: 100, borderRadius: "50%",
+              background: "#FE0000", border: "4px dashed rgba(255,255,255,0.4)",
+              transform: "rotate(-12deg)",
+              display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center",
+              textAlign: "center" as const,
+            }}>
+              <span style={{ ...ANTON, fontSize: 13, color: "#fff", lineHeight: 1.2, textTransform: "uppercase" as const }}>Depuis<br />2014<br />Indépt.</span>
+            </div>
+            {/* Quote card */}
+            <div style={{
+              position: "absolute" as const, bottom: 0, right: 0, width: "52%",
+              background: "#0A0A0A", borderRadius: 4, padding: "24px 20px",
+            }}>
+              <span style={{ ...ANTON, fontSize: 48, color: "#FED000", lineHeight: 0.8, display: "block", marginBottom: 8 }}>"</span>
+              <p style={{ ...MANROPE(400), fontSize: 13, lineHeight: 1.6, color: "rgba(255,255,255,0.75)", margin: 0, fontStyle: "italic" }}>
+                On parle basket comme entre potes, parce qu&apos;on vient du terrain.
+              </p>
             </div>
           </div>
         </div>
