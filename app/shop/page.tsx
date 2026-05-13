@@ -1,23 +1,13 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import ShopNav from "@/components/ShopNav";
+import ShopifyBuyButtonCollection from "@/components/ShopifyBuyButtonCollection";
+import { COLLECTIONS_LIST } from "@/lib/shopify-collections";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
 const AWESOME = (w: number) => ({ fontFamily: "Awesome, Georgia, serif", fontWeight: w });
 
-const PRODUCTS = [
-  { id: 1, name: "T-Shirt First Team — Blanc",   cat: "T-Shirts",     price: 35, img: "/images/page-shop/tshirt-a-face.png", hoverImg: "/images/page-shop/tshirt-a-dos.png", isNew: true,  sizes: ["S","M","L","XL"] },
-  { id: 3, name: "T-Shirt Capsule — Coloris 1",  cat: "T-Shirts",     price: 39, img: "/images/page-shop/tshirt-b-face.png", hoverImg: "/images/page-shop/tshirt-b-dos.png", isNew: false, sizes: ["S","M","L","XL"] },
-  { id: 5, name: "Bob First Team — Naturel",     cat: "Accessoires",  price: 28, img: "/images/page-shop/bob-a.png",         hoverImg: null,                                  isNew: true,  sizes: ["Unique"] },
-  { id: 6, name: "Bob First Team — Noir",        cat: "Accessoires",  price: 28, img: "/images/page-shop/bob-b.png",         hoverImg: null,                                  isNew: false, sizes: ["Unique"] },
-  { id: 7, name: "Tote Bag First Team",          cat: "Accessoires",  price: 22, img: "/images/page-shop/bag.png",           hoverImg: null,                                  isNew: false, sizes: ["Unique"] },
-  { id: 8, name: "Short Basket — Blanc",         cat: "Shorts",       price: 55, img: "/images/page-shop/short-a.png",      hoverImg: null,                                  isNew: true,  sizes: ["S","M","L","XL"] },
-  { id: 9, name: "Short Basket — Noir",          cat: "Shorts",       price: 55, img: "/images/page-shop/short-b.png",      hoverImg: null,                                  isNew: false, sizes: ["S","M","L","XL"] },
-];
-
-const CATS = ["Tout", "T-Shirts", "Accessoires", "Shorts"] as const;
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -157,103 +147,26 @@ function PresentationSection() {
   );
 }
 
-function ProductCard({ p, hovered, onHover, onLeave }: { p: typeof PRODUCTS[0]; hovered: boolean; onHover: () => void; onLeave: () => void }) {
-  return (
-    <a
-      href="#"
-      style={{ display: "block", textDecoration: "none", color: "#0A0A0A", cursor: "pointer" }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-    >
-      {/* Image wrapper */}
-      <div style={{ position: "relative" as const, aspectRatio: "4/5", background: "#ECE7DD", overflow: "hidden", borderRadius: 4 }}>
-        <img
-          src={p.img}
-          alt={p.name}
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transition: "opacity 0.4s ease, transform 0.6s ease", opacity: hovered && p.hoverImg ? 0 : 1, transform: hovered ? "scale(1.04)" : "scale(1)" }}
-        />
-        {p.hoverImg && (
-          <img
-            src={p.hoverImg}
-            alt=""
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transition: "opacity 0.4s ease, transform 0.6s ease", opacity: hovered ? 1 : 0, transform: hovered ? "scale(1.04)" : "scale(1)" }}
-          />
-        )}
-        {p.isNew && (
-          <span style={{ position: "absolute", top: 12, left: 12, background: "#FE0000", color: "#fff", ...ANTON, fontSize: 10, letterSpacing: 1.5, padding: "4px 10px", textTransform: "uppercase" as const }}>Nouveau</span>
-        )}
-        {/* Quick add */}
-        <div style={{ position: "absolute", left: 12, right: 12, bottom: 12, background: "rgba(255,255,255,0.96)", backdropFilter: "blur(8px)", padding: "11px 12px", textAlign: "center" as const, ...MANROPE(800), fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase" as const, color: "#0A0A0A", transform: hovered ? "translateY(0)" : "translateY(calc(100% + 12px))", transition: "transform 0.3s cubic-bezier(0.2,0.8,0.2,1)" }}>
-          + Ajouter au panier
-        </div>
-      </div>
-      {/* Info */}
-      <div style={{ paddingTop: 14, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
-        <div>
-          <h3 style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 4, letterSpacing: 0.2 }}>{p.name}</h3>
-          <p style={{ ...MANROPE(500), fontSize: 11, color: "rgba(0,0,0,0.4)", letterSpacing: 0.3 }}>{p.cat} · {p.sizes.join(" · ")}</p>
-        </div>
-        <span style={{ ...ANTON, fontSize: 20, color: "#0A0A0A", letterSpacing: 0.5, whiteSpace: "nowrap" as const }}>{p.price}€</span>
-      </div>
-    </a>
-  );
-}
-
-function ProductsGrid() {
-  const [activeCat, setActiveCat] = useState<typeof CATS[number]>("Tout");
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+function ShopCollections() {
   const ref = useReveal();
-
-  const filtered = activeCat === "Tout" ? PRODUCTS : PRODUCTS.filter(p => p.cat === activeCat);
-
   return (
-    <section id="produits" style={{ background: "#fff", padding: "100px 40px" }}>
+    <section id="collections" style={{ background: "#fff", padding: "100px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div ref={ref} className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32, gap: 20, flexWrap: "wrap" as const }}>
-          <div>
-            <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", display: "block", marginBottom: 10 }}>· Tout le shop</span>
-            <h2 style={{ ...ANTON, fontSize: "clamp(36px, 4.5vw, 64px)", textTransform: "uppercase" as const, letterSpacing: -1, lineHeight: 0.92, color: "#0A0A0A" }}>
-              La sélection<br />du moment.
-            </h2>
+        <div ref={ref} className="reveal" style={{ marginBottom: 48 }}>
+          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", display: "block", marginBottom: 10 }}>· Tout le shop</span>
+          <h2 style={{ ...ANTON, fontSize: "clamp(36px, 4.5vw, 64px)", textTransform: "uppercase" as const, letterSpacing: -1, lineHeight: 0.92, color: "#0A0A0A" }}>
+            La sélection<br />du moment.
+          </h2>
+        </div>
+        <ShopNav />
+        {COLLECTIONS_LIST.map((col) => (
+          <div key={col.id} style={{ marginBottom: 80 }}>
+            <h3 style={{ ...ANTON, fontSize: "clamp(24px, 3vw, 40px)", textTransform: "uppercase" as const, letterSpacing: -0.5, color: "#0A0A0A", marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
+              {col.title}
+            </h3>
+            <ShopifyBuyButtonCollection collectionId={col.id} />
           </div>
-          <span style={{ ...MANROPE(600), fontSize: 13, color: "rgba(0,0,0,0.45)" }}>{filtered.length} produit{filtered.length > 1 ? "s" : ""}</span>
-        </div>
-
-        {/* Filters */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 40, paddingBottom: 24, borderBottom: "1px solid rgba(0,0,0,0.1)", flexWrap: "wrap" as const }}>
-          {CATS.map(c => (
-            <button
-              key={c}
-              onClick={() => setActiveCat(c)}
-              style={{
-                padding: "9px 18px",
-                border: `1.5px solid ${activeCat === c ? "#0A0A0A" : "rgba(0,0,0,0.18)"}`,
-                borderRadius: 999,
-                background: activeCat === c ? "#0A0A0A" : "transparent",
-                color: activeCat === c ? "#fff" : "#0A0A0A",
-                ...MANROPE(700),
-                fontSize: 12,
-                cursor: "pointer",
-                letterSpacing: 0.5,
-                textTransform: "uppercase" as const,
-                transition: "all 0.15s ease",
-              }}
-            >{c}</button>
-          ))}
-        </div>
-
-        {/* Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, rowGap: 48 }}>
-          {filtered.map(p => (
-            <ProductCard
-              key={p.id}
-              p={p}
-              hovered={hoveredId === p.id}
-              onHover={() => setHoveredId(p.id)}
-              onLeave={() => setHoveredId(null)}
-            />
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   );
@@ -514,7 +427,7 @@ export default function ShopPage() {
       <Hero />
       <EditoBand />
       <PresentationSection />
-      <ProductsGrid />
+      <ShopCollections />
       <InfoBand />
       <PhotoSlider />
       <BigMarquee />
