@@ -3,6 +3,8 @@ import { Anton, Manrope, Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 
 const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton" });
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-manrope" });
@@ -19,9 +21,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr" className={`${anton.variable} ${manrope.variable} ${inter.variable} ${roboto.variable}`}>
       <body className="min-h-screen antialiased">
-        <Header />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Header />
+          {children}
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );
