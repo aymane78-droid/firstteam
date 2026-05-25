@@ -2,7 +2,6 @@ import ShopGrid from "@/components/ShopGrid";
 import {
   AnnouncementBar,
   Hero,
-  EditoBand,
   PresentationSection,
   InfoBand,
   PhotoSlider,
@@ -24,7 +23,6 @@ export default async function ShopPage() {
     <main style={{ background: "#0A0A0A" }}>
       <AnnouncementBar />
       <Hero />
-      <EditoBand />
       <PresentationSection />
       <ShopGrid products={products} />
       <InfoBand />

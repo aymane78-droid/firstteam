@@ -145,13 +145,15 @@ function ProductCard({ product, onOpenModal }: ProductCardProps) {
       {/* Info */}
       <div style={{ paddingTop: 14, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
         <div>
-          <h3 style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 4, letterSpacing: 0.2 }}>{product.title}</h3>
+          {/* TODO: noms produits à mettre à jour avec FT_BriefShooting_v3 */}
+        <h3 style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 4, letterSpacing: 0.2 }}>{product.title}</h3>
           {sizes.length > 0 && (
             <p style={{ ...MANROPE(500), fontSize: 11, color: "rgba(0,0,0,0.4)", letterSpacing: 0.3 }}>
               {sizes.join(" · ")}
             </p>
           )}
         </div>
+        {/* TODO: prix à mettre à jour avec les vrais prix avant lancement */}
         <span style={{ ...ANTON, fontSize: 20, color: "#0A0A0A", letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0 }}>
           {formatPrice(price.amount, price.currencyCode)}
         </span>
@@ -190,9 +192,9 @@ export default function ShopGrid({ products }: Props) {
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32, gap: 20, flexWrap: "wrap" }}>
           <div>
-            <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 10 }}>· Tout le shop</span>
+            <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 10 }}>· SUMMER EDITION 26</span>
             <h2 style={{ ...ANTON, fontSize: "clamp(36px, 4.5vw, 64px)", textTransform: "uppercase", letterSpacing: -1, lineHeight: 0.92, color: "#0A0A0A" }}>
-              La sélection<br />du moment.
+              L&apos;intégralité<br />du vestiaire.
             </h2>
           </div>
           <span style={{ ...MANROPE(600), fontSize: 13, color: "rgba(0,0,0,0.45)" }}>

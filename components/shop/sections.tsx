@@ -47,45 +47,22 @@ export function Hero() {
       </div>
       <div style={{ position: "absolute", top: 56, left: 40, zIndex: 3, display: "flex", flexDirection: "column", gap: 6 }}>
         <span style={{ ...ANTON, fontSize: 12, color: "rgba(255,255,255,0.55)", letterSpacing: 3, textTransform: "uppercase" }}>FT / SHOP</span>
-        <span style={{ ...MANROPE(700), fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 1.5 }}>CAPSULE · 10 ANS</span>
       </div>
       <div ref={ref} className="reveal" style={{ position: "relative", zIndex: 2, width: "100%", padding: "0 40px 80px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
           <div style={{ width: 44, height: 2, background: "#FE0000" }} />
-          <span style={{ ...MANROPE(800), fontSize: 11, color: "rgba(255,255,255,0.75)", letterSpacing: 3, textTransform: "uppercase" }}>Capsule des 10 ans · Saison 2026</span>
+          <span style={{ ...MANROPE(800), fontSize: 11, color: "rgba(255,255,255,0.75)", letterSpacing: 3, textTransform: "uppercase" }}>SAISON 2026</span>
         </div>
         <h1 style={{ ...ANTON, fontSize: "clamp(72px, 11vw, 160px)", lineHeight: 0.84, color: "#fff", textTransform: "uppercase", letterSpacing: "-3px", marginBottom: 24 }}>
-          Maison<br /><span style={{ color: "#FED000" }}>First Team.</span>
+          Le Vestiaire<br /><span style={{ color: "#FED000" }}>First Team.</span>
         </h1>
-        <p style={{ ...MANROPE(400), fontSize: 18, color: "rgba(255,255,255,0.72)", marginBottom: 36, maxWidth: 520, lineHeight: 1.6 }}>Le basket se porte aussi.</p>
-        <a href="#produits" className="pill-btn pill-btn-red">Découvrir la Maison First Team →</a>
+        <p style={{ ...MANROPE(400), fontSize: 18, color: "rgba(255,255,255,0.72)", marginBottom: 36, maxWidth: 520, lineHeight: 1.6 }}>On parle basket, on le porte aussi.</p>
+        <a href="#produits" className="pill-btn pill-btn-red">Découvrir le Vestiaire First Team →</a>
       </div>
     </section>
   );
 }
 
-export function EditoBand() {
-  const items = [
-    { tag: "01.", title: "Capsule des 10 ans",    desc: "Une édition anniversaire numérotée, fabriquée au Portugal.",           color: "#FE0000" },
-    { tag: "02.", title: "Lifestyle & Sportswear", desc: "Des pièces pensées pour le court et pour la ville.",                    color: "#002EFE" },
-    { tag: "03.", title: "Qualité Champion",        desc: "Conçu en partenariat avec Champion — matières premium, coupe parfaite.", color: "#FED000" },
-  ];
-  return (
-    <section style={{ background: "#F2EEE6", padding: "36px 40px", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
-      <div className="shop-edito-grid" style={{ display: "flex", justifyContent: "space-between", gap: 32 }}>
-        {items.map((it, i) => (
-          <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", paddingLeft: 20, borderLeft: `3px solid ${it.color}`, flex: "1 1 0" }}>
-            <span style={{ ...ANTON, fontSize: 13, color: it.color, letterSpacing: 1.5, marginTop: 2 }}>{it.tag}</span>
-            <div>
-              <h3 style={{ ...ANTON, fontSize: 20, textTransform: "uppercase", color: "#0A0A0A", letterSpacing: 0.5, marginBottom: 5 }}>{it.title}</h3>
-              <p className="shop-edito-desc" style={{ ...MANROPE(400), fontSize: "clamp(0.85rem, 1.2vw, 1rem)", color: "rgba(0,0,0,0.55)", lineHeight: 1.5 }}>{it.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 export function PresentationSection() {
   const ref = useReveal();
@@ -96,25 +73,26 @@ export function PresentationSection() {
           <img src="/images/page-shop/lifestyle/lifestyle-dressed-1.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.15)" }} />
           <div style={{ position: "absolute", top: 28, left: 28 }}>
-            <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE · EDIT. 10·26</span>
+            <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE SUMMER EDITION 26</span>
           </div>
         </div>
         <div style={{ padding: "72px 60px", display: "flex", flexDirection: "column", justifyContent: "center", background: "#FE0000", position: "relative" }}>
-          <div style={{ position: "absolute", top: 24, right: 24, ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.45)", letterSpacing: 2 }}>MAISON FIRST TEAM</div>
-          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: 18 }}>Capsule anniversaire</span>
-          <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 96px)", lineHeight: 0.86, textTransform: "uppercase", letterSpacing: -2, color: "#fff", marginBottom: 20 }}>
-            10 pièces<br />pour 10 ans<br />de basket.
+          <div style={{ position: "absolute", top: 24, right: 24, ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.45)", letterSpacing: 2 }}>LE VESTIAIRE FIRST TEAM</div>
+          <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 96px)", lineHeight: 0.86, textTransform: "uppercase", letterSpacing: -2, color: "#fff", marginBottom: 12 }}>
+            Le basket<br />se porte.
           </h2>
+          <p style={{ ...MANROPE(700), fontSize: 14, color: "rgba(255,255,255,0.7)", marginBottom: 20, letterSpacing: 0.5 }}>First Team × Champion</p>
           <p style={{ ...MANROPE(400), fontSize: 14, lineHeight: 1.7, color: "rgba(255,255,255,0.85)", maxWidth: 440, marginBottom: 32 }}>
-            Du t-shirt brodé au short de basket, on a sorti la collection la plus dense de notre histoire. Chaque pièce porte un numéro, un nom, une histoire.
+            Une collab entre une bande de potes passionnés de basket et une marque qui a habillé les vestiaires NBA pendant des années.
           </p>
-          <a href="#produits" className="pill-btn pill-btn-black">Découvrir la capsule →</a>
+          <a href="#produits" className="pill-btn pill-btn-black">Découvrir le Vestiaire →</a>
         </div>
       </div>
     </section>
   );
 }
 
+// TODO: remplacer par les photos du shooting First Team × Champion (à venir)
 const LIFESTYLE_SLIDES = [
   "https://picsum.photos/seed/ls1/800/640", "https://picsum.photos/seed/ls2/800/640",
   "https://picsum.photos/seed/ls3/800/640", "https://picsum.photos/seed/ls4/800/640",
@@ -185,15 +163,14 @@ export function PhotoSlider() {
 export function InfoBand() {
   const items = [
     { icon: "📦", label: "Livraison offerte à partir de 100€" },
-    { icon: "🏀", label: "Drop des 10 ans de First Team" },
-    { icon: "★",  label: "En collaboration avec Champion" },
-    { icon: "🇫🇷", label: "Made in France" },
+    { icon: "🌿", label: "Coton bio" },
+    { icon: "★",  label: "Qualité supérieure" },
   ];
   return (
     <section style={{ background: "#FED000", borderTop: "2px solid #0A0A0A", borderBottom: "2px solid #0A0A0A" }}>
-      <div className="shop-info-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
+      <div className="shop-info-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0 }}>
         {items.map((it, i) => (
-          <div key={i} className="shop-info-item" style={{ padding: "28px 20px", display: "flex", alignItems: "center", gap: 12, borderRight: i < 3 ? "1px solid rgba(0,0,0,0.12)" : "none" }}>
+          <div key={i} className="shop-info-item" style={{ padding: "28px 20px", display: "flex", alignItems: "center", gap: 12, borderRight: i < 2 ? "1px solid rgba(0,0,0,0.12)" : "none" }}>
             <span style={{ fontSize: 20, flexShrink: 0 }}>{it.icon}</span>
             <span style={{ ...MANROPE(800), fontSize: "clamp(0.75rem, 1.1vw, 0.875rem)", color: "#0A0A0A", letterSpacing: 0.3, whiteSpace: "nowrap" }}>{it.label}</span>
           </div>
@@ -204,7 +181,7 @@ export function InfoBand() {
 }
 
 export function BigMarquee() {
-  const items = ["★ FIRST TEAM SHOP", "CAPSULE 10 ANS", "★ MADE IN FRANCE", "QUALITÉ CHAMPION", "★ MAISON FIRST TEAM", "DROP 2026"];
+  const items = ["INSPIRÉ DES STATES. PORTÉ EN FRANCE.", "★", "INSPIRÉ DES STATES. PORTÉ EN FRANCE.", "★", "INSPIRÉ DES STATES. PORTÉ EN FRANCE.", "★"];
   const doubled = [...items, ...items];
   return (
     <section style={{ background: "#0A0A0A", padding: "22px 0", overflow: "hidden", borderTop: "1px solid #1a1a1a" }}>
@@ -223,28 +200,33 @@ export function StudioSection() {
     <section style={{ background: "#F2EEE6", padding: "120px 40px" }}>
       <div ref={ref} className="reveal" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         <div>
-          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 16 }}>· Le studio</span>
+          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 16 }}>· LA COLLAB</span>
           <h2 style={{ ...AWESOME(400), fontStyle: "italic", fontSize: "clamp(40px, 5vw, 80px)", lineHeight: 0.95, letterSpacing: -1.5, color: "#0A0A0A", marginBottom: 28 }}>
-            Du basket,<br />cousu main.
+            Champion ×<br />First Team.
           </h2>
           <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.75, color: "rgba(0,0,0,0.65)", marginBottom: 18, maxWidth: 440 }}>
-            Chaque pièce de la Maison First Team est dessinée à Paris et fabriquée en France, dans des ateliers que nous visitons chaque saison. Coton bio, encres à base d'eau, pas de production en sur-stock.
+            Champion, c&apos;est la marque qu&apos;on voyait sur le dos de Jordan, de Pippen, des Seattle Sonics de Payton. Le C cousu sur les jerseys NBA pendant 10 ans, ceux qu&apos;on regardait gamins en se disant qu&apos;on aurait bien aimé en avoir un.
+          </p>
+          <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.75, color: "rgba(0,0,0,0.65)", marginBottom: 18, maxWidth: 440 }}>
+            Aujourd&apos;hui Champion est de retour. Coton bio, coupes propres, qualité premium, ce côté vintage qui rappelle les vestiaires des années 90 mais qui se porte très bien en 2026. Bref, ça nous parle, et c&apos;était une évidence de s&apos;associer avec cette marque iconique.
           </p>
           <p style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 36, fontStyle: "italic" }}>
-            &ldquo;Le merch, c&apos;est pas du goodies. C&apos;est du vêtement qu&apos;on a envie de porter dix ans.&rdquo;
+            &ldquo;On parle basket entre potes depuis 10 ans. Avec Champion, on a juste voulu essayer d&apos;être bien sapés et permettre à la communauté d&apos;en faire autant.&rdquo;
           </p>
-          <a href="#" className="pill-btn pill-btn-black">Notre fabrication →</a>
+          <a href="#" className="pill-btn pill-btn-black">La collab Champion →</a>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "260px 200px", gap: 14 }}>
           <div style={{ gridColumn: "1 / 2", gridRow: "1 / 3", position: "relative", background: "#FED000", overflow: "hidden" }}>
-            <img src="/images/page-shop/lifestyle/lifestyle-urban-1.jpg" alt="" style={{ position: "absolute", inset: 14, width: "calc(100% - 28px)", height: "calc(100% - 28px)", objectFit: "cover" }} />
+            {/* TODO: remplacer par les photos du shooting First Team × Champion (à venir) */}
+          <img src="/images/page-shop/lifestyle/lifestyle-urban-1.jpg" alt="" style={{ position: "absolute", inset: 14, width: "calc(100% - 28px)", height: "calc(100% - 28px)", objectFit: "cover" }} />
           </div>
           <div style={{ position: "relative", overflow: "hidden" }}>
+            {/* TODO: remplacer par les photos du shooting First Team × Champion (à venir) */}
             <img src="/images/page-shop/lifestyle/studio-1.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <div style={{ background: "#FE0000", padding: 18, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <span style={{ ...ANTON, fontSize: 48, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>100%</span>
-            <span style={{ ...MANROPE(700), fontSize: 11, color: "rgba(255,255,255,0.8)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 4 }}>Coton bio</span>
+            <span style={{ ...ANTON, fontSize: 40, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>ÉDITION</span>
+            <span style={{ ...MANROPE(700), fontSize: 11, color: "rgba(255,255,255,0.8)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 4 }}>LIMITÉE</span>
           </div>
         </div>
       </div>
