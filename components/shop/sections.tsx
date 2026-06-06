@@ -38,7 +38,7 @@ export function Hero() {
   const ref = useReveal();
   return (
     <section style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-      <img src="/images/page-shop/lifestyle/herro.png" alt="Vestiaire First Team — Summer Edition 26" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+      <img src="/images/page-shop/lifestyle/herro.jpeg" alt="Vestiaire First Team — Summer Edition 26" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.82) 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, display: "flex", zIndex: 5 }}>
         <div style={{ flex: 1, background: "#FE0000" }} />
