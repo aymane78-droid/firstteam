@@ -22,16 +22,12 @@ function useReveal() {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const TIMELINE = [
-  { year: "2016", label: "Les débuts",         desc: "Premières vidéos basket publiées, passion pure sans structure.",          accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
-  { year: "2017", label: "Premier studio",     desc: "Installation d'un setup fixe, débuts des émissions régulières.",          accent: "#002EFE", photo: "/images/homepage/photo-studio.png" },
-  { year: "2018", label: "10K abonnés",        desc: "Cap symbolique franchi, la communauté prend forme.",                      accent: "#FED000", photo: "/images/à propos/team-ft.jpg" },
-  { year: "2019", label: "Couverture NBA",     desc: "Premiers déplacements aux États-Unis pour couvrir la NBA.",               accent: "#FE0000", photo: "/images/à propos/erwan-thomas-batum.jpg" },
-  { year: "2020", label: "Création officielle",desc: "First Team devient une structure médiatique professionnelle.",            accent: "#002EFE", photo: "/images/à propos/erwan-thomas.jpg" },
-  { year: "2021", label: "100K YouTube",       desc: "Premier grand cap symbolique franchi sur la chaîne.",                    accent: "#FED000", photo: "/images/à propos/erwan-firstdayshow.jpg" },
-  { year: "2022", label: "Partenariat NBA FR", desc: "First Team devient partenaire officiel NBA France.",                      accent: "#FE0000", photo: "/images/à propos/lnb-dazn-club.jpg" },
-  { year: "2023", label: "Mondial Berlin",     desc: "Envoyés spéciaux en Allemagne pour la Coupe du Monde FIBA.",             accent: "#002EFE", photo: "/images/à propos/nbahouse-carmeloanthony.jpg" },
-  { year: "2024", label: "JO Paris + 500K",   desc: "Présents aux JO & 500K abonnés — premier média basket FR à franchir le cap.", accent: "#FED000", photo: "/images/à propos/thomas-tony-parker.jpg" },
-  { year: "2025", label: "Lancement Offense",  desc: "Nouvelle émission sport & culture avec SDM, Riolo & invités.",           accent: "#FE0000", photo: "/images/offense/offense-thumbnail.png" },
+  { year: "2016", label: "Les débuts",      desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
+  { year: "2017", label: "Premier studio",  desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "/images/homepage/photo-studio.png" },
+  { year: "2018", label: "10K abonnés",     desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "/images/à propos/team-ft.jpg" },
+  { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "/images/à propos/erwan-thomas-batum.jpg" },
+  { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "/images/à propos/erwan-thomas.jpg" },
+  { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "/images/à propos/erwan-firstdayshow.jpg" },
 ];
 
 const FONDATEURS = [
@@ -193,12 +189,12 @@ export default function QuiNousSommesPage() {
 
           {/* Title */}
           <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 88px)", lineHeight: 0.92, textTransform: "uppercase" as const, letterSpacing: "-1px", margin: "0 0 40px", display: "flex", flexWrap: "wrap" as const, alignItems: "center", gap: "0.15em" }}>
-            <span>Média</span>
+            <span style={{ color: "#0A0A0A" }}>Média</span>
             <span style={{ position: "relative" as const, display: "inline-block" }}>
               <span style={{ position: "absolute" as const, inset: "-4px -8px", background: "#FED000", transform: "skew(-6deg)", zIndex: 0, borderRadius: 2 }} />
               <span style={{ position: "relative" as const, zIndex: 1 }}>100%</span>
             </span>
-            <span>
+            <span style={{ color: "#0A0A0A" }}>
               Basket.
               <span style={{ display: "inline-block", width: 12, height: 12, borderRadius: "50%", background: "#FE0000", marginLeft: 6, verticalAlign: "middle", transform: "translateY(-4px)" }} />
             </span>
@@ -216,16 +212,16 @@ export default function QuiNousSommesPage() {
             {/* Left: lead text + pillars */}
             <div>
               <p style={{ ...MANROPE(400), fontSize: 18, lineHeight: 1.75, color: "#0A0A0A", marginBottom: 48 }}>
-                Fondé par d&apos;anciens basketteurs,{" "}
+                Fondé par des passionnés passés par les parquets,{" "}
                 <span style={{ background: "linear-gradient(transparent 62%, #FED000 62%, #FED000 92%, transparent 92%)" }}>
                   First Team est le premier média basket 100% indépendant en France
                 </span>
-                {" "}— on décrypte, on débat, on kiffe le jeu.
+                . Ici, on analyse, on débat et on fait vivre le jeu à notre façon.
               </p>
               {[
-                { num: "01", color: "#FE0000", title: "Indépendance", body: "Aucun actionnaire extérieur. Nos opinions n'appartiennent qu'à nous." },
-                { num: "02", color: "#FED000", title: "Profondeur", body: "Analyses tactiques, entretiens longs, contexte historique — pas de titres racoleurs." },
-                { num: "03", color: "#002EFE", title: "Communauté", body: "Construits avec notre audience, pour notre audience. Vous êtes First Team." },
+                { num: "01", color: "#FE0000", title: "Indépendance", body: "Un média libre, sans actionnaire extérieur. Nos avis, nos choix éditoriaux, notre ligne." },
+                { num: "02", color: "#FED000", title: "Profondeur", body: "Analyses tactiques, formats longs, entretiens, on va au fond des sujets, au-delà du simple highlight." },
+                { num: "03", color: "#002EFE", title: "Communauté", body: "First Team s'est construit avec sa communauté, pour sa communauté. Ici, le basket se vit ensemble." },
               ].map((p) => (
                 <div key={p.num} style={{ borderTop: "1px solid rgba(10,10,10,0.1)", paddingTop: 20, paddingBottom: 20, display: "grid", gridTemplateColumns: "48px 1fr", gap: 20, alignItems: "start" }}>
                   <span style={{ ...ANTON, fontSize: 22, color: p.color, lineHeight: 1 }}>{p.num}</span>
@@ -355,9 +351,8 @@ export default function QuiNousSommesPage() {
       {/* NOS PROJETS */}
       <section style={{ background: "#fff", padding: "100px 40px", borderTop: "1px solid #e5e5e5" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 16 }}>CE QU'ON A FAIT</p>
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#0A0A0A", letterSpacing: "-0.5px", marginBottom: 56 }}>
-            Nos projets<br />historiques.
+            Nos projets<br />majeurs.
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
             {PROJECTS.map((p, i) => (
@@ -395,9 +390,8 @@ export default function QuiNousSommesPage() {
       {/* L'ÉQUIPE — consultants & collaborateurs */}
       <section style={{ background: "#fff", padding: "100px 40px", borderTop: "1px solid #e5e5e5" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 16 }}>LES VISAGES</p>
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#0A0A0A", letterSpacing: "-0.5px", marginBottom: 56 }}>
-            Consultants &<br />collaborateurs.
+            L&apos;ÉQUIPE FIRST TEAM
           </h2>
 
           {/* Separator */}
@@ -419,7 +413,7 @@ export default function QuiNousSommesPage() {
             Travaillons<br />ensemble.
           </h2>
           <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.7, color: "rgba(255,255,255,0.5)", marginBottom: 40 }}>
-            Partenariats, brand deals, productions, événements — discutons de votre projet.
+            CONTACTEZ-NOUS POUR CONSTRUIRE UNE COLLABORATION SUR-MESURE
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" as const }}>
             <a href="mailto:contact@firstteam.fr" className="pill-btn pill-btn-yellow">Nous contacter →</a>

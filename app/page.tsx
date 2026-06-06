@@ -265,7 +265,7 @@ function WeeklyBanner() {
   return (
     <section style={{ background: "#fff", padding: "22px 40px" }}>
       <p style={{ ...ANTON, fontSize: "clamp(14px, calc((100vw - 80px) / 43), 30px)", color: "#0A0A0A", margin: 0, textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, letterSpacing: "0.5px" }}>
-        Des émissions sur l'actualité basket chaque semaine, tout au long de l'année
+        du contenu basket chaque jour, tout au long de l'année
       </p>
     </section>
   );
@@ -838,7 +838,7 @@ function SponsorsSection() {
           <p style={{ ...MANROPE(800), fontSize: 12, letterSpacing: 2, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>PARTENAIRES & SPONSORS</p>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap" as const, gap: 24 }}>
             <h2 style={{ ...ANTON, fontSize: "clamp(36px, 5vw, 64px)", lineHeight: 0.92, textTransform: "uppercase" as const, letterSpacing: "-0.5px", color: "#fff" }}>
-              Ils nous font<br />confiance.
+              Ils nous ont fait<br />confiance.
             </h2>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
               <Link href="/partenaires" className="pill-btn pill-btn-yellow">Voir nos sponsors →</Link>

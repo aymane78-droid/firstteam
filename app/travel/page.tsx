@@ -52,7 +52,7 @@ const KEY_POINTS = [
   { title: "Matchs NBA en live",    desc: "Places premium aux meilleures rencontres de la saison.",           color: "#FE0000" },
   { title: "Tout inclus",           desc: "Vol, hôtel, transports et activités organisés pour toi.",          color: "#ffffff" },
   { title: "Coulisses exclusives",  desc: "Accès backstage, rencontres et expériences uniques.",              color: "#002EFE" },
-  { title: "Communauté First Team", desc: "Voyage avec les passionnés de basket qui pensent comme toi.",     color: "#FED000" },
+  { title: "Communauté First Team", desc: "voyage avec les passionnés de basket qui aiment le sport comme toi",     color: "#FED000" },
 ];
 
 function TripCard({ trip }: { trip: typeof TRIPS[0] }) {
@@ -153,7 +153,7 @@ export default function TravelPage() {
         <div style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 48px 72px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 4, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 20 }}>FIRST TEAM TRAVELS</p>
           <h1 style={{ ...ANTON, fontSize: "clamp(3rem, 8vw, 7rem)", color: "#fff", textTransform: "uppercase" as const, lineHeight: 0.9, letterSpacing: "-1px", marginBottom: 32, maxWidth: 900 }}>
-            Le basket<br />en live,<br />ensemble.
+            VIS LE BASKET EN VRAI
           </h1>
           <p style={{ ...MANROPE(400), fontSize: 17, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: 40, maxWidth: 560 }}>
             Voyages organisés pour vivre les plus grands matchs NBA depuis les meilleures places. New York, Los Angeles, Las Vegas — avec la communauté First Team.
@@ -193,9 +193,9 @@ export default function TravelPage() {
 
           {/* Left — XXL title */}
           <div>
-            <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 6vw, 6rem)", color: "#fff", textTransform: "uppercase" as const, lineHeight: 0.9, letterSpacing: "-1px", marginBottom: 32 }}>
-              Vis le basket<br />
-              <span style={{ WebkitTextStroke: "2px rgba(255,255,255,0.25)", color: "transparent" }}>en vrai.</span>
+            <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 6vw, 6rem)", color: "#fff", textTransform: "uppercase" as const, lineHeight: 0.95, letterSpacing: "-1px", marginBottom: 32 }}>
+              FIRST TEAM<br />
+              <span style={{ ...MANROPE(300), fontSize: "clamp(1.8rem, 5.5vw, 5.5rem)", letterSpacing: "-1px" }}>TRAVEL</span>
             </h2>
             <p style={{ ...MANROPE(400), fontSize: 17, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, maxWidth: 440 }}>
               Des voyages pensés par des passionnés de basket, pour des passionnés de basket. Chaque destination, chaque match, chaque moment — tout est sélectionné pour que tu vives une expérience inoubliable.

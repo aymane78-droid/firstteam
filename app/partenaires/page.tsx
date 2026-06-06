@@ -13,7 +13,7 @@ const TOP_SPONSORS = [
     years: "2021 — 2023",
     category: "Sponsor principal",
     color: "#FE0000",
-    desc: "Winamax a été le partenaire historique de First Team pendant deux saisons NBA complètes. Ce partenariat structurant a permis à l'équipe de financer sa production, d'étoffer ses formats longs et d'asseoir sa place de premier média basket français. Une collaboration naturelle entre deux marques qui parlent au même public.",
+    desc: "Winamax a accompagné First Team pendant deux saisons NBA, en soutenant nos formats phares et notre développement éditorial. Un partenariat fort avec une marque qui partage notre passion du sport, du débat et des grands rendez-vous basket.",
   },
   {
     name: "Saily",
@@ -22,7 +22,7 @@ const TOP_SPONSORS = [
     years: "2024 — 2025",
     category: "Partenaire tech",
     color: "#002EFE",
-    desc: "Saily a accompagné First Team dans sa phase d'expansion internationale, permettant à l'équipe de couvrir les événements NBA aux États-Unis avec des solutions de connectivité fiables. Un partenariat tech aligné avec les déplacements de l'équipe à Las Vegas, New York et San Francisco.",
+    desc: "Saily a accompagné First Team dans ses déplacements NBA en permettant à l'équipe de rester connectée partout, des studios aux road trips aux États-Unis. Une solution simple et fiable pour produire du contenu et rester au contact de la communauté, même à des milliers de kilomètres du terrain.",
   },
   {
     name: "Champion",
@@ -64,14 +64,14 @@ export default function PartenairesPage() {
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "100px 40px 60px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>FIRST TEAM</p>
           <h1 style={{ ...ANTON, fontSize: "clamp(3rem, 8vw, 7rem)", lineHeight: 0.88, textTransform: "uppercase" as const, color: "#fff", letterSpacing: "-1px", marginBottom: 28 }}>
-            Nos<br /><span style={{ color: "#FE0000" }}>sponsors.</span>
+            Nos<br /><span style={{ color: "#FE0000" }}>partenaires.</span>
           </h1>
           <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.7, color: "rgba(255,255,255,0.6)", maxWidth: 500, marginBottom: 32 }}>
-            500K abonnés, 50M de vues, une communauté passionnée et engagée. Travaillez avec le premier média basket français.
+            +500K abonnés, +50M de vues et une communauté qui vit basket au quotidien. Faites entrer votre marque dans le jeu avec le premier média basket français.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-            <a href="mailto:contact@firstteam.fr" className="pill-btn pill-btn-red">Devenir sponsor →</a>
-            <Link href="/qui-nous-sommes" className="pill-btn pill-btn-outline-white">Qui sommes-nous ?</Link>
+            <a href="mailto:contact@firstteam.fr" className="pill-btn pill-btn-red">devenir partenaire</a>
+            <Link href="/qui-nous-sommes" className="pill-btn pill-btn-outline-white">découvrez first team</Link>
           </div>
         </div>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, display: "flex", height: 4, zIndex: 3 }}>
@@ -153,7 +153,7 @@ export default function PartenairesPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 16 }}>TOUTES NOS MARQUES</p>
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#fff", letterSpacing: "-0.5px", marginBottom: 64 }}>
-            Ils ont fait<br />confiance.
+            Ils nous ont fait<br />confiance.
           </h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#2a2a2a" }}>
@@ -186,7 +186,7 @@ export default function PartenairesPage() {
             Travaillons<br />ensemble.
           </h2>
           <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.7, color: "rgba(255,255,255,0.5)", marginBottom: 40 }}>
-            500K abonnés, 50M de vues, une communauté engagée. Contactez-nous pour construire une collaboration sur mesure.
+            CONTACTEZ-NOUS POUR CONSTRUIRE UNE COLLABORATION SUR-MESURE
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" as const }}>
             <a href="mailto:contact@firstteam.fr" className="pill-btn pill-btn-red">Nous contacter →</a>
