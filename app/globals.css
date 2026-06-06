@@ -350,9 +350,16 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-/* Section finale fin1/2/3 : mobile empilé */
+/* Section finale fin1/2/3 : bento mobile */
 @media (max-width: 768px) {
-  .studio-fin-grid { grid-template-columns: 1fr !important; }
+  .studio-fin-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 260px 180px !important;
+    aspect-ratio: auto !important;
+  }
+  .studio-fin-cell-large  { grid-column: 1 / 3 !important; grid-row: 1 !important; }
+  .studio-fin-cell-medium { grid-column: 1 !important;     grid-row: 2 !important; }
+  .studio-fin-cell-small  { grid-column: 2 !important;     grid-row: 2 !important; }
 }
 
 /* ══════════════════════════════════════════════════════════════
