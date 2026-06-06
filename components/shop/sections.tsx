@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const ANTON: React.CSSProperties = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number): React.CSSProperties => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -38,7 +38,7 @@ export function Hero() {
   const ref = useReveal();
   return (
     <section style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-      <img src="/images/page-shop/photo-accueil.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+      <img src="/images/page-shop/lifestyle/herro.jpeg" alt="Vestiaire First Team — Summer Edition 26" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.82) 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, display: "flex", zIndex: 5 }}>
         <div style={{ flex: 1, background: "#FE0000" }} />
@@ -70,7 +70,7 @@ export function PresentationSection() {
     <section style={{ background: "#0A0A0A", overflow: "hidden" }}>
       <div ref={ref} className="reveal" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", minHeight: 560 }}>
         <div style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
-          <img src="/images/page-shop/lifestyle/lifestyle-dressed-1.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <img src="/images/page-shop/lifestyle/section%202.jpeg" alt="Collection First Team × Champion" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.15)" }} />
           <div style={{ position: "absolute", top: 28, left: 28 }}>
             <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE SUMMER EDITION 26</span>
@@ -92,68 +92,35 @@ export function PresentationSection() {
   );
 }
 
-// TODO: remplacer par les photos du shooting First Team × Champion (à venir)
-const LIFESTYLE_SLIDES = [
-  "https://picsum.photos/seed/ls1/800/640", "https://picsum.photos/seed/ls2/800/640",
-  "https://picsum.photos/seed/ls3/800/640", "https://picsum.photos/seed/ls4/800/640",
-  "https://picsum.photos/seed/ls5/800/640", "https://picsum.photos/seed/ls6/800/640",
-  "https://picsum.photos/seed/ls7/800/640", "https://picsum.photos/seed/ls8/800/640",
+const DEROULANT_SLIDES = [
+  { src: "/images/page-shop/lifestyle/deroulant1.jpeg", alt: "First Team × Champion — look 1" },
+  { src: "/images/page-shop/lifestyle/deroulant2.jpeg", alt: "First Team × Champion — look 2" },
+  { src: "/images/page-shop/lifestyle/deroulant3.jpeg", alt: "First Team × Champion — look 3" },
+  { src: "/images/page-shop/lifestyle/deroulant4.jpeg", alt: "First Team × Champion — look 4" },
+  { src: "/images/page-shop/lifestyle/deroulant5.jpeg", alt: "First Team × Champion — look 5" },
+  { src: "/images/page-shop/lifestyle/deroulant6.jpeg", alt: "First Team × Champion — look 6" },
+  { src: "/images/page-shop/lifestyle/deroulant7.jpeg", alt: "First Team × Champion — look 7" },
 ];
-
-function usePerView(): number {
-  const [perView, setPerView] = useState(4);
-  useEffect(() => {
-    const update = () => setPerView(window.innerWidth < 768 ? 2 : window.innerWidth < 1024 ? 3 : 4);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-  return perView;
-}
+const SLIDE_WIDTH = 320;
+const SLIDE_GAP = 10;
 
 export function PhotoSlider() {
-  const perView = usePerView();
-  const n = LIFESTYLE_SLIDES.length;
-  const maxCurrent = Math.max(0, n - perView);
-  const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const touchStartX = useRef<number | null>(null);
-  const mouseStartX = useRef<number | null>(null);
-
-  useEffect(() => { setCurrent(c => Math.min(c, maxCurrent)); }, [maxCurrent]);
-  useEffect(() => {
-    if (paused) return;
-    const t = setTimeout(() => setCurrent(c => c >= maxCurrent ? 0 : c + 1), 4500);
-    return () => clearTimeout(t);
-  }, [current, paused, maxCurrent]);
-
-  const prev = () => setCurrent(c => Math.max(0, c - 1));
-  const next = () => setCurrent(c => Math.min(maxCurrent, c + 1));
-
+  const doubled = [...DEROULANT_SLIDES, ...DEROULANT_SLIDES];
+  const trackWidth = DEROULANT_SLIDES.length * (SLIDE_WIDTH + SLIDE_GAP);
   return (
-    <section style={{ background: "#0A0A0A", padding: "40px 0 52px" }} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <div style={{ position: "relative", overflow: "hidden" }}>
-        <div
-          className="photo-slider-track"
-          style={{ display: "flex", transform: `translateX(-${current * 100 / n}%)`, transition: "transform 0.55s cubic-bezier(0.4,0,0.2,1)" }}
-          onMouseDown={e => { mouseStartX.current = e.clientX; }}
-          onMouseUp={e => { if (mouseStartX.current === null) return; const dx = mouseStartX.current - e.clientX; if (Math.abs(dx) > 40) dx > 0 ? next() : prev(); mouseStartX.current = null; }}
-          onMouseLeave={() => { mouseStartX.current = null; }}
-          onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
-          onTouchEnd={e => { if (touchStartX.current === null) return; const dx = touchStartX.current - e.changedTouches[0].clientX; if (Math.abs(dx) > 50) dx > 0 ? next() : prev(); touchStartX.current = null; }}
-        >
-          {LIFESTYLE_SLIDES.map((src, i) => (
-            <div key={i} style={{ flex: `0 0 calc(100% / ${perView})`, aspectRatio: "5/4", padding: "0 5px", boxSizing: "border-box" }}>
-              <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 3 }} />
-            </div>
-          ))}
-        </div>
-        {current > 0 && <button onClick={prev} aria-label="Précédent" style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", zIndex: 2, background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.3)", color: "#fff", width: 48, height: 48, borderRadius: "50%", cursor: "pointer", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center", backdropFilter: "blur(4px)" }}>←</button>}
-        {current < maxCurrent && <button onClick={next} aria-label="Suivant" style={{ position: "absolute", right: 16, top: "50%", transform: "translateY(-50%)", zIndex: 2, background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.3)", color: "#fff", width: 48, height: 48, borderRadius: "50%", cursor: "pointer", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center", backdropFilter: "blur(4px)" }}>→</button>}
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 18 }}>
-        {Array.from({ length: maxCurrent + 1 }).map((_, i) => (
-          <button key={i} onClick={() => setCurrent(i)} aria-label={`Position ${i + 1}`} style={{ width: i === current ? 24 : 8, height: 8, borderRadius: 999, padding: 0, border: "none", cursor: "pointer", background: i === current ? "#fff" : "rgba(255,255,255,0.3)", transition: "all 0.3s ease" }} />
+    <section style={{ background: "#0A0A0A", padding: "40px 0 52px", overflow: "hidden" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: SLIDE_GAP,
+          width: trackWidth * 2,
+          animation: `marquee-photos 60s linear infinite`,
+        }}
+      >
+        {doubled.map((s, i) => (
+          <div key={i} style={{ flex: `0 0 ${SLIDE_WIDTH}px`, aspectRatio: "5/4" }}>
+            <img src={s.src} alt={s.alt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 3 }} />
+          </div>
         ))}
       </div>
     </section>
@@ -215,18 +182,19 @@ export function StudioSection() {
           </p>
           <a href="#" className="pill-btn pill-btn-black">La collab Champion →</a>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "260px 200px", gap: 14 }}>
-          <div style={{ gridColumn: "1 / 2", gridRow: "1 / 3", position: "relative", background: "#FED000", overflow: "hidden" }}>
-            {/* TODO: remplacer par les photos du shooting First Team × Champion (à venir) */}
-          <img src="/images/page-shop/lifestyle/lifestyle-urban-1.jpg" alt="" style={{ position: "absolute", inset: 14, width: "calc(100% - 28px)", height: "calc(100% - 28px)", objectFit: "cover" }} />
+        <div className="studio-fin-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+          <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden" }}>
+            <img src="/images/page-shop/lifestyle/fin1.jpeg" alt="First Team × Champion — editorial 1" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
-          <div style={{ position: "relative", overflow: "hidden" }}>
-            {/* TODO: remplacer par les photos du shooting First Team × Champion (à venir) */}
-            <img src="/images/page-shop/lifestyle/studio-1.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden" }}>
+            <img src="/images/page-shop/lifestyle/fin2.jpeg" alt="First Team × Champion — editorial 2" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
-          <div style={{ background: "#FE0000", padding: 18, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <span style={{ ...ANTON, fontSize: 40, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>ÉDITION</span>
-            <span style={{ ...MANROPE(700), fontSize: 11, color: "rgba(255,255,255,0.8)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 4 }}>LIMITÉE</span>
+          <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden" }}>
+            <img src="/images/page-shop/lifestyle/fin3.jpeg" alt="First Team × Champion — editorial 3" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            <div style={{ position: "absolute", bottom: 14, left: 14, background: "#FE0000", padding: "10px 14px", display: "flex", flexDirection: "column" }}>
+              <span style={{ ...ANTON, fontSize: 28, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>ÉDITION</span>
+              <span style={{ ...MANROPE(700), fontSize: 10, color: "rgba(255,255,255,0.85)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 4 }}>LIMITÉE</span>
+            </div>
           </div>
         </div>
       </div>

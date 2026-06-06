@@ -344,9 +344,16 @@ body {
   .shop-info-item:nth-child(-n+2) { border-bottom: 1px solid rgba(0,0,0,0.12); }
 }
 
-/* PhotoSlider: drag souris */
-.photo-slider-track { cursor: grab; user-select: none; }
-.photo-slider-track:active { cursor: grabbing; }
+/* PhotoMarquee: défilement continu */
+@keyframes marquee-photos {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Section finale fin1/2/3 : mobile empilé */
+@media (max-width: 768px) {
+  .studio-fin-grid { grid-template-columns: 1fr !important; }
+}
 
 /* ══════════════════════════════════════════════════════════════
    PLANNING DE LA SEMAINE — design Claude Design
