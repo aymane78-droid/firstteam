@@ -243,23 +243,6 @@ export default function QuiNousSommesPage() {
                 alt="First Team"
                 style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", objectFit: "cover" as const, borderRadius: 4 }}
               />
-              {/* Tricolor flag */}
-              <div style={{ position: "absolute" as const, top: 0, right: "4%", width: 56, height: 92, display: "flex", flexDirection: "column" as const, overflow: "hidden", borderRadius: "0 0 4px 4px" }}>
-                <div style={{ flex: 1, background: "#FE0000" }} />
-                <div style={{ flex: 1, background: "#FED000" }} />
-                <div style={{ flex: 1, background: "#002EFE" }} />
-              </div>
-              {/* Sticker */}
-              <div style={{
-                position: "absolute" as const, bottom: "22%", left: "-5%",
-                width: 100, height: 100, borderRadius: "50%",
-                background: "#FE0000", border: "4px dashed rgba(255,255,255,0.4)",
-                transform: "rotate(-12deg)",
-                display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center",
-                textAlign: "center" as const,
-              }}>
-                <span style={{ ...ANTON, fontSize: 13, color: "#fff", lineHeight: 1.2, textTransform: "uppercase" as const }}>Depuis<br />2014<br />Indépt.</span>
-              </div>
               {/* Quote card */}
               <div style={{
                 position: "absolute" as const, bottom: 0, right: 0, width: "52%",
@@ -267,7 +250,7 @@ export default function QuiNousSommesPage() {
               }}>
                 <span style={{ ...ANTON, fontSize: 48, color: "#FED000", lineHeight: 0.8, display: "block", marginBottom: 8 }}>"</span>
                 <p style={{ ...MANROPE(400), fontSize: 13, lineHeight: 1.6, color: "rgba(255,255,255,0.75)", margin: 0, fontStyle: "italic" }}>
-                  On parle basket comme entre potes, parce qu&apos;on vient du terrain.
+                  Le Média de Tous les Baskets
                 </p>
               </div>
             </div>

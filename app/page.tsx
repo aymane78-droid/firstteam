@@ -375,8 +375,6 @@ function OffenseBanner() {
     <section style={{ overflow: "hidden", position: "relative", minHeight: 720, width: "100%" }}>
       <img src="/images/offense/fond.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(219,82,36,0.80) 0%, rgba(219,82,36,0.80) 38%, rgba(219,82,36,0.55) 52%, rgba(219,82,36,0.14) 68%, rgba(219,82,36,0) 80%)", zIndex: 1 }} />
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "#EDDBC5", zIndex: 2 }} />
-
       <div ref={ref} className="reveal" style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 40px 120px 20px", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 60, alignItems: "start", position: "relative", zIndex: 2 }}>
         {/* Left */}
         <div>
@@ -762,12 +760,6 @@ function AboutSection() {
                 <div style={{ flex: 1, background: "#002EFE" }} />
               </div>
             </div>
-            {/* Tricolor flag */}
-            <div style={{ position: "absolute" as const, top: 0, right: "4%", width: 56, height: 92, display: "flex", flexDirection: "column" as const, overflow: "hidden", borderRadius: "0 0 4px 4px", zIndex: 2 }}>
-              <div style={{ flex: 1, background: "#FE0000" }} />
-              <div style={{ flex: 1, background: "#FED000" }} />
-              <div style={{ flex: 1, background: "#002EFE" }} />
-            </div>
             {/* Quote card */}
             <div style={{
               position: "absolute" as const, bottom: 0, right: 0, width: "52%",
@@ -775,7 +767,7 @@ function AboutSection() {
             }}>
               <span style={{ ...ANTON, fontSize: 48, color: "#FED000", lineHeight: 0.8, display: "block", marginBottom: 8 }}>"</span>
               <p style={{ ...MANROPE(400), fontSize: 13, lineHeight: 1.6, color: "rgba(255,255,255,0.75)", margin: 0, fontStyle: "italic" }}>
-                le média de tous les baskets
+                Le Média de Tous les Baskets
               </p>
             </div>
           </div>

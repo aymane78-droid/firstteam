@@ -192,7 +192,7 @@ const CONCEPTS: Record<string, {
 }> = {
   FDS: {
     title: "First Day Show",
-    color: "#FF4081",
+    color: "#FE7F5B",
     logo: "/images/emission/firstdayshow.png",
     desc: "Chaque matin après les matchs NBA, Thomas et Erwan analysent l'actualité de la nuit. Le format incontournable pour ne jamais rater une info.",
   },
