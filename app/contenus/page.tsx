@@ -30,8 +30,8 @@ const PLAYLISTS: Record<string, string> = {
   DT:    "PLZZC1FUiXWQaPFHYVXRAqAkLnEPoAUg95", // Double Team
   NBACG: "PLZZC1FUiXWQYC9Zxjo5PmU5y-SfF4j3JT", // NBA Classic Games
   ITW:   "PLZZC1FUiXWQaPH2xWbcOxw1bHgrm6VRGX", // Les Entretiens
-  // VLOG:  "à_ajouter",
-  // TLIST: "à_ajouter",
+  VLOG:  "PLZZC1FUiXWQbiI-tg7k6bb8tdYqUzY7dD",
+  TLIST: "PLZZC1FUiXWQYGwl-C1QZZC0RwM77MHD0v",
 };
 
 // ── Podcast platforms ──────────────────────────────────────────────────
@@ -86,8 +86,8 @@ const PLANNING_DAYS: PlanDay[] = [
       time: "20H00", status: "LIVE",
       logo: "/images/emission/libreantenne.png",
       nameMain: "Libre", nameAccent: "Antenne",
-      meta: "90 min · En direct",
-      desc: "L'émission phare du lundi soir. Analyse live de la nuit NBA, débats sans filtre.",
+      meta: "2h · En direct",
+      desc: "2h — On débat de l'actualité NBA avec vous, les auditeurs qu'on prend au téléphone tout au long de l'émission.",
       cta: "Rejoindre le live", href: "https://www.twitch.tv/firstteam_nba",
     }],
   },
@@ -98,8 +98,8 @@ const PLANNING_DAYS: PlanDay[] = [
       time: "09H00", status: "REPLAY", statusReplay: true,
       logo: "/images/emission/libreantenne.png",
       nameMain: "Libre", nameAccent: "Antenne",
-      meta: "2H · Podcast NBA",
-      desc: "Replay du podcast matinal. Toute l'actu NBA décortiquée, coups de cœur et coups de gueule.",
+      meta: "30 min · Replay",
+      desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
       cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
     }],
   },
@@ -111,18 +111,18 @@ const PLANNING_DAYS: PlanDay[] = [
         time: "09H00", status: "REPLAY", statusReplay: true,
         logo: "/images/emission/libreantenne.png",
         nameMain: "Libre", nameAccent: "Antenne",
-        meta: "2H · Podcast NBA",
-        desc: "Transferts, blessures et premiers verdicts de la nuit.",
+        meta: "30 min · Replay",
+        desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
         cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
       },
       {
         accent: "#002EFE", photoCls: "pt-ph-clutch",
-        time: "17H00", status: "NOUVEAU", statusReplay: true,
+        time: "17H00", status: "LIVE",
         logoText: "CLUTCH", logoTextColor: "#002EFE",
         nameMain: "Clutch", nameAccent: "Winamax",
-        meta: "45 min · Débat",
-        desc: "Trois analystes, dix minutes par thème, zéro langue de bois.",
-        cta: "Voir l'épisode", href: "https://youtube.com/@firstteam",
+        meta: "1h · En direct",
+        desc: "1h — On est en live avec Rémi Reverchon sur la WinaTV pour débattre de l'actualité NBA.",
+        cta: "Rejoindre le live", href: "https://youtube.com/@firstteam",
       },
     ],
   },
@@ -130,12 +130,12 @@ const PLANNING_DAYS: PlanDay[] = [
     label: "Jeudi",
     tiles: [{
       accent: "#FED000", photoCls: "pt-ph-violet",
-      time: "18H00", status: "LIVE",
+      time: "18H00", status: "INÉDIT", statusReplay: true,
       logo: "/images/emission/firstdayshow.png",
       nameMain: "First Day", nameAccent: "Show",
-      meta: "60 min · En direct",
-      desc: "Le rendez-vous fun du jeudi. Jeux, invités surprises — le basket entre potes.",
-      cta: "Rejoindre le live", href: "https://www.twitch.tv/firstteam_nba",
+      meta: "1h · Hebdo",
+      desc: "1h — Notre émission premium sur l'actualité basket : News, Débat, Palette, Quiz.",
+      cta: "Voir l'épisode", href: "https://www.twitch.tv/firstteam_nba",
     }],
   },
   {
@@ -143,11 +143,11 @@ const PLANNING_DAYS: PlanDay[] = [
     tiles: [
       {
         accent: "#FF6A2E", photoCls: "pt-ph-offense",
-        time: "09H00", status: "INÉDIT",
+        time: "12H00", status: "INÉDIT",
         logo: "/images/emission/OFFENSE.png",
         nameAccent: "Offense", isOffense: true,
-        meta: "42 min · Long format",
-        desc: "Portraits, immersions, long format — la chaîne de ceux qui osent.",
+        meta: "1h · Long format",
+        desc: "1h — Notre nouveau Talk Show autour de Tom Ciaravino avec des invités de prestige et des questions sur le sport que tout le monde se pose.",
         cta: "Voir l'épisode", href: "https://youtube.com/@offense",
       },
       {
@@ -155,8 +155,8 @@ const PLANNING_DAYS: PlanDay[] = [
         time: "17H00", status: "LIVE",
         logoText: "CLUTCH", logoTextColor: "#002EFE",
         nameMain: "Clutch", nameAccent: "Winamax",
-        meta: "45 min · En direct",
-        desc: "Bilan de semaine, montée en puissance et prévisions pour le week-end.",
+        meta: "1h · En direct",
+        desc: "1h — On est en live avec Rémi Reverchon sur la WinaTV pour débattre de l'actualité NBA.",
         cta: "Rejoindre le live", href: "https://youtube.com/@firstteam",
       },
     ],
@@ -168,8 +168,8 @@ const PLANNING_DAYS: PlanDay[] = [
       time: "09H00", status: "REPLAY", statusReplay: true,
       logo: "/images/emission/libreantenne.png",
       nameMain: "Libre", nameAccent: "Antenne",
-      meta: "2H · Podcast NBA",
-      desc: "Le récap de la semaine. Temps forts, prépa week-end NBA et vos messages.",
+      meta: "30 min · Replay",
+      desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
       cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
     }],
   },
@@ -192,43 +192,43 @@ const CONCEPTS: Record<string, {
 }> = {
   FDS: {
     title: "First Day Show",
-    color: "#002EFE",
+    color: "#FF4081",
     logo: "/images/emission/firstdayshow.png",
     desc: "Chaque matin après les matchs NBA, Thomas et Erwan analysent l'actualité de la nuit. Le format incontournable pour ne jamais rater une info.",
   },
   LA: {
     title: "Libre Antenne",
-    color: "#FE0000",
+    color: "#FED000",
     logo: "/images/emission/libreantenne.png",
     desc: "Le format signature de First Team. Débats sans filtre, opinions tranchées et basketball à l'état pur. Aucun sujet n'est tabou.",
   },
   NBACG: {
     title: "NBA Classic Games",
-    color: "#555555",
+    color: "#6C35FF",
     logo: "/images/emission/ClassicGames.png",
     desc: "Revivez les plus grands matchs de l'histoire NBA. Commentés, analysés et décortiqués par l'équipe First Team comme si vous y étiez.",
   },
   ITW: {
     title: "Entretiens",
-    color: "#C89000",
+    color: "#CD4D22",
     logo: "/images/emission/entretien.png",
     desc: "Face-à-face exclusifs avec les plus grandes légendes et acteurs du basketball mondial. Des conversations profondes et sans langue de bois.",
   },
   DT: {
     title: "Double Team",
-    color: "#6C35FF",
+    color: "#FE0000",
     logo: "/images/emission/double-team.png",
     desc: "Les duos légendaires du basketball passés à la loupe. Complicités, rivalités et moments de grâce — quand deux joueurs font l'histoire ensemble.",
   },
   VLOG: {
     title: "Vlog",
-    color: "#666666",
+    color: "#002EFE",
     logo: "/images/emission/vlog.png",
     desc: "Dans les coulisses de First Team. Déplacements, événements, moments inédits — vivez l'aventure avec nous.",
   },
   TLIST: {
     title: "Tierlist",
-    color: "#002EFE",
+    color: "#888888",
     logo: "/images/emission/tierlist.png",
     desc: "Qui est vraiment le meilleur ? L'équipe First Team classe, compare et tranche les débats intemporels du basketball.",
   },
@@ -547,7 +547,7 @@ export default function ContenusPage() {
                 </div>
                 <p style={{ ...MANROPE(400), fontSize: 15, lineHeight: 1.8, color: "rgba(255,255,255,0.75)", marginBottom: 28 }}>{active.desc}</p>
                 <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 14, background: active.color, color: active.color === "#C89000" ? "#0A0A0A" : "#fff", padding: "12px 24px", borderRadius: 999, textDecoration: "none", alignSelf: "flex-start" as const, transition: "transform 0.15s ease" }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 14, background: active.color, color: active.color === "#FED000" ? "#0A0A0A" : "#fff", padding: "12px 24px", borderRadius: 999, textDecoration: "none", alignSelf: "flex-start" as const, transition: "transform 0.15s ease" }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
                   onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
                 >

@@ -50,7 +50,7 @@ const PARTNER_LOGOS = [
 const BIG_SPONSORS = [
   { name: "Winamax",  color: "#FED000", src: "/images/partners/logo-winamax.png",  desc: "Partenaire officiel — paris sportifs & poker en ligne" },
   { name: "NBA",      color: "#FE0000", src: "/images/partners/NBA_Logo.svg.png",  desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
-  { name: "NordVPN",  color: "#002EFE", src: "/images/partners/nordvpn-logo.png",  desc: "Partenaire officiel — sécurité et confidentialité en ligne" },
+  { name: "FIBA",     color: "#002EFE", src: "/images/partners/fiba-logo.png",      desc: "Partenaire officiel — la fédération internationale de basketball" },
 ];
 
 const TEAM = [
@@ -372,7 +372,7 @@ function OffenseBanner() {
   const offenseThumb = latestOffense?.thumbnail || "/images/vignettes/edgar-yves.jpg";
 
   return (
-    <section style={{ overflow: "hidden", position: "relative", minHeight: 720 }}>
+    <section style={{ overflow: "hidden", position: "relative", minHeight: 720, width: "100%" }}>
       <img src="/images/offense/fond.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(219,82,36,0.80) 0%, rgba(219,82,36,0.80) 38%, rgba(219,82,36,0.55) 52%, rgba(219,82,36,0.14) 68%, rgba(219,82,36,0) 80%)", zIndex: 1 }} />
       <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "#EDDBC5", zIndex: 2 }} />
@@ -616,8 +616,10 @@ function RecentVideos() {
               })}
         </div>
 
-        {/* Social strip */}
-        <div style={{ marginTop: 48, display: "flex", gap: 16, flexWrap: "wrap" as const }}>
+      </div>
+
+      {/* Social strip */}
+      <div style={{ marginTop: 48, display: "flex", gap: 16, flexWrap: "wrap" as const }}>
           {[
             { label: "YouTube",   sub: "Plusieurs émissions basket chaque semaine", color: "#FE0000", href: "https://youtube.com/@firstteam",              icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> },
             { label: "Twitch",    sub: "La Libre Antenne NBA tous les lundis soirs", color: "#002EFE", href: "https://twitch.tv",                           icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> },
@@ -625,7 +627,7 @@ function RecentVideos() {
             { label: "TikTok",    sub: "Des extraits d'émissions et d'ITW tous les jours", color: "#FED000", href: "https://tiktok.com",                          icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> },
           ].map((s, i) => (
             <a key={i} href={s.href} target="_blank" rel="noopener noreferrer"
-              style={{ background: s.color, color: s.color === "#FED000" ? "#0A0A0A" : "#fff", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", borderRadius: 12, padding: "18px 24px", flex: "1 1 180px", textDecoration: "none", transition: "transform 0.15s ease" }}
+              style={{ background: s.color, color: s.color === "#FED000" ? "#0A0A0A" : "#fff", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", borderRadius: 12, padding: "18px 16px", flex: "1 1 180px", textDecoration: "none", transition: "transform 0.15s ease" }}
               onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
               onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
             >
@@ -634,7 +636,6 @@ function RecentVideos() {
               <span style={{ ...MANROPE(600), fontSize: 12, opacity: 0.8 }}>{s.sub}</span>
             </a>
           ))}
-        </div>
       </div>
       {modalVideoId && <VideoModal videoId={modalVideoId} onClose={() => setModalVideoId(null)} />}
     </section>
@@ -746,36 +747,35 @@ function AboutSection() {
 
           {/* Right: visual composition */}
           <div className="r-hide-mobile" style={{ position: "relative" as const, minHeight: 640 }}>
-            <img
-              src="/images/à propos/team-ft.jpg"
-              alt="First Team"
-              style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", objectFit: "cover" as const, borderRadius: 4 }}
-            />
+            {/* Fond jaune décalé — même implémentation que Podcast */}
+            <div style={{ position: "absolute" as const, top: 18, left: 18, width: "92%", height: "82%", background: "#FED000", borderRadius: 4, zIndex: 0 }} />
+            {/* Photo + liseré tricolore */}
+            <div style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", borderRadius: 4, overflow: "hidden", zIndex: 1 }}>
+              <img
+                src="/images/à propos/team-ft.jpg"
+                alt="First Team"
+                style={{ width: "100%", height: "100%", objectFit: "cover" as const, display: "block" }}
+              />
+              <div style={{ position: "absolute" as const, bottom: 0, left: 0, right: 0, height: 6, display: "flex", zIndex: 2 }}>
+                <div style={{ flex: 1, background: "#FE0000" }} />
+                <div style={{ flex: 1, background: "#FED000" }} />
+                <div style={{ flex: 1, background: "#002EFE" }} />
+              </div>
+            </div>
             {/* Tricolor flag */}
-            <div style={{ position: "absolute" as const, top: 0, right: "4%", width: 56, height: 92, display: "flex", flexDirection: "column" as const, overflow: "hidden", borderRadius: "0 0 4px 4px" }}>
+            <div style={{ position: "absolute" as const, top: 0, right: "4%", width: 56, height: 92, display: "flex", flexDirection: "column" as const, overflow: "hidden", borderRadius: "0 0 4px 4px", zIndex: 2 }}>
               <div style={{ flex: 1, background: "#FE0000" }} />
               <div style={{ flex: 1, background: "#FED000" }} />
               <div style={{ flex: 1, background: "#002EFE" }} />
             </div>
-            {/* Sticker */}
-            <div style={{
-              position: "absolute" as const, bottom: "22%", left: "-5%",
-              width: 100, height: 100, borderRadius: "50%",
-              background: "#FE0000", border: "4px dashed rgba(255,255,255,0.4)",
-              transform: "rotate(-12deg)",
-              display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center",
-              textAlign: "center" as const,
-            }}>
-              <span style={{ ...ANTON, fontSize: 13, color: "#fff", lineHeight: 1.2, textTransform: "uppercase" as const }}>Depuis<br />2014<br />Indépt.</span>
-            </div>
             {/* Quote card */}
             <div style={{
               position: "absolute" as const, bottom: 0, right: 0, width: "52%",
-              background: "#0A0A0A", borderRadius: 4, padding: "24px 20px",
+              background: "#0A0A0A", borderRadius: 4, padding: "24px 20px", zIndex: 2,
             }}>
               <span style={{ ...ANTON, fontSize: 48, color: "#FED000", lineHeight: 0.8, display: "block", marginBottom: 8 }}>"</span>
               <p style={{ ...MANROPE(400), fontSize: 13, lineHeight: 1.6, color: "rgba(255,255,255,0.75)", margin: 0, fontStyle: "italic" }}>
-                On parle basket comme entre potes, parce qu&apos;on vient du terrain.
+                le média de tous les baskets
               </p>
             </div>
           </div>
@@ -819,8 +819,7 @@ function TeamCard({ member }: { member: typeof TEAM[0] }) {
         <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
       </div>
       <div style={{ padding: "24px 28px" }}>
-        <span style={{ ...ANTON, fontSize: 13, color: member.color, letterSpacing: 1 }}>{member.num}</span>
-        <h3 style={{ ...ANTON, fontSize: 26, letterSpacing: "0.5px", textTransform: "uppercase" as const, color: "#fff", marginTop: 4, marginBottom: 6 }}>{member.name}</h3>
+        <h3 style={{ ...ANTON, fontSize: 26, letterSpacing: "0.5px", textTransform: "uppercase" as const, color: "#fff", marginBottom: 6 }}>{member.name}</h3>
         <p style={{ ...MANROPE(600), fontSize: 13, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{member.role}</p>
       </div>
     </div>
