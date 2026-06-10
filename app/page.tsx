@@ -6,6 +6,7 @@ import { VideoModal } from "./components/VideoModal";
 import MediaBasketSection from "./components/MediaBasketSection";
 import { fetchLatestVideos, fetchVideosByIds, fetchLatestLongVideos, FIRST_TEAM_CHANNEL_ID, OFFENSE_CHANNEL_ID } from "./lib/youtube";
 import type { YTVideo } from "./lib/youtube";
+import { TRAVEL_ENABLED } from "./lib/flags";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -107,14 +108,14 @@ const NAV_LINKS = [
   { label: "Nos Contenus",  href: "/contenus" },
   { label: "L'équipe",      href: "/qui-nous-sommes" },
   { label: "Sponsors",      href: "/partenaires" },
-  { label: "Travel",        href: "/travel" },
+  ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel" }] : []),
 ];
 
 const CATEGORIES = [
   { label: "Contenus",    href: "/contenus",        photo: "/images/differentes-pages/contenus.jpg" },
   { label: "L'équipe",    href: "/qui-nous-sommes", photo: "/images/differentes-pages/equipe.jpg" },
   { label: "Merch",       href: "/shop",             photo: "/images/differentes-pages/merchandising.jpg" },
-  { label: "Travel",      href: "/travel",           photo: "/images/differentes-pages/travel.jpg" },
+  ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel", photo: "/images/differentes-pages/travel.jpg" }] : []),
   { label: "Partenaires", href: "/partenaires",     photo: "/images/differentes-pages/partenaires.jpg" },
 ];
 
@@ -782,16 +783,9 @@ function MerchSection() {
             <span className="pill-btn pill-btn-yellow">Découvrir la boutique →</span>
           </div>
         </Link>
-        <Link href="/travel" aria-label="Voir la page Travel"
-          style={{ display: "block", background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none", transition: "transform 0.2s ease, border-color 0.2s ease", cursor: "pointer" }}
-          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(254,0,0,0.4)"; }}
-          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(255,255,255,0.1)"; }}
-        >
+        <div style={{ position: "relative", display: "block", background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", opacity: TRAVEL_ENABLED ? 1 : 0.75, cursor: TRAVEL_ENABLED ? "pointer" : "not-allowed" }}>
           <div style={{ position: "relative", width: "100%", height: 280, overflow: "hidden" }}>
-            <img src="/images/voyage/new%20york.avif" alt="First Team Travels — New York" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", display: "block", transition: "transform 0.5s ease" }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
-            />
+            <img src="/images/voyage/new%20york.avif" alt="First Team Travels — New York" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", display: "block" }} />
           </div>
           <div style={{ padding: "32px 36px 36px" }}>
             <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 2, textTransform: "uppercase" as const, color: "#FE0000", display: "block", marginBottom: 12 }}>VOYAGES</span>
@@ -799,7 +793,14 @@ function MerchSection() {
             <p style={{ ...MANROPE(400), fontSize: 14, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.6 }}>Las Vegas, Paris, Madrid — les meilleurs matchs, avec la communauté First Team à tes côtés.</p>
             <span className="pill-btn pill-btn-red">Voir les voyages →</span>
           </div>
-        </Link>
+          {!TRAVEL_ENABLED && (
+            <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.65)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 10 }}>
+              <span style={{ ...ANTON, fontSize: "clamp(22px, 3.5vw, 38px)", color: "#FED000", textTransform: "uppercase" as const, letterSpacing: 2, textAlign: "center" as const, lineHeight: 1.1, padding: "0 24px" }}>
+                Disponible<br />très bientôt
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

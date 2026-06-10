@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { TRAVEL_ENABLED } from "../lib/flags";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -131,6 +133,10 @@ function TripCard({ trip }: { trip: typeof TRIPS[0] }) {
 }
 
 export default function TravelPage() {
+  const router = useRouter();
+  useEffect(() => { if (!TRAVEL_ENABLED) router.replace("/"); }, []);
+  if (!TRAVEL_ENABLED) return null;
+
   return (
     <main style={{ background: "#0A0A0A", minHeight: "100vh" }}>
 

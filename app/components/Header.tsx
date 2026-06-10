@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { TRAVEL_ENABLED } from "../lib/flags";
 
 const ANTON = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -12,7 +13,7 @@ const NAV_LINKS = [
   { label: "L'équipe",     href: "/qui-nous-sommes" },
   { label: "Sponsors",     href: "/partenaires" },
   { label: "Shop",         href: "/shop" },
-  { label: "Travel",       href: "/travel" },
+  ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel" }] : []),
 ];
 
 export default function Header() {
