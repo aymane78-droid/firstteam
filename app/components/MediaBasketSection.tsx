@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect } from "react";
+import { CldImage } from "next-cloudinary";
 import Link from "next/link";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
@@ -101,10 +102,13 @@ export default function MediaBasketSection() {
             <div style={{ position: "absolute" as const, top: 18, left: 18, width: "92%", height: "82%", background: "#FED000", borderRadius: 4, zIndex: 0 }} />
             {/* Photo + liseré tricolore */}
             <div style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", borderRadius: 4, overflow: "hidden", zIndex: 1 }}>
-              <img
-                src="/images/à propos/team-ft.jpg"
+              <CldImage
+                src="L'ÉQUIPE/SectionÀPropos"
                 alt="First Team"
-                style={{ width: "100%", height: "100%", objectFit: "cover" as const, display: "block" }}
+                fill
+                style={{ objectFit: "cover" as const }}
+                format="auto"
+                quality="auto"
               />
               <div style={{ position: "absolute" as const, bottom: 0, left: 0, right: 0, height: 6, display: "flex", zIndex: 2 }}>
                 <div style={{ flex: 1, background: "#FE0000" }} />

@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import Link from "next/link";
 import MediaBasketSection from "../components/MediaBasketSection";
 
@@ -23,38 +23,37 @@ function useReveal() {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const TIMELINE = [
-  { year: "2016", label: "Les débuts",      desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
-  { year: "2017", label: "Premier studio",  desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "/images/homepage/photo-studio.png" },
-  { year: "2018", label: "10K abonnés",     desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "/images/à propos/team-ft.jpg" },
-  { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "/images/à propos/erwan-thomas-batum.jpg" },
-  { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "/images/à propos/erwan-thomas.jpg" },
-  { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "/images/à propos/erwan-firstdayshow.jpg" },
-  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
+  { year: "2016", label: "Les débuts",      desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "L'ÉQUIPE/FRISE/2016" },
+  { year: "2017", label: "Premier studio",  desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "L'ÉQUIPE/FRISE/2017" },
+  { year: "2018", label: "10K abonnés",     desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "L'ÉQUIPE/FRISE/2018" },
+  { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "L'ÉQUIPE/FRISE/2019" },
+  { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "L'ÉQUIPE/FRISE/2020" },
+  { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "L'ÉQUIPE/FRISE/2021" },
+  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "L'ÉQUIPE/FRISE/2022 (NBA)" },
 ];
 
 const FONDATEURS = [
-  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: "/images/equipe/thomas.jpg" },
-  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "/images/equipe/erwan.jpg" },
-  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "/images/equipe/stephen.png" },
+  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: "L'ÉQUIPE/ROSTER/Thomas" },
+  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "L'ÉQUIPE/ROSTER/Erwan" },
+  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "L'ÉQUIPE/ROSTER/Stephen" },
 ];
 
 const CONSULTANTS = [
-  { name: "Jeremy Raharifidy", role: "Consultant",  detail: "Expert tactique",  photo: "/images/à propos/erwan-thomas.jpg" },
-  { name: "Léo Tilhet",        role: "Consultant",  detail: "Culture basket",   photo: "/images/à propos/lnb-dazn-club.jpg" },
-  { name: "Yanis Gieli",       role: "Consultant",  detail: "Stats & data",     photo: "/images/basket/player-portrait.jpg" },
-  { name: "Chris Roche",       role: "Consultant",  detail: "International",    photo: "/images/basket/studio-media.jpg" },
-  { name: "Thomas Larrouquis", role: "Reporter",    detail: "Terrain & live",   photo: "/images/à propos/thomas-larrouquis-firstdayshow.jpg" },
-  { name: "Tom Ciaravino",     role: "Animateur",   detail: "Offense — Host",   photo: "/images/vignettes/edgar-yves.jpg" },
+  { name: "Jeremy Raharifidy", role: "Consultant",  detail: "Expert tactique",  photo: "L'ÉQUIPE/COLLABORATEURS/Jeremy" },
+  { name: "Léo Tilhet",        role: "Consultant",  detail: "Culture basket",   photo: "L'ÉQUIPE/COLLABORATEURS/Leo" },
+  { name: "Yanis Gieli",       role: "Consultant",  detail: "Stats & data",     photo: "L'ÉQUIPE/COLLABORATEURS/Yanis" },
+  { name: "Chris Roche",       role: "Consultant",  detail: "International",    photo: "L'ÉQUIPE/COLLABORATEURS/Chris" },
+  { name: "Thomas Larrouquis", role: "Reporter",    detail: "Terrain & live",   photo: "L'ÉQUIPE/COLLABORATEURS/Thomas Larrouquis" },
+  { name: "Tom Ciaravino",     role: "Animateur",   detail: "Offense — Host",   photo: "L'ÉQUIPE/COLLABORATEURS/Tom" },
 ];
 
 const PROJECTS = [
-  { title: "NBA Classic Games",                  img: "/images/emission/ClassicGames.png" },
-  { title: "JO 2024 à Paris",                    img: "/images/à propos/erwan-firstdayshow.jpg" },
-  // TODO: remplacer l'image par une photo CDM 2023 Philippines
-  { title: "CDM 2023 aux Philippines",           img: "/images/à propos/nbahouse-carmeloanthony.jpg" },
-  { title: "Victor Wembanyama chez First Team",  img: "/images/vignettes/itw-wemby.png" },
-  { title: "NBA x First Team",                   img: "/images/à propos/erwan-thomas-batum.jpg" },
-  { title: "Offense",                            img: "/images/offense/offense-thumbnail.png" },
+  { title: "NBA Classic Games",                  img: "L'ÉQUIPE/PROJETS MAJEURS/ClassicGames" },
+  { title: "JO 2024 à Paris",                    img: "L'ÉQUIPE/PROJETS MAJEURS/JO 2024" },
+  { title: "CDM 2023 aux Philippines",           img: "L'ÉQUIPE/PROJETS MAJEURS/CDM 2023" },
+  { title: "Victor Wembanyama chez First Team",  img: "L'ÉQUIPE/PROJETS MAJEURS/Wembanyama First Team" },
+  { title: "NBA x First Team",                   img: "L'ÉQUIPE/PROJETS MAJEURS/NBA First Team" },
+  { title: "Offense",                            img: "L'ÉQUIPE/PROJETS MAJEURS/offense" },
 ];
 
 const KPI = [
@@ -75,8 +74,8 @@ function FounderCard({ member }: { member: typeof FONDATEURS[0] }) {
       onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
     >
       <div style={{ height: 6, background: member.color }} />
-      <div style={{ height: 300, overflow: "hidden" }}>
-        <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
+      <div style={{ height: 300, overflow: "hidden", position: "relative" as const }}>
+        <CldImage src={member.photo} alt={member.name} fill style={{ objectFit: "cover", objectPosition: "top" }} format="auto" quality="auto" />
       </div>
       <div style={{ padding: "24px 28px" }}>
         <span style={{ ...ANTON, fontSize: 13, color: member.color, letterSpacing: 1 }}>{member.num}</span>
@@ -92,14 +91,11 @@ function ConsultantCard({ member }: { member: typeof CONSULTANTS[0] }) {
   const ref = useReveal();
   return (
     <div ref={ref} className="reveal" style={{ cursor: "pointer" }}
-      onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img"); if (img) img.style.transform = "scale(1.06)"; }}
-      onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img"); if (img) img.style.transform = "scale(1)"; }}
+      onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) { img.style.transform = "scale(1.06)"; img.style.filter = "grayscale(0%)"; } }}
+      onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) { img.style.transform = "scale(1)"; img.style.filter = "grayscale(40%)"; } }}
     >
-      <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 4, marginBottom: 12, background: "#1a1a1a" }}>
-        <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }}
-          onMouseEnter={e => (e.currentTarget as HTMLElement).style.filter = "grayscale(0%)"}
-          onMouseLeave={e => (e.currentTarget as HTMLElement).style.filter = "grayscale(40%)"}
-        />
+      <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 4, marginBottom: 12, background: "#1a1a1a", position: "relative" as const }}>
+        <CldImage src={member.photo} alt={member.name} fill style={{ objectFit: "cover", objectPosition: "top", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }} format="auto" quality="auto" />
       </div>
       <p style={{ ...ANTON, fontSize: 14, color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 2 }}>{member.name}</p>
       <p style={{ ...MANROPE(600), fontSize: 11, color: "#FE0000", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 2 }}>{member.role}</p>
@@ -145,7 +141,7 @@ export default function QuiNousSommesPage() {
 
       {/* HERO HEADER */}
       <section style={{ position: "relative", minHeight: 520, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <img src="/images/à propos/team-ft.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <CldImage src="L'ÉQUIPE/HEADER" alt="" fill style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.9) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "120px 40px 70px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -224,7 +220,7 @@ export default function QuiNousSommesPage() {
                   >
                     {/* Photo — apparaît au hover */}
                     <div style={{ overflow: "hidden", borderRadius: 4, marginBottom: 8, width: "calc(100% - 16px)", maxHeight: isHov ? 130 : 0, opacity: isHov ? 1 : 0, transition: "max-height 0.35s ease, opacity 0.25s ease" }}>
-                      <img src={item.photo} alt="" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
+                      <CldImage src={item.photo} alt="" width={264} height={148} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} format="auto" quality="auto" />
                     </div>
                     <p style={{ ...ANTON, fontSize: isHov ? 52 : 40, color: isHov ? item.accent : "#fff", lineHeight: 1, marginBottom: 10, transition: "font-size 0.2s ease, color 0.2s ease" }}>{item.year}</p>
                     <div style={{ position: "relative" as const, zIndex: 10, width: 14, height: 14, borderRadius: "50%", marginBottom: 20, flexShrink: 0, background: item.accent, boxShadow: `0 0 0 4px #111, 0 0 0 6px ${item.accent}`, transform: isHov ? "scale(1.4)" : "scale(1)", transition: "transform 0.2s ease" }} />
@@ -252,7 +248,7 @@ export default function QuiNousSommesPage() {
                 onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1.06)"; }}
                 onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1)"; }}
               >
-                <img src={p.img} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }} />
+                <CldImage src={p.img} alt={p.title} fill style={{ objectFit: "cover", transition: "transform 0.5s ease" }} format="auto" quality="auto" />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 20px" }}>
                   <p style={{ ...ANTON, fontSize: 15, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 0.5, margin: 0 }}>{p.title}</p>
