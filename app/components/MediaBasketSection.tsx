@@ -103,7 +103,7 @@ export default function MediaBasketSection() {
             {/* Photo + liseré tricolore */}
             <div style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", borderRadius: 4, overflow: "hidden", zIndex: 1 }}>
               <CldImage
-                src="L'ÉQUIPE/SectionÀPropos"
+                src="SectionA%CC%80Propos_nathyt"
                 alt="First Team"
                 fill
                 style={{ objectFit: "cover" as const }}

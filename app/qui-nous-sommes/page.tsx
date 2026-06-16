@@ -23,37 +23,37 @@ function useReveal() {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const TIMELINE = [
-  { year: "2016", label: "Les débuts",      desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "L'ÉQUIPE/FRISE/2016" },
-  { year: "2017", label: "Premier studio",  desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "L'ÉQUIPE/FRISE/2017" },
-  { year: "2018", label: "10K abonnés",     desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "L'ÉQUIPE/FRISE/2018" },
-  { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "L'ÉQUIPE/FRISE/2019" },
-  { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "L'ÉQUIPE/FRISE/2020" },
-  { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "L'ÉQUIPE/FRISE/2021" },
-  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "L'ÉQUIPE/FRISE/2022 (NBA)" },
+  { year: "2016", label: "Les débuts",      desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "2016_xtfbef" },
+  { year: "2017", label: "Premier studio",  desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "2017_rygcmk" },
+  { year: "2018", label: "10K abonnés",     desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "2018_ae9zkw" },
+  { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "2019_vlchbi" },
+  { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "2020_pzmdm3" },
+  { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "2021_evnbkr" },
+  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "2022_NBA_vk68bp" },
 ];
 
 const FONDATEURS = [
-  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: "L'ÉQUIPE/ROSTER/Thomas" },
-  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "L'ÉQUIPE/ROSTER/Erwan" },
-  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "L'ÉQUIPE/ROSTER/Stephen" },
+  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: "0402_HOME_cwrvbm" },
+  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "Erwan_ctxyao" },
+  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "0403_HOME_yagu4z" },
 ];
 
 const CONSULTANTS = [
-  { name: "Jeremy Raharifidy", role: "Consultant",  detail: "Expert tactique",  photo: "L'ÉQUIPE/COLLABORATEURS/Jeremy" },
-  { name: "Léo Tilhet",        role: "Consultant",  detail: "Culture basket",   photo: "L'ÉQUIPE/COLLABORATEURS/Leo" },
-  { name: "Yanis Gieli",       role: "Consultant",  detail: "Stats & data",     photo: "L'ÉQUIPE/COLLABORATEURS/Yanis" },
-  { name: "Chris Roche",       role: "Consultant",  detail: "International",    photo: "L'ÉQUIPE/COLLABORATEURS/Chris" },
-  { name: "Thomas Larrouquis", role: "Reporter",    detail: "Terrain & live",   photo: "L'ÉQUIPE/COLLABORATEURS/Thomas Larrouquis" },
-  { name: "Tom Ciaravino",     role: "Animateur",   detail: "Offense — Host",   photo: "L'ÉQUIPE/COLLABORATEURS/Tom" },
+  { name: "Jeremy Raharifidy", role: "Consultant",  detail: "Expert tactique",  photo: "Jeremy_bjsruo" },
+  { name: "Léo Tilhet",        role: "Consultant",  detail: "Culture basket",   photo: "Leo_o5hwxm" },
+  { name: "Yanis Gieli",       role: "Consultant",  detail: "Stats & data",     photo: "Yanis_e31tz0" },
+  { name: "Chris Roche",       role: "Consultant",  detail: "International",    photo: "Chris_yury30" },
+  { name: "Thomas Larrouquis", role: "Reporter",    detail: "Terrain & live",   photo: "Thomas_Larrouquis_zerroz" },
+  { name: "Tom Ciaravino",     role: "Animateur",   detail: "Offense — Host",   photo: "Tom_um4yoo" },
 ];
 
 const PROJECTS = [
-  { title: "NBA Classic Games",                  img: "L'ÉQUIPE/PROJETS MAJEURS/ClassicGames" },
-  { title: "JO 2024 à Paris",                    img: "L'ÉQUIPE/PROJETS MAJEURS/JO 2024" },
-  { title: "CDM 2023 aux Philippines",           img: "L'ÉQUIPE/PROJETS MAJEURS/CDM 2023" },
-  { title: "Victor Wembanyama chez First Team",  img: "L'ÉQUIPE/PROJETS MAJEURS/Wembanyama First Team" },
-  { title: "NBA x First Team",                   img: "L'ÉQUIPE/PROJETS MAJEURS/NBA First Team" },
-  { title: "Offense",                            img: "L'ÉQUIPE/PROJETS MAJEURS/offense" },
+  { title: "NBA Classic Games",                  img: "ClassicGames_mf1fan" },
+  { title: "JO 2024 à Paris",                    img: "JO_2024_c0omhy" },
+  { title: "CDM 2023 aux Philippines",           img: "CDM_2023_mdnnz2" },
+  { title: "Victor Wembanyama chez First Team",  img: "Wembanyama_First_Team_tm4zba" },
+  { title: "NBA x First Team",                   img: "NBA_First_Team_gxgoxh" },
+  { title: "Offense",                            img: "offense_ivq75c" },
 ];
 
 const KPI = [
@@ -141,7 +141,7 @@ export default function QuiNousSommesPage() {
 
       {/* HERO HEADER */}
       <section style={{ position: "relative", minHeight: 520, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <CldImage src="L'ÉQUIPE/HEADER" alt="" fill style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
+        <CldImage src="HEADER_htiwl1" alt="" fill style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.9) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "120px 40px 70px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>FIRST TEAM</p>
