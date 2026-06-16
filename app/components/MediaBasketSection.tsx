@@ -47,7 +47,7 @@ export default function MediaBasketSection() {
         </div>
 
         {/* Title */}
-        <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 88px)", lineHeight: 0.92, textTransform: "uppercase" as const, letterSpacing: "-1px", margin: "0 0 40px", display: "flex", flexWrap: "wrap" as const, alignItems: "center", gap: "0.15em" }}>
+        <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 88px)", lineHeight: 0.92, textTransform: "uppercase" as const, letterSpacing: "-1px", margin: "0 0 40px", display: "flex", flexWrap: "wrap" as const, alignItems: "center", gap: "0.15em", color: "#0A0A0A" }}>
           <span>Média</span>
           <span style={{ position: "relative" as const, display: "inline-block" }}>
             <span style={{ position: "absolute" as const, inset: "-4px -8px", background: "#FED000", transform: "skew(-6deg)", zIndex: 0, borderRadius: 2 }} />

@@ -29,7 +29,7 @@ const TIMELINE = [
   { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "/images/à propos/erwan-thomas-batum.jpg" },
   { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "/images/à propos/erwan-thomas.jpg" },
   { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "/images/à propos/erwan-firstdayshow.jpg" },
-  { year: "2022", label: "Premier NBA Paris Game", desc: "TODO — description à compléter (texte survol frise 2022)", accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
+  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
 ];
 
 const FONDATEURS = [
@@ -48,12 +48,13 @@ const CONSULTANTS = [
 ];
 
 const PROJECTS = [
-  { title: "NBA Classic Games",   desc: "Grands classiques NBA commentés par First Team.",    img: "/images/emission/ClassicGames.png" },
-  { title: "JO Paris 2024",       desc: "Coverage complet des épreuves basketball.",          img: "/images/à propos/erwan-firstdayshow.jpg" },
-  { title: "Mondial Berlin 2023", desc: "Envoyés spéciaux pour la Coupe du Monde FIBA.",      img: "/images/à propos/nbahouse-carmeloanthony.jpg" },
-  { title: "Wemby x First Team",  desc: "Suivi exclusif de Victor Wembanyama en NBA.",        img: "/images/vignettes/itw-wemby.png" },
-  { title: "Partenariat NBA FR",  desc: "First Team — partenaire officiel NBA France.",       img: "/images/à propos/erwan-thomas-batum.jpg" },
-  { title: "Offense",             desc: "Nouvelle émission sport & culture lancée en 2025.",  img: "/images/offense/offense-thumbnail.png" },
+  { title: "NBA Classic Games",                  img: "/images/emission/ClassicGames.png" },
+  { title: "JO 2024 à Paris",                    img: "/images/à propos/erwan-firstdayshow.jpg" },
+  // TODO: remplacer l'image par une photo CDM 2023 Philippines
+  { title: "CDM 2023 aux Philippines",           img: "/images/à propos/nbahouse-carmeloanthony.jpg" },
+  { title: "Victor Wembanyama chez First Team",  img: "/images/vignettes/itw-wemby.png" },
+  { title: "NBA x First Team",                   img: "/images/à propos/erwan-thomas-batum.jpg" },
+  { title: "Offense",                            img: "/images/offense/offense-thumbnail.png" },
 ];
 
 const KPI = [
@@ -254,8 +255,7 @@ export default function QuiNousSommesPage() {
                 <img src={p.img} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 20px" }}>
-                  <p style={{ ...ANTON, fontSize: 15, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 4 }}>{p.title}</p>
-                  <p style={{ ...MANROPE(400), fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.4 }}>{p.desc}</p>
+                  <p style={{ ...ANTON, fontSize: 15, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 0.5, margin: 0 }}>{p.title}</p>
                 </div>
               </div>
             ))}
