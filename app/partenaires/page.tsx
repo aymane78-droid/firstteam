@@ -7,43 +7,49 @@ const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, san
 
 const TOP_SPONSORS = [
   {
+    name: "NBA",
+    // TODO: remplacer par le logo NBA haute qualité fourni par l'équipe
+    logo: "/images/partners/NBA_Logo.svg.png",
+    // TODO: remplacer par une photo contextuelle NBA (partenariat / événement)
+    photo: "/images/à propos/erwan-thomas-batum.jpg",
+    years: "2022 —",
+    category: "Partenaire institutionnel",
+    color: "#FE0000",
+    // TODO: rédiger la description NBA (format identique aux autres blocs)
+    desc: "TODO — Description du partenariat NBA à compléter.",
+  },
+  {
+    name: "FIBA",
+    // TODO: remplacer par le logo FIBA haute qualité fourni par l'équipe
+    logo: "/images/partners/fiba-logo.png",
+    // TODO: remplacer par une photo contextuelle FIBA (partenariat / événement)
+    photo: "/images/à propos/erwan-firstdayshow.jpg",
+    years: "2023",
+    category: "Partenaire institutionnel",
+    color: "#002EFE",
+    // TODO: rédiger la description FIBA (format identique aux autres blocs)
+    desc: "TODO — Description du partenariat FIBA à compléter.",
+  },
+  {
     name: "Winamax",
     logo: "/images/partners/logo-winamax.png",
     photo: "/images/à propos/erwan-thomas.jpg",
     years: "2021 — 2023",
     category: "Sponsor principal",
-    color: "#FE0000",
-    desc: "Winamax a accompagné First Team pendant deux saisons NBA, en soutenant nos formats phares et notre développement éditorial. Un partenariat fort avec une marque qui partage notre passion du sport, du débat et des grands rendez-vous basket.",
-  },
-  {
-    name: "Saily",
-    logo: "/images/partners/logo-saily.png",
-    photo: "/images/à propos/erwan-firstdayshow.jpg",
-    years: "2024 — 2025",
-    category: "Partenaire tech",
-    color: "#002EFE",
-    desc: "Saily a accompagné First Team dans ses déplacements NBA en permettant à l'équipe de rester connectée partout, des studios aux road trips aux États-Unis. Une solution simple et fiable pour produire du contenu et rester au contact de la communauté, même à des milliers de kilomètres du terrain.",
-  },
-  {
-    name: "Champion",
-    logo: "/images/partners/logo-winamax.png",
-    photo: "/images/homepage/photo-studio.png",
-    years: "2024",
-    category: "Partenariat lifestyle",
     color: "#FED000",
-    desc: "La collaboration avec Champion a donné naissance à la première collection capsule First Team — des pièces en édition limitée portant les codes visuels du média basket le plus engagé de France. Une alliance entre culture sportive et streetwear qui a rencontré un succès immédiat auprès de la communauté.",
+    desc: "Winamax a accompagné First Team pendant deux saisons NBA, en soutenant nos formats phares et notre développement éditorial. Un partenariat fort avec une marque qui partage notre passion du sport, du débat et des grands rendez-vous basket.",
   },
 ];
 
 const ALL_PARTNERS = [
-  { name: "NordVPN",        logo: "/images/partners/nordvpn-logo.png",       years: "2023 — 2024", color: "#002EFE" },
-  { name: "Trade Republic", logo: "/images/partners/traderepublic-logo.png", years: "2024 — 2025", color: "#0A0A0A" },
-  { name: "Ramify",         logo: "/images/partners/ramify-logo.png",         years: "2024",        color: "#FE0000" },
-  { name: "Bitpanda",       logo: "/images/partners/bitpanda-logo.webp",      years: "2023",        color: "#FED000" },
-  { name: "Holly",          logo: "/images/partners/holly-logo.png",          years: "2023",        color: "#002EFE" },
-  { name: "Influx",         logo: "/images/partners/influx-logo.jpeg",        years: "2022 — 2023", color: "#0A0A0A" },
-  { name: "NBA France",     logo: "/images/partners/NBA_Logo.svg.png",        years: "2022 —",      color: "#FE0000" },
-  { name: "FIBA",           logo: "/images/partners/fiba-logo.png",           years: "2023",        color: "#002EFE" },
+  { name: "Saily",          logo: "/images/partners/logo-saily.png",          years: "2024 — 2025", color: "#002EFE" },
+  { name: "Champion",       logo: "/images/partners/logo-winamax.png",        years: "2024",        color: "#FED000" },
+  { name: "NordVPN",        logo: "/images/partners/nordvpn-logo.png",        years: "2023 — 2024", color: "#002EFE" },
+  { name: "Trade Republic", logo: "/images/partners/traderepublic-logo.png",  years: "2024 — 2025", color: "#0A0A0A" },
+  { name: "Ramify",         logo: "/images/partners/ramify-logo.png",          years: "2024",        color: "#FE0000" },
+  { name: "Bitpanda",       logo: "/images/partners/bitpanda-logo.webp",       years: "2023",        color: "#FED000" },
+  { name: "Holly",          logo: "/images/partners/holly-logo.png",           years: "2023",        color: "#002EFE" },
+  { name: "Influx",         logo: "/images/partners/influx-logo.jpeg",         years: "2022 — 2023", color: "#0A0A0A" },
 ];
 
 const KPI = [

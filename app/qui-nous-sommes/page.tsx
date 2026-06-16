@@ -29,6 +29,7 @@ const TIMELINE = [
   { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "/images/à propos/erwan-thomas-batum.jpg" },
   { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "/images/à propos/erwan-thomas.jpg" },
   { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "/images/à propos/erwan-firstdayshow.jpg" },
+  { year: "2022", label: "Premier NBA Paris Game", desc: "TODO — description à compléter (texte survol frise 2022)", accent: "#FE0000", photo: "/images/basket/studio-media.jpg" },
 ];
 
 const FONDATEURS = [
