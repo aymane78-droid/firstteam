@@ -70,7 +70,7 @@ export function PresentationSection() {
     <section style={{ background: "#0A0A0A", overflow: "hidden" }}>
       <div ref={ref} className="reveal" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", minHeight: 560 }}>
         <div style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
-          <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sous-le-herro" alt="Collection First Team × Champion" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sous-le-herro_ic4oys" alt="Collection First Team × Champion" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.15)" }} />
           <div style={{ position: "absolute", top: 28, left: 28 }}>
             <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE SUMMER EDITION 26</span>
@@ -185,15 +185,15 @@ export function StudioSection() {
         <div className="studio-fin-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gridTemplateRows: "2fr 1fr", gap: 8, aspectRatio: "1 / 1" }}>
           {/* fin1 — GRAND : gauche, pleine hauteur */}
           <div className="studio-fin-cell-large" style={{ gridColumn: 1, gridRow: "1 / 3", overflow: "hidden" }}>
-            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin1" alt="First Team × Champion — editorial 1" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin1_t5orly" alt="First Team × Champion — editorial 1" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
           {/* fin3 — MOYEN : haut droite */}
           <div className="studio-fin-cell-medium" style={{ gridColumn: 2, gridRow: 1, overflow: "hidden" }}>
-            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin3" alt="First Team × Champion — editorial 3" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin3_hl2n2w" alt="First Team × Champion — editorial 3" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
           {/* fin2 — PETIT : bas droite */}
           <div className="studio-fin-cell-small" style={{ gridColumn: 2, gridRow: 2, overflow: "hidden", position: "relative" }}>
-            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin2" alt="First Team × Champion — editorial 2" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin2_ed6cy1" alt="First Team × Champion — editorial 2" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", bottom: 10, left: 10, background: "#FE0000", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
               <span style={{ ...ANTON, fontSize: 22, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>ÉDITION</span>
               <span style={{ ...MANROPE(700), fontSize: 9, color: "rgba(255,255,255,0.85)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 3 }}>LIMITÉE</span>

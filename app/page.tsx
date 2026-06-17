@@ -142,12 +142,12 @@ function VideoHero() {
       </video>
 
       {/* Dark overlay */}
-      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.52)", zIndex: 1 }} />
+      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.15)", zIndex: 1 }} />
 
       {/* Nav */}
       <div className="r-video-nav" style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "28px 36px" }}>
         <Link href="/" style={{ display: "block", position: "relative", width: 140, height: 44, flexShrink: 0 }}>
-          <Image src="/images/logo/first-team.png" alt="First Team" fill style={{ objectFit: "contain", objectPosition: "left" }} />
+          <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
         </Link>
         <button onClick={() => setOpen(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "#fff" }} aria-label="Menu">
           <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" fill="none" style={{ width: 28, height: 28 }}>
@@ -158,9 +158,6 @@ function VideoHero() {
 
       {/* Bottom */}
       <div style={{ position: "absolute", bottom: 40, left: 0, right: 0, zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
-        <h1 style={{ ...ANTON, fontSize: "clamp(15px, 2.1vw, 23px)", lineHeight: 1, letterSpacing: 6, textTransform: "uppercase", color: "rgba(255,255,255,0.88)", margin: 0 }}>
-          FIRST TEAM
-        </h1>
         <button onClick={scrollToNext} aria-label="Défiler"
           style={{ background: "none", border: "1.5px solid rgba(255,255,255,0.5)", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#fff", padding: 0, flexShrink: 0 }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 20, height: 20, animation: "bounce 1.5s infinite" }}>
@@ -174,7 +171,7 @@ function VideoHero() {
         <div style={{ position: "fixed", inset: 0, background: "#0A0A0A", zIndex: 200, display: "flex", flexDirection: "column", padding: "28px 36px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 60 }}>
             <Link href="/" onClick={() => setOpen(false)} style={{ display: "block", position: "relative", width: 140, height: 44 }}>
-              <Image src="/images/logo/first-team.png" alt="First Team" fill style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
+              <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
             </Link>
             <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "#fff" }} aria-label="Fermer">
               <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" fill="none" style={{ width: 28, height: 28 }}>

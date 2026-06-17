@@ -48,14 +48,8 @@ export default function Header() {
       display: "flex", alignItems: "center", justifyContent: "space-between",
     }}>
       {/* Logo */}
-      <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
-        <div style={{ width: 32, height: 32, background: "#FE0000", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="6" stroke="white" strokeWidth="2"/>
-            <path d="M4 8h8M8 4v8" stroke="white" strokeWidth="1.5"/>
-          </svg>
-        </div>
-        <span style={{ ...ANTON, fontSize: 20, letterSpacing: 1, color: "#0A0A0A" }}>FIRST TEAM</span>
+      <Link href="/" style={{ display: "block", position: "relative", width: 140, height: 44, textDecoration: "none", flexShrink: 0 }}>
+        <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left" }} />
       </Link>
 
       {/* Desktop nav */}
