@@ -20,6 +20,9 @@ function useReveal() {
   return ref;
 }
 
+// Public_id exact depuis l'URL Cloudinary : SectionA%CC%80Propos_nathyt (%CC%80 = U+0300 accent grave combinant)
+const SECTION_PHOTO_ID = "SectionÀPropos_nathyt";
+
 export default function MediaBasketSection() {
   const ref = useReveal();
   return (
@@ -103,7 +106,7 @@ export default function MediaBasketSection() {
             {/* Photo + liseré tricolore */}
             <div style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", borderRadius: 4, overflow: "hidden", zIndex: 1 }}>
               <CldImage
-                src="section"
+                src={SECTION_PHOTO_ID}
                 alt="First Team"
                 fill
                 style={{ objectFit: "cover" as const }}

@@ -22,34 +22,34 @@ function useReveal() {
 }
 
 // ── DATA ──────────────────────────────────────────────────────────────
-const TIMELINE = [
+const TIMELINE: { year: string; label: string; desc: string; accent: string; photo: string; version?: number }[] = [
   { year: "2016", label: "Les débuts",      desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "2016_xtfbef" },
   { year: "2017", label: "Premier studio",  desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "2017_rygcmk" },
   { year: "2018", label: "10K abonnés",     desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "2018_ae9zkw" },
   { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "2019_vlchbi" },
   { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "2020_pzmdm3" },
   { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "2021_evnbkr" },
-  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "2022_NBA_vk68bp" },
+  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "2022_NBA_vk68bp", version: 2 },
 ];
 
-const FONDATEURS = [
+const FONDATEURS: { num: string; name: string; role: string; detail: string; color: string; photo: string; version?: number }[] = [
   { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: "0402_HOME_cwrvbm" },
-  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "Erwan_ctxyao" },
-  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "0403_HOME_yagu4z" },
+  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "Erwan_ctxyao",    version: 2 },
+  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "0403_HOME_yagu4z", version: 2 },
 ];
 
-const TEAM_CONSULTANTS = [
+const TEAM_CONSULTANTS: { name: string; role: string; photo: string; version?: number }[] = [
   { name: "Théo Haumesser",             role: "Consultant", photo: "Theo_Haumesser_gg8igb" },
-  { name: "Thomas Larrouquis",          role: "Consultant", photo: "Thomas_Larrouquis_zerroz" },
+  { name: "Thomas Larrouquis",          role: "Consultant", photo: "Thomas_Larrouquis_zerroz", version: 2 },
   { name: "Arthur Sene",                role: "Consultant", photo: "Arthur_yzn7rc" },
 ];
 
-const TEAM_STAFF = [
-  { name: "Jeremy Raharifidy--Barbe",   role: "Staff", photo: "Jeremy_bjsruo" },
+const TEAM_STAFF: { name: string; role: string; photo: string; version?: number }[] = [
+  { name: "Jeremy Raharifidy--Barbe",   role: "Staff", photo: "Jeremy_bjsruo", version: 2 },
   { name: "Tom Ciaravino",              role: "Staff", photo: "Tom_um4yoo" },
   { name: "Aymane El Atchia",           role: "Staff", photo: "Aymane_bvmcj8" },
-  { name: "Léo Tilhet-Coartet Vasquez", role: "Staff", photo: "Leo_o5hwxm" },
-  { name: "Yanus Gieli",                role: "Staff", photo: "Yanis_e31tz0" },
+  { name: "Léo Tilhet-Coartet Vasquez", role: "Staff", photo: "Leo_o5hwxm",    version: 2 },
+  { name: "Yanus Gieli",                role: "Staff", photo: "Yanis_e31tz0",   version: 2 },
   { name: "Chris Roche",                role: "Staff", photo: "Chris_yury30" },
 ];
 
@@ -71,7 +71,7 @@ const KPI = [
 
 // ── COMPOSANTS ────────────────────────────────────────────────────────
 
-function FounderCard({ member }: { member: typeof FONDATEURS[0] }) {
+function FounderCard({ member }: { member: { num: string; name: string; role: string; detail: string; color: string; photo: string; version?: number } }) {
   const ref = useReveal();
   return (
     <div ref={ref} className="reveal"
@@ -81,7 +81,7 @@ function FounderCard({ member }: { member: typeof FONDATEURS[0] }) {
     >
       <div style={{ height: 6, background: member.color }} />
       <div style={{ height: 300, overflow: "hidden", position: "relative" as const }}>
-        <CldImage src={member.photo} alt={member.name} fill style={{ objectFit: "cover", objectPosition: "top" }} format="auto" quality="auto" />
+        <CldImage src={member.photo} alt={member.name} fill version={member.version} style={{ objectFit: "cover", objectPosition: "top" }} format="auto" quality="auto" />
       </div>
       <div style={{ padding: "24px 28px" }}>
         <span style={{ ...ANTON, fontSize: 13, color: member.color, letterSpacing: 1 }}>{member.num}</span>
@@ -93,7 +93,7 @@ function FounderCard({ member }: { member: typeof FONDATEURS[0] }) {
   );
 }
 
-function ConsultantCard({ member }: { member: { name: string; role: string; photo: string } }) {
+function ConsultantCard({ member }: { member: { name: string; role: string; photo: string; version?: number } }) {
   const ref = useReveal();
   return (
     <div ref={ref} className="reveal" style={{ cursor: "pointer" }}
@@ -101,7 +101,7 @@ function ConsultantCard({ member }: { member: { name: string; role: string; phot
       onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) { img.style.transform = "scale(1)"; img.style.filter = "grayscale(40%)"; } }}
     >
       <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 4, marginBottom: 12, background: "#1a1a1a", position: "relative" as const }}>
-        <CldImage src={member.photo} alt={member.name} fill style={{ objectFit: "cover", objectPosition: "top", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }} format="auto" quality="auto" />
+        <CldImage src={member.photo} alt={member.name} fill version={member.version} style={{ objectFit: "cover", objectPosition: "top", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }} format="auto" quality="auto" />
       </div>
       <p style={{ ...ANTON, fontSize: 14, color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 4 }}>{member.name}</p>
       <p style={{ ...MANROPE(600), fontSize: 11, color: "#FE0000", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{member.role}</p>
@@ -146,7 +146,7 @@ export default function QuiNousSommesPage() {
 
       {/* HERO HEADER */}
       <section style={{ position: "relative", minHeight: 520, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <CldImage src="HEADER_htiwl1" alt="" fill style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
+        <CldImage src="HEADER_htiwl1" alt="" fill version={2} style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.9) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "120px 40px 70px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -225,7 +225,7 @@ export default function QuiNousSommesPage() {
                   >
                     {/* Photo — apparaît au hover */}
                     <div style={{ overflow: "hidden", borderRadius: 4, marginBottom: 8, width: "calc(100% - 16px)", maxHeight: isHov ? 130 : 0, opacity: isHov ? 1 : 0, transition: "max-height 0.35s ease, opacity 0.25s ease" }}>
-                      <CldImage src={item.photo} alt="" width={264} height={148} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} format="auto" quality="auto" />
+                      <CldImage src={item.photo} alt="" width={264} height={148} version={item.version} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} format="auto" quality="auto" />
                     </div>
                     <p style={{ ...ANTON, fontSize: isHov ? 52 : 40, color: isHov ? item.accent : "#fff", lineHeight: 1, marginBottom: 10, transition: "font-size 0.2s ease, color 0.2s ease" }}>{item.year}</p>
                     <div style={{ position: "relative" as const, zIndex: 10, width: 14, height: 14, borderRadius: "50%", marginBottom: 20, flexShrink: 0, background: item.accent, boxShadow: `0 0 0 4px #111, 0 0 0 6px ${item.accent}`, transform: isHov ? "scale(1.4)" : "scale(1)", transition: "transform 0.2s ease" }} />
