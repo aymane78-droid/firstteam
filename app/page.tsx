@@ -138,7 +138,7 @@ function VideoHero() {
         preload="auto"
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
       >
-        <source src="/videos/video-intro.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dg6xo2xwb/video/upload/v1781708412/vide%CC%81o_site_ht1vti.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay */}

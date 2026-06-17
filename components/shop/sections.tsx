@@ -38,7 +38,7 @@ export function Hero() {
   const ref = useReveal();
   return (
     <section style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-      <img src="/images/page-shop/lifestyle/herro.jpeg" alt="Vestiaire First Team — Summer Edition 26" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+      <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/herro" alt="Vestiaire First Team — Summer Edition 26" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.82) 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, display: "flex", zIndex: 5 }}>
         <div style={{ flex: 1, background: "#FE0000" }} />
@@ -70,7 +70,7 @@ export function PresentationSection() {
     <section style={{ background: "#0A0A0A", overflow: "hidden" }}>
       <div ref={ref} className="reveal" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", minHeight: 560 }}>
         <div style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
-          <img src="/images/page-shop/lifestyle/section%202.jpeg" alt="Collection First Team × Champion" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sous-le-herro" alt="Collection First Team × Champion" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.15)" }} />
           <div style={{ position: "absolute", top: 28, left: 28 }}>
             <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE SUMMER EDITION 26</span>
@@ -93,13 +93,13 @@ export function PresentationSection() {
 }
 
 const DEROULANT_SLIDES = [
-  { src: "/images/page-shop/lifestyle/deroulant1.jpeg", alt: "First Team × Champion — look 1" },
-  { src: "/images/page-shop/lifestyle/deroulant2.jpeg", alt: "First Team × Champion — look 2" },
-  { src: "/images/page-shop/lifestyle/deroulant3.jpeg", alt: "First Team × Champion — look 3" },
-  { src: "/images/page-shop/lifestyle/deroulant4.jpeg", alt: "First Team × Champion — look 4" },
-  { src: "/images/page-shop/lifestyle/deroulant5.jpeg", alt: "First Team × Champion — look 5" },
-  { src: "/images/page-shop/lifestyle/deroulant6.jpeg", alt: "First Team × Champion — look 6" },
-  { src: "/images/page-shop/lifestyle/deroulant7.jpeg", alt: "First Team × Champion — look 7" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant1", alt: "First Team × Champion — look 1" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant2", alt: "First Team × Champion — look 2" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant3", alt: "First Team × Champion — look 3" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant4", alt: "First Team × Champion — look 4" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant5", alt: "First Team × Champion — look 5" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant6", alt: "First Team × Champion — look 6" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant7", alt: "First Team × Champion — look 7" },
 ];
 const SLIDE_WIDTH = 320;
 const SLIDE_GAP = 10;
@@ -185,15 +185,15 @@ export function StudioSection() {
         <div className="studio-fin-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gridTemplateRows: "2fr 1fr", gap: 8, aspectRatio: "1 / 1" }}>
           {/* fin1 — GRAND : gauche, pleine hauteur */}
           <div className="studio-fin-cell-large" style={{ gridColumn: 1, gridRow: "1 / 3", overflow: "hidden" }}>
-            <img src="/images/page-shop/lifestyle/fin1.jpeg" alt="First Team × Champion — editorial 1" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin1" alt="First Team × Champion — editorial 1" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
           {/* fin3 — MOYEN : haut droite */}
           <div className="studio-fin-cell-medium" style={{ gridColumn: 2, gridRow: 1, overflow: "hidden" }}>
-            <img src="/images/page-shop/lifestyle/fin3.jpeg" alt="First Team × Champion — editorial 3" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin3" alt="First Team × Champion — editorial 3" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
           {/* fin2 — PETIT : bas droite */}
           <div className="studio-fin-cell-small" style={{ gridColumn: 2, gridRow: 2, overflow: "hidden", position: "relative" }}>
-            <img src="/images/page-shop/lifestyle/fin2.jpeg" alt="First Team × Champion — editorial 2" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin2" alt="First Team × Champion — editorial 2" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", bottom: 10, left: 10, background: "#FE0000", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
               <span style={{ ...ANTON, fontSize: 22, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>ÉDITION</span>
               <span style={{ ...MANROPE(700), fontSize: 9, color: "rgba(255,255,255,0.85)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 3 }}>LIMITÉE</span>
