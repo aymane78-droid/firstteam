@@ -38,13 +38,19 @@ const FONDATEURS = [
   { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "0403_HOME_yagu4z" },
 ];
 
-const CONSULTANTS = [
-  { name: "Jeremy Raharifidy", role: "Consultant",  detail: "Expert tactique",  photo: "Jeremy_bjsruo" },
-  { name: "Léo Tilhet",        role: "Consultant",  detail: "Culture basket",   photo: "Leo_o5hwxm" },
-  { name: "Yanis Gieli",       role: "Consultant",  detail: "Stats & data",     photo: "Yanis_e31tz0" },
-  { name: "Chris Roche",       role: "Consultant",  detail: "International",    photo: "Chris_yury30" },
-  { name: "Thomas Larrouquis", role: "Reporter",    detail: "Terrain & live",   photo: "Thomas_Larrouquis_zerroz" },
-  { name: "Tom Ciaravino",     role: "Animateur",   detail: "Offense — Host",   photo: "Tom_um4yoo" },
+const TEAM_CONSULTANTS = [
+  { name: "Théo Haumesser",             role: "Consultant", photo: "Theo_Haumesser_gg8igb" },
+  { name: "Thomas Larrouquis",          role: "Consultant", photo: "Thomas_Larrouquis_zerroz" },
+  { name: "Arthur Sene",                role: "Consultant", photo: "Arthur_yzn7rc" },
+];
+
+const TEAM_STAFF = [
+  { name: "Jeremy Raharifidy--Barbe",   role: "Staff", photo: "Jeremy_bjsruo" },
+  { name: "Tom Ciaravino",              role: "Staff", photo: "Tom_um4yoo" },
+  { name: "Aymane El Atchia",           role: "Staff", photo: "Aymane_bvmcj8" },
+  { name: "Léo Tilhet-Coartet Vasquez", role: "Staff", photo: "Leo_o5hwxm" },
+  { name: "Yanus Gieli",                role: "Staff", photo: "Yanis_e31tz0" },
+  { name: "Chris Roche",                role: "Staff", photo: "Chris_yury30" },
 ];
 
 const PROJECTS = [
@@ -87,7 +93,7 @@ function FounderCard({ member }: { member: typeof FONDATEURS[0] }) {
   );
 }
 
-function ConsultantCard({ member }: { member: typeof CONSULTANTS[0] }) {
+function ConsultantCard({ member }: { member: { name: string; role: string; photo: string } }) {
   const ref = useReveal();
   return (
     <div ref={ref} className="reveal" style={{ cursor: "pointer" }}
@@ -97,9 +103,8 @@ function ConsultantCard({ member }: { member: typeof CONSULTANTS[0] }) {
       <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 4, marginBottom: 12, background: "#1a1a1a", position: "relative" as const }}>
         <CldImage src={member.photo} alt={member.name} fill style={{ objectFit: "cover", objectPosition: "top", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }} format="auto" quality="auto" />
       </div>
-      <p style={{ ...ANTON, fontSize: 14, color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 2 }}>{member.name}</p>
-      <p style={{ ...MANROPE(600), fontSize: 11, color: "#FE0000", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 2 }}>{member.role}</p>
-      <p style={{ ...MANROPE(400), fontSize: 11, color: "rgba(0,0,0,0.4)", fontStyle: "italic" }}>{member.detail}</p>
+      <p style={{ ...ANTON, fontSize: 14, color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 4 }}>{member.name}</p>
+      <p style={{ ...MANROPE(600), fontSize: 11, color: "#FE0000", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{member.role}</p>
     </div>
   );
 }
@@ -274,20 +279,29 @@ export default function QuiNousSommesPage() {
         </div>
       </section>
 
-      {/* L'ÉQUIPE — consultants & collaborateurs */}
+      {/* L'ÉQUIPE — consultants & staff */}
       <section style={{ background: "#fff", padding: "100px 40px", borderTop: "1px solid #e5e5e5" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#0A0A0A", letterSpacing: "-0.5px", marginBottom: 56 }}>
             L&apos;ÉQUIPE FIRST TEAM
           </h2>
 
-          {/* Separator */}
+          {/* Consultants */}
           <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
-            <span style={{ ...MANROPE(700), fontSize: 10, letterSpacing: 3, color: "rgba(0,0,0,0.35)", textTransform: "uppercase" as const }}>Consultants & staff</span>
+            <span style={{ ...MANROPE(700), fontSize: 10, letterSpacing: 3, color: "rgba(0,0,0,0.35)", textTransform: "uppercase" as const }}>Consultants</span>
+            <div style={{ flex: 1, height: 1, background: "rgba(0,0,0,0.08)" }} />
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 64 }}>
+            {TEAM_CONSULTANTS.map((m, i) => <ConsultantCard key={i} member={m} />)}
+          </div>
+
+          {/* Staff */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
+            <span style={{ ...MANROPE(700), fontSize: 10, letterSpacing: 3, color: "rgba(0,0,0,0.35)", textTransform: "uppercase" as const }}>Staff</span>
             <div style={{ flex: 1, height: 1, background: "rgba(0,0,0,0.08)" }} />
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-            {CONSULTANTS.map((m, i) => <ConsultantCard key={i} member={m} />)}
+            {TEAM_STAFF.map((m, i) => <ConsultantCard key={i} member={m} />)}
           </div>
         </div>
       </section>
