@@ -23,13 +23,19 @@ function useReveal() {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const TIMELINE: { year: string; label: string; desc: string; accent: string; photo: string; version?: number }[] = [
-  { year: "2016", label: "Les débuts",      desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "2016_xtfbef" },
-  { year: "2017", label: "Premier studio",  desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "2017_rygcmk" },
-  { year: "2018", label: "10K abonnés",     desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "2018_ae9zkw" },
-  { year: "2019", label: "Couverture NBA",  desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "2019_vlchbi" },
-  { year: "2020", label: "Structuration",   desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "2020_pzmdm3" },
-  { year: "2021", label: "100K YouTube",    desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "2021_evnbkr" },
-  { year: "2022", label: "Premier NBA Paris Game", desc: "Un énorme dispositif pour le retour de la NBA à Paris.", accent: "#FE0000", photo: "2022_NBA_vk68bp", version: 2 },
+  { year: "2016", label: "Les débuts",               desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "2016_xtfbef" },
+  { year: "2017", label: "Premier studio",           desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "2017_rygcmk" },
+  { year: "2018", label: "10K abonnés",              desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "2018_ae9zkw" },
+  { year: "2019", label: "Couverture NBA",           desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "2019_vlchbi" },
+  { year: "2020", label: "Structuration",            desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "2020_pzmdm3" },
+  { year: "2021", label: "100K YouTube",             desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "2021_evnbkr" },
+  { year: "2022", label: "Premier NBA Paris Game",   desc: "Un énorme dispositif pour le retour de la NBA à Paris.",                        accent: "#FE0000", photo: "2022_NBA_vk68bp", version: 2 },
+  { year: "2022", label: "EuroBasket 2022",          desc: "Première compétition EDF couverte sur place.",                                  accent: "#002EFE", photo: "2022_EuroBasket_zbajtg" },
+  { year: "2023", label: "Coupe du Monde 2023",      desc: "La découverte des Philippines pour une compétition historique.",                 accent: "#FED000", photo: "2023_Coupedumonde_wwohz9" },
+  { year: "2023", label: "Les Mets 92 sur First Team", desc: "Les matchs de Wembanyama en exclusivité sur les chaînes First Team.",        accent: "#FE0000", photo: "2023_Mets92_stkubo" },
+  { year: "2024", label: "Basketball Africa League", desc: "Découverte de la BAL à Dakar.",                                                 accent: "#002EFE", photo: "2024_BAL_qynnnf" },
+  { year: "2024", label: "Les Jeux Olympiques",      desc: "Une quinzaine historique à Paris avec notre record d'audience.",                accent: "#FED000", photo: "2024_JO_vlri03" },
+  { year: "2025", label: "La Coupe du Monde U19 chez First Team", desc: "Diffusion de la compétition phare des jeunes sur nos chaînes.",   accent: "#FE0000", photo: "2025_CDM_U19_ybsjx4" },
 ];
 
 const FONDATEURS: { num: string; name: string; role: string; detail: string; color: string; photo: string; version?: number }[] = [
@@ -49,8 +55,8 @@ const TEAM_STAFF: { name: string; role: string; photo: string; version?: number 
   { name: "Tom Ciaravino",              role: "Staff", photo: "Tom_um4yoo" },
   { name: "Aymane El Atchia",           role: "Staff", photo: "Aymane_bvmcj8" },
   { name: "Léo Tilhet-Coartet Vasquez", role: "Staff", photo: "Leo_o5hwxm",    version: 2 },
-  { name: "Yanus Gieli",                role: "Staff", photo: "Yanis_e31tz0",   version: 2 },
-  { name: "Chris Roche",                role: "Staff", photo: "Chris_yury30" },
+  { name: "Yanis Giely",                role: "Staff", photo: "Yanis_e31tz0",   version: 2 },
+  { name: "Christophe Roche",           role: "Staff", photo: "Chris_yury30" },
 ];
 
 const PROJECTS = [
@@ -63,10 +69,9 @@ const PROJECTS = [
 ];
 
 const KPI = [
-  { num: "500K+", label: "Abonnés YouTube" },
-  { num: "10",    label: "Ans de passion" },
-  { num: "58M+",  label: "Vues totales" },
-  { num: "N°1",   label: "Média basket FR" },
+  { num: "+500k",  label: "abonnés en cumulé" },
+  { num: "10",     label: "ans de passion" },
+  { num: "110M+",  label: "vues par saison" },
 ];
 
 // ── COMPOSANTS ────────────────────────────────────────────────────────
@@ -84,10 +89,8 @@ function FounderCard({ member }: { member: { num: string; name: string; role: st
         <CldImage src={member.photo} alt={member.name} fill version={member.version} style={{ objectFit: "cover", objectPosition: "top" }} format="auto" quality="auto" />
       </div>
       <div style={{ padding: "24px 28px" }}>
-        <span style={{ ...ANTON, fontSize: 13, color: member.color, letterSpacing: 1 }}>{member.num}</span>
-        <h3 style={{ ...ANTON, fontSize: 24, letterSpacing: "0.5px", textTransform: "uppercase" as const, color: "#fff", marginTop: 4, marginBottom: 6 }}>{member.name}</h3>
-        <p style={{ ...MANROPE(600), fontSize: 13, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 4 }}>{member.role}</p>
-        <p style={{ ...MANROPE(400), fontSize: 12, color: "rgba(255,255,255,0.3)", fontStyle: "italic" }}>{member.detail}</p>
+        <h3 style={{ ...ANTON, fontSize: 24, letterSpacing: "0.5px", textTransform: "uppercase" as const, color: "#fff", marginTop: 0, marginBottom: 6 }}>{member.name}</h3>
+        <p style={{ ...MANROPE(600), fontSize: 13, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 0 }}>{member.role}</p>
       </div>
     </div>
   );
@@ -168,21 +171,26 @@ export default function QuiNousSommesPage() {
 
       <MediaBasketSection />
 
+      {/* TRICOLOR STRIP — haut KPI */}
+      <div style={{ display: "flex", height: 4 }}>
+        <div style={{ flex: 1, background: "#FE0000" }} />
+        <div style={{ flex: 1, background: "#FED000" }} />
+        <div style={{ flex: 1, background: "#002EFE" }} />
+      </div>
+
       {/* KPI */}
-      <section style={{ position: "relative", padding: "80px 40px", overflow: "hidden" }}>
-        <img src="/images/basket/fans-arena.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.93)", zIndex: 1 }} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 2 }}>
+      <section style={{ padding: "80px 40px", background: "#fff" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto" }}>
           {KPI.map((k, i) => (
-            <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
-              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#fff", lineHeight: 1, letterSpacing: "-1px" }}>{k.num}</span>
-              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
+            <div key={i} style={{ borderRight: i < 2 ? "1px solid rgba(10,10,10,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
+              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.num}</span>
+              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(10,10,10,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* TRICOLOR STRIP */}
+      {/* TRICOLOR STRIP — bas KPI */}
       <div style={{ display: "flex", height: 4 }}>
         <div style={{ flex: 1, background: "#FE0000" }} />
         <div style={{ flex: 1, background: "#FED000" }} />
