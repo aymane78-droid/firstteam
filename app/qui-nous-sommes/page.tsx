@@ -23,19 +23,18 @@ function useReveal() {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const TIMELINE: { year: string; label: string; desc: string; accent: string; photo: string; version?: number }[] = [
-  { year: "2016", label: "Les débuts",               desc: "Premières vidéos basket, premières analyses, première communauté.",              accent: "#FE0000", photo: "2016_xtfbef" },
-  { year: "2017", label: "Premier studio",           desc: "First Team s'installe en studio et lance ses premiers formats réguliers.",       accent: "#002EFE", photo: "2017_rygcmk" },
-  { year: "2018", label: "10K abonnés",              desc: "La communauté grandit, le projet prend une nouvelle dimension.",                  accent: "#FED000", photo: "2018_ae9zkw" },
-  { year: "2019", label: "Couverture NBA",           desc: "Premiers déplacements aux États-Unis pour vivre la NBA au plus près.",           accent: "#FE0000", photo: "2019_vlchbi" },
-  { year: "2020", label: "Structuration",            desc: "First Team devient une structure média à part entière.",                         accent: "#002EFE", photo: "2020_pzmdm3" },
-  { year: "2021", label: "100K YouTube",             desc: "Un cap symbolique franchi avec la communauté.",                                  accent: "#FED000", photo: "2021_evnbkr" },
-  { year: "2022", label: "Premier NBA Paris Game",   desc: "Un énorme dispositif pour le retour de la NBA à Paris.",                        accent: "#FE0000", photo: "2022_NBA_vk68bp", version: 2 },
-  { year: "2022", label: "EuroBasket 2022",          desc: "Première compétition EDF couverte sur place.",                                  accent: "#002EFE", photo: "2022_EuroBasket_zbajtg" },
-  { year: "2023", label: "Coupe du Monde 2023",      desc: "La découverte des Philippines pour une compétition historique.",                 accent: "#FED000", photo: "2023_Coupedumonde_wwohz9" },
-  { year: "2023", label: "Les Mets 92 sur First Team", desc: "Les matchs de Wembanyama en exclusivité sur les chaînes First Team.",        accent: "#FE0000", photo: "2023_Mets92_stkubo" },
-  { year: "2024", label: "Basketball Africa League", desc: "Découverte de la BAL à Dakar.",                                                 accent: "#002EFE", photo: "2024_BAL_qynnnf" },
-  { year: "2024", label: "Les Jeux Olympiques",      desc: "Une quinzaine historique à Paris avec notre record d'audience.",                accent: "#FED000", photo: "2024_JO_vlri03" },
-  { year: "2025", label: "La Coupe du Monde U19 chez First Team", desc: "Diffusion de la compétition phare des jeunes sur nos chaînes.",   accent: "#FE0000", photo: "2025_CDM_U19_ybsjx4" },
+  { year: "2016", label: "Lancement du média",                desc: "First Team se crée et se lance dans cette grande aventure avec vous.",                                              accent: "#FE0000", photo: "2016_xtfbef" },
+  { year: "2017", label: "Les Premiers First Day Show",        desc: "On lance notre émission phare, Erwan, Thomas, Stephen et Waxx pour parler basket dans un format Talk-Show.",      accent: "#002EFE", photo: "2018_ae9zkw" },
+  { year: "2018", label: "50k abonnés",                        desc: "Un premier milestone d'importance atteint avec vous !",                                                            accent: "#FED000", photo: "2017_rygcmk" },
+  { year: "2019", label: "Le All-Star Game à L.A.",            desc: "First Team se déplace à Los Angeles pour découvrir son premier All-Star Game sur place.",                          accent: "#FE0000", photo: "2019_vlchbi" },
+  { year: "2020", label: "1er changement de logo",             desc: "Nouvelle DA ! First Team arbore ses nouvelles couleurs.",                                                          accent: "#002EFE", photo: "2020_pzmdm3" },
+  { year: "2022", label: "NBA Paris Game",                     desc: "Un énorme dispositif pour le retour de la NBA à Paris.",                                                           accent: "#FE0000", photo: "2022_NBA_vk68bp", version: 2 },
+  { year: "2022", label: "EuroBasket 2022",                    desc: "Première compétition EDF couverte sur place.",                                                                     accent: "#FED000", photo: "2022_EuroBasket_zbajtg" },
+  { year: "2023", label: "Coupe du Monde 2023",                desc: "La découverte des Philippines pour une compétition historique.",                                                   accent: "#002EFE", photo: "2023_Coupedumonde_wwohz9" },
+  { year: "2023", label: "Wembanyama sur First Team",          desc: "Pour sa dernière année en France avec les Mets 92, on a suivi et diffusé les matchs de Wemby sur notre chaîne.", accent: "#FE0000", photo: "2023_Mets92_stkubo" },
+  { year: "2024", label: "Basketball Africa League",           desc: "Découverte de la BAL à Dakar.",                                                                                    accent: "#FED000", photo: "2024_BAL_qynnnf" },
+  { year: "2024", label: "JO de Paris",                        desc: "Une quinzaine historique à Paris avec notre record d'audience.",                                                   accent: "#002EFE", photo: "2024_JO_vlri03" },
+  { year: "2025", label: "Coupe du Monde U19 chez First Team", desc: "Diffusion de la compétition phare des jeunes sur nos chaînes.",                                                   accent: "#FE0000", photo: "2025_CDM_U19_ybsjx4" },
 ];
 
 const FONDATEURS: { num: string; name: string; role: string; detail: string; color: string; photo: string; version?: number }[] = [
@@ -50,13 +49,12 @@ const TEAM_CONSULTANTS: { name: string; role: string; photo: string; version?: n
   { name: "Arthur Sene",                role: "Consultant", photo: "Arthur_yzn7rc" },
 ];
 
-const TEAM_STAFF: { name: string; role: string; photo: string; version?: number }[] = [
-  { name: "Jeremy Raharifidy--Barbe",   role: "Staff", photo: "Jeremy_bjsruo", version: 2 },
-  { name: "Tom Ciaravino",              role: "Staff", photo: "Tom_um4yoo" },
-  { name: "Aymane El Atchia",           role: "Staff", photo: "Aymane_bvmcj8" },
-  { name: "Léo Tilhet-Coartet Vasquez", role: "Staff", photo: "Leo_o5hwxm",    version: 2 },
-  { name: "Yanis Giely",                role: "Staff", photo: "Yanis_e31tz0",   version: 2 },
-  { name: "Christophe Roche",           role: "Staff", photo: "Chris_yury30" },
+const TEAM_STAFF: { name: string; role?: string; photo: string; version?: number }[] = [
+  { name: "Jeremy Raharifidy--Barbe",   photo: "Jeremy_bjsruo", version: 3 },
+  { name: "Tom Ciaravino",              photo: "Tom_um4yoo" },
+  { name: "Aymane El Atchia",           photo: "Aymane_bvmcj8" },
+  { name: "Léo Tilhet-Coartet Vasquez", photo: "Leo_o5hwxm",    version: 2 },
+  { name: "Yanis Giely",                photo: "Yanis_e31tz0",   version: 2 },
 ];
 
 const PROJECTS = [
@@ -80,7 +78,7 @@ function FounderCard({ member }: { member: { num: string; name: string; role: st
   const ref = useReveal();
   return (
     <div ref={ref} className="reveal"
-      style={{ background: "#161616", borderRadius: 4, overflow: "hidden", cursor: "pointer", transition: "transform 0.2s ease" }}
+      style={{ background: "#161616", borderRadius: 4, overflow: "hidden", transition: "transform 0.2s ease" }}
       onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-4px)")}
       onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
     >
@@ -96,10 +94,10 @@ function FounderCard({ member }: { member: { num: string; name: string; role: st
   );
 }
 
-function ConsultantCard({ member }: { member: { name: string; role: string; photo: string; version?: number } }) {
+function ConsultantCard({ member }: { member: { name: string; role?: string; photo: string; version?: number } }) {
   const ref = useReveal();
   return (
-    <div ref={ref} className="reveal" style={{ cursor: "pointer" }}
+    <div ref={ref} className="reveal"
       onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) { img.style.transform = "scale(1.06)"; img.style.filter = "grayscale(0%)"; } }}
       onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) { img.style.transform = "scale(1)"; img.style.filter = "grayscale(40%)"; } }}
     >
@@ -107,7 +105,7 @@ function ConsultantCard({ member }: { member: { name: string; role: string; phot
         <CldImage src={member.photo} alt={member.name} fill version={member.version} style={{ objectFit: "cover", objectPosition: "top", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }} format="auto" quality="auto" />
       </div>
       <p style={{ ...ANTON, fontSize: 14, color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 4 }}>{member.name}</p>
-      <p style={{ ...MANROPE(600), fontSize: 11, color: "#FE0000", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{member.role}</p>
+      {member.role && <p style={{ ...MANROPE(600), fontSize: 11, color: "#FE0000", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{member.role}</p>}
     </div>
   );
 }
@@ -149,7 +147,7 @@ export default function QuiNousSommesPage() {
 
       {/* HERO HEADER */}
       <section style={{ position: "relative", minHeight: 520, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <CldImage src="HEADER_htiwl1" alt="" fill version={2} style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
+        <CldImage src="HEADER_htiwl1" alt="" fill version={3} style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.9) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "120px 40px 70px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -161,7 +159,7 @@ export default function QuiNousSommesPage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
             <a href="mailto:contact@firstteam.fr" className="pill-btn pill-btn-red">Nous contacter →</a>
-            <Link href="/partenaires" className="pill-btn pill-btn-outline-white">Devenir partenaire</Link>
+            <Link href="/partenaires" className="pill-btn pill-btn-outline-white">Nos partenaires</Link>
           </div>
         </div>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, display: "flex", height: 4, zIndex: 3 }}>
@@ -227,7 +225,7 @@ export default function QuiNousSommesPage() {
                 const isHov = hoveredTimeline === i;
                 return (
                   <div key={i}
-                    style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", flexShrink: 0, width: 280, cursor: "pointer" }}
+                    style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", flexShrink: 0, width: 280 }}
                     onMouseEnter={() => setHoveredTimeline(i)}
                     onMouseLeave={() => setHoveredTimeline(null)}
                   >
@@ -257,7 +255,7 @@ export default function QuiNousSommesPage() {
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
             {PROJECTS.map((p, i) => (
-              <div key={i} style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "16/10", cursor: "pointer" }}
+              <div key={i} style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "16/10" }}
                 onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1.06)"; }}
                 onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1)"; }}
               >

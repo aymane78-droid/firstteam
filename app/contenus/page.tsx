@@ -12,10 +12,18 @@ const AWESOME = (w: number) => ({ fontFamily: "Awesome, Georgia, serif", fontWei
 // ── DATA ──────────────────────────────────────────────────────────────
 
 const OFFENSE_PHOTOS = [
-  "/images/offense-photos/couvreur.jpg",
-  "/images/offense-photos/nadeau.jpg",
-  "/images/offense-photos/raymond.jpg",
-  "/images/offense-photos/riolo.jpg",
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/sdm_uvvffd.png",    alt: "SDM, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/domenec_gveuih.png", alt: "Domenech, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264907/edgar_docp8b.png",   alt: "Edgar Yves, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265159/riolo_vou7zx.png",   alt: "Riolo, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265161/christ_myrvu2.png",  alt: "Lemaître, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291105/cazarre_wzqrqr.png", alt: "Cazarre, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265163/jjs_xl7u1c.png",     alt: "Jean Jass, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/margo_sgmruu.png",   alt: "Margotton, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265159/mehdi_r9lyx3.png",   alt: "Maizi, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265165/nadeau_imbqe2.png",  alt: "Nadeau, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/gillian_zptifi.png", alt: "Gillian, invité Offense" },
+  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265162/couvr_uggpfy.png",   alt: "Couvreur, invité Offense" },
 ];
 
 const VIDEO_COLORS = ["#FE0000", "#002EFE", "#C89000", "#555555", "#6C35FF", "#00A8E8"];
@@ -62,19 +70,20 @@ const PODCAST_PLATFORMS = [
 interface PlanTile {
   accent: string;
   photoCls: string;
+  photo?: string;
   time: string;
-  status: string;
+  status?: string;
   statusReplay?: boolean;
   logo?: string;
-  logoText?: string;      // placeholder texte si pas de logo image
+  logoText?: string;
   logoTextColor?: string;
   nameMain?: string;
   nameAccent: string;
   isOffense?: boolean;
   meta: string;
   desc: string;
-  cta: string;
-  href: string;
+  cta?: string;
+  href?: string;
 }
 interface PlanDay { label: string; tiles: PlanTile[]; }
 
@@ -83,24 +92,22 @@ const PLANNING_DAYS: PlanDay[] = [
     label: "Lundi",
     tiles: [{
       accent: "#FE0000", photoCls: "pt-ph-red",
+      photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/LIBRE_ANTENNE_-_PROGRAMME_uqm6fy.png",
       time: "20H00", status: "LIVE",
-      logo: "/images/emission/libreantenne.png",
       nameMain: "Libre", nameAccent: "Antenne",
       meta: "2h · En direct",
       desc: "2h — On débat de l'actualité NBA avec vous, les auditeurs qu'on prend au téléphone tout au long de l'émission.",
-      cta: "Rejoindre le live", href: "https://www.twitch.tv/firstteam_nba",
     }],
   },
   {
     label: "Mardi",
     tiles: [{
       accent: "#CD4D22", photoCls: "pt-ph-orange",
+      photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
       time: "09H00", status: "REPLAY", statusReplay: true,
-      logo: "/images/emission/libreantenne.png",
       nameMain: "Libre", nameAccent: "Antenne",
       meta: "30 min · Replay",
       desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
-      cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
     }],
   },
   {
@@ -108,21 +115,20 @@ const PLANNING_DAYS: PlanDay[] = [
     tiles: [
       {
         accent: "#CD4D22", photoCls: "pt-ph-orange",
+        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
         time: "09H00", status: "REPLAY", statusReplay: true,
-        logo: "/images/emission/libreantenne.png",
         nameMain: "Libre", nameAccent: "Antenne",
         meta: "30 min · Replay",
         desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
-        cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
       },
       {
         accent: "#002EFE", photoCls: "pt-ph-clutch",
+        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
         time: "17H00", status: "LIVE",
-        logoText: "CLUTCH", logoTextColor: "#002EFE",
+        logoText: "WINATV", logoTextColor: "#002EFE",
         nameMain: "Clutch", nameAccent: "Winamax",
         meta: "1h · En direct",
         desc: "1h — On est en live avec Rémi Reverchon sur la WinaTV pour débattre de l'actualité NBA.",
-        cta: "Rejoindre le live", href: "https://youtube.com/@firstteam",
       },
     ],
   },
@@ -130,12 +136,11 @@ const PLANNING_DAYS: PlanDay[] = [
     label: "Jeudi",
     tiles: [{
       accent: "#FED000", photoCls: "pt-ph-violet",
-      time: "18H00", status: "INÉDIT", statusReplay: true,
-      logo: "/images/emission/firstdayshow.png",
+      photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/FDS_-_PROGRAMME_kwrkk1.png",
+      time: "18H00",
       nameMain: "First Day", nameAccent: "Show",
       meta: "1h · Hebdo",
       desc: "1h — Notre émission premium sur l'actualité basket : News, Débat, Palette, Quiz.",
-      cta: "Voir l'épisode", href: "https://www.twitch.tv/firstteam_nba",
     }],
   },
   {
@@ -143,35 +148,43 @@ const PLANNING_DAYS: PlanDay[] = [
     tiles: [
       {
         accent: "#FF6A2E", photoCls: "pt-ph-offense",
-        time: "12H00", status: "INÉDIT",
-        logo: "/images/emission/OFFENSE.png",
+        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/OFFENSE_-_PROGRAMME_gtbvhq.png",
+        time: "12H00",
         nameAccent: "Offense", isOffense: true,
         meta: "1h · Long format",
         desc: "1h — Notre nouveau Talk Show autour de Tom Ciaravino avec des invités de prestige et des questions sur le sport que tout le monde se pose.",
-        cta: "Voir l'épisode", href: "https://youtube.com/@offense",
       },
       {
         accent: "#002EFE", photoCls: "pt-ph-clutch",
+        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
         time: "17H00", status: "LIVE",
-        logoText: "CLUTCH", logoTextColor: "#002EFE",
+        logoText: "WINATV", logoTextColor: "#002EFE",
         nameMain: "Clutch", nameAccent: "Winamax",
         meta: "1h · En direct",
         desc: "1h — On est en live avec Rémi Reverchon sur la WinaTV pour débattre de l'actualité NBA.",
-        cta: "Rejoindre le live", href: "https://youtube.com/@firstteam",
       },
     ],
   },
   {
-    label: "Samedi",
-    tiles: [{
-      accent: "#CD4D22", photoCls: "pt-ph-orange",
-      time: "09H00", status: "REPLAY", statusReplay: true,
-      logo: "/images/emission/libreantenne.png",
-      nameMain: "Libre", nameAccent: "Antenne",
-      meta: "30 min · Replay",
-      desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
-      cta: "Écouter le replay", href: "https://youtube.com/@firstteam",
-    }],
+    label: "WEEK-END",
+    tiles: [
+      {
+        accent: "#CD4D22", photoCls: "pt-ph-orange",
+        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
+        time: "SAMEDI", status: "REPLAY", statusReplay: true,
+        nameMain: "Libre", nameAccent: "Antenne",
+        meta: "30 min · Replay",
+        desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
+      },
+      {
+        accent: "#fff", photoCls: "pt-ph-orange",
+        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782292186/ENTRETIEN_-_PROGRAMME_fox6tu.png",
+        time: "DIMANCHE",
+        nameMain: "L'", nameAccent: "Entretien",
+        meta: "Long format · Exclusif",
+        desc: "Face-à-face exclusifs avec les plus grandes légendes et acteurs du basketball mondial. Des conversations profondes et sans langue de bois.",
+      },
+    ],
   },
 ];
 
@@ -192,7 +205,7 @@ const CONCEPTS: Record<string, {
 }> = {
   FDS: {
     title: "First Day Show",
-    color: "#FE7F5B",
+    color: "#F57C9A",
     logo: "/images/emission/firstdayshow.png",
     desc: "Chaque matin après les matchs NBA, Thomas et Erwan analysent l'actualité de la nuit. Le format incontournable pour ne jamais rater une info.",
   },
@@ -242,11 +255,11 @@ const KPI = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: "YouTube",   sub: "500K abonnés",          color: "#FE0000", href: "https://youtube.com/@firstteam",          icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> },
-  { label: "Twitch",    sub: "Lives NBA",              color: "#002EFE", href: "https://twitch.tv",                       icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> },
-  { label: "Instagram", sub: "@firstteam101",          color: "#0A0A0A", href: "https://www.instagram.com/firstteam101/", icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> },
-  { label: "TikTok",    sub: "Les clips qui claquent",  color: "#FED000", href: "https://tiktok.com",                   icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> },
-  { label: "Podcast",   sub: "Apple & Spotify",         color: "#FE0000", href: "https://youtube.com/@firstteam",        icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5c2.071 0 3.75 1.679 3.75 3.75S14.071 12 12 12s-3.75-1.679-3.75-3.75S9.929 4.5 12 4.5zm0 15.75a9.714 9.714 0 0 1-7.5-3.54c.426-2.468 4.095-3.96 7.5-3.96s7.074 1.492 7.5 3.96a9.714 9.714 0 0 1-7.5 3.54z"/></svg> },
+  { label: "YouTube",   sub: "500K abonnés",          color: "#FE0000", href: "https://youtube.com/@firstteam",                icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> },
+  { label: "Instagram", sub: "@firstteam101",          color: "#0A0A0A", href: "https://www.instagram.com/firstteam101/?hl=fr", icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> },
+  { label: "TikTok",    sub: "Les clips qui claquent", color: "#FED000", href: "https://www.tiktok.com/@firstteam_tiktok",     icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> },
+  { label: "Twitter/X", sub: "L'actu en direct",       color: "#0A0A0A", href: "https://x.com/FirstTeam101?lang=fr",           icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> },
+  { label: "Twitch",    sub: "Lives NBA",               color: "#002EFE", href: "https://www.twitch.tv/firstteam101",           icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 28, height: 28 }}><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> },
 ];
 
 // ── PAGE ──────────────────────────────────────────────────────────────
@@ -335,7 +348,7 @@ export default function ContenusPage() {
 
       {/* ── HEADER HERO ── */}
       <section style={{ position: "relative", minHeight: 420, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <img src="/images/à propos/erwan-firstdayshow.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781793063/herro_uieuiw.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "100px 40px 60px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -347,7 +360,7 @@ export default function ContenusPage() {
               <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 16, height: 16 }}><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               YouTube →
             </a>
-            <a href="#concepts" className="pill-btn pill-btn-outline-white">Nos concepts</a>
+            <a href="https://linktr.ee/FirstTeam101" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-outline-white">Nos réseaux sociaux</a>
           </div>
         </div>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, display: "flex", height: 4, zIndex: 3 }}>
@@ -375,8 +388,11 @@ export default function ContenusPage() {
                     className="pt-tile"
                     style={{ "--pt-accent": tile.accent } as React.CSSProperties}
                   >
-                    {/* gradient background */}
-                    <div className={`pt-photo ${tile.photoCls}`} />
+                    {/* background */}
+                    {tile.photo
+                      ? <img src={tile.photo} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+                      : <div className={`pt-photo ${tile.photoCls}`} />
+                    }
                     <div className="pt-veil" />
                     <div className="pt-accent" />
 
@@ -384,9 +400,11 @@ export default function ContenusPage() {
                     <span className="pt-time">{tile.time}</span>
 
                     {/* status */}
-                    <span className={`pt-status${tile.statusReplay ? " pt-replay" : ""}`}>
-                      {tile.status}
-                    </span>
+                    {tile.status && (
+                      <span className={`pt-status${tile.statusReplay ? " pt-replay" : ""}`}>
+                        {tile.status}
+                      </span>
+                    )}
 
                     {/* emission logo */}
                     {tile.logo && (
@@ -426,14 +444,16 @@ export default function ContenusPage() {
                       )}
                       <div className="pt-show-meta">{tile.meta}</div>
                       <p className="pt-show-desc">{tile.desc}</p>
-                      <a
-                        href={tile.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="pt-show-cta"
-                      >
-                        {tile.cta} <span className="pt-arrow">→</span>
-                      </a>
+                      {tile.cta && tile.href && (
+                        <a
+                          href={tile.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="pt-show-cta"
+                        >
+                          {tile.cta} <span className="pt-arrow">→</span>
+                        </a>
+                      )}
                     </div>
                   </article>
                 ))}
@@ -441,21 +461,6 @@ export default function ContenusPage() {
             ))}
           </div>
 
-          {/* légende */}
-          <div className="pt-legend">
-            <div className="pt-legend-items">
-              <span className="pt-legend-item">
-                <span className="pt-legend-dot pt-ld-live" />En direct
-              </span>
-              <span className="pt-legend-item">
-                <span className="pt-legend-dot pt-ld-replay" />Replay
-              </span>
-              <span className="pt-legend-item">
-                <span className="pt-legend-dot pt-ld-new" />Nouveau
-              </span>
-            </div>
-            <span>Horaires en heure de Paris (UTC+2)</span>
-          </div>
         </div>
       </section>
 
@@ -546,7 +551,7 @@ export default function ContenusPage() {
                   <span style={{ ...MANROPE(800), fontSize: 10, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 1 }}>{active.title}</span>
                 </div>
                 <p style={{ ...MANROPE(400), fontSize: 15, lineHeight: 1.8, color: "rgba(255,255,255,0.75)", marginBottom: 28 }}>{active.desc}</p>
-                <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+                <a href={`https://youtube.com/playlist?list=${PLAYLISTS[tab]}`} target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 14, background: active.color, color: active.color === "#FED000" ? "#0A0A0A" : "#fff", padding: "12px 24px", borderRadius: 999, textDecoration: "none", alignSelf: "flex-start" as const, transition: "transform 0.15s ease" }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
                   onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
@@ -628,6 +633,8 @@ export default function ContenusPage() {
               <div style={{ position: "absolute", top: 18, left: 18, width: "100%", height: "100%", background: "#FED000", borderRadius: 6, zIndex: 0 }} />
               {/* Photo cover */}
               <div style={{ position: "relative", zIndex: 1, aspectRatio: "1/1", borderRadius: 6, overflow: "hidden", background: "linear-gradient(135deg,#1a1300 0%,#3d2800 55%,#5a3a12 100%)", boxShadow: "0 24px 60px -20px rgba(0,0,0,0.35)" }}>
+                {/* Photo cover */}
+                <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781793063/podcast_iq5mic.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
                 {/* Badge coin */}
                 <div style={{ position: "absolute", top: 16, left: 16, display: "flex", alignItems: "center", gap: 8, background: "rgba(10,10,10,0.72)", backdropFilter: "blur(8px)", padding: "6px 12px", borderRadius: 999, zIndex: 2 }}>
                   <div className="pod-live-dot" />
@@ -681,7 +688,7 @@ export default function ContenusPage() {
 
               {/* Description */}
               <p style={{ ...MANROPE(400), fontSize: 17, lineHeight: 1.7, color: "rgba(10,10,10,0.7)", maxWidth: 520, marginBottom: 40 }}>
-                Des interviews longues, des analyses approfondies et les meilleures discussions autour du basketball. Chaque semaine, First Team reçoit les acteurs qui font le basket français et international.
+                Des interviews longues, des analyses approfondies et les meilleures discussions autour du basketball. Chaque semaine, First Team propose du contenu basket unique !
               </p>
 
               {/* CTA row */}
@@ -689,10 +696,6 @@ export default function ContenusPage() {
                 <a href="https://shows.acast.com/first-team" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-black">
                   Écouter le podcast →
                 </a>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, ...MANROPE(700), fontSize: 12, color: "rgba(10,10,10,0.4)", textTransform: "uppercase" as const, letterSpacing: 1.5 }}>
-                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#FE0000", flexShrink: 0 }} />
-                  1 épisode / semaine
-                </div>
               </div>
             </div>
           </div>
@@ -709,23 +712,6 @@ export default function ContenusPage() {
               title="Podcast First Team — Maxime Raynaud"
             />
           </div>
-        </div>
-      </section>
-
-      {/* ── KPI BAND ── */}
-      <section style={{ position: "relative", padding: "80px 40px", overflow: "hidden" }}>
-        <img src="/images/basket/ball-closeup.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.93)", zIndex: 1 }} />
-        <div style={{ display: "flex", height: 4, position: "absolute", top: 0, left: 0, right: 0, zIndex: 3 }}>
-          <div style={{ flex: 1, background: "#FE0000" }} /><div style={{ flex: 1, background: "#FED000" }} /><div style={{ flex: 1, background: "#002EFE" }} />
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 2 }}>
-          {KPI.map((k, i) => (
-            <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
-              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#fff", lineHeight: 1, letterSpacing: "-1px" }}>{k.value}</span>
-              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(255,255,255,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -775,7 +761,7 @@ export default function ContenusPage() {
               <p style={{ ...MANROPE(400), fontSize: 14, lineHeight: 1.8, marginBottom: 28, color: "rgba(255,255,255,0.82)" }}>
                 Aux commandes, Tom Ciaravino avec des visages bien connus de First Team — Thomas, Erwan, Stephen Brun ou Mehdi Maizi — et des invités de prestige. Portraits, long formats, immersions.
               </p>
-              <a href="https://www.youtube.com/@offense" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.youtube.com/@OFFENSE_EMISSION" target="_blank" rel="noopener noreferrer"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 14, background: "#EDDBC5", color: "#DB5224", padding: "12px 24px", borderRadius: 999, textDecoration: "none", transition: "transform 0.15s ease" }}
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
                 onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
@@ -786,7 +772,7 @@ export default function ContenusPage() {
 
             {/* Dernière vidéo Offense — 1 grande vignette */}
             <a
-              href={latestOffenseVideo ? `https://www.youtube.com/watch?v=${latestOffenseVideo.id}` : "https://www.youtube.com/@offense"}
+              href={latestOffenseVideo ? `https://www.youtube.com/watch?v=${latestOffenseVideo.id}` : "https://www.youtube.com/@OFFENSE_EMISSION"}
               target="_blank" rel="noopener noreferrer"
               onClick={latestOffenseVideo ? e => { e.preventDefault(); setOffenseVideoModalId(latestOffenseVideo.id); } : undefined}
               style={{ display: "block", position: "relative", borderRadius: 8, overflow: "hidden", textDecoration: "none", boxShadow: "0 8px 40px rgba(0,0,0,0.4)" }}
@@ -877,9 +863,9 @@ export default function ContenusPage() {
               Avec des invités de marque
             </p>
             <div style={{ display: "flex", gap: 8, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
-              {OFFENSE_PHOTOS.map((src, i) => (
-                <div key={i} style={{ flexShrink: 0, width: "calc(28% - 6px)" }}>
-                  <img src={src} alt="" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", borderRadius: 4 }} />
+              {OFFENSE_PHOTOS.map((photo, i) => (
+                <div key={i} style={{ flexShrink: 0, width: "calc(20% - 6px)" }}>
+                  <img src={photo.src} alt={photo.alt} loading="lazy" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", borderRadius: 4 }} />
                 </div>
               ))}
             </div>
@@ -889,7 +875,7 @@ export default function ContenusPage() {
         {/* CTA */}
         <div style={{ background: "#0A0A0A", padding: "0 60px 80px" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "flex-end" }}>
-            <a href="https://www.youtube.com/@offense" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.youtube.com/@OFFENSE_EMISSION" target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: 10, ...MANROPE(700), fontSize: 14, background: "#DB5224", color: "#fff", padding: "13px 24px", borderRadius: 999, textDecoration: "none", transition: "transform 0.15s ease" }}
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
               onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}

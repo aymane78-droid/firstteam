@@ -7,7 +7,6 @@ import {
   PhotoSlider,
   BigMarquee,
   StudioSection,
-  Newsletter,
 } from "@/components/shop/sections";
 import FloatingCartButton from "@/components/FloatingCartButton";
 import { getAllProducts } from "@/lib/shopify-queries";
@@ -30,7 +29,6 @@ export default async function ShopPage() {
       <PhotoSlider />
       <BigMarquee />
       <StudioSection />
-      <Newsletter />
       <FloatingCartButton />
     </main>
   );

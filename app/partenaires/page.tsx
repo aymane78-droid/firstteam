@@ -8,48 +8,51 @@ const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, san
 const TOP_SPONSORS = [
   {
     name: "NBA",
-    // TODO: remplacer par le logo NBA haute qualité fourni par l'équipe
-    logo: "/images/partners/NBA_Logo.svg.png",
-    // TODO: remplacer par une photo contextuelle NBA (partenariat / événement)
-    photo: "/images/à propos/erwan-thomas-batum.jpg",
-    years: "2022 —",
+    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297115/nbaa_enmvoq.png",
+    photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291215/NBA_ihu1qw.jpg?v=2",
+    photoAlt: "Partenariat NBA × First Team",
+    photoScale: 1.35,
+    years: "NBA House Paris 2025",
     category: "Partenaire institutionnel",
     color: "#FE0000",
-    // TODO: rédiger la description NBA (format identique aux autres blocs)
-    desc: "TODO — Description du partenariat NBA à compléter.",
+    desc: "Aux côtés de la NBA, First Team accompagne le développement de la ligue en France grâce à une couverture régulière de ses événements majeurs, en France comme à l'international. À travers ses contenus, ses émissions et ses activations digitales, First Team contribue à rapprocher la NBA de sa communauté francophone.",
   },
   {
     name: "FIBA",
-    // TODO: remplacer par le logo FIBA haute qualité fourni par l'équipe
-    logo: "/images/partners/fiba-logo.png",
-    // TODO: remplacer par une photo contextuelle FIBA (partenariat / événement)
-    photo: "/images/à propos/erwan-firstdayshow.jpg",
-    years: "2023",
+    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",
+    photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291348/FIBA_fiozdi.jpg?v=2",
+    photoAlt: "Partenariat FIBA × First Team",
+    photoScale: 1.35,
+    years: "FIBA House JO 2024",
     category: "Partenaire institutionnel",
     color: "#002EFE",
-    // TODO: rédiger la description FIBA (format identique aux autres blocs)
-    desc: "TODO — Description du partenariat FIBA à compléter.",
+    desc: "First Team collabore avec la FIBA autour de la couverture des compétitions internationales, en mettant notamment en avant les parcours des équipes de France masculines et féminines. Entre accès terrain, diffusions de matchs, contenus éditoriaux et relais sur les réseaux sociaux, First Team accompagne la promotion du basketball mondial auprès de ses audiences.",
   },
   {
     name: "Winamax",
-    logo: "/images/partners/logo-winamax.png",
-    photo: "/images/à propos/erwan-thomas.jpg",
-    years: "2021 — 2023",
+    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",
+    photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291221/WINAMAX_g0kxzf.png?v=2",
+    photoAlt: "Partenariat Winamax × First Team",
+    years: "Clutch en live 2025",
     category: "Sponsor principal",
     color: "#FED000",
-    desc: "Winamax a accompagné First Team pendant deux saisons NBA, en soutenant nos formats phares et notre développement éditorial. Un partenariat fort avec une marque qui partage notre passion du sport, du débat et des grands rendez-vous basket.",
+    desc: "Winamax accompagne First Team depuis 2021, en soutenant nos formats phares et notre développement éditorial. Un partenariat fort avec une marque qui partage notre passion du sport, du débat et des grands rendez-vous basket.",
   },
 ];
 
 const ALL_PARTNERS = [
-  { name: "Saily",          logo: "/images/partners/logo-saily.png",          years: "2024 — 2025", color: "#002EFE" },
-  { name: "Champion",       logo: "/images/partners/logo-winamax.png",        years: "2024",        color: "#FED000" },
-  { name: "NordVPN",        logo: "/images/partners/nordvpn-logo.png",        years: "2023 — 2024", color: "#002EFE" },
-  { name: "Trade Republic", logo: "/images/partners/traderepublic-logo.png",  years: "2024 — 2025", color: "#0A0A0A" },
-  { name: "Ramify",         logo: "/images/partners/ramify-logo.png",          years: "2024",        color: "#FE0000" },
-  { name: "Bitpanda",       logo: "/images/partners/bitpanda-logo.webp",       years: "2023",        color: "#FED000" },
-  { name: "Holly",          logo: "/images/partners/holly-logo.png",           years: "2023",        color: "#002EFE" },
-  { name: "Influx",         logo: "/images/partners/influx-logo.jpeg",         years: "2022 — 2023", color: "#0A0A0A" },
+  { name: "Nike",           logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294020/nike-logo-complete-1_xrkh5w.png",          years: "", color: "#0A0A0A" },
+  { name: "Adidas",         logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294022/Adidas_Logo.svg_v4cyzb.png",               years: "", color: "#0A0A0A" },
+  { name: "PUMA",           logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294103/Puma-logo_wjefeb.png",                     years: "", color: "#0A0A0A" },
+  { name: "Winamax",        logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",   years: "", color: "#FED000" },
+  { name: "2K",             logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297122/2k_mteq0s.png",                            years: "", color: "#FE0000", noFilter: true },
+  { name: "FIBA",           logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",                         years: "", color: "#002EFE", noFilter: true },
+  { name: "NordVPN",        logo: "/images/partners/nordvpn-logo.png",                                                                       years: "", color: "#002EFE" },
+  { name: "FitnessPark",    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294196/fitnesspark_nkpoks.png",                   years: "", color: "#FE0000" },
+  { name: "Trade Republic", logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294202/Trade_Republic_logo_2021.svg_sdx3kf.png",  years: "", color: "#0A0A0A" },
+  { name: "Airbnb",         logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294024/Airbnb-Logo-scaled_o65blz.png",            years: "", color: "#FE0000" },
+  { name: "Allianz",        logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294298/Allianz.svg_mawuoz.png",                   years: "", color: "#002EFE" },
+  { name: "DAZN",           logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294295/dazn_p7wcid.png",                          years: "", color: "#0A0A0A" }, // TODO: vérifier fond transparent (si fond blanc dans le fichier, logo invisible)
 ];
 
 const KPI = [
@@ -65,7 +68,7 @@ export default function PartenairesPage() {
 
       {/* HERO */}
       <section style={{ position: "relative", minHeight: 480, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <img src="/images/à propos/erwan-thomas.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790224/catalogue_partenaire_vggjmq.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.88) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "100px 40px 60px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -76,27 +79,11 @@ export default function PartenairesPage() {
             +500K abonnés, +50M de vues et une communauté qui vit basket au quotidien. Faites entrer votre marque dans le jeu avec le premier média basket français.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-            <a href="mailto:contact@firstteam.fr" className="pill-btn pill-btn-red">devenir partenaire</a>
-            <Link href="/qui-nous-sommes" className="pill-btn pill-btn-outline-white">découvrez first team</Link>
+            <a href="mailto:firstteam@influxcrew.com?subject=Contact%20depuis%20le%20site%20First%20Team" className="pill-btn pill-btn-red">Nous contacter</a>
           </div>
         </div>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, display: "flex", height: 4, zIndex: 3 }}>
           <div style={{ flex: 1, background: "#FE0000" }} /><div style={{ flex: 1, background: "#FED000" }} /><div style={{ flex: 1, background: "#002EFE" }} />
-        </div>
-      </section>
-
-      {/* KPI BAND */}
-      <section style={{ background: "#fff", padding: "80px 40px", overflow: "hidden", position: "relative" }}>
-        <div style={{ display: "flex", height: 4, position: "absolute", top: 0, left: 0, right: 0 }}>
-          <div style={{ flex: 1, background: "#FE0000" }} /><div style={{ flex: 1, background: "#FED000" }} /><div style={{ flex: 1, background: "#002EFE" }} />
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto" }}>
-          {KPI.map((k, i) => (
-            <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(0,0,0,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
-              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.v}</span>
-              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(0,0,0,0.5)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.l}</span>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -105,7 +92,7 @@ export default function PartenairesPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "#FE0000", marginBottom: 16 }}>PARTENARIATS PREMIUM</p>
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#fff", letterSpacing: "-0.5px", marginBottom: 64 }}>
-            Nos sponsors<br />principaux.
+            Nos partenaires<br />principaux.
           </h2>
 
           <div style={{ display: "flex", flexDirection: "column" as const, gap: 24 }}>
@@ -123,7 +110,8 @@ export default function PartenairesPage() {
                 >
                   {/* Photo */}
                   <div style={{ position: "relative" as const, aspectRatio: "16/10", overflow: "hidden", order: isEven ? 1 : 2 }}>
-                    <Image src={s.photo} alt={s.name} fill style={{ objectFit: "cover" }} />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={s.photo} alt={s.photoAlt} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transform: s.photoScale ? `scale(${s.photoScale})` : undefined }} />
                     <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.12)" }} />
                     <div style={{ position: "absolute", top: 16, left: 16, background: s.color, color: s.color === "#FED000" ? "#0A0A0A" : "#fff", ...MANROPE(700), fontSize: 10, letterSpacing: 2, textTransform: "uppercase" as const, padding: "4px 10px", borderRadius: 2 }}>
                       {s.years}
@@ -140,8 +128,9 @@ export default function PartenairesPage() {
                     borderLeft: isEven ? `4px solid ${s.color}` : "none",
                     borderRight: !isEven ? `4px solid ${s.color}` : "none",
                   }}>
-                    <div style={{ position: "relative" as const, height: 48, width: 160, marginBottom: 20 }}>
-                      <Image src={s.logo} alt={s.name} fill style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
+                    <div style={{ display: "inline-flex", alignItems: "center", marginBottom: 20 }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={s.logo} alt={s.name} style={{ height: 40, maxWidth: 140, width: "auto", objectFit: "contain", display: "block", filter: s.name === "Winamax" ? "brightness(0) invert(1)" : undefined }} />
                     </div>
                     <p style={{ ...MANROPE(800), fontSize: 10, letterSpacing: 3, textTransform: "uppercase" as const, color: s.color, marginBottom: 8 }}>{s.category}</p>
                     <h3 style={{ ...ANTON, fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)", textTransform: "uppercase" as const, color: "#fff", marginBottom: 20 }}>{s.name}</h3>
@@ -166,16 +155,19 @@ export default function PartenairesPage() {
             {ALL_PARTNERS.map((p, i) => (
               <div
                 key={p.name}
-                style={{ background: "#111", padding: "40px 32px", display: "flex", flexDirection: "column" as const, alignItems: "center", gap: 16, transition: "background 0.25s ease", cursor: "pointer" }}
+                style={{ background: "#111", padding: "40px 32px", display: "flex", flexDirection: "column" as const, alignItems: "center", gap: 16, transition: "background 0.25s ease" }}
                 onMouseEnter={e => (e.currentTarget.style.background = "#0A0A0A")}
                 onMouseLeave={e => (e.currentTarget.style.background = "#111")}
               >
-                <div style={{ position: "relative" as const, height: 56, width: 160 }}>
-                  <Image src={p.logo} alt={p.name} fill style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }} />
+                <div style={{ height: 56, width: 160, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" as const }}>
+                  {p.logo
+                    ? <Image src={p.logo} alt={p.name} fill style={{ objectFit: "contain", filter: p.noFilter ? undefined : "brightness(0) invert(1)" }} />
+                    : <span style={{ ...MANROPE(700), fontSize: 11, color: "rgba(255,255,255,0.2)", letterSpacing: 1, textTransform: "uppercase" as const }}>Logo à venir</span>
+                  }
                 </div>
                 <div style={{ textAlign: "center" as const }}>
                   <p style={{ ...ANTON, fontSize: 14, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 4 }}>{p.name}</p>
-                  <p style={{ ...MANROPE(500), fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 1, textTransform: "uppercase" as const }}>{p.years}</p>
+                  {p.years && <p style={{ ...MANROPE(500), fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 1, textTransform: "uppercase" as const }}>{p.years}</p>}
                 </div>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: p.color === "#0A0A0A" ? "#888" : p.color }} />
               </div>

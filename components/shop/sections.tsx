@@ -68,15 +68,15 @@ export function PresentationSection() {
   const ref = useReveal();
   return (
     <section style={{ background: "#0A0A0A", overflow: "hidden" }}>
-      <div ref={ref} className="reveal" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", minHeight: 560 }}>
-        <div style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
+      <div ref={ref} className="reveal shop-pres-wrap" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", minHeight: 560 }}>
+        <div className="shop-pres-photo" style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
           <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sous-le-herro_ic4oys" alt="Collection First Team × Champion" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.15)" }} />
           <div style={{ position: "absolute", top: 28, left: 28 }}>
             <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE SUMMER EDITION 26</span>
           </div>
         </div>
-        <div style={{ padding: "72px 60px", display: "flex", flexDirection: "column", justifyContent: "center", background: "#FE0000", position: "relative" }}>
+        <div className="shop-pres-text" style={{ padding: "72px 60px", display: "flex", flexDirection: "column", justifyContent: "center", background: "#FE0000", position: "relative" }}>
           <div style={{ position: "absolute", top: 24, right: 24, ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.45)", letterSpacing: 2 }}>LE VESTIAIRE FIRST TEAM</div>
           <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 96px)", lineHeight: 0.86, textTransform: "uppercase", letterSpacing: -2, color: "#fff", marginBottom: 12 }}>
             Le basket<br />se porte.
@@ -128,20 +128,11 @@ export function PhotoSlider() {
 }
 
 export function InfoBand() {
-  const items = [
-    { icon: "📦", label: "Livraison offerte à partir de 100€" },
-    { icon: "🌿", label: "Coton bio" },
-    { icon: "★",  label: "Qualité supérieure" },
-  ];
   return (
     <section style={{ background: "#FED000", borderTop: "2px solid #0A0A0A", borderBottom: "2px solid #0A0A0A" }}>
-      <div className="shop-info-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0 }}>
-        {items.map((it, i) => (
-          <div key={i} className="shop-info-item" style={{ padding: "28px 20px", display: "flex", alignItems: "center", gap: 12, borderRight: i < 2 ? "1px solid rgba(0,0,0,0.12)" : "none" }}>
-            <span style={{ fontSize: 20, flexShrink: 0 }}>{it.icon}</span>
-            <span style={{ ...MANROPE(800), fontSize: "clamp(0.75rem, 1.1vw, 0.875rem)", color: "#0A0A0A", letterSpacing: 0.3, whiteSpace: "nowrap" }}>{it.label}</span>
-          </div>
-        ))}
+      <div style={{ padding: "28px 20px", display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
+        <span style={{ fontSize: 24, flexShrink: 0 }}>📦</span>
+        <span style={{ ...MANROPE(800), fontSize: "clamp(1rem, 1.6vw, 1.2rem)", color: "#0A0A0A", letterSpacing: 0.3, whiteSpace: "nowrap" }}>Livraison offerte à partir de 100€</span>
       </div>
     </section>
   );
@@ -164,8 +155,8 @@ export function BigMarquee() {
 export function StudioSection() {
   const ref = useReveal();
   return (
-    <section style={{ background: "#F2EEE6", padding: "120px 40px" }}>
-      <div ref={ref} className="reveal" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+    <section className="shop-studio-section" style={{ background: "#F2EEE6", padding: "120px 40px" }}>
+      <div ref={ref} className="reveal shop-studio-wrap" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         <div>
           <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 16 }}>· LA COLLAB</span>
           <h2 style={{ ...AWESOME(400), fontStyle: "italic", fontSize: "clamp(40px, 5vw, 80px)", lineHeight: 0.95, letterSpacing: -1.5, color: "#0A0A0A", marginBottom: 28 }}>
@@ -175,7 +166,7 @@ export function StudioSection() {
             Champion, c&apos;est la marque qu&apos;on voyait sur le dos de Jordan, de Pippen, des Seattle Sonics de Payton. Le C cousu sur les jerseys NBA pendant 10 ans, ceux qu&apos;on regardait gamins en se disant qu&apos;on aurait bien aimé en avoir un.
           </p>
           <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.75, color: "rgba(0,0,0,0.65)", marginBottom: 18, maxWidth: 440 }}>
-            Aujourd&apos;hui Champion est de retour. Coton bio, coupes propres, qualité premium, ce côté vintage qui rappelle les vestiaires des années 90 mais qui se porte très bien en 2026. Bref, ça nous parle, et c&apos;était une évidence de s&apos;associer avec cette marque iconique.
+            Aujourd&apos;hui Champion est de retour. Coton bio, coupes propres, qualité premium, ce côté vintage qui rappelle les vestiaires des années 90 mais qui se porte très bien de nos jours. Bref, ça nous parle, et c&apos;était une évidence de s&apos;associer avec cette marque iconique.
           </p>
           <p style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 36, fontStyle: "italic" }}>
             &ldquo;On parle basket entre potes depuis 10 ans. Avec Champion, on a juste voulu essayer d&apos;être bien sapés et permettre à la communauté d&apos;en faire autant.&rdquo;
@@ -205,29 +196,3 @@ export function StudioSection() {
   );
 }
 
-export function Newsletter() {
-  return (
-    <section style={{ background: "#FED000", padding: "80px 40px", position: "relative", overflow: "hidden" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 60, alignItems: "center" }}>
-        <div>
-          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#0A0A0A", display: "block", marginBottom: 12, opacity: 0.55 }}>· Drop alert</span>
-          <h2 style={{ ...ANTON, fontSize: "clamp(36px, 4.5vw, 68px)", textTransform: "uppercase", letterSpacing: -1, lineHeight: 0.92, color: "#0A0A0A" }}>
-            Sois prévenu<br />du prochain drop.
-          </h2>
-          <p style={{ ...MANROPE(400), fontSize: 14, color: "rgba(0,0,0,0.55)", marginTop: 16, maxWidth: 400 }}>Une fois par mois, pas plus. Promis.</p>
-        </div>
-        <form onSubmit={(e) => e.preventDefault()} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <div style={{ display: "flex", gap: 8, background: "#fff", padding: 6, borderRadius: 999, border: "2px solid #0A0A0A" }}>
-            <input
-              type="email"
-              placeholder="ton.email@equipe.com"
-              style={{ flex: 1, padding: "12px 16px", border: "none", outline: "none", fontFamily: "var(--font-manrope), Manrope, sans-serif", fontSize: 14, background: "transparent", color: "#0A0A0A" }}
-            />
-            <button type="submit" className="pill-btn pill-btn-black" style={{ fontSize: 12, padding: "12px 22px" }}>S&apos;inscrire →</button>
-          </div>
-          <span style={{ ...MANROPE(400), fontSize: 11, color: "rgba(0,0,0,0.5)", paddingLeft: 16 }}>Pas de spam. Désabonnement en 1 clic.</span>
-        </form>
-      </div>
-    </section>
-  );
-}

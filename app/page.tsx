@@ -37,28 +37,23 @@ function useAutoSlide(total: number, interval = 4000) {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const PARTNER_LOGOS = [
-  { name: "Winamax",        src: "/images/partners/logo-winamax.png" },
-  { name: "NBA",            src: "/images/partners/NBA_Logo.svg.png" },
-  { name: "NordVPN",        src: "/images/partners/nordvpn-logo.png" },
-  { name: "Bitpanda",       src: "/images/partners/bitpanda-logo.webp" },
-  { name: "Trade Republic", src: "/images/partners/traderepublic-logo.png" },
-  { name: "Ramify",         src: "/images/partners/ramify-logo.png" },
-  { name: "Saily",          src: "/images/partners/logo-saily.png" },
-  { name: "FIBA",           src: "/images/partners/fiba-logo.png" },
-  { name: "Holly",          src: "/images/partners/holly-logo.png" },
-  { name: "Influx",         src: "/images/partners/influx-logo.jpeg" },
+  { name: "NBA",     src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/NBA-logo_gi6lsj.png" },
+  { name: "FIBA",    src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/LOGO_FIBA_mgovnj.png" },
+  { name: "Winamax", src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png" },
+  { name: "Acast",   src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781792278/LOGO_ACAST_wckoni.png" },
+  { name: "Influx",  src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781792278/LOGO_INFLUX_nafd9u.svg" },
 ];
 
 const BIG_SPONSORS = [
-  { name: "Winamax",  color: "#FED000", src: "/images/partners/logo-winamax.png",  desc: "Partenaire officiel — paris sportifs & poker en ligne" },
-  { name: "NBA",      color: "#FE0000", src: "/images/partners/NBA_Logo.svg.png",  desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
-  { name: "FIBA",     color: "#002EFE", src: "/images/partners/fiba-logo.png",      desc: "Partenaire officiel — la fédération internationale de basketball" },
+  { name: "NBA",     color: "#FE0000", src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297115/nbaa_enmvoq.png",                            desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
+  { name: "FIBA",    color: "#002EFE", src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",                           desc: "Partenaire officiel — la fédération internationale de basketball" },
+  { name: "Winamax", color: "#FED000", src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",    desc: "Partenaire officiel — paris sportifs & poker en ligne" },
 ];
 
 const TEAM = [
-  { num: "01.", name: "Erwan Abautret", role: "Co-fondateur", color: "#FE0000", photo: "/images/equipe/erwan.jpg" },
-  { num: "02.", name: "Thomas Dufant",  role: "Co-fondateur", color: "#002EFE", photo: "/images/equipe/thomas.jpg" },
-  { num: "03.", name: "Stephen Brun",   role: "Co-fondateur", color: "#FED000", photo: "/images/equipe/stephen.png" },
+  { num: "01.", name: "Erwan Abautret", role: "Co-fondateur", color: "#FE0000", photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790074/Erwan_z9n7yr.jpg" },
+  { num: "02.", name: "Thomas Dufant",  role: "Co-fondateur", color: "#002EFE", photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790070/Thomas_qdf4dp.jpg" },
+  { num: "03.", name: "Stephen Brun",   role: "Co-fondateur", color: "#FED000", photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790066/Stephen_hcxjrg.jpg" },
 ];
 
 const RECENT_VIDEOS = [
@@ -89,10 +84,9 @@ const OFFENSE_PHOTOS = [
 ];
 
 const KPI_DATA = [
-  { num: "58M+", label: "Vues saison 2023-24" },
-  { num: "10",   label: "Ans d'existence" },
-  { num: "4",    label: "Partenaires majeurs" },
-  { num: "1ER",  label: "Média basket 100% digital FR" },
+  { num: "+500k", label: "abonnés en cumulé" },
+  { num: "10",    label: "ans de passion" },
+  { num: "110M+", label: "vues par saison" },
 ];
 
 const ABOUT_SLIDES = [
@@ -112,11 +106,11 @@ const NAV_LINKS = [
 ];
 
 const CATEGORIES = [
-  { label: "Contenus",    href: "/contenus",        photo: "/images/differentes-pages/contenus.jpg" },
-  { label: "L'équipe",    href: "/qui-nous-sommes", photo: "/images/differentes-pages/equipe.jpg" },
-  { label: "Merch",       href: "/shop",             photo: "/images/differentes-pages/merchandising.jpg" },
+  { label: "Contenus",    href: "/contenus",        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790194/catalogue_contenus_csyn5h.jpg" },
+  { label: "L'équipe",    href: "/qui-nous-sommes", photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790270/catalogue_equipe_ybjqpg.jpg?v=3" },
+  { label: "Merch",       href: "/shop",             photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790185/catalogue_merch_rs99bh.jpg" },
   ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel", photo: "/images/differentes-pages/travel.jpg" }] : []),
-  { label: "Partenaires", href: "/partenaires",     photo: "/images/differentes-pages/partenaires.jpg" },
+  { label: "Partenaires", href: "/partenaires",     photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790224/catalogue_partenaire_vggjmq.jpg" },
 ];
 
 // ── 1. VIDEO HERO ────────────────────────────────────────────────────
@@ -138,7 +132,7 @@ function VideoHero() {
         preload="auto"
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
       >
-        <source src="https://res.cloudinary.com/dg6xo2xwb/video/upload/v1781708412/vide%CC%81o_site_ht1vti.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dg6xo2xwb/video/upload/v1781708412/vide%CC%81o_site_ht1vti.mp4?v=2" type="video/mp4" />
       </video>
 
       {/* Dark overlay */}
@@ -146,7 +140,7 @@ function VideoHero() {
 
       {/* Nav */}
       <div className="r-video-nav" style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "28px 36px" }}>
-        <Link href="/" style={{ display: "block", position: "relative", width: 140, height: 44, flexShrink: 0 }}>
+        <Link href="/" className="nav-logo-link">
           <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
         </Link>
         <button onClick={() => setOpen(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "#fff" }} aria-label="Menu">
@@ -170,7 +164,7 @@ function VideoHero() {
       {open && (
         <div style={{ position: "fixed", inset: 0, background: "#0A0A0A", zIndex: 200, display: "flex", flexDirection: "column", padding: "28px 36px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 60 }}>
-            <Link href="/" onClick={() => setOpen(false)} style={{ display: "block", position: "relative", width: 140, height: 44 }}>
+            <Link href="/" onClick={() => setOpen(false)} className="nav-logo-link">
               <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
             </Link>
             <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "#fff" }} aria-label="Fermer">
@@ -214,8 +208,9 @@ function Hero() {
     <section id="hero-section" style={{ height: "100vh", position: "relative", overflow: "hidden" }}>
       {/* Photo fixe — pas de slider pour éviter tout glitch */}
       <img
-        src="/images/à propos/team-ft.jpg"
-        alt=""
+        src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790229/Section1_k1q9bv.png"
+        alt="First Team — section principale"
+        loading="eager"
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
       />
       {/* Gradient overlay */}
@@ -223,8 +218,7 @@ function Hero() {
 
       {/* Badges */}
       <div style={{ position: "absolute", top: 96, left: 36, display: "flex", gap: 8, zIndex: 2 }}>
-        <span style={{ ...MANROPE(800), background: "#FED000", color: "#0A0A0A", fontSize: 10, padding: "4px 12px", borderRadius: 999, letterSpacing: 0.5, textTransform: "uppercase" as const }}>NBA · LNB · Europe</span>
-        <span style={{ ...MANROPE(700), background: "rgba(255,255,255,0.12)", color: "#fff", fontSize: 10, padding: "4px 12px", borderRadius: 999, letterSpacing: 0.5, textTransform: "uppercase" as const, backdropFilter: "blur(6px)" }}>Since 2014</span>
+        <span style={{ ...MANROPE(800), background: "#FED000", color: "#0A0A0A", fontSize: 10, padding: "4px 12px", borderRadius: 999, letterSpacing: 0.5, textTransform: "uppercase" as const }}>Depuis 2016</span>
       </div>
 
       {/* Main text at bottom */}
@@ -236,7 +230,7 @@ function Hero() {
             </h1>
             <div className="r-hero-cta-bar" style={{ display: "flex", gap: 14, flexWrap: "wrap" as const }}>
               <Link href="/contenus" className="pill-btn pill-btn-red">Voir nos contenus →</Link>
-              <Link href="/partenaires" className="pill-btn pill-btn-outline-white">Devenir partenaire</Link>
+              <Link href="/shop" className="pill-btn pill-btn-outline-white">Le Shop First Team</Link>
             </div>
           </div>
           <div className="r-hide-mobile" style={{ flexShrink: 0, maxWidth: 220, paddingBottom: 4, borderLeft: "2px solid #FE0000", paddingLeft: 20 }}>
@@ -285,8 +279,8 @@ function LogoMarquee() {
         <div className="marquee-track-design" style={{ display: "flex", alignItems: "center", gap: 128 }}>
           {doubled.map((p, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 128, flexShrink: 0 }}>
-              <div style={{ position: "relative", height: 56, width: 160, flexShrink: 0 }}>
-                <Image src={p.src} alt={p.name} fill className="object-contain" />
+              <div style={{ height: 56, width: 160, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img src={p.src} alt={p.name} loading="lazy" style={{ maxHeight: 56, maxWidth: 160, width: "auto", height: "auto", objectFit: "contain", display: "block" }} />
               </div>
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#FE0000", flexShrink: 0 }} />
             </div>
@@ -390,7 +384,7 @@ function OffenseBanner() {
           <p style={{ ...MANROPE(400), fontSize: 15, lineHeight: 1.8, marginBottom: 36, maxWidth: 440, color: "rgba(255,255,255,0.85)" }}>
             Aux commandes, Tom Ciaravino avec des visages bien connus de First Team — Thomas, Erwan, Stephen Brun ou Mehdi Maizi — et des invités de prestige. Portraits, long formats, immersions : le basket comme tu ne l'as jamais vu. Un épisode tous les quinze jours, une conversation qui dure.
           </p>
-          <a href="https://www.youtube.com/@offense" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.youtube.com/@OFFENSE_EMISSION" target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: 8, ...MANROPE(700), fontSize: 15, background: "#EDDBC5", color: "#DB5224", padding: "14px 28px", borderRadius: 999, textDecoration: "none", transition: "transform 0.15s ease" }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "scale(1.04)"}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "scale(1)"}
@@ -403,7 +397,7 @@ function OffenseBanner() {
         <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {/* Dernière vidéo Offense — dynamique */}
           <a
-            href={latestOffense ? `https://www.youtube.com/watch?v=${latestOffense.id}` : "https://youtube.com/@offense"}
+            href={latestOffense ? `https://www.youtube.com/watch?v=${latestOffense.id}` : "https://www.youtube.com/@OFFENSE_EMISSION"}
             target="_blank" rel="noopener noreferrer"
             onClick={latestOffense ? (e) => { e.preventDefault(); setModalVideoId(latestOffense.id); } : undefined}
             style={{ display: "block", position: "relative", borderRadius: 4, overflow: "hidden", textDecoration: "none", boxShadow: "0 0 14px 3px rgba(237,219,197,0.18), 0 0 28px 6px rgba(237,219,197,0.08)" }}
@@ -419,27 +413,13 @@ function OffenseBanner() {
             </div>
           </a>
 
-          {/* Slider drag — photos backstage statiques */}
-          <div style={{ position: "relative", borderRadius: 4, border: "1.5px solid rgba(237,219,197,0.25)", overflow: "hidden" }}>
-            <div
-              ref={sliderRef}
-              style={{ display: "flex", gap: 6, overflowX: "auto", scrollbarWidth: "none", cursor: isDragging ? "grabbing" : "grab", userSelect: "none" }}
-              onMouseDown={onMouseDown}
-              onMouseMove={onMouseMove}
-              onMouseUp={onMouseUp}
-              onMouseLeave={onMouseUp}
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onMouseUp}
-            >
-              {OFFENSE_PHOTOS.map((src, i) => (
-                <div key={i} style={{ flexShrink: 0, width: "calc(30% - 4px)" }}>
-                  <img src={src} alt="" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", pointerEvents: "none", userSelect: "none" }} draggable={false} />
-                </div>
-              ))}
-            </div>
-            <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 40, background: "linear-gradient(to right, transparent, rgba(10,10,10,0.7))", pointerEvents: "none" }} />
+          {/* 3 invités — SDM, Domenech, Edgar Yves */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/sdm_uvvffd.png"    alt="SDM, invité Offense"        loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/domenec_gveuih.png" alt="Domenech, invité Offense"   loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
+            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264907/edgar_docp8b.png"   alt="Edgar Yves, invité Offense" loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
           </div>
+
           <style>{`div::-webkit-scrollbar { display: none; }`}</style>
         </div>
       </div>
@@ -468,7 +448,7 @@ function BuzzedVideo() {
     <section style={{ padding: "80px 40px", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ maxWidth: "100%" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 40, flexWrap: "wrap" as const, gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "flex-end", marginBottom: 40 }}>
             <div ref={ref} className="reveal">
               <p style={{ ...MANROPE(800), fontSize: 12, letterSpacing: 2, textTransform: "uppercase" as const, marginBottom: 10, color: "rgba(0,0,0,0.35)" }}>SI VOUS L'AVIEZ RATÉ</p>
               <h2 style={{ ...ANTON, fontSize: "clamp(32px, 4vw, 56px)", textTransform: "uppercase" as const, letterSpacing: "-0.5px", lineHeight: 1, color: "#FED000", marginBottom: 8 }}>
@@ -478,9 +458,8 @@ function BuzzedVideo() {
                 Retour sur la saison exceptionnelle du prodige des Spurs — technique, vision du jeu, objectifs NBA : une conversation sans langue de bois.
               </p>
             </div>
-            <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-              <span style={{ ...MANROPE(700), fontSize: 13, color: "rgba(0,0,0,0.35)" }}>1.2M vues · 48K likes</span>
-              <a href={`https://www.youtube.com/watch?v=${WEMBY_VIDEO_IDS[0]}`} target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-red" style={{ fontSize: 13, padding: "10px 20px" }}>Voir sur YouTube →</a>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-red" style={{ fontSize: 13, padding: "10px 20px" }}>Notre chaîne YouTube →</a>
             </div>
           </div>
         </div>
@@ -619,9 +598,9 @@ function RecentVideos() {
       <div style={{ marginTop: 48, display: "flex", gap: 16, flexWrap: "wrap" as const }}>
           {[
             { label: "YouTube",   sub: "Plusieurs émissions basket chaque semaine", color: "#FE0000", href: "https://youtube.com/@firstteam",              icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> },
-            { label: "Twitch",    sub: "La Libre Antenne NBA tous les lundis soirs", color: "#002EFE", href: "https://twitch.tv",                           icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> },
-            { label: "Instagram", sub: "Les news et du contenu tous les jours", color: "#0A0A0A", href: "https://www.instagram.com/firstteam101/",     icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> },
-            { label: "TikTok",    sub: "Des extraits d'émissions et d'ITW tous les jours", color: "#FED000", href: "https://tiktok.com",                          icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> },
+            { label: "Twitch",    sub: "La Libre Antenne NBA tous les lundis soirs", color: "#002EFE", href: "https://www.twitch.tv/firstteam101",               icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> },
+            { label: "Instagram", sub: "Les news et du contenu tous les jours", color: "#0A0A0A", href: "https://www.instagram.com/firstteam101/?hl=fr", icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> },
+            { label: "TikTok",    sub: "Des extraits d'émissions et d'ITW tous les jours", color: "#FED000", href: "https://www.tiktok.com/@firstteam_tiktok",      icon: <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 22, height: 22 }}><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> },
           ].map((s, i) => (
             <a key={i} href={s.href} target="_blank" rel="noopener noreferrer"
               style={{ background: s.color, color: s.color === "#FED000" ? "#0A0A0A" : "#fff", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", borderRadius: 12, padding: "18px 16px", flex: "1 1 180px", textDecoration: "none", transition: "transform 0.15s ease" }}
@@ -641,26 +620,28 @@ function RecentVideos() {
 
 // ── 8. KPI BAND ───────────────────────────────────────────────────────
 function KpiBand() {
-  const refs = [useReveal(), useReveal(), useReveal(), useReveal()];
   return (
     <>
-      <div style={{ display: "flex", height: 5 }}>
+      <div style={{ display: "flex", height: 4 }}>
         <div style={{ flex: 1, background: "#FE0000" }} />
         <div style={{ flex: 1, background: "#FED000" }} />
         <div style={{ flex: 1, background: "#002EFE" }} />
       </div>
-      <section className="r-sec-md" style={{ position: "relative", padding: "80px 40px", overflow: "hidden" }}>
-        <img src="/images/basket/ball-closeup.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.93)", zIndex: 1 }} />
-        <div className="r-grid-kpi" style={{ gap: 0, maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 2 }}>
+      <section style={{ padding: "80px 40px", background: "#fff" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto" }}>
           {KPI_DATA.map((k, i) => (
-            <div key={i} ref={refs[i]} className="reveal r-kpi-item" style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
-              <span style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 88px)", color: "#fff", lineHeight: 1, letterSpacing: "-1px", display: "block" }}>{k.num}</span>
-              <span style={{ ...MANROPE(500), fontSize: 13, color: "rgba(255,255,255,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5, display: "block" }}>{k.label}</span>
+            <div key={i} style={{ borderRight: i < 2 ? "1px solid rgba(10,10,10,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
+              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.num}</span>
+              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(10,10,10,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
             </div>
           ))}
         </div>
       </section>
+      <div style={{ display: "flex", height: 4 }}>
+        <div style={{ flex: 1, background: "#FE0000" }} />
+        <div style={{ flex: 1, background: "#FED000" }} />
+        <div style={{ flex: 1, background: "#002EFE" }} />
+      </div>
     </>
   );
 }
@@ -692,7 +673,7 @@ function TeamSection() {
 function TeamCard({ member }: { member: typeof TEAM[0] }) {
   const ref = useReveal();
   return (
-    <div ref={ref} className="reveal" style={{ background: "#161616", borderRadius: 4, overflow: "hidden", transition: "transform 0.2s ease", cursor: "pointer" }}
+    <div ref={ref} className="reveal" style={{ background: "#161616", borderRadius: 4, overflow: "hidden", transition: "transform 0.2s ease" }}
       onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-4px)")}
       onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
     >
@@ -744,9 +725,7 @@ function SponsorsSection() {
             >
               <div style={{ height: 3, background: sp.color }} />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "52px 40px 36px" }}>
-                <div style={{ position: "relative", width: "100%", height: 72 }}>
-                  <Image src={sp.src} alt={sp.name} fill style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }} />
-                </div>
+                <img src={sp.src} alt={sp.name} style={{ maxHeight: 60, maxWidth: "100%", width: "auto", height: "auto", objectFit: "contain", display: "block", filter: sp.name === "Winamax" ? "brightness(0) invert(1)" : undefined }} />
               </div>
               <div style={{ padding: "0 36px 44px" }}>
                 <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: sp.color, padding: "4px 12px", borderRadius: 999, marginBottom: 16 }}>
@@ -772,11 +751,11 @@ function MerchSection() {
           onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(254,208,0,0.4)"; }}
           onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(255,255,255,0.1)"; }}
         >
-          <img src="/images/differentes-pages/merchandising.png" alt="Maison First Team" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block" }} />
+          <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790198/section_fin_shop_fs52xl.jpg?v=3" alt="Maison First Team" loading="lazy" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block" }} />
           <div style={{ padding: "32px 36px 36px" }}>
             <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 2, textTransform: "uppercase" as const, color: "#FED000", display: "block", marginBottom: 12 }}>BOUTIQUE</span>
             <h3 style={{ ...ANTON, fontSize: 36, textTransform: "uppercase" as const, color: "#fff", marginBottom: 16, lineHeight: 0.95 }}>Maison<br />First Team.</h3>
-            <p style={{ ...MANROPE(400), fontSize: 14, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.6 }}>T-shirts, hoodies, casquettes — pour porter les couleurs de la culture basket française.</p>
+            <p style={{ ...MANROPE(400), fontSize: 14, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.6 }}>Off-Court, On-Court, Accessoires… pour porter les couleurs de First Team !</p>
             <span className="pill-btn pill-btn-yellow">Découvrir la boutique →</span>
           </div>
         </Link>

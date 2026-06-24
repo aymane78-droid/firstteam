@@ -38,44 +38,44 @@ export default function Header() {
   if (isHome && !pastVideo) return null;
 
   return (
-    <header style={{
+    <header className="header-wrap" style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       background: "rgba(255,255,255,0.97)",
       backdropFilter: "blur(12px)",
       borderBottom: "1px solid #eee",
       transition: "all 0.3s ease",
-      padding: "0 40px", height: 68,
       display: "flex", alignItems: "center", justifyContent: "space-between",
     }}>
-      {/* Logo */}
-      <Link href="/" style={{ display: "block", position: "relative", width: 140, height: 44, textDecoration: "none", flexShrink: 0 }}>
-        <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left" }} />
-      </Link>
+      {/* Logo + Desktop nav — groupe gauche */}
+      <div style={{ display: "flex", alignItems: "center", gap: 48 }}>
+        <Link href="/" className="nav-logo-link">
+          <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left" }} />
+        </Link>
 
-      {/* Desktop nav */}
-      <nav style={{ display: "flex", gap: 36, alignItems: "center" }} className="hidden lg:flex">
-        {NAV_LINKS.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className="nav-link"
-            style={{
-              ...MANROPE(600),
-              fontSize: 14,
-              color: pathname === item.href ? "#FE0000" : "#0A0A0A",
-              textDecoration: "none",
-            }}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+        <nav style={{ display: "flex", gap: 36, alignItems: "center" }} className="hidden lg:flex">
+          {NAV_LINKS.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="nav-link"
+              style={{
+                ...MANROPE(600),
+                fontSize: 14,
+                color: pathname === item.href ? "#FE0000" : "#0A0A0A",
+                textDecoration: "none",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
 
       {/* CTA + burger */}
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <Link href="/qui-nous-sommes" className="pill-btn pill-btn-red hidden sm:inline-flex" style={{ fontSize: 13, padding: "10px 20px" }}>
-          Nous rejoindre →
-        </Link>
+        <a href="mailto:firstteam@influxcrew.com?subject=Contact%20depuis%20le%20site%20First%20Team" className="pill-btn pill-btn-red hidden sm:inline-flex" style={{ fontSize: 13, padding: "10px 20px" }}>
+          Nous contacter →
+        </a>
         <button
           onClick={() => setOpen(!open)}
           className="lg:hidden"
@@ -96,8 +96,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div style={{
-          position: "absolute", top: 68, left: 0, right: 0,
+        <div className="header-dropdown-top" style={{
           background: "white", borderBottom: "1px solid #eee",
           padding: "16px 40px 24px",
         }}>
@@ -114,9 +113,9 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/qui-nous-sommes" className="pill-btn pill-btn-red" style={{ marginTop: 20, fontSize: 13 }}>
-            Nous rejoindre →
-          </Link>
+          <a href="mailto:firstteam@influxcrew.com?subject=Contact%20depuis%20le%20site%20First%20Team" className="pill-btn pill-btn-red" style={{ marginTop: 20, fontSize: 13, display: "inline-flex" }}>
+            Nous contacter →
+          </a>
         </div>
       )}
     </header>

@@ -75,15 +75,14 @@ export default function MediaBasketSection() {
           {/* Left: lead text + pillars */}
           <div>
             <p style={{ ...MANROPE(400), fontSize: 18, lineHeight: 1.75, color: "#0A0A0A", marginBottom: 48 }}>
-              Fondé par d&apos;anciens basketteurs,{" "}
+              Fondé par de vrais passionnés, depuis 2016,{" "}
               <span style={{ background: "linear-gradient(transparent 62%, #FED000 62%, #FED000 92%, transparent 92%)" }}>
-                First Team est le premier média basket 100% indépendant en France
+                First Team propose des contenus basket uniques en toute indépendance.
               </span>
-              {" "}— on décrypte, on débat, on kiffe le jeu.
             </p>
             {[
-              { num: "01", color: "#FE0000", title: "Indépendance", body: "Aucun actionnaire extérieur. Nos opinions n'appartiennent qu'à nous." },
-              { num: "02", color: "#FED000", title: "Profondeur", body: "Analyses tactiques, entretiens longs, contexte historique — pas de titres racoleurs." },
+              { num: "01", color: "#FE0000", title: "Indépendance", body: "Liberté de ton, nos opinions n'appartiennent qu'à nous." },
+              { num: "02", color: "#FED000", title: "Expertise", body: "Analyses tactiques, entretiens longs, contexte historique. Ça parle basket !" },
               { num: "03", color: "#002EFE", title: "Communauté", body: "Construits avec notre audience, pour notre audience. Vous êtes First Team." },
             ].map((p) => (
               <div key={p.num} style={{ borderTop: "1px solid rgba(10,10,10,0.1)", paddingTop: 20, paddingBottom: 20, display: "grid", gridTemplateColumns: "48px 1fr", gap: 20, alignItems: "start" }}>
@@ -95,7 +94,7 @@ export default function MediaBasketSection() {
               </div>
             ))}
             <div style={{ marginTop: 36 }}>
-              <Link href="/qui-nous-sommes" className="pill-btn pill-btn-black">Qui sommes-nous →</Link>
+              <Link href="/contenus" className="pill-btn pill-btn-black">Découvrir nos contenus →</Link>
             </div>
           </div>
 
