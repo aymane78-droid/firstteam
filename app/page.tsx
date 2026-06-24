@@ -368,7 +368,7 @@ function OffenseBanner() {
     <section style={{ overflow: "hidden", position: "relative", minHeight: 720, width: "100%" }}>
       <img src="/images/offense/fond.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(219,82,36,0.80) 0%, rgba(219,82,36,0.80) 38%, rgba(219,82,36,0.55) 52%, rgba(219,82,36,0.14) 68%, rgba(219,82,36,0) 80%)", zIndex: 1 }} />
-      <div ref={ref} className="reveal" style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 40px 120px 20px", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 60, alignItems: "start", position: "relative", zIndex: 2 }}>
+      <div ref={ref} className="reveal offense-banner-grid" style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 40px 120px 20px", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 60, alignItems: "start", position: "relative", zIndex: 2 }}>
         {/* Left */}
         <div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 24, background: "#EDDBC5", padding: "6px 16px", borderRadius: 2 }}>
@@ -394,7 +394,7 @@ function OffenseBanner() {
         </div>
 
         {/* Right — vignette dynamique + slider drag */}
-        <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <div className="offense-right-col" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {/* Dernière vidéo Offense — dynamique */}
           <a
             href={latestOffense ? `https://www.youtube.com/watch?v=${latestOffense.id}` : "https://www.youtube.com/@OFFENSE_EMISSION"}
@@ -448,7 +448,7 @@ function BuzzedVideo() {
     <section style={{ padding: "80px 40px", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ maxWidth: "100%" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "flex-end", marginBottom: 40 }}>
+          <div className="buzzed-header-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "flex-end", marginBottom: 40 }}>
             <div ref={ref} className="reveal">
               <p style={{ ...MANROPE(800), fontSize: 12, letterSpacing: 2, textTransform: "uppercase" as const, marginBottom: 10, color: "rgba(0,0,0,0.35)" }}>SI VOUS L'AVIEZ RATÉ</p>
               <h2 style={{ ...ANTON, fontSize: "clamp(32px, 4vw, 56px)", textTransform: "uppercase" as const, letterSpacing: "-0.5px", lineHeight: 1, color: "#FED000", marginBottom: 8 }}>
@@ -464,7 +464,7 @@ function BuzzedVideo() {
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "stretch" }}>
+        <div className="buzzed-video-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12, alignItems: "stretch" }}>
           {/* Grande vignette */}
           <div style={{ borderRadius: 8, overflow: "hidden", boxShadow: "0 0 36px 10px rgba(254,0,0,0.18), 0 0 72px 20px rgba(254,0,0,0.08)", position: "relative", aspectRatio: "16/9" }}>
             <a
@@ -486,7 +486,7 @@ function BuzzedVideo() {
           </div>
 
           {/* Colonne droite — 3 miniatures */}
-          <div className="r-hide-mobile" style={{ display: "flex", flexDirection: "column" as const, gap: 8, alignItems: "flex-start" }}>
+          <div className="buzzed-mini-col" style={{ display: "flex", flexDirection: "column" as const, gap: 8, alignItems: "flex-start" }}>
             {[0, 1, 2].map(i => {
               const videoId = WEMBY_VIDEO_IDS[i + 1];
               const thumb = wembyVideos[i + 1]?.thumbnail || BUZZED_VIGNETTES[i];
@@ -565,7 +565,7 @@ function RecentVideos() {
                         </div>
                       </div>
                     </div>
-                    <div style={{ padding: "12px 16px 14px", background: "#111" }}>
+                    <div className="vid-title-home" style={{ padding: "12px 16px 14px", background: "#111" }}>
                       <p style={{ ...MANROPE(700), fontSize: 12, color: "rgba(255,255,255,0.75)", lineHeight: 1.4, margin: 0 }}>{v.title}</p>
                     </div>
                   </a>
@@ -630,9 +630,9 @@ function KpiBand() {
       <section style={{ padding: "80px 40px", background: "#fff" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto" }}>
           {KPI_DATA.map((k, i) => (
-            <div key={i} style={{ borderRight: i < 2 ? "1px solid rgba(10,10,10,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
-              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.num}</span>
-              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(10,10,10,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
+            <div key={i} className="kpi-item" style={{ borderRight: i < 2 ? "1px solid rgba(10,10,10,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
+              <span className="kpi-num" style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.num}</span>
+              <span className="kpi-label" style={{ ...MANROPE(500), fontSize: 12, color: "rgba(10,10,10,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
             </div>
           ))}
         </div>
@@ -708,7 +708,7 @@ function SponsorsSection() {
             </div>
           </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+        <div className="home-sponsors-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
           {BIG_SPONSORS.map((sp, i) => (
             <Link key={i} href="/partenaires"
               style={{

@@ -475,7 +475,7 @@ export default function ContenusPage() {
             <a href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer" className="pill-btn pill-btn-outline-white">Tout voir sur YouTube →</a>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+          <div className="contenus-formats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {(latestVideos ?? Array(6).fill(null)).map((v: YTVideo | null, i: number) => {
               const glow = VIDEO_COLORS[i % VIDEO_COLORS.length];
               if (!v) return (
@@ -498,7 +498,7 @@ export default function ContenusPage() {
                       </div>
                     </div>
                   </div>
-                  <div style={{ padding: "12px 16px 14px" }}>
+                  <div className="vid-title-contenus" style={{ padding: "12px 16px 14px" }}>
                     <p style={{ ...MANROPE(700), fontSize: 12, color: "rgba(255,255,255,0.75)", lineHeight: 1.4, margin: 0 }}>{v.title}</p>
                   </div>
                 </a>
@@ -542,7 +542,7 @@ export default function ContenusPage() {
           <div style={{ background: "#0d0d0d", borderRadius: "0 0 10px 10px", overflow: "hidden" }}>
 
             {/* En-tête concept */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+            <div className="concept-header-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
               <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
                 <Image src={active.logo} alt={active.title} fill style={{ objectFit: "cover" }} />
               </div>
@@ -574,6 +574,7 @@ export default function ContenusPage() {
                       href={`https://www.youtube.com/watch?v=${v.id}`}
                       target="_blank" rel="noopener noreferrer"
                       onClick={e => { e.preventDefault(); setConceptModalId(v.id); }}
+                      className="concept-thumb-link"
                       style={{ flexShrink: 0, width: "calc(33.33% - 8px)", display: "block", textDecoration: "none", borderRadius: 6, overflow: "hidden" }}
                     >
                       <div style={{ position: "relative", aspectRatio: "16/9" }}>
@@ -585,7 +586,7 @@ export default function ContenusPage() {
                         </div>
                       </div>
                       <div style={{ paddingTop: 6 }}>
-                        <p style={{ ...MANROPE(600), fontSize: 10, color: "rgba(255,255,255,0.7)", lineHeight: 1.3, margin: 0 }}>{v.title}</p>
+                        <p className="concept-vid-title" style={{ ...MANROPE(600), fontSize: 10, color: "rgba(255,255,255,0.7)", lineHeight: 1.3, margin: 0 }}>{v.title}</p>
                       </div>
                     </a>
                   ))}
@@ -598,6 +599,7 @@ export default function ContenusPage() {
                 <div style={{ display: "flex", gap: 12, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
                   {(CONCEPT_VIGNETTES[tab] ?? []).map((src, i) => (
                     <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
+                      className="concept-thumb-link"
                       style={{ flexShrink: 0, flex: "1 0 calc(33.33% - 8px)", display: "block", textDecoration: "none", borderRadius: 6, overflow: "hidden", position: "relative" as const, aspectRatio: "16/9" }}
                     >
                       <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
@@ -827,6 +829,7 @@ export default function ContenusPage() {
                   href={`https://www.youtube.com/watch?v=${v.id}`}
                   target="_blank" rel="noopener noreferrer"
                   onClick={e => { e.preventDefault(); setOffensePlaylistModalId(v.id); }}
+                  className="offense-slider-thumb"
                   style={{ flexShrink: 0, width: "calc(25% - 11px)", display: "block", textDecoration: "none", borderRadius: 8, overflow: "hidden" }}
                   draggable={false}
                 >
@@ -842,7 +845,7 @@ export default function ContenusPage() {
                     </div>
                   </div>
                   <div style={{ paddingTop: 8 }}>
-                    <p style={{ ...MANROPE(600), fontSize: 11, color: "rgba(255,255,255,0.7)", lineHeight: 1.35, margin: 0 }}>{v.title}</p>
+                    <p className="offense-slider-title" style={{ ...MANROPE(600), fontSize: 11, color: "rgba(255,255,255,0.7)", lineHeight: 1.35, margin: 0 }}>{v.title}</p>
                   </div>
                 </a>
               )) : (
@@ -864,7 +867,7 @@ export default function ContenusPage() {
             </p>
             <div style={{ display: "flex", gap: 8, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
               {OFFENSE_PHOTOS.map((photo, i) => (
-                <div key={i} style={{ flexShrink: 0, width: "calc(20% - 6px)" }}>
+                <div key={i} className="offense-photo-item" style={{ flexShrink: 0, width: "calc(20% - 6px)" }}>
                   <img src={photo.src} alt={photo.alt} loading="lazy" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", borderRadius: 4 }} />
                 </div>
               ))}

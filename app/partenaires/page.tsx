@@ -99,7 +99,7 @@ export default function PartenairesPage() {
             {TOP_SPONSORS.map((s, i) => {
               const isEven = i % 2 === 0;
               return (
-                <div key={s.name} style={{
+                <div key={s.name} className="top-sponsor-card" style={{
                   display: "grid", gridTemplateColumns: "1fr 1fr",
                   background: "#111", borderRadius: 12, overflow: "hidden",
                   boxShadow: `0 0 32px 8px ${s.color}30, 0 0 64px 16px ${s.color}14`,
@@ -109,7 +109,7 @@ export default function PartenairesPage() {
                   onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = `0 0 32px 8px ${s.color}30, 0 0 64px 16px ${s.color}14`}
                 >
                   {/* Photo */}
-                  <div style={{ position: "relative" as const, aspectRatio: "16/10", overflow: "hidden", order: isEven ? 1 : 2 }}>
+                  <div className="top-sponsor-photo" style={{ position: "relative" as const, aspectRatio: "16/10", overflow: "hidden", order: isEven ? 1 : 2 }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={s.photo} alt={s.photoAlt} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transform: s.photoScale ? `scale(${s.photoScale})` : undefined }} />
                     <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.12)" }} />
@@ -119,7 +119,7 @@ export default function PartenairesPage() {
                   </div>
 
                   {/* Text */}
-                  <div style={{
+                  <div className="top-sponsor-text" style={{
                     padding: "52px 56px",
                     display: "flex",
                     flexDirection: "column" as const,
@@ -151,7 +151,7 @@ export default function PartenairesPage() {
             Ils nous ont fait<br />confiance.
           </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#2a2a2a" }}>
+          <div className="all-partners-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#2a2a2a" }}>
             {ALL_PARTNERS.map((p, i) => (
               <div
                 key={p.name}

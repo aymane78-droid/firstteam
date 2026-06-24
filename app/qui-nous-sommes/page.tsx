@@ -180,9 +180,9 @@ export default function QuiNousSommesPage() {
       <section style={{ padding: "80px 40px", background: "#fff" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, maxWidth: 1200, margin: "0 auto" }}>
           {KPI.map((k, i) => (
-            <div key={i} style={{ borderRight: i < 2 ? "1px solid rgba(10,10,10,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
-              <span style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.num}</span>
-              <span style={{ ...MANROPE(500), fontSize: 12, color: "rgba(10,10,10,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
+            <div key={i} className="kpi-item" style={{ borderRight: i < 2 ? "1px solid rgba(10,10,10,0.1)" : "none", padding: "20px 40px", display: "flex", flexDirection: "column" as const, gap: 8 }}>
+              <span className="kpi-num" style={{ ...ANTON, fontSize: "clamp(40px, 5vw, 72px)", color: "#0A0A0A", lineHeight: 1, letterSpacing: "-1px" }}>{k.num}</span>
+              <span className="kpi-label" style={{ ...MANROPE(500), fontSize: 12, color: "rgba(10,10,10,0.45)", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{k.label}</span>
             </div>
           ))}
         </div>
@@ -253,17 +253,20 @@ export default function QuiNousSommesPage() {
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#0A0A0A", letterSpacing: "-0.5px", marginBottom: 56 }}>
             Nos projets<br />majeurs.
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+          <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
             {PROJECTS.map((p, i) => (
-              <div key={i} style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "16/10" }}
-                onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1.06)"; }}
-                onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1)"; }}
-              >
-                <CldImage src={p.img} alt={p.title} fill style={{ objectFit: "cover", transition: "transform 0.5s ease" }} format="auto" quality="auto" />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }} />
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 20px" }}>
-                  <p style={{ ...ANTON, fontSize: 15, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 0.5, margin: 0 }}>{p.title}</p>
+              <div key={i}>
+                <div style={{ position: "relative" as const, overflow: "hidden", borderRadius: 4, aspectRatio: "16/10" }}
+                  onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1.06)"; }}
+                  onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1)"; }}
+                >
+                  <CldImage src={p.img} alt={p.title} fill style={{ objectFit: "cover", transition: "transform 0.5s ease" }} format="auto" quality="auto" />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }} />
+                  <div className="project-title-overlay" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 20px" }}>
+                    <p style={{ ...ANTON, fontSize: 15, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 0.5, margin: 0 }}>{p.title}</p>
+                  </div>
                 </div>
+                <p className="project-title-below" style={{ ...ANTON, fontSize: 13, color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: 0.5, margin: "8px 4px 0", display: "none" }}>{p.title}</p>
               </div>
             ))}
           </div>

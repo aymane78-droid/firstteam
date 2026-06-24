@@ -47,12 +47,12 @@ export default function Header() {
       display: "flex", alignItems: "center", justifyContent: "space-between",
     }}>
       {/* Logo + Desktop nav — groupe gauche */}
-      <div style={{ display: "flex", alignItems: "center", gap: 48 }}>
+      <div className="header-inner-left" style={{ display: "flex", alignItems: "center", gap: 48 }}>
         <Link href="/" className="nav-logo-link">
           <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left" }} />
         </Link>
 
-        <nav style={{ display: "flex", gap: 36, alignItems: "center" }} className="hidden lg:flex">
+        <nav style={{ display: "flex", gap: 36, alignItems: "center" }} className="header-mobile-nav hidden lg:flex">
           {NAV_LINKS.map((item) => (
             <Link
               key={item.label}
@@ -78,7 +78,7 @@ export default function Header() {
         </a>
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden"
+          className="header-burger lg:hidden"
           style={{ color: "#0A0A0A", background: "none", border: "none", cursor: "pointer", padding: 4 }}
           aria-label="Menu"
         >
