@@ -732,7 +732,9 @@ body {
   .offense-slider-wrap  { scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch; gap: 8px !important; }
   .offense-slider-thumb { width: 85vw !important; scroll-snap-align: start !important; }
   .offense-slider-title { display: none !important; }
-  .offense-photo-item   { width: calc(33.33% - 6px) !important; }
+  .offense-photos-bloc   { overflow-x: hidden !important; }
+  .offense-photos-slider { scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch; }
+  .offense-photo-item    { width: calc(100% - 6px) !important; scroll-snap-align: start !important; }
 
   /* ── 5. L'ÉQUIPE — roster fondateurs ───────────────────────── */
   .roster-grid { grid-template-columns: 1fr !important; gap: 32px !important; max-width: 320px !important; margin-left: auto !important; margin-right: auto !important; }

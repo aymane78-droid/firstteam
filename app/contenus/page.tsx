@@ -862,12 +862,12 @@ export default function ContenusPage() {
         </div>
 
         {/* ── BLOC 3 — fond noir : "Avec des invités de marque" + photos ── */}
-        <div style={{ background: "#0A0A0A", padding: "0 60px 60px" }}>
+        <div className="offense-photos-bloc" style={{ background: "#0A0A0A", padding: "0 60px 60px" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto" }}>
             <p style={{ fontFamily: "Awesome, Georgia, serif", fontWeight: 700, fontStyle: "italic", fontSize: 22, color: "rgba(255,255,255,0.85)", marginBottom: 24 }}>
               Avec des invités de marque
             </p>
-            <div style={{ display: "flex", gap: 8, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
+            <div className="offense-photos-slider" style={{ display: "flex", gap: 8, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
               {OFFENSE_PHOTOS.map((photo, i) => (
                 <div key={i} className="offense-photo-item" style={{ flexShrink: 0, width: "calc(20% - 6px)" }}>
                   <img src={photo.src} alt={photo.alt} loading="lazy" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", borderRadius: 4 }} />
