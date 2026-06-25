@@ -87,7 +87,7 @@ export default function Header() {
           </svg>
         </a>
         {/* CTA texte — desktop uniquement */}
-        <a href="mailto:firstteam@influxcrew.com?subject=Contact%20depuis%20le%20site%20First%20Team" className="pill-btn pill-btn-red hidden md:inline-flex" style={{ fontSize: 13, padding: "10px 20px" }}>
+        <a href="mailto:firstteam@influxcrew.com?subject=Contact%20depuis%20le%20site%20First%20Team" className="pill-btn pill-btn-red header-contact-cta" style={{ fontSize: 13, padding: "10px 20px" }}>
           Nous contacter →
         </a>
         <button
