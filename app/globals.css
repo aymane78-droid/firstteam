@@ -236,6 +236,7 @@ body {
 .header-wrap { height: 68px; padding: 0 20px; }
 @media (min-width: 1024px) { .header-wrap { padding: 0 40px; } }
 .header-mail-icon { display: none; }
+.concept-color-bar { display: none; }
 
 /* ── Mobile dropdown: ancré sous le header (68px fixe) ───── */
 .header-dropdown-top { position: absolute; left: 0; right: 0; top: 68px; }
@@ -720,6 +721,10 @@ body {
 
   /* ── 4c. CONTENUS — nos concepts ───────────────────────────── */
   .concept-header-grid        { grid-template-columns: 1fr !important; }
+  .concept-logo-container     { background: #0d0d0d; }
+  .concept-logo-container img { object-fit: contain !important; }
+  .concept-color-bar          { display: block !important; width: 100%; }
+  .concept-header-text        { border-left: none !important; padding: 28px 24px !important; }
   .concept-vid-title          { display: none !important; }
   .concept-episodes-slider    { scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch; gap: 8px !important; }
   .concept-thumb-link         { width: 85vw !important; scroll-snap-align: start !important; flex-shrink: 0 !important; }
@@ -730,7 +735,10 @@ body {
   .offense-slider-title { display: none !important; }
   .offense-photo-item   { width: calc(33.33% - 6px) !important; }
 
-  /* ── 5. L'ÉQUIPE — projets majeurs ─────────────────────────── */
+  /* ── 5. L'ÉQUIPE — roster fondateurs ───────────────────────── */
+  .roster-grid { grid-template-columns: 1fr !important; gap: 32px !important; max-width: 320px !important; margin-left: auto !important; margin-right: auto !important; }
+
+  /* ── 5b. L'ÉQUIPE — projets majeurs ─────────────────────────── */
   .projects-grid         { grid-template-columns: repeat(2, 1fr) !important; }
   .project-title-overlay { display: none !important; }
   .project-title-below   { display: block !important; }

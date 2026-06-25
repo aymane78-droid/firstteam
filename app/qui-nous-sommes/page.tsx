@@ -282,7 +282,7 @@ export default function QuiNousSommesPage() {
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#fff", letterSpacing: "-0.5px", marginBottom: 56 }}>
             Le <span style={{ color: "#FED000" }}>roster.</span>
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          <div className="roster-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             {FONDATEURS.map((m, i) => <FounderCard key={i} member={m} />)}
           </div>
         </div>

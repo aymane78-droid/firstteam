@@ -543,10 +543,11 @@ export default function ContenusPage() {
 
             {/* En-tête concept */}
             <div className="concept-header-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
-              <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
+              <div className="concept-logo-container" style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
                 <Image src={active.logo} alt={active.title} fill style={{ objectFit: "cover" }} />
               </div>
-              <div style={{ padding: "40px 48px", display: "flex", flexDirection: "column" as const, justifyContent: "center", borderLeft: `4px solid ${active.color}` }}>
+              <div className="concept-color-bar" style={{ height: 4, background: active.color }} />
+              <div className="concept-header-text" style={{ padding: "40px 48px", display: "flex", flexDirection: "column" as const, justifyContent: "center", borderLeft: `4px solid ${active.color}` }}>
                 <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: active.color, padding: "4px 12px", borderRadius: 999, marginBottom: 20, alignSelf: "flex-start" as const }}>
                   <span style={{ ...MANROPE(800), fontSize: 10, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 1 }}>{active.title}</span>
                 </div>
