@@ -722,12 +722,11 @@ body {
   /* ── 4c. CONTENUS — nos concepts ───────────────────────────── */
   .concept-header-grid        { grid-template-columns: 1fr !important; }
   .concept-logo-container     { background: #0d0d0d; }
-  .concept-logo-container img { object-fit: contain !important; }
   .concept-color-bar          { display: block !important; width: 100%; }
   .concept-header-text        { border-left: none !important; padding: 28px 24px !important; }
   .concept-vid-title          { display: none !important; }
   .concept-episodes-slider    { scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch; gap: 8px !important; }
-  .concept-thumb-link         { width: 85vw !important; scroll-snap-align: start !important; flex-shrink: 0 !important; }
+  .concept-thumb-link         { width: 63vw !important; scroll-snap-align: start !important; flex-shrink: 0 !important; }
 
   /* ── 4d. CONTENUS — offense slider + photos invités ────────── */
   .offense-slider-wrap  { scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch; gap: 8px !important; }
