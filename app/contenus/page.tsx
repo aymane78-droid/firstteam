@@ -568,7 +568,7 @@ export default function ContenusPage() {
 
               {PLAYLISTS[tab] && conceptVideos ? (
                 /* Vidéos dynamiques de la playlist */
-                <div style={{ display: "flex", gap: 12, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
+                <div className="concept-episodes-slider" style={{ display: "flex", gap: 12, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
                   {conceptVideos.map((v, i) => (
                     <a key={i}
                       href={`https://www.youtube.com/watch?v=${v.id}`}
@@ -596,7 +596,7 @@ export default function ContenusPage() {
                 <p style={{ ...MANROPE(500), fontSize: 12, color: "rgba(255,255,255,0.3)" }}>Chargement…</p>
               ) : (
                 /* Fallback statique pour VLOG / TLIST (pas encore de playlist) */
-                <div style={{ display: "flex", gap: 12, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
+                <div className="concept-episodes-slider" style={{ display: "flex", gap: 12, overflowX: "auto" as const, scrollbarWidth: "none" as const, paddingBottom: 4 }}>
                   {(CONCEPT_VIGNETTES[tab] ?? []).map((src, i) => (
                     <a key={i} href="https://youtube.com/@firstteam" target="_blank" rel="noopener noreferrer"
                       className="concept-thumb-link"
@@ -724,16 +724,16 @@ export default function ContenusPage() {
           <h2 style={{ ...ANTON, fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase" as const, color: "#fff", letterSpacing: "-0.5px", marginBottom: 48 }}>
             First Team partout.
           </h2>
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
+          <div className="social-strip" style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
             {SOCIAL_LINKS.map((s, i) => (
-              <a key={i} href={s.href} target="_blank" rel="noopener noreferrer"
+              <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
                 style={{ flex: "1 1 160px", background: s.color, color: s.color === "#FED000" ? "#0A0A0A" : "#fff", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", borderRadius: 12, padding: "24px 28px", textDecoration: "none", transition: "transform 0.15s ease" }}
                 onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
                 onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
               >
                 <div style={{ marginBottom: 12 }}>{s.icon}</div>
-                <span style={{ ...ANTON, fontSize: 20, letterSpacing: 0.5, marginBottom: 4 }}>{s.label}</span>
-                <span style={{ ...MANROPE(500), fontSize: 12, opacity: 0.75 }}>{s.sub}</span>
+                <span className="social-btn-label" style={{ ...ANTON, fontSize: 20, letterSpacing: 0.5, marginBottom: 4 }}>{s.label}</span>
+                <span className="social-btn-sub" style={{ ...MANROPE(500), fontSize: 12, opacity: 0.75 }}>{s.sub}</span>
               </a>
             ))}
           </div>
@@ -815,6 +815,7 @@ export default function ContenusPage() {
             {/* Slider drag horizontal */}
             <div
               ref={offenseSliderRef}
+              className="offense-slider-wrap"
               style={{ display: "flex", gap: 14, overflowX: "auto" as const, scrollbarWidth: "none" as const, cursor: isOffenseDragging ? "grabbing" : "grab", userSelect: "none" as const, paddingBottom: 4 }}
               onMouseDown={onOffenseMouseDown}
               onMouseMove={onOffenseMouseMove}
