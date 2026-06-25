@@ -235,6 +235,7 @@ body {
 /* ── Header dimensions — ne change jamais ────────────────── */
 .header-wrap { height: 68px; padding: 0 20px; }
 @media (min-width: 1024px) { .header-wrap { padding: 0 40px; } }
+.header-mail-icon { display: none; }
 
 /* ── Mobile dropdown: ancré sous le header (68px fixe) ───── */
 .header-dropdown-top { position: absolute; left: 0; right: 0; top: 68px; }
@@ -676,10 +677,11 @@ body {
   /* ── 1. HEADER ─────────────────────────────────────────────── */
   .nav-logo-link       { width: 80px !important; height: 36px !important; }
   .header-inner-left   { flex: 1; gap: 8px !important; }
-  .header-mobile-nav   { display: flex !important; flex: 1; justify-content: center; gap: 14px !important; }
+  .header-mobile-nav   { display: flex !important; flex: 1; justify-content: center; gap: 10px !important; }
   .header-mobile-nav a { font-size: 11px !important; letter-spacing: 0 !important; }
   .header-burger       { display: none !important; }
   .header-contact-cta  { display: none !important; }
+  .header-mail-icon    { display: flex !important; align-items: center; justify-content: center; }
 
   /* ── 2a. HOME — OFFENSE ────────────────────────────────────── */
   .offense-banner-grid { grid-template-columns: 1fr !important; padding: 64px 20px !important; gap: 32px !important; }
@@ -755,7 +757,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .header-mobile-nav   { gap: 8px !important; }
+  .header-mobile-nav   { gap: 5px !important; }
   .header-mobile-nav a { font-size: 10px !important; }
   .kpi-item  { padding: 12px 8px !important; }
   .kpi-num   { font-size: 20px !important; }
