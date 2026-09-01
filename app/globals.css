@@ -223,13 +223,13 @@ body {
 .nav-logo-link {
   display: block; position: relative; flex-shrink: 0; text-decoration: none;
   align-self: center;
-  width: min(320px, calc(100vw - 80px)); height: 80px;
+  width: min(160px, calc(100vw - 80px)); height: 40px;
 }
 @media (min-width: 640px) {
-  .nav-logo-link { width: 480px; height: 96px; }
+  .nav-logo-link { width: 240px; height: 48px; }
 }
 @media (min-width: 1024px) {
-  .nav-logo-link { width: 640px; height: 112px; }
+  .nav-logo-link { width: 320px; height: 56px; }
 }
 
 /* ── Header dimensions — ne change jamais ────────────────── */
@@ -676,7 +676,7 @@ body {
 @media (max-width: 768px) {
 
   /* ── 1. HEADER ─────────────────────────────────────────────── */
-  .nav-logo-link       { width: 80px !important; height: 36px !important; }
+  .nav-logo-link       { width: 40px !important; height: 18px !important; }
   .header-inner-left   { flex: 1; gap: 8px !important; }
   .header-mobile-nav   { display: flex !important; flex: 1; justify-content: center; gap: 10px !important; }
   .header-mobile-nav a { font-size: 11px !important; letter-spacing: 0 !important; }
