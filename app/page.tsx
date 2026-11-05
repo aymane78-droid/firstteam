@@ -37,23 +37,23 @@ function useAutoSlide(total: number, interval = 4000) {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 const PARTNER_LOGOS = [
-  { name: "NBA",     src: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/NBA.jpg" },
-  { name: "FIBA",    src: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/FIBA.jpg" },
-  { name: "Winamax", src: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/WINAMAX.png" },
-  { name: "Acast",   src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781792278/LOGO_ACAST_wckoni.png" },
-  { name: "Influx",  src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781792278/LOGO_INFLUX_nafd9u.svg" },
+  { name: "NBA",     src: "/media/partenaires/logos/nba.png" },
+  { name: "FIBA",    src: "/media/partenaires/logos/fiba.png" },
+  { name: "Winamax", src: "/media/partenaires/logos/winamax.png" },
+  { name: "Acast",   src: "/media/partenaires/logos/acast.png" },
+  { name: "Influx",  src: "/media/partenaires/logos/influx.svg" },
 ];
 
 const BIG_SPONSORS = [
-  { name: "NBA",     color: "#FE0000", src: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/NBA.jpg",                            desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
-  { name: "FIBA",    color: "#002EFE", src: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/FIBA.jpg",                           desc: "Partenaire officiel — la fédération internationale de basketball" },
-  { name: "Winamax", color: "#FED000", src: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/WINAMAX.png",    desc: "Partenaire officiel — paris sportifs & poker en ligne" },
+  { name: "NBA",     color: "#FE0000", src: "/media/partenaires/logos/nba.png",                            desc: "Partenaire officiel — la ligue de basketball la plus regardée au monde" },
+  { name: "FIBA",    color: "#002EFE", src: "/media/partenaires/logos/fiba.png",                           desc: "Partenaire officiel — la fédération internationale de basketball" },
+  { name: "Winamax", color: "#FED000", src: "/media/partenaires/logos/winamax.png",    desc: "Partenaire officiel — paris sportifs & poker en ligne" },
 ];
 
 const TEAM = [
-  { num: "01.", name: "Erwan Abautret", role: "Co-fondateur", color: "#FE0000", photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/L%27E%CC%81QUIPE/roster/Erwan.jpg" },
-  { num: "02.", name: "Thomas Dufant",  role: "Co-fondateur", color: "#002EFE", photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/L%27E%CC%81QUIPE/roster/Thomas.jpg" },
-  { num: "03.", name: "Stephen Brun",   role: "Co-fondateur", color: "#FED000", photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/L%27E%CC%81QUIPE/roster/Stephen.jpg" },
+  { num: "01.", name: "Erwan Abautret", role: "Co-fondateur", color: "#FE0000", photo: "/media/equipe/roster/erwan.jpg" },
+  { num: "02.", name: "Thomas Dufant",  role: "Co-fondateur", color: "#002EFE", photo: "/media/equipe/roster/thomas.jpg" },
+  { num: "03.", name: "Stephen Brun",   role: "Co-fondateur", color: "#FED000", photo: "/media/equipe/roster/stephen.jpg" },
 ];
 
 const RECENT_VIDEOS = [
@@ -106,11 +106,11 @@ const NAV_LINKS = [
 ];
 
 const CATEGORIES = [
-  { label: "Contenus",    href: "/contenus",        photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/HOME/catalogue_contenus.jpg" },
-  { label: "L'équipe",    href: "/qui-nous-sommes", photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/L%27E%CC%81QUIPE/catalogue_equipe.jpg" },
-  { label: "Merch",       href: "/shop",             photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/HOME/catalogue_merch.jpeg" },
+  { label: "Contenus",    href: "/contenus",        photo: "/media/accueil/catalogue-contenus.jpg" },
+  { label: "L'équipe",    href: "/qui-nous-sommes", photo: "/media/equipe/catalogue-equipe.jpg" },
+  { label: "Merch",       href: "/shop",             photo: "/media/accueil/catalogue-merch.jpg" },
   ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel", photo: "/images/differentes-pages/travel.jpg" }] : []),
-  { label: "Partenaires", href: "/partenaires",     photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/HOME/catalogue_partenaire.jpg" },
+  { label: "Partenaires", href: "/partenaires",     photo: "/media/accueil/catalogue-partenaire.jpg" },
 ];
 
 // ── 1. VIDEO HERO ────────────────────────────────────────────────────
@@ -130,9 +130,10 @@ function VideoHero() {
         loop
         playsInline
         preload="auto"
+        poster="/media/video/accueil-poster.jpg"
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
       >
-        <source src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/vide%CC%81o%20site%20V2.mp4" type="video/mp4" />
+        <source src="/media/video/accueil.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay */}
@@ -141,7 +142,7 @@ function VideoHero() {
       {/* Nav */}
       <div className="r-video-nav" style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "28px 36px" }}>
         <Link href="/" className="nav-logo-link">
-          <Image src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/favicon.ico" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
+          <Image src="/media/logo/ft-monogramme-noir.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
         </Link>
         <button onClick={() => setOpen(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "#fff" }} aria-label="Menu">
           <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" fill="none" style={{ width: 28, height: 28 }}>
@@ -165,7 +166,7 @@ function VideoHero() {
         <div style={{ position: "fixed", inset: 0, background: "#0A0A0A", zIndex: 200, display: "flex", flexDirection: "column", padding: "28px 36px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 60 }}>
             <Link href="/" onClick={() => setOpen(false)} className="nav-logo-link">
-              <Image src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/favicon.ico" alt="First Team" fill style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
+              <Image src="/media/logo/ft-monogramme-noir.png" alt="First Team" fill style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
             </Link>
             <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "#fff" }} aria-label="Fermer">
               <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" fill="none" style={{ width: 28, height: 28 }}>
@@ -208,7 +209,7 @@ function Hero() {
     <section id="hero-section" style={{ height: "100vh", position: "relative", overflow: "hidden" }}>
       {/* Photo fixe — pas de slider pour éviter tout glitch */}
       <img
-        src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/HOME/Section1.png"
+        src="/media/accueil/section1.jpg"
         alt="First Team — section principale"
         loading="eager"
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
@@ -413,11 +414,11 @@ function OffenseBanner() {
             </div>
           </a>
 
-          {/* 3 invités — SDM, Domenech, Edgar Yves */}
+          {/* 3 invités — Domenech, Riolo, Nadeau */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
-            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/sdm_uvvffd.png"    alt="SDM, invité Offense"        loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
-            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/domenec_gveuih.png" alt="Domenech, invité Offense"   loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
-            <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264907/edgar_docp8b.png"   alt="Edgar Yves, invité Offense" loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
+            <img src="/media/contenus/invites/domenech.jpg"    alt="Raymond Domenech, invité Offense"        loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
+            <img src="/media/contenus/invites/riolo.jpg" alt="Daniel Riolo, invité Offense"   loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
+            <img src="/media/contenus/invites/nadeau.jpg"   alt="Nadeau, invité Offense" loading="lazy" draggable={false} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", borderRadius: 4 }} />
           </div>
 
           <style>{`div::-webkit-scrollbar { display: none; }`}</style>
@@ -751,7 +752,7 @@ function MerchSection() {
           onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(254,208,0,0.4)"; }}
           onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(255,255,255,0.1)"; }}
         >
-          <img src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/HOME/section_fin_shop.jpeg" alt="Maison First Team" loading="lazy" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block" }} />
+          <img src="/media/accueil/section-fin-shop.jpg" alt="Maison First Team" loading="lazy" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block" }} />
           <div style={{ padding: "32px 36px 36px" }}>
             <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 2, textTransform: "uppercase" as const, color: "#FED000", display: "block", marginBottom: 12 }}>BOUTIQUE</span>
             <h3 style={{ ...ANTON, fontSize: 36, textTransform: "uppercase" as const, color: "#fff", marginBottom: 16, lineHeight: 0.95 }}>Maison<br />First Team.</h3>

@@ -12,18 +12,18 @@ const AWESOME = (w: number) => ({ fontFamily: "Awesome, Georgia, serif", fontWei
 // ── DATA ──────────────────────────────────────────────────────────────
 
 const OFFENSE_PHOTOS = [
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/sdm_uvvffd.png",    alt: "SDM, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/domenec_gveuih.png", alt: "Domenech, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264907/edgar_docp8b.png",   alt: "Edgar Yves, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265159/riolo_vou7zx.png",   alt: "Riolo, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265161/christ_myrvu2.png",  alt: "Lemaître, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291105/cazarre_wzqrqr.png", alt: "Cazarre, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265163/jjs_xl7u1c.png",     alt: "Jean Jass, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/margo_sgmruu.png",   alt: "Margotton, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265159/mehdi_r9lyx3.png",   alt: "Maizi, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265165/nadeau_imbqe2.png",  alt: "Nadeau, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/gillian_zptifi.png", alt: "Gillian, invité Offense" },
-  { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265162/couvr_uggpfy.png",   alt: "Couvreur, invité Offense" },
+  // À FOURNIR (image manquante) : photo SDM — { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/sdm_uvvffd.png",    alt: "SDM, invité Offense" },
+  { src: "/media/contenus/invites/domenech.jpg", alt: "Domenech, invité Offense" },
+  // À FOURNIR (image manquante) : photo Edgar Yves — { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264907/edgar_docp8b.png",   alt: "Edgar Yves, invité Offense" },
+  { src: "/media/contenus/invites/riolo.jpg",   alt: "Riolo, invité Offense" },
+  // À FOURNIR (image manquante) : photo Lemaître — { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265161/christ_myrvu2.png",  alt: "Lemaître, invité Offense" },
+  { src: "/media/contenus/invites/cazarre.jpg", alt: "Cazarre, invité Offense" },
+  // À FOURNIR (image manquante) : photo Jean Jass — { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265163/jjs_xl7u1c.png",     alt: "Jean Jass, invité Offense" },
+  // À FOURNIR (image manquante) : photo Margotton — { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/margo_sgmruu.png",   alt: "Margotton, invité Offense" },
+  // À FOURNIR (image manquante) : photo Maizi — { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265159/mehdi_r9lyx3.png",   alt: "Maizi, invité Offense" },
+  { src: "/media/contenus/invites/nadeau.jpg",  alt: "Nadeau, invité Offense" },
+  // À FOURNIR (image manquante) : photo Gillian — { src: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/gillian_zptifi.png", alt: "Gillian, invité Offense" },
+  { src: "/media/contenus/invites/couvreur.jpg",   alt: "Couvreur, invité Offense" },
 ];
 
 const VIDEO_COLORS = ["#FE0000", "#002EFE", "#C89000", "#555555", "#6C35FF", "#00A8E8"];
@@ -92,7 +92,7 @@ const PLANNING_DAYS: PlanDay[] = [
     label: "Lundi",
     tiles: [{
       accent: "#FE0000", photoCls: "pt-ph-red",
-      photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/LIBRE_ANTENNE_-_PROGRAMME_uqm6fy.png",
+      // À FOURNIR (image manquante) : visuel LIBRE ANTENNE (format portrait) — photo: "/media/contenus/programmes/libreantenne.jpg",
       time: "20H00", status: "LIVE",
       nameMain: "Libre", nameAccent: "Antenne",
       meta: "2h · En direct",
@@ -103,7 +103,7 @@ const PLANNING_DAYS: PlanDay[] = [
     label: "Mardi",
     tiles: [{
       accent: "#CD4D22", photoCls: "pt-ph-orange",
-      photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
+      // À FOURNIR (image manquante) : visuel REPLAY — photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
       time: "09H00", status: "REPLAY", statusReplay: true,
       nameMain: "Libre", nameAccent: "Antenne",
       meta: "30 min · Replay",
@@ -115,7 +115,7 @@ const PLANNING_DAYS: PlanDay[] = [
     tiles: [
       {
         accent: "#CD4D22", photoCls: "pt-ph-orange",
-        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
+        // À FOURNIR (image manquante) : visuel REPLAY — photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
         time: "09H00", status: "REPLAY", statusReplay: true,
         nameMain: "Libre", nameAccent: "Antenne",
         meta: "30 min · Replay",
@@ -123,7 +123,7 @@ const PLANNING_DAYS: PlanDay[] = [
       },
       {
         accent: "#002EFE", photoCls: "pt-ph-clutch",
-        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
+        // À FOURNIR (image manquante) : visuel CLUTCH — photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
         time: "17H00", status: "LIVE",
         logoText: "WINATV", logoTextColor: "#002EFE",
         nameMain: "Clutch", nameAccent: "Winamax",
@@ -136,7 +136,7 @@ const PLANNING_DAYS: PlanDay[] = [
     label: "Jeudi",
     tiles: [{
       accent: "#FED000", photoCls: "pt-ph-violet",
-      photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/FDS_-_PROGRAMME_kwrkk1.png",
+      // À FOURNIR (image manquante) : visuel FDS (format portrait) — photo: "/media/contenus/programmes/firstdayshow.jpg",
       time: "18H00",
       nameMain: "First Day", nameAccent: "Show",
       meta: "1h · Hebdo",
@@ -148,7 +148,7 @@ const PLANNING_DAYS: PlanDay[] = [
     tiles: [
       {
         accent: "#FF6A2E", photoCls: "pt-ph-offense",
-        photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/L%27E%CC%81QUIPE/projets-majeurs/offense.png",
+        photo: "/media/equipe/projets-majeurs/offense.jpg",
         time: "12H00",
         nameAccent: "Offense", isOffense: true,
         meta: "1h · Long format",
@@ -156,7 +156,7 @@ const PLANNING_DAYS: PlanDay[] = [
       },
       {
         accent: "#002EFE", photoCls: "pt-ph-clutch",
-        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
+        // À FOURNIR (image manquante) : visuel CLUTCH — photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
         time: "17H00", status: "LIVE",
         logoText: "WINATV", logoTextColor: "#002EFE",
         nameMain: "Clutch", nameAccent: "Winamax",
@@ -170,7 +170,7 @@ const PLANNING_DAYS: PlanDay[] = [
     tiles: [
       {
         accent: "#CD4D22", photoCls: "pt-ph-orange",
-        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
+        // À FOURNIR (image manquante) : visuel REPLAY — photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
         time: "SAMEDI", status: "REPLAY", statusReplay: true,
         nameMain: "Libre", nameAccent: "Antenne",
         meta: "30 min · Replay",
@@ -178,7 +178,7 @@ const PLANNING_DAYS: PlanDay[] = [
       },
       {
         accent: "#fff", photoCls: "pt-ph-orange",
-        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782292186/ENTRETIEN_-_PROGRAMME_fox6tu.png",
+        // À FOURNIR (image manquante) : visuel ENTRETIEN (format portrait) — photo: "/media/contenus/programmes/entretien.jpg",
         time: "DIMANCHE",
         nameMain: "L'", nameAccent: "Entretien",
         meta: "Long format · Exclusif",
@@ -348,7 +348,7 @@ export default function ContenusPage() {
 
       {/* ── HEADER HERO ── */}
       <section style={{ position: "relative", minHeight: 420, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <img src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/CONTENUS/herro.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <img src="/media/contenus/herro.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "100px 40px 60px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -637,7 +637,7 @@ export default function ContenusPage() {
               {/* Photo cover */}
               <div style={{ position: "relative", zIndex: 1, aspectRatio: "1/1", borderRadius: 6, overflow: "hidden", background: "linear-gradient(135deg,#1a1300 0%,#3d2800 55%,#5a3a12 100%)", boxShadow: "0 24px 60px -20px rgba(0,0,0,0.35)" }}>
                 {/* Photo cover */}
-                <img src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/CONTENUS/podcast.jpeg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+                <img src="/media/contenus/podcast.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
                 {/* Badge coin */}
                 <div style={{ position: "absolute", top: 16, left: 16, display: "flex", alignItems: "center", gap: 8, background: "rgba(10,10,10,0.72)", backdropFilter: "blur(8px)", padding: "6px 12px", borderRadius: 999, zIndex: 2 }}>
                   <div className="pod-live-dot" />

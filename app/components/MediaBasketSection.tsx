@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useEffect } from "react";
-import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 import Link from "next/link";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
@@ -21,7 +21,7 @@ function useReveal() {
 }
 
 // Public_id exact depuis l'URL Cloudinary : SectionA%CC%80Propos_nathyt (%CC%80 = U+0300 accent grave combinant)
-const SECTION_PHOTO_ID = "SectionÀPropos_nathyt";
+const SECTION_PHOTO = "/media/accueil/section-a-propos.jpg";
 
 export default function MediaBasketSection() {
   const ref = useReveal();
@@ -104,13 +104,12 @@ export default function MediaBasketSection() {
             <div style={{ position: "absolute" as const, top: 18, left: 18, width: "92%", height: "82%", background: "#FED000", borderRadius: 4, zIndex: 0 }} />
             {/* Photo + liseré tricolore */}
             <div style={{ position: "absolute" as const, top: 0, left: 0, width: "92%", height: "82%", borderRadius: 4, overflow: "hidden", zIndex: 1 }}>
-              <CldImage
-                src={SECTION_PHOTO_ID}
+              <Image
+                src={SECTION_PHOTO}
                 alt="First Team"
                 fill
                 style={{ objectFit: "cover" as const }}
-                format="auto"
-                quality="auto"
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
               <div style={{ position: "absolute" as const, bottom: 0, left: 0, right: 0, height: 6, display: "flex", zIndex: 2 }}>
                 <div style={{ flex: 1, background: "#FE0000" }} />

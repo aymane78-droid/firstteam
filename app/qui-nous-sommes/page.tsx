@@ -22,51 +22,49 @@ function useReveal() {
 
 // ── DATA ──────────────────────────────────────────────────────────────
 
-const BLOB = "https://jry6nc0w67kepqum.public.blob.vercel-storage.com";
-const EQ   = `${BLOB}/L%27E%CC%81QUIPE`;
 
 const TIMELINE: { year: string; label: string; desc: string; accent: string; photo: string }[] = [
-  { year: "2016", label: "Lancement du média",                desc: "First Team se crée et se lance dans cette grande aventure avec vous.",                                              accent: "#FE0000", photo: `${EQ}/frise/2016.png` },
-  { year: "2017", label: "Les Premiers First Day Show",        desc: "On lance notre émission phare, Erwan, Thomas, Stephen et Waxx pour parler basket dans un format Talk-Show.",      accent: "#002EFE", photo: `${EQ}/frise/2017.png` },
-  { year: "2018", label: "50k abonnés",                        desc: "Un premier milestone d'importance atteint avec vous !",                                                            accent: "#FED000", photo: `${EQ}/frise/2018.png` },
-  { year: "2019", label: "Le All-Star Game à L.A.",            desc: "First Team se déplace à Los Angeles pour découvrir son premier All-Star Game sur place.",                          accent: "#FE0000", photo: `${EQ}/frise/2019.png` },
-  { year: "2020", label: "1er changement de logo",             desc: "Nouvelle DA ! First Team arbore ses nouvelles couleurs.",                                                          accent: "#002EFE", photo: `${EQ}/frise/2020.png` },
-  { year: "2022", label: "NBA Paris Game",                     desc: "Un énorme dispositif pour le retour de la NBA à Paris.",                                                           accent: "#FE0000", photo: `${EQ}/frise/2022.jpg` },
+  { year: "2016", label: "Lancement du média",                desc: "First Team se crée et se lance dans cette grande aventure avec vous.",                                              accent: "#FE0000", photo: "/media/equipe/frise/2016.jpg" },
+  { year: "2017", label: "Les Premiers First Day Show",        desc: "On lance notre émission phare, Erwan, Thomas, Stephen et Waxx pour parler basket dans un format Talk-Show.",      accent: "#002EFE", photo: "/media/equipe/frise/2017.jpg" },
+  { year: "2018", label: "50k abonnés",                        desc: "Un premier milestone d'importance atteint avec vous !",                                                            accent: "#FED000", photo: "/media/equipe/frise/2018.jpg" },
+  { year: "2019", label: "Le All-Star Game à L.A.",            desc: "First Team se déplace à Los Angeles pour découvrir son premier All-Star Game sur place.",                          accent: "#FE0000", photo: "/media/equipe/frise/2019.jpg" },
+  { year: "2020", label: "1er changement de logo",             desc: "Nouvelle DA ! First Team arbore ses nouvelles couleurs.",                                                          accent: "#002EFE", photo: "/media/equipe/frise/2020.jpg" },
+  { year: "2022", label: "NBA Paris Game",                     desc: "Un énorme dispositif pour le retour de la NBA à Paris.",                                                           accent: "#FE0000", photo: "/media/equipe/frise/2022.jpg" },
   { year: "2022", label: "EuroBasket 2022",                    desc: "Première compétition EDF couverte sur place.",                                                                     accent: "#FED000", photo: "" }, // TODO: uploader frise/eurobasket-2022 sur Blob
-  { year: "2023", label: "Coupe du Monde 2023",                desc: "La découverte des Philippines pour une compétition historique.",                                                   accent: "#002EFE", photo: `${EQ}/projets-majeurs/cdm-2023.jpg` },
-  { year: "2023", label: "Wembanyama sur First Team",          desc: "Pour sa dernière année en France avec les Mets 92, on a suivi et diffusé les matchs de Wemby sur notre chaîne.", accent: "#FE0000", photo: `${EQ}/projets-majeurs/wembanyama-first-team.jpg` },
+  { year: "2023", label: "Coupe du Monde 2023",                desc: "La découverte des Philippines pour une compétition historique.",                                                   accent: "#002EFE", photo: "/media/equipe/projets-majeurs/cdm-2023.jpg" },
+  { year: "2023", label: "Wembanyama sur First Team",          desc: "Pour sa dernière année en France avec les Mets 92, on a suivi et diffusé les matchs de Wemby sur notre chaîne.", accent: "#FE0000", photo: "/media/equipe/projets-majeurs/wembanyama-first-team.jpg" },
   { year: "2024", label: "Basketball Africa League",           desc: "Découverte de la BAL à Dakar.",                                                                                    accent: "#FED000", photo: "" }, // TODO: uploader frise/bal-2024 sur Blob
-  { year: "2024", label: "JO de Paris",                        desc: "Une quinzaine historique à Paris avec notre record d'audience.",                                                   accent: "#002EFE", photo: `${EQ}/projets-majeurs/jo-2024.jpg` },
+  { year: "2024", label: "JO de Paris",                        desc: "Une quinzaine historique à Paris avec notre record d'audience.",                                                   accent: "#002EFE", photo: "/media/equipe/projets-majeurs/jo-2024.jpg" },
   { year: "2025", label: "Coupe du Monde U19 chez First Team", desc: "Diffusion de la compétition phare des jeunes sur nos chaînes.",                                                   accent: "#FE0000", photo: "" }, // TODO: uploader frise/cdm-u19-2025 sur Blob
 ];
 
 const FONDATEURS: { num: string; name: string; role: string; detail: string; color: string; photo: string }[] = [
-  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: `${EQ}/roster/Thomas.jpg` },
-  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: `${EQ}/roster/Erwan.jpg` },
-  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: `${EQ}/roster/Stephen.jpg` },
+  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: "/media/equipe/roster/thomas.jpg" },
+  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "/media/equipe/roster/erwan.jpg" },
+  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "/media/equipe/roster/stephen.jpg" },
 ];
 
 const TEAM_CONSULTANTS: { name: string; role: string; photo: string }[] = [
-  { name: "Théo Haumesser",    role: "Consultant", photo: `${EQ}/collaborateurs/theo-haumesser.jpg` },
-  { name: "Thomas Larrouquis", role: "Consultant", photo: `${EQ}/collaborateurs/thomas-larrouquis.jpg` },
-  { name: "Arthur Sene",       role: "Consultant", photo: `${EQ}/collaborateurs/arthur.jpg` },
+  { name: "Théo Haumesser",    role: "Consultant", photo: "/media/equipe/collaborateurs/theo-haumesser.jpg" },
+  { name: "Thomas Larrouquis", role: "Consultant", photo: "/media/equipe/collaborateurs/thomas-larrouquis.jpg" },
+  { name: "Arthur Sene",       role: "Consultant", photo: "/media/equipe/collaborateurs/arthur.jpg" },
 ];
 
 const TEAM_STAFF: { name: string; role?: string; photo: string }[] = [
-  { name: "Jeremy Raharifidy--Barbe",   photo: `${EQ}/collaborateurs/jeremy.jpg` },
-  { name: "Tom Ciaravino",              photo: `${EQ}/collaborateurs/tom.jpg` },
-  { name: "Aymane El Atchia",           photo: `${EQ}/collaborateurs/aymane.jpg` },
-  { name: "Léo Tilhet-Coartet Vasquez", photo: `${EQ}/collaborateurs/leo.jpg` },
-  { name: "Yanis Giely",                photo: `${EQ}/collaborateurs/yanis.jpg` },
+  { name: "Jeremy Raharifidy--Barbe",   photo: "/media/equipe/collaborateurs/jeremy.jpg" },
+  { name: "Tom Ciaravino",              photo: "/media/equipe/collaborateurs/tom.jpg" },
+  { name: "Aymane El Atchia",           photo: "/media/equipe/collaborateurs/aymane.jpg" },
+  { name: "Léo Tilhet-Coartet Vasquez", photo: "/media/equipe/collaborateurs/leo.jpg" },
+  { name: "Yanis Giely",                photo: "/media/equipe/collaborateurs/yanis.jpg" },
 ];
 
 const PROJECTS = [
-  { title: "NBA Classic Games",                 img: `${EQ}/projets-majeurs/classic-games.png` },
-  { title: "JO 2024 à Paris",                   img: `${EQ}/projets-majeurs/jo-2024.jpg` },
-  { title: "CDM 2023 aux Philippines",          img: `${EQ}/projets-majeurs/cdm-2023.jpg` },
-  { title: "Victor Wembanyama chez First Team", img: `${EQ}/projets-majeurs/wembanyama-first-team.jpg` },
-  { title: "NBA x First Team",                  img: `${EQ}/projets-majeurs/nba-first-team.jpg` },
-  { title: "Offense",                           img: `${EQ}/projets-majeurs/offense.png` },
+  { title: "NBA Classic Games",                 img: "/media/equipe/projets-majeurs/classic-games.jpg" },
+  { title: "JO 2024 à Paris",                   img: "/media/equipe/projets-majeurs/jo-2024.jpg" },
+  { title: "CDM 2023 aux Philippines",          img: "/media/equipe/projets-majeurs/cdm-2023.jpg" },
+  { title: "Victor Wembanyama chez First Team", img: "/media/equipe/projets-majeurs/wembanyama-first-team.jpg" },
+  { title: "NBA x First Team",                  img: "/media/equipe/projets-majeurs/nba-first-team.jpg" },
+  { title: "Offense",                           img: "/media/equipe/projets-majeurs/offense.jpg" },
 ];
 
 const KPI = [
@@ -150,7 +148,7 @@ export default function QuiNousSommesPage() {
 
       {/* HERO HEADER */}
       <section style={{ position: "relative", minHeight: 520, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <img src={`${EQ}/catalogue_equipe.jpg`} alt="" loading="eager" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <img src={"/media/equipe/catalogue-equipe.jpg"} alt="" loading="eager" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.9) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "120px 40px 70px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>FIRST TEAM</p>
