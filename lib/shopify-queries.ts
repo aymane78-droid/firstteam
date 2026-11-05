@@ -17,6 +17,7 @@ export interface ShopifyVariant {
   title: string;
   availableForSale: boolean;
   price: { amount: string; currencyCode: string };
+  compareAtPrice: { amount: string; currencyCode: string } | null;
   selectedOptions: ShopifySelectedOption[];
 }
 
@@ -33,6 +34,7 @@ export interface ShopifyProduct {
   description: string;
   productType: string;
   tags: string[];
+  availableForSale: boolean;
   priceRange: {
     minVariantPrice: { amount: string; currencyCode: string };
   };
@@ -79,6 +81,7 @@ const PRODUCT_FIELDS = `
   title
   description
   productType
+  availableForSale
   tags
   priceRange {
     minVariantPrice { amount currencyCode }
@@ -92,6 +95,7 @@ const PRODUCT_FIELDS = `
       title
       availableForSale
       price { amount currencyCode }
+      compareAtPrice { amount currencyCode }
       selectedOptions { name value }
     }
   }

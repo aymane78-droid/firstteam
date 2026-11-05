@@ -158,9 +158,13 @@ function ProductCard({ product, onSelectSize }: ProductCardProps) {
   const [hovered, setHovered] = useState(false);
   const [added, setAdded] = useState(false);
 
+  const soldOut = !product.availableForSale;
   const price = product.priceRange.minVariantPrice;
   const sizes = getSizes(product);
   const single = isSingleVariant(product);
+  const compareAtPrice = product.variants.nodes.find(
+    v => v.compareAtPrice && parseFloat(v.compareAtPrice.amount) > parseFloat(v.price.amount)
+  )?.compareAtPrice ?? null;
 
   async function handleDirectAdd(e: React.MouseEvent) {
     e.stopPropagation();
@@ -172,22 +176,38 @@ function ProductCard({ product, onSelectSize }: ProductCardProps) {
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => !soldOut && setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: soldOut ? "not-allowed" : "pointer" }}
     >
       {/* Image carousel */}
-      <div style={{ position: "relative", aspectRatio: "4/5", background: "#ECE7DD", overflow: "hidden", borderRadius: 4 }}>
+      <div style={{ position: "relative", aspectRatio: "4/5", background: "#ECE7DD", overflow: "hidden", borderRadius: 4, opacity: soldOut ? 0.65 : 1 }}>
         <ImageCarousel product={product} hovered={hovered} />
 
-        {isNouveau(product) && (
+        {/* SOLD OUT overlay badge */}
+        {soldOut && (
+          <div style={{
+            position: "absolute", inset: 0, zIndex: 5,
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
+            <span style={{
+              background: "#FE0000", color: "#fff",
+              ...ANTON, fontSize: 13, letterSpacing: 2,
+              padding: "8px 18px", textTransform: "uppercase",
+            }}>
+              Sold Out
+            </span>
+          </div>
+        )}
+
+        {!soldOut && isNouveau(product) && (
           <span style={{ position: "absolute", top: 12, left: 12, background: "#FE0000", color: "#fff", ...ANTON, fontSize: 10, letterSpacing: 1.5, padding: "4px 10px", textTransform: "uppercase", zIndex: 5 }}>
             Nouveau
           </span>
         )}
 
-        {/* Quick add or size selector */}
-        {single ? (
+        {/* Quick add or size selector — hidden when sold out */}
+        {!soldOut && (single ? (
           <button
             onClick={handleDirectAdd}
             disabled={loading || !product.variants.nodes[0].availableForSale}
@@ -220,24 +240,38 @@ function ProductCard({ product, onSelectSize }: ProductCardProps) {
           >
             + Choisir ma taille
           </button>
-        )}
+        ))}
       </div>
 
       {/* Info */}
       <div style={{ paddingTop: 14, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
         <div>
           {/* TODO: noms produits à mettre à jour avec FT_BriefShooting_v3 */}
-          <h3 style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 4, letterSpacing: 0.2 }}>{product.title}</h3>
+          <h3 style={{ ...MANROPE(700), fontSize: 14, color: soldOut ? "rgba(0,0,0,0.45)" : "#0A0A0A", marginBottom: 4, letterSpacing: 0.2 }}>{product.title}</h3>
           {sizes.length > 0 && (
             <p style={{ ...MANROPE(500), fontSize: 11, color: "rgba(0,0,0,0.4)", letterSpacing: 0.3 }}>
               {sizes.join(" · ")}
             </p>
           )}
         </div>
-        {/* TODO: prix à mettre à jour avec les vrais prix avant lancement */}
-        <span style={{ ...ANTON, fontSize: 20, color: "#0A0A0A", letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0 }}>
-          {formatPrice(price.amount, price.currencyCode)}
-        </span>
+        {soldOut ? (
+          <span style={{ ...ANTON, fontSize: 14, color: "#FE0000", letterSpacing: 1, whiteSpace: "nowrap", flexShrink: 0, textTransform: "uppercase" }}>
+            Sold Out
+          </span>
+        ) : compareAtPrice ? (
+          <div style={{ textAlign: "right", flexShrink: 0 }}>
+            <div style={{ ...ANTON, fontSize: 12, color: "rgba(0,0,0,0.35)", textDecoration: "line-through", letterSpacing: 0.3 }}>
+              {formatPrice(compareAtPrice.amount, compareAtPrice.currencyCode)}
+            </div>
+            <div style={{ ...ANTON, fontSize: 20, color: "#FE0000", letterSpacing: 0.5 }}>
+              {formatPrice(price.amount, price.currencyCode)}
+            </div>
+          </div>
+        ) : (
+          <span style={{ ...ANTON, fontSize: 20, color: "#0A0A0A", letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0 }}>
+            {formatPrice(price.amount, price.currencyCode)}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -315,9 +349,16 @@ function QuickBuySheet({ product, onClose }: QuickBuySheetProps) {
           >✕</button>
         </div>
 
-        <p style={{ ...ANTON, fontSize: 24, color: "#0A0A0A", marginBottom: 20 }}>
-          {formatPrice(selected?.price.amount ?? "0", selected?.price.currencyCode ?? "EUR")}
-        </p>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 20 }}>
+          {selected?.compareAtPrice && parseFloat(selected.compareAtPrice.amount) > parseFloat(selected.price.amount) && (
+            <span style={{ ...ANTON, fontSize: 18, color: "rgba(0,0,0,0.35)", textDecoration: "line-through", letterSpacing: 0.3 }}>
+              {formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)}
+            </span>
+          )}
+          <span style={{ ...ANTON, fontSize: 24, color: selected?.compareAtPrice && parseFloat(selected.compareAtPrice.amount) > parseFloat(selected.price.amount) ? "#FE0000" : "#0A0A0A" }}>
+            {formatPrice(selected?.price.amount ?? "0", selected?.price.currencyCode ?? "EUR")}
+          </span>
+        </div>
 
         {/* Size buttons */}
         <p style={{ ...MANROPE(700), fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: "#0A0A0A", marginBottom: 10 }}>Taille</p>
@@ -370,6 +411,16 @@ function QuickBuySheet({ product, onClose }: QuickBuySheetProps) {
 
 // ─── Shop grid ────────────────────────────────────────────────────────────────
 
+// In-stock products are displayed first; within that group, order follows this
+// keyword priority list (matched against handle + title).
+const IN_STOCK_ORDER = ["bermuda", "tote", "sweat"];
+
+function stockPriority(p: ShopifyProduct): number {
+  const s = `${p.handle} ${p.title}`.toLowerCase();
+  const i = IN_STOCK_ORDER.findIndex(k => s.includes(k));
+  return i === -1 ? 999 : i;
+}
+
 interface Props {
   products: ShopifyProduct[];
 }
@@ -378,9 +429,15 @@ export default function ShopGrid({ products }: Props) {
   const [activeGid, setActiveGid] = useState<string | null>(null);
   const [quickBuyProduct, setQuickBuyProduct] = useState<ShopifyProduct | null>(null);
 
-  const filtered = activeGid
+  const base = activeGid
     ? products.filter((p) => p.collections.nodes.some((c) => c.id === activeGid))
     : products;
+
+  // Available products first, sold-out last; within each group, follow IN_STOCK_ORDER.
+  const filtered = [...base].sort((a, b) => {
+    if (a.availableForSale !== b.availableForSale) return a.availableForSale ? -1 : 1;
+    return stockPriority(a) - stockPriority(b);
+  });
 
   if (products.length === 0) {
     return (

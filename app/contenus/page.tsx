@@ -148,7 +148,7 @@ const PLANNING_DAYS: PlanDay[] = [
     tiles: [
       {
         accent: "#FF6A2E", photoCls: "pt-ph-offense",
-        photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/OFFENSE_-_PROGRAMME_gtbvhq.png",
+        photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/L%27E%CC%81QUIPE/projets-majeurs/offense.png",
         time: "12H00",
         nameAccent: "Offense", isOffense: true,
         meta: "1h · Long format",
@@ -348,7 +348,7 @@ export default function ContenusPage() {
 
       {/* ── HEADER HERO ── */}
       <section style={{ position: "relative", minHeight: 420, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781793063/herro_uieuiw.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <img src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/CONTENUS/herro.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "100px 40px 60px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -637,7 +637,7 @@ export default function ContenusPage() {
               {/* Photo cover */}
               <div style={{ position: "relative", zIndex: 1, aspectRatio: "1/1", borderRadius: 6, overflow: "hidden", background: "linear-gradient(135deg,#1a1300 0%,#3d2800 55%,#5a3a12 100%)", boxShadow: "0 24px 60px -20px rgba(0,0,0,0.35)" }}>
                 {/* Photo cover */}
-                <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781793063/podcast_iq5mic.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+                <img src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/CONTENUS/podcast.jpeg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
                 {/* Badge coin */}
                 <div style={{ position: "absolute", top: 16, left: 16, display: "flex", alignItems: "center", gap: 8, background: "rgba(10,10,10,0.72)", backdropFilter: "blur(8px)", padding: "6px 12px", borderRadius: 999, zIndex: 2 }}>
                   <div className="pod-live-dot" />

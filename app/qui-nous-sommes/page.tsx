@@ -1,6 +1,5 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import { CldImage } from "next-cloudinary";
 import Link from "next/link";
 import MediaBasketSection from "../components/MediaBasketSection";
 
@@ -22,48 +21,52 @@ function useReveal() {
 }
 
 // ── DATA ──────────────────────────────────────────────────────────────
-const TIMELINE: { year: string; label: string; desc: string; accent: string; photo: string; version?: number }[] = [
-  { year: "2016", label: "Lancement du média",                desc: "First Team se crée et se lance dans cette grande aventure avec vous.",                                              accent: "#FE0000", photo: "2016_xtfbef" },
-  { year: "2017", label: "Les Premiers First Day Show",        desc: "On lance notre émission phare, Erwan, Thomas, Stephen et Waxx pour parler basket dans un format Talk-Show.",      accent: "#002EFE", photo: "2018_ae9zkw" },
-  { year: "2018", label: "50k abonnés",                        desc: "Un premier milestone d'importance atteint avec vous !",                                                            accent: "#FED000", photo: "2017_rygcmk" },
-  { year: "2019", label: "Le All-Star Game à L.A.",            desc: "First Team se déplace à Los Angeles pour découvrir son premier All-Star Game sur place.",                          accent: "#FE0000", photo: "2019_vlchbi" },
-  { year: "2020", label: "1er changement de logo",             desc: "Nouvelle DA ! First Team arbore ses nouvelles couleurs.",                                                          accent: "#002EFE", photo: "2020_pzmdm3" },
-  { year: "2022", label: "NBA Paris Game",                     desc: "Un énorme dispositif pour le retour de la NBA à Paris.",                                                           accent: "#FE0000", photo: "2022_NBA_vk68bp", version: 2 },
-  { year: "2022", label: "EuroBasket 2022",                    desc: "Première compétition EDF couverte sur place.",                                                                     accent: "#FED000", photo: "2022_EuroBasket_zbajtg" },
-  { year: "2023", label: "Coupe du Monde 2023",                desc: "La découverte des Philippines pour une compétition historique.",                                                   accent: "#002EFE", photo: "2023_Coupedumonde_wwohz9" },
-  { year: "2023", label: "Wembanyama sur First Team",          desc: "Pour sa dernière année en France avec les Mets 92, on a suivi et diffusé les matchs de Wemby sur notre chaîne.", accent: "#FE0000", photo: "2023_Mets92_stkubo" },
-  { year: "2024", label: "Basketball Africa League",           desc: "Découverte de la BAL à Dakar.",                                                                                    accent: "#FED000", photo: "2024_BAL_qynnnf" },
-  { year: "2024", label: "JO de Paris",                        desc: "Une quinzaine historique à Paris avec notre record d'audience.",                                                   accent: "#002EFE", photo: "2024_JO_vlri03" },
-  { year: "2025", label: "Coupe du Monde U19 chez First Team", desc: "Diffusion de la compétition phare des jeunes sur nos chaînes.",                                                   accent: "#FE0000", photo: "2025_CDM_U19_ybsjx4" },
+
+const BLOB = "https://jry6nc0w67kepqum.public.blob.vercel-storage.com";
+const EQ   = `${BLOB}/L%27E%CC%81QUIPE`;
+
+const TIMELINE: { year: string; label: string; desc: string; accent: string; photo: string }[] = [
+  { year: "2016", label: "Lancement du média",                desc: "First Team se crée et se lance dans cette grande aventure avec vous.",                                              accent: "#FE0000", photo: `${EQ}/frise/2016.png` },
+  { year: "2017", label: "Les Premiers First Day Show",        desc: "On lance notre émission phare, Erwan, Thomas, Stephen et Waxx pour parler basket dans un format Talk-Show.",      accent: "#002EFE", photo: `${EQ}/frise/2017.png` },
+  { year: "2018", label: "50k abonnés",                        desc: "Un premier milestone d'importance atteint avec vous !",                                                            accent: "#FED000", photo: `${EQ}/frise/2018.png` },
+  { year: "2019", label: "Le All-Star Game à L.A.",            desc: "First Team se déplace à Los Angeles pour découvrir son premier All-Star Game sur place.",                          accent: "#FE0000", photo: `${EQ}/frise/2019.png` },
+  { year: "2020", label: "1er changement de logo",             desc: "Nouvelle DA ! First Team arbore ses nouvelles couleurs.",                                                          accent: "#002EFE", photo: `${EQ}/frise/2020.png` },
+  { year: "2022", label: "NBA Paris Game",                     desc: "Un énorme dispositif pour le retour de la NBA à Paris.",                                                           accent: "#FE0000", photo: `${EQ}/frise/2022.jpg` },
+  { year: "2022", label: "EuroBasket 2022",                    desc: "Première compétition EDF couverte sur place.",                                                                     accent: "#FED000", photo: "" }, // TODO: uploader frise/eurobasket-2022 sur Blob
+  { year: "2023", label: "Coupe du Monde 2023",                desc: "La découverte des Philippines pour une compétition historique.",                                                   accent: "#002EFE", photo: `${EQ}/projets-majeurs/cdm-2023.jpg` },
+  { year: "2023", label: "Wembanyama sur First Team",          desc: "Pour sa dernière année en France avec les Mets 92, on a suivi et diffusé les matchs de Wemby sur notre chaîne.", accent: "#FE0000", photo: `${EQ}/projets-majeurs/wembanyama-first-team.jpg` },
+  { year: "2024", label: "Basketball Africa League",           desc: "Découverte de la BAL à Dakar.",                                                                                    accent: "#FED000", photo: "" }, // TODO: uploader frise/bal-2024 sur Blob
+  { year: "2024", label: "JO de Paris",                        desc: "Une quinzaine historique à Paris avec notre record d'audience.",                                                   accent: "#002EFE", photo: `${EQ}/projets-majeurs/jo-2024.jpg` },
+  { year: "2025", label: "Coupe du Monde U19 chez First Team", desc: "Diffusion de la compétition phare des jeunes sur nos chaînes.",                                                   accent: "#FE0000", photo: "" }, // TODO: uploader frise/cdm-u19-2025 sur Blob
 ];
 
-const FONDATEURS: { num: string; name: string; role: string; detail: string; color: string; photo: string; version?: number }[] = [
-  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: "0402_HOME_cwrvbm" },
-  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: "Erwan_ctxyao",    version: 2 },
-  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: "0403_HOME_yagu4z", version: 2 },
+const FONDATEURS: { num: string; name: string; role: string; detail: string; color: string; photo: string }[] = [
+  { num: "01.", name: "Thomas Dufant",  role: "Co-Fondateur", detail: "La voix qui structure les débats", color: "#002EFE", photo: `${EQ}/roster/Thomas.jpg` },
+  { num: "02.", name: "Erwan Abautret", role: "Co-Fondateur", detail: "Le regard éditorial",             color: "#FE0000", photo: `${EQ}/roster/Erwan.jpg` },
+  { num: "03.", name: "Stephen Brun",   role: "Co-Fondateur", detail: "Le maître du concept",            color: "#FED000", photo: `${EQ}/roster/Stephen.jpg` },
 ];
 
-const TEAM_CONSULTANTS: { name: string; role: string; photo: string; version?: number }[] = [
-  { name: "Théo Haumesser",             role: "Consultant", photo: "Theo_Haumesser_gg8igb" },
-  { name: "Thomas Larrouquis",          role: "Consultant", photo: "Thomas_Larrouquis_zerroz", version: 2 },
-  { name: "Arthur Sene",                role: "Consultant", photo: "Arthur_yzn7rc" },
+const TEAM_CONSULTANTS: { name: string; role: string; photo: string }[] = [
+  { name: "Théo Haumesser",    role: "Consultant", photo: `${EQ}/collaborateurs/theo-haumesser.jpg` },
+  { name: "Thomas Larrouquis", role: "Consultant", photo: `${EQ}/collaborateurs/thomas-larrouquis.jpg` },
+  { name: "Arthur Sene",       role: "Consultant", photo: `${EQ}/collaborateurs/arthur.jpg` },
 ];
 
-const TEAM_STAFF: { name: string; role?: string; photo: string; version?: number }[] = [
-  { name: "Jeremy Raharifidy--Barbe",   photo: "Jeremy_bjsruo", version: 3 },
-  { name: "Tom Ciaravino",              photo: "Tom_um4yoo" },
-  { name: "Aymane El Atchia",           photo: "Aymane_bvmcj8" },
-  { name: "Léo Tilhet-Coartet Vasquez", photo: "Leo_o5hwxm",    version: 2 },
-  { name: "Yanis Giely",                photo: "Yanis_e31tz0",   version: 2 },
+const TEAM_STAFF: { name: string; role?: string; photo: string }[] = [
+  { name: "Jeremy Raharifidy--Barbe",   photo: `${EQ}/collaborateurs/jeremy.jpg` },
+  { name: "Tom Ciaravino",              photo: `${EQ}/collaborateurs/tom.jpg` },
+  { name: "Aymane El Atchia",           photo: `${EQ}/collaborateurs/aymane.jpg` },
+  { name: "Léo Tilhet-Coartet Vasquez", photo: `${EQ}/collaborateurs/leo.jpg` },
+  { name: "Yanis Giely",                photo: `${EQ}/collaborateurs/yanis.jpg` },
 ];
 
 const PROJECTS = [
-  { title: "NBA Classic Games",                  img: "ClassicGames_mf1fan" },
-  { title: "JO 2024 à Paris",                    img: "JO_2024_c0omhy" },
-  { title: "CDM 2023 aux Philippines",           img: "CDM_2023_mdnnz2" },
-  { title: "Victor Wembanyama chez First Team",  img: "Wembanyama_First_Team_tm4zba" },
-  { title: "NBA x First Team",                   img: "NBA_First_Team_gxgoxh" },
-  { title: "Offense",                            img: "offense_ivq75c" },
+  { title: "NBA Classic Games",                 img: `${EQ}/projets-majeurs/classic-games.png` },
+  { title: "JO 2024 à Paris",                   img: `${EQ}/projets-majeurs/jo-2024.jpg` },
+  { title: "CDM 2023 aux Philippines",          img: `${EQ}/projets-majeurs/cdm-2023.jpg` },
+  { title: "Victor Wembanyama chez First Team", img: `${EQ}/projets-majeurs/wembanyama-first-team.jpg` },
+  { title: "NBA x First Team",                  img: `${EQ}/projets-majeurs/nba-first-team.jpg` },
+  { title: "Offense",                           img: `${EQ}/projets-majeurs/offense.png` },
 ];
 
 const KPI = [
@@ -74,7 +77,7 @@ const KPI = [
 
 // ── COMPOSANTS ────────────────────────────────────────────────────────
 
-function FounderCard({ member }: { member: { num: string; name: string; role: string; detail: string; color: string; photo: string; version?: number } }) {
+function FounderCard({ member }: { member: { num: string; name: string; role: string; detail: string; color: string; photo: string } }) {
   const ref = useReveal();
   return (
     <div ref={ref} className="reveal"
@@ -84,7 +87,7 @@ function FounderCard({ member }: { member: { num: string; name: string; role: st
     >
       <div style={{ height: 6, background: member.color }} />
       <div style={{ height: 300, overflow: "hidden", position: "relative" as const }}>
-        <CldImage src={member.photo} alt={member.name} fill version={member.version} style={{ objectFit: "cover", objectPosition: "top" }} format="auto" quality="auto" />
+        <img src={member.photo} alt={member.name} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
       </div>
       <div style={{ padding: "24px 28px" }}>
         <h3 style={{ ...ANTON, fontSize: 24, letterSpacing: "0.5px", textTransform: "uppercase" as const, color: "#fff", marginTop: 0, marginBottom: 6 }}>{member.name}</h3>
@@ -94,7 +97,7 @@ function FounderCard({ member }: { member: { num: string; name: string; role: st
   );
 }
 
-function ConsultantCard({ member }: { member: { name: string; role?: string; photo: string; version?: number } }) {
+function ConsultantCard({ member }: { member: { name: string; role?: string; photo: string } }) {
   const ref = useReveal();
   return (
     <div ref={ref} className="reveal"
@@ -102,7 +105,7 @@ function ConsultantCard({ member }: { member: { name: string; role?: string; pho
       onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) { img.style.transform = "scale(1)"; img.style.filter = "grayscale(40%)"; } }}
     >
       <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 4, marginBottom: 12, background: "#1a1a1a", position: "relative" as const }}>
-        <CldImage src={member.photo} alt={member.name} fill version={member.version} style={{ objectFit: "cover", objectPosition: "top", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }} format="auto" quality="auto" />
+        <img src={member.photo} alt={member.name} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", filter: "grayscale(40%)", transition: "transform 0.4s ease, filter 0.3s ease" }} />
       </div>
       <p style={{ ...ANTON, fontSize: 14, color: "#0A0A0A", textTransform: "uppercase" as const, letterSpacing: 0.5, marginBottom: 4 }}>{member.name}</p>
       {member.role && <p style={{ ...MANROPE(600), fontSize: 11, color: "#FE0000", textTransform: "uppercase" as const, letterSpacing: 0.5 }}>{member.role}</p>}
@@ -147,7 +150,7 @@ export default function QuiNousSommesPage() {
 
       {/* HERO HEADER */}
       <section style={{ position: "relative", minHeight: 520, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <CldImage src="HEADER_htiwl1" alt="" fill version={3} style={{ objectFit: "cover", zIndex: 0 }} format="auto" quality="auto" />
+        <img src={`${EQ}/catalogue_equipe.jpg`} alt="" loading="eager" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.9) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "120px 40px 70px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>FIRST TEAM</p>
@@ -230,9 +233,13 @@ export default function QuiNousSommesPage() {
                     onMouseLeave={() => setHoveredTimeline(null)}
                   >
                     {/* Photo — apparaît au hover */}
-                    <div style={{ overflow: "hidden", borderRadius: 4, marginBottom: 8, width: "calc(100% - 16px)", maxHeight: isHov ? 130 : 0, opacity: isHov ? 1 : 0, transition: "max-height 0.35s ease, opacity 0.25s ease" }}>
-                      <CldImage src={item.photo} alt="" width={264} height={148} version={item.version} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} format="auto" quality="auto" />
-                    </div>
+                    {item.photo ? (
+                      <div style={{ overflow: "hidden", borderRadius: 4, marginBottom: 8, width: "calc(100% - 16px)", maxHeight: isHov ? 130 : 0, opacity: isHov ? 1 : 0, transition: "max-height 0.35s ease, opacity 0.25s ease" }}>
+                        <img src={item.photo} alt="" width={264} height={148} loading="lazy" style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} />
+                      </div>
+                    ) : (
+                      <div style={{ marginBottom: 8, width: "calc(100% - 16px)", maxHeight: isHov ? 130 : 0, opacity: 0, transition: "max-height 0.35s ease" }} />
+                    )}
                     <p style={{ ...ANTON, fontSize: isHov ? 52 : 40, color: isHov ? item.accent : "#fff", lineHeight: 1, marginBottom: 10, transition: "font-size 0.2s ease, color 0.2s ease" }}>{item.year}</p>
                     <div style={{ position: "relative" as const, zIndex: 10, width: 14, height: 14, borderRadius: "50%", marginBottom: 20, flexShrink: 0, background: item.accent, boxShadow: `0 0 0 4px #111, 0 0 0 6px ${item.accent}`, transform: isHov ? "scale(1.4)" : "scale(1)", transition: "transform 0.2s ease" }} />
                     <div style={{ background: isHov ? "#222" : "#1a1a1a", padding: "16px 18px", marginLeft: 8, marginRight: 8, width: "calc(100% - 16px)", borderTop: `3px solid ${item.accent}`, borderRadius: "0 0 4px 4px", transition: "background 0.2s ease" }}>
@@ -260,7 +267,7 @@ export default function QuiNousSommesPage() {
                   onMouseEnter={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1.06)"; }}
                   onMouseLeave={e => { const img = (e.currentTarget as HTMLElement).querySelector("img") as HTMLElement; if (img) img.style.transform = "scale(1)"; }}
                 >
-                  <CldImage src={p.img} alt={p.title} fill style={{ objectFit: "cover", transition: "transform 0.5s ease" }} format="auto" quality="auto" />
+                  <img src={p.img} alt={p.title} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }} />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }} />
                   <div className="project-title-overlay" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 20px" }}>
                     <p style={{ ...ANTON, fontSize: 15, color: "#fff", textTransform: "uppercase" as const, letterSpacing: 0.5, margin: 0 }}>{p.title}</p>

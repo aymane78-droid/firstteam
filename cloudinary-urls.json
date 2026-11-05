@@ -1,0 +1,475 @@
+{
+  "urls": [
+    {
+      "file": "app/components/Footer.tsx",
+      "line": 58,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781711343/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png",
+      "extractedName": "FT-MONOGRAMME-ECRITURE-NOIR_1.png"
+    },
+    {
+      "file": "app/components/Header.tsx",
+      "line": 52,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png",
+      "extractedName": "FT-MONOGRAMME-ECRITURE-NOIR_1.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 15,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/sdm_uvvffd.png",
+      "extractedName": "sdm.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 16,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/domenec_gveuih.png",
+      "extractedName": "domenec.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 17,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264907/edgar_docp8b.png",
+      "extractedName": "edgar.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 18,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265159/riolo_vou7zx.png",
+      "extractedName": "riolo.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 19,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265161/christ_myrvu2.png",
+      "extractedName": "christ.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 20,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291105/cazarre_wzqrqr.png",
+      "extractedName": "cazarre.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 21,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265163/jjs_xl7u1c.png",
+      "extractedName": "jjs.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 22,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/margo_sgmruu.png",
+      "extractedName": "margo.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 23,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265159/mehdi_r9lyx3.png",
+      "extractedName": "mehdi.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 24,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265165/nadeau_imbqe2.png",
+      "extractedName": "nadeau.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 25,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265158/gillian_zptifi.png",
+      "extractedName": "gillian.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 26,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782265162/couvr_uggpfy.png",
+      "extractedName": "couvr.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 95,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/LIBRE_ANTENNE_-_PROGRAMME_uqm6fy.png",
+      "extractedName": "LIBRE_ANTENNE_-_PROGRAMME.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 106,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
+      "extractedName": "REPLAY.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 118,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
+      "extractedName": "REPLAY.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 126,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
+      "extractedName": "CLUTCH_-_PROGRAMME.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 139,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/FDS_-_PROGRAMME_kwrkk1.png",
+      "extractedName": "FDS_-_PROGRAMME.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 151,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/OFFENSE_-_PROGRAMME_gtbvhq.png",
+      "extractedName": "OFFENSE_-_PROGRAMME.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 159,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
+      "extractedName": "CLUTCH_-_PROGRAMME.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 173,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291788/REPLAY_mumiie.png",
+      "extractedName": "REPLAY.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 181,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782292186/ENTRETIEN_-_PROGRAMME_fox6tu.png",
+      "extractedName": "ENTRETIEN_-_PROGRAMME.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 351,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781793063/herro_uieuiw.png",
+      "extractedName": "herro.png"
+    },
+    {
+      "file": "app/contenus/page.tsx",
+      "line": 640,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781793063/podcast_iq5mic.jpg",
+      "extractedName": "podcast.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 41,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/NBA-logo_gi6lsj.png",
+      "extractedName": "NBA-logo.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 42,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/LOGO_FIBA_mgovnj.png",
+      "extractedName": "LOGO_FIBA.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 43,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",
+      "extractedName": "Winamax2022_logoCompact_RVB.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 44,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781792278/LOGO_ACAST_wckoni.png",
+      "extractedName": "LOGO_ACAST.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 45,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781792278/LOGO_INFLUX_nafd9u.svg",
+      "extractedName": "LOGO_INFLUX.svg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 49,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297115/nbaa_enmvoq.png",
+      "extractedName": "nbaa.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 50,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",
+      "extractedName": "fibaa.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 51,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",
+      "extractedName": "Winamax2022_logoCompact_RVB.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 55,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790074/Erwan_z9n7yr.jpg",
+      "extractedName": "Erwan.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 56,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790070/Thomas_qdf4dp.jpg",
+      "extractedName": "Thomas.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 57,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790066/Stephen_hcxjrg.jpg",
+      "extractedName": "Stephen.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 110,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790194/catalogue_contenus_csyn5h.jpg",
+      "extractedName": "catalogue_contenus.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 111,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790270/catalogue_equipe_ybjqpg.jpg?v=3",
+      "extractedName": "catalogue_equipe.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 112,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790185/catalogue_merch_rs99bh.jpg",
+      "extractedName": "catalogue_merch.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 114,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790224/catalogue_partenaire_vggjmq.jpg",
+      "extractedName": "catalogue_partenaire.jpg"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 136,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/video/upload/v1781708412/vide%CC%81o_site_ht1vti.mp4?v=2",
+      "extractedName": "vide%CC%81o_site.mp4"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 145,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png",
+      "extractedName": "FT-MONOGRAMME-ECRITURE-NOIR_1.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 169,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png",
+      "extractedName": "FT-MONOGRAMME-ECRITURE-NOIR_1.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 212,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790229/Section1_k1q9bv.png",
+      "extractedName": "Section1.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 419,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/sdm_uvvffd.png",
+      "extractedName": "sdm.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 420,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264908/domenec_gveuih.png",
+      "extractedName": "domenec.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 421,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782264907/edgar_docp8b.png",
+      "extractedName": "edgar.png"
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 755,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790198/section_fin_shop_fs52xl.jpg?v=3",
+      "extractedName": "section_fin_shop.jpg"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 11,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297115/nbaa_enmvoq.png",
+      "extractedName": "nbaa.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 12,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291215/NBA_ihu1qw.jpg?v=2",
+      "extractedName": "NBA.jpg"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 22,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",
+      "extractedName": "fibaa.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 23,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291348/FIBA_fiozdi.jpg?v=2",
+      "extractedName": "FIBA.jpg"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 33,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",
+      "extractedName": "Winamax2022_logoCompact_RVB.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 34,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291221/WINAMAX_g0kxzf.png?v=2",
+      "extractedName": "WINAMAX.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 44,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294020/nike-logo-complete-1_xrkh5w.png",
+      "extractedName": "nike-logo-complete-1.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 45,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294022/Adidas_Logo.svg_v4cyzb.png",
+      "extractedName": "Adidas_Logo.svg.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 46,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294103/Puma-logo_wjefeb.png",
+      "extractedName": "Puma-logo.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 47,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",
+      "extractedName": "Winamax2022_logoCompact_RVB.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 48,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297122/2k_mteq0s.png",
+      "extractedName": "2k.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 49,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",
+      "extractedName": "fibaa.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 51,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294196/fitnesspark_nkpoks.png",
+      "extractedName": "fitnesspark.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 52,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294202/Trade_Republic_logo_2021.svg_sdx3kf.png",
+      "extractedName": "Trade_Republic_logo_2021.svg.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 53,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294024/Airbnb-Logo-scaled_o65blz.png",
+      "extractedName": "Airbnb-Logo-scaled.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 54,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294298/Allianz.svg_mawuoz.png",
+      "extractedName": "Allianz.svg.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 55,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294295/dazn_p7wcid.png",
+      "extractedName": "dazn.png"
+    },
+    {
+      "file": "app/partenaires/page.tsx",
+      "line": 71,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790224/catalogue_partenaire_vggjmq.jpg",
+      "extractedName": "catalogue_partenaire.jpg"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 41,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/herro",
+      "extractedName": "herro"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 73,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sous-le-herro_ic4oys",
+      "extractedName": "Sous-le-herro_ic4oys"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 96,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant1",
+      "extractedName": "deroulant1"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 97,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant2",
+      "extractedName": "deroulant2"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 98,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant3",
+      "extractedName": "deroulant3"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 99,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant4",
+      "extractedName": "deroulant4"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 100,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant5",
+      "extractedName": "deroulant5"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 101,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant6",
+      "extractedName": "deroulant6"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 102,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/deroulant7",
+      "extractedName": "deroulant7"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 179,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin1_t5orly",
+      "extractedName": "Sectionfin1_t5orly"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 183,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin3_hl2n2w",
+      "extractedName": "Sectionfin3_hl2n2w"
+    },
+    {
+      "file": "components/shop/sections.tsx",
+      "line": 187,
+      "cloudinaryUrl": "https://res.cloudinary.com/dg6xo2xwb/image/upload/f_auto,q_auto/Sectionfin2_ed6cy1",
+      "extractedName": "Sectionfin2_ed6cy1"
+    }
+  ],
+  "total": 78,
+  "uniqueUrls": 63,
+  "uniqueFiles": 6
+}

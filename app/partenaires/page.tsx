@@ -8,8 +8,8 @@ const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, san
 const TOP_SPONSORS = [
   {
     name: "NBA",
-    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297115/nbaa_enmvoq.png",
-    photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291215/NBA_ihu1qw.jpg?v=2",
+    logo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/NBA.jpg",
+    photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/NBA.jpg",
     photoAlt: "Partenariat NBA × First Team",
     photoScale: 1.35,
     years: "NBA House Paris 2025",
@@ -19,8 +19,8 @@ const TOP_SPONSORS = [
   },
   {
     name: "FIBA",
-    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",
-    photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291348/FIBA_fiozdi.jpg?v=2",
+    logo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/FIBA.jpg",
+    photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/FIBA.jpg",
     photoAlt: "Partenariat FIBA × First Team",
     photoScale: 1.35,
     years: "FIBA House JO 2024",
@@ -30,8 +30,8 @@ const TOP_SPONSORS = [
   },
   {
     name: "Winamax",
-    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",
-    photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782291221/WINAMAX_g0kxzf.png?v=2",
+    logo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/WINAMAX.png",
+    photo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/WINAMAX.png",
     photoAlt: "Partenariat Winamax × First Team",
     years: "Clutch en live 2025",
     category: "Sponsor principal",
@@ -44,9 +44,9 @@ const ALL_PARTNERS = [
   { name: "Nike",           logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294020/nike-logo-complete-1_xrkh5w.png",          years: "", color: "#0A0A0A" },
   { name: "Adidas",         logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294022/Adidas_Logo.svg_v4cyzb.png",               years: "", color: "#0A0A0A" },
   { name: "PUMA",           logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294103/Puma-logo_wjefeb.png",                     years: "", color: "#0A0A0A" },
-  { name: "Winamax",        logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790595/Winamax2022_logoCompact_RVB_gbfuy3.png",   years: "", color: "#FED000" },
+  { name: "Winamax",        logo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/WINAMAX.png",   years: "", color: "#FED000" },
   { name: "2K",             logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297122/2k_mteq0s.png",                            years: "", color: "#FE0000", noFilter: true },
-  { name: "FIBA",           logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782297317/fibaa_dnaxuu.png",                         years: "", color: "#002EFE", noFilter: true },
+  { name: "FIBA",           logo: "https://jry6nc0w67kepqum.public.blob.vercel-storage.com/PARTENAIRES/FIBA.jpg",                         years: "", color: "#002EFE", noFilter: true },
   { name: "NordVPN",        logo: "/images/partners/nordvpn-logo.png",                                                                       years: "", color: "#002EFE" },
   { name: "FitnessPark",    logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294196/fitnesspark_nkpoks.png",                   years: "", color: "#FE0000" },
   { name: "Trade Republic", logo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/v1782294202/Trade_Republic_logo_2021.svg_sdx3kf.png",  years: "", color: "#0A0A0A" },
@@ -68,7 +68,7 @@ export default function PartenairesPage() {
 
       {/* HERO */}
       <section style={{ position: "relative", minHeight: 480, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <img src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781790224/catalogue_partenaire_vggjmq.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <img src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/HOME/catalogue_partenaire.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.88) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "100px 40px 60px" }}>
           <p style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>FIRST TEAM</p>

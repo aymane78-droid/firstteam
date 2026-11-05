@@ -55,7 +55,7 @@ export default function Footer() {
           <div style={{ maxWidth: 280 }}>
             <Link href="/" style={{ display: "block", marginBottom: 4, textDecoration: "none" }}>
               <img
-                src="https://res.cloudinary.com/dg6xo2xwb/image/upload/v1781711343/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png"
+                src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/favicon.ico"
                 alt="First Team"
                 style={{ height: 120, width: "auto", display: "block", filter: "brightness(0) invert(1)" }}
               />

@@ -49,7 +49,7 @@ export default function Header() {
       {/* Logo + Desktop nav — groupe gauche */}
       <div className="header-inner-left" style={{ display: "flex", alignItems: "center", gap: 48 }}>
         <Link href="/" className="nav-logo-link">
-          <Image src="https://res.cloudinary.com/dg6xo2xwb/image/upload/FT-MONOGRAMME-ECRITURE-NOIR_1_zqgbi2.png" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left" }} />
+          <Image src="https://jry6nc0w67kepqum.public.blob.vercel-storage.com/favicon.ico" alt="First Team" fill priority style={{ objectFit: "contain", objectPosition: "left" }} />
         </Link>
 
         <nav style={{ display: "flex", gap: 36, alignItems: "center" }} className="header-mobile-nav hidden lg:flex">
