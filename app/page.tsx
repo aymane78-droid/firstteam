@@ -6,7 +6,7 @@ import { VideoModal } from "./components/VideoModal";
 import MediaBasketSection from "./components/MediaBasketSection";
 import { fetchLatestVideos, fetchVideosByIds, fetchLatestLongVideos, FIRST_TEAM_CHANNEL_ID, OFFENSE_CHANNEL_ID } from "./lib/youtube";
 import type { YTVideo } from "./lib/youtube";
-import { TRAVEL_ENABLED } from "./lib/flags";
+import { TRAVEL_ENABLED, SHOP_ENABLED } from "./lib/flags";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -108,7 +108,7 @@ const NAV_LINKS = [
 const CATEGORIES = [
   { label: "Contenus",    href: "/contenus",        photo: "/media/accueil/catalogue-contenus.jpg" },
   { label: "L'équipe",    href: "/qui-nous-sommes", photo: "/media/equipe/catalogue-equipe.jpg" },
-  { label: "Merch",       href: "/shop",             photo: "/media/accueil/catalogue-merch.jpg" },
+  ...(SHOP_ENABLED ? [{ label: "Merch", href: "/shop", photo: "/media/accueil/catalogue-merch.jpg" }] : []),
   ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel", photo: "/images/differentes-pages/travel.jpg" }] : []),
   { label: "Partenaires", href: "/partenaires",     photo: "/media/accueil/catalogue-partenaire.jpg" },
 ];
@@ -231,7 +231,7 @@ function Hero() {
             </h1>
             <div className="r-hero-cta-bar" style={{ display: "flex", gap: 14, flexWrap: "wrap" as const }}>
               <Link href="/contenus" className="pill-btn pill-btn-red">Voir nos contenus →</Link>
-              <Link href="/shop" className="pill-btn pill-btn-outline-white">Le Shop First Team</Link>
+              {SHOP_ENABLED && <Link href="/shop" className="pill-btn pill-btn-outline-white">Le Shop First Team</Link>}
             </div>
           </div>
           <div className="r-hide-mobile" style={{ flexShrink: 0, maxWidth: 220, paddingBottom: 4, borderLeft: "2px solid #FE0000", paddingLeft: 20 }}>
@@ -748,7 +748,7 @@ function MerchSection() {
   return (
     <section className="r-sec-xl" style={{ padding: "120px 40px", background: "#0A0A0A" }}>
       <div className="r-grid-merch" style={{ maxWidth: 1200, margin: "0 auto", gap: 40 }}>
-        <Link href="/shop" style={{ display: "block", background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none", transition: "transform 0.2s ease, border-color 0.2s ease" }}
+        <Link href={SHOP_ENABLED ? "/shop" : "#"} aria-disabled={!SHOP_ENABLED} onClick={e => { if (!SHOP_ENABLED) e.preventDefault(); }} style={{ position: "relative", display: "block", background: "#0A0A0A", opacity: SHOP_ENABLED ? 1 : 0.75, cursor: SHOP_ENABLED ? "pointer" : "not-allowed", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none", transition: "transform 0.2s ease, border-color 0.2s ease" }}
           onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(254,208,0,0.4)"; }}
           onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(255,255,255,0.1)"; }}
         >
@@ -759,6 +759,13 @@ function MerchSection() {
             <p style={{ ...MANROPE(400), fontSize: 14, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.6 }}>Off-Court, On-Court, Accessoires… pour porter les couleurs de First Team !</p>
             <span className="pill-btn pill-btn-yellow">Découvrir la boutique →</span>
           </div>
+          {!SHOP_ENABLED && (
+            <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.65)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 10 }}>
+              <span style={{ ...ANTON, fontSize: "clamp(22px, 3.5vw, 38px)", color: "#FED000", textTransform: "uppercase" as const, letterSpacing: 2, textAlign: "center" as const, lineHeight: 1.1, padding: "0 24px" }}>
+                Disponible<br />très bientôt
+              </span>
+            </div>
+          )}
         </Link>
         <div style={{ position: "relative", display: "block", background: "#0A0A0A", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", opacity: TRAVEL_ENABLED ? 1 : 0.75, cursor: TRAVEL_ENABLED ? "pointer" : "not-allowed" }}>
           <div style={{ position: "relative", width: "100%", height: 280, overflow: "hidden" }}>
@@ -791,7 +798,6 @@ export default function HomePage() {
       <Hero />
       <WeeklyBanner />
       <CategoryPanels />
-      <OffenseBanner />
       <BuzzedVideo />
       <RecentVideos />
       <KpiBand />
@@ -800,6 +806,7 @@ export default function HomePage() {
       <TeamSection />
       <SponsorsSection />
       <MerchSection />
+      <OffenseBanner />
     </main>
   );
 }

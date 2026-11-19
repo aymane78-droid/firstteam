@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { SHOP_ENABLED } from './lib/flags'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -26,11 +27,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
-    {
+    ...(SHOP_ENABLED ? [{
       url: 'https://firstteam-group.com/shop',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.7,
-    },
+    }] : []),
   ]
 }

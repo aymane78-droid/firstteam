@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { SHOP_ENABLED } from "../lib/flags";
 
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
 
@@ -32,13 +33,13 @@ const COLS: { title: string; links: FooterLink[] }[] = [
       { label: "Nous contacter",  href: "mailto:firstteam@influxcrew.com" },
     ],
   },
-  {
+  ...(SHOP_ENABLED ? [{
     title: "Shop",
     links: [
       { label: "Le Vestiaire First Team", href: "/shop" },
       { label: "Voyages", disabled: true },
     ],
-  },
+  }] : []),
 ];
 
 export default function Footer() {

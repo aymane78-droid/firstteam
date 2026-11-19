@@ -5,6 +5,15 @@ const ANTON: React.CSSProperties = { fontFamily: "var(--font-anton), Anton, Impa
 const MANROPE = (w: number): React.CSSProperties => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
 const AWESOME = (w: number): React.CSSProperties => ({ fontFamily: "Awesome, Georgia, serif", fontWeight: w });
 
+// Emplacement temporaire en attendant les nouvelles photos
+function PhotoPlaceholder({ style }: { style?: React.CSSProperties }) {
+  return (
+    <div style={{ background: "#000", display: "flex", alignItems: "center", justifyContent: "center", ...style }}>
+      <span style={{ ...ANTON, fontSize: 14, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Photo à venir</span>
+    </div>
+  );
+}
+
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -21,7 +30,7 @@ function useReveal() {
 }
 
 export function AnnouncementBar() {
-  const items = ["LIVRAISON OFFERTE DÈS 100€", "★", "DROP DES 10 ANS DE FIRST TEAM", "★", "EN COLLABORATION AVEC CHAMPION", "★", "MADE IN FRANCE", "★"];
+  const items = ["LIVRAISON OFFERTE DÈS 100€", "★", "DROP DES 10 ANS DE FIRST TEAM", "★", "MADE IN FRANCE", "★"];
   const doubled = [...items, ...items];
   return (
     <div style={{ background: "#0A0A0A", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", padding: "10px 0" }}>
@@ -70,10 +79,9 @@ export function PresentationSection() {
     <section style={{ background: "#0A0A0A", overflow: "hidden" }}>
       <div ref={ref} className="reveal shop-pres-wrap" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", minHeight: 560 }}>
         <div className="shop-pres-photo" style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
-          <img src="/media/shop/sous-le-herro.jpg" alt="Collection First Team × Champion" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.15)" }} />
+          <PhotoPlaceholder style={{ position: "absolute", inset: 0 }} />
           <div style={{ position: "absolute", top: 28, left: 28 }}>
-            <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE SUMMER EDITION 26</span>
+            <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE 10 ANS</span>
           </div>
         </div>
         <div className="shop-pres-text" style={{ padding: "72px 60px", display: "flex", flexDirection: "column", justifyContent: "center", background: "#FE0000", position: "relative" }}>
@@ -81,9 +89,9 @@ export function PresentationSection() {
           <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 96px)", lineHeight: 0.86, textTransform: "uppercase", letterSpacing: -2, color: "#fff", marginBottom: 12 }}>
             Le basket<br />se porte.
           </h2>
-          <p style={{ ...MANROPE(700), fontSize: 14, color: "rgba(255,255,255,0.7)", marginBottom: 20, letterSpacing: 0.5 }}>First Team × Champion</p>
+          <div style={{ height: 8 }} />
           <p style={{ ...MANROPE(400), fontSize: 14, lineHeight: 1.7, color: "rgba(255,255,255,0.85)", maxWidth: 440, marginBottom: 32 }}>
-            Une collab entre une bande de potes passionnés de basket et une marque qui a habillé les vestiaires NBA pendant des années.
+            On aura attendu dix ans, mais la voilà : notre première collection 100 % First Team. Pas de grande marque derrière, juste notre logo, notre histoire et dix ans de basket entre potes. Le tout sur des pièces de qualité, faites pour durer.
           </p>
           <a href="#produits" className="pill-btn pill-btn-black">Découvrir le Vestiaire →</a>
         </div>
@@ -117,9 +125,10 @@ export function PhotoSlider() {
           animation: `marquee-photos 60s linear infinite`,
         }}
       >
-        {doubled.map((s, i) => (
+        {doubled.map((_s, i) => (
           <div key={i} style={{ flex: `0 0 ${SLIDE_WIDTH}px`, aspectRatio: "5/4" }}>
-            <img src={s.src} alt={s.alt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 3 }} />
+            {/* Nouvelles photos à venir : remettre <img src={s.src} … /> une fois uploadées */}
+            <PhotoPlaceholder style={{ width: "100%", height: "100%", borderRadius: 3 }} />
           </div>
         ))}
       </div>
@@ -158,7 +167,7 @@ export function StudioSection() {
     <section className="shop-studio-section" style={{ background: "#F2EEE6", padding: "120px 40px" }}>
       <div ref={ref} className="reveal shop-studio-wrap" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         <div>
-          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 16 }}>· LA COLLAB</span>
+          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 16 }}>· ARCHIVE · SUMMER DROP 26</span>
           <h2 style={{ ...AWESOME(400), fontStyle: "italic", fontSize: "clamp(40px, 5vw, 80px)", lineHeight: 0.95, letterSpacing: -1.5, color: "#0A0A0A", marginBottom: 28 }}>
             Champion ×<br />First Team.
           </h2>
@@ -171,7 +180,6 @@ export function StudioSection() {
           <p style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 36, fontStyle: "italic" }}>
             &ldquo;On parle basket entre potes depuis 10 ans. Avec Champion, on a juste voulu essayer d&apos;être bien sapés et permettre à la communauté d&apos;en faire autant.&rdquo;
           </p>
-          <a href="#" className="pill-btn pill-btn-black">La collab Champion →</a>
         </div>
         <div className="studio-fin-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gridTemplateRows: "2fr 1fr", gap: 8, aspectRatio: "1 / 1" }}>
           {/* fin1 — GRAND : gauche, pleine hauteur */}

@@ -423,9 +423,17 @@ function stockPriority(p: ShopifyProduct): number {
 
 interface Props {
   products: ShopifyProduct[];
+  id?: string;
+  eyebrow?: string;
+  title?: React.ReactNode;
 }
 
-export default function ShopGrid({ products }: Props) {
+export default function ShopGrid({
+  products,
+  id = "produits",
+  eyebrow = "· SUMMER EDITION 26",
+  title = <>L&apos;intégralité<br />du vestiaire.</>,
+}: Props) {
   const [activeGid, setActiveGid] = useState<string | null>(null);
   const [quickBuyProduct, setQuickBuyProduct] = useState<ShopifyProduct | null>(null);
 
@@ -441,7 +449,7 @@ export default function ShopGrid({ products }: Props) {
 
   if (products.length === 0) {
     return (
-      <section id="produits" style={{ background: "#fff", padding: "100px 40px" }}>
+      <section id={id} style={{ background: "#fff", padding: "100px 40px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center", padding: "80px 0" }}>
           <p style={{ ...MANROPE(600), fontSize: 18, color: "rgba(0,0,0,0.4)" }}>
             Catalogue indisponible, réessayez plus tard.
@@ -452,14 +460,14 @@ export default function ShopGrid({ products }: Props) {
   }
 
   return (
-    <section id="produits" style={{ background: "#fff", padding: "100px 40px" }}>
+    <section id={id} style={{ background: "#fff", padding: "100px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32, gap: 20, flexWrap: "wrap" }}>
           <div>
-            <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 10 }}>· SUMMER EDITION 26</span>
+            <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 10 }}>{eyebrow}</span>
             <h2 style={{ ...ANTON, fontSize: "clamp(36px, 4.5vw, 64px)", textTransform: "uppercase", letterSpacing: -1, lineHeight: 0.92, color: "#0A0A0A" }}>
-              L&apos;intégralité<br />du vestiaire.
+              {title}
             </h2>
           </div>
           <span style={{ ...MANROPE(600), fontSize: 13, color: "rgba(0,0,0,0.45)" }}>
