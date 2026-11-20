@@ -9,7 +9,7 @@ type Q = { q: string; options: string[] };
 type Session = { token: string; questions: Q[]; endsAt: number; offset: number; answers: (number | null)[]; idx: number };
 type Phase = "intro" | "quiz" | "sending" | "done";
 
-interface Props { eventId: string; title: string; subtitle?: string; questionCount: number; durationSec: number }
+interface Props { eventId: string; title: string; subtitle?: string; questionCount: number; durationSec: number; accessCode?: string }
 
 const fmt = (ms: number) => {
   const s = Math.max(0, Math.ceil(ms / 1000));
@@ -24,7 +24,7 @@ function Dots() {
   );
 }
 
-export default function QuizClient({ eventId, title, subtitle, questionCount, durationSec }: Props) {
+export default function QuizClient({ eventId, title, subtitle, questionCount, durationSec, accessCode }: Props) {
   const storeKey = `ftquiz:${eventId}`;
   const [phase, setPhase] = useState<Phase>("intro");
   const [session, setSession] = useState<Session | null>(null);
@@ -102,7 +102,7 @@ export default function QuizClient({ eventId, title, subtitle, questionCount, du
     setError(""); setLoading(true);
     try {
       const res = await fetch("/api/quiz/start", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form),
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, c: accessCode }),
       });
       const data = await res.json();
       if (!res.ok) { setError(data.error ?? "Erreur, réessaie."); return; }

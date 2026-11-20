@@ -19,6 +19,7 @@ export interface QuizConfig {
   subtitle?: string;
   durationSec: number;  // durée totale du quiz (240 = 4 min)
   adminKey: string;     // clé d'accès à la page /quiz/classement
+  accessCode?: string;  // si défini : le quiz n'est accessible que via /quiz?c=<code> (lien du QR code)
   questions: QuizQuestion[];
 }
 

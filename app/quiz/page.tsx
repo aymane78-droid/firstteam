@@ -4,10 +4,13 @@ import { QUIZ_ENABLED } from "@/app/lib/flags";
 import { getConfig } from "@/lib/quiz/server";
 import QuizClient from "./QuizClient";
 
-export default async function QuizPage() {
+export default async function QuizPage({ searchParams }: { searchParams: Promise<{ c?: string }> }) {
   if (!QUIZ_ENABLED) redirect("/");
   await connection();
   const config = await getConfig();
+  const { c } = await searchParams;
+  // accessible uniquement via le lien / QR code qui contient le code
+  if (config?.accessCode && c !== config.accessCode) redirect("/");
   if (!config) {
     return (
       <main style={{ minHeight: "100svh", background: "#0A0A0A", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, textAlign: "center" }}>
@@ -22,6 +25,7 @@ export default async function QuizPage() {
       subtitle={config.subtitle}
       questionCount={config.questions.length}
       durationSec={config.durationSec}
+      accessCode={c}
     />
   );
 }
