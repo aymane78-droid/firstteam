@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { SHOP_ENABLED } from "../lib/flags";
 
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -43,6 +44,8 @@ const COLS: { title: string; links: FooterLink[] }[] = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/quiz")) return null; // page quiz plein écran
   const linkStyle = { display: "block", ...MANROPE(500), fontSize: 14, color: "rgba(255,255,255,0.7)", textDecoration: "none", marginBottom: 10, transition: "color 0.15s" };
   const hoverIn  = (e: React.MouseEvent) => ((e.target as HTMLElement).style.color = "#FED000");
   const hoverOut = (e: React.MouseEvent) => ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.7)");

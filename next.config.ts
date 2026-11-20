@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
       { source: "/a-propos", destination: "/", permanent: false },
       { source: "/merch", destination: "/shop", permanent: false },
       { source: "/offense", destination: "/", permanent: false },
-      { source: "/quiz", destination: "/", permanent: false },
       { source: "/travels", destination: "/", permanent: false },
     ];
   },

@@ -7,7 +7,7 @@ These pages are preserved in `app/_archived/` and are not accessible via routing
 | À Propos | `/a-propos` | `app/_archived/a-propos/page.tsx` |
 | Merch | `/merch` | `app/_archived/merch/page.tsx` |
 | Offense | `/offense` | `app/_archived/offense/page.tsx` |
-| Quiz | `/quiz` | `app/_archived/quiz/page.tsx` |
+| Quiz (ancien « Qui suis-je ») | — (`/quiz` sert maintenant au quiz de soirée, voir `app/quiz/`) | `app/_archived/quiz/page.tsx` |
 | FT Travels | `/travels` | `app/_archived/travels/page.tsx` |
 
 ## To reactivate a page

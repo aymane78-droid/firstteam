@@ -43,3 +43,7 @@ next-env.d.ts
 
 # médias originaux (non publiés)
 media-originaux
+
+# quiz de soirée : questions + réponses (jamais sur GitHub) et données locales de test
+quiz-config.local.json
+.quiz-data
