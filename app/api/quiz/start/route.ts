@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { QUIZ_ENABLED } from "@/app/lib/flags";
-import { getConfig, emailHash, hasStarted, saveParticipant, signToken, publicQuestions } from "@/lib/quiz/server";
+import { getConfig, emailKey, registerStart, signToken, publicQuestions } from "@/lib/quiz/server";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -23,14 +23,12 @@ export async function POST(req: Request) {
   const scene = body.scene === "oui";
   if (!body.consent) return NextResponse.json({ error: "Coche la case pour participer." }, { status: 400 });
 
-  const h = emailHash(email);
-  if (await hasStarted(config.eventId, h)) {
-    return NextResponse.json({ error: "Cet email a déjà été utilisé pour participer. Une seule participation par personne !" }, { status: 409 });
-  }
-
+  const h = emailKey(email);
   const startedAt = Date.now();
   const participant = { prenom, nom, age, email, scene };
-  await saveParticipant(config.eventId, h, { ...participant, startedAt });
+  if (!(await registerStart(config.eventId, h, { ...participant, startedAt }))) {
+    return NextResponse.json({ error: "Cet email a déjà été utilisé pour participer. Une seule participation par personne !" }, { status: 409 });
+  }
 
   return NextResponse.json({
     token: signToken({ ...participant, ev: config.eventId, h, s: startedAt }),

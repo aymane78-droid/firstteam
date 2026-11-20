@@ -5,13 +5,15 @@ const ANTON: React.CSSProperties = { fontFamily: "var(--font-anton), Anton, Impa
 const MANROPE = (w: number): React.CSSProperties => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
 const RED = "#FE0000", YELLOW = "#FED000", BLUE = "#002EFE", BLACK = "#0A0A0A";
 
-type Row = { prenom: string; nom: string; age: number; email: string; scene: boolean; score: number; total: number; timeMs: number; late: boolean; submittedAt: number };
+type Cat = { id: string; label: string };
+type Row = { byCat?: Record<string, { score: number; total: number }>; prenom: string; nom: string; age: number; email: string; scene: boolean; score: number; total: number; timeMs: number; late: boolean; submittedAt: number };
 
 const fmt = (ms: number) => { const s = Math.round(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
 
 export default function Leaderboard({ adminKey, title }: { adminKey: string; title: string }) {
   const [rows, setRows] = useState<Row[]>([]);
   const [total, setTotal] = useState(0);
+  const [cats, setCats] = useState<Cat[]>([]);
   const [updated, setUpdated] = useState<Date | null>(null);
   const [showEmails, setShowEmails] = useState(false);
 
@@ -23,15 +25,19 @@ export default function Leaderboard({ adminKey, title }: { adminKey: string; tit
         if (!res.ok) return;
         const data = await res.json();
         if (!alive) return;
-        setRows(data.results); setTotal(data.total); setUpdated(new Date());
+        setRows(data.results); setTotal(data.total); setCats(data.categories ?? []); setUpdated(new Date());
       } catch {}
     };
     load();
-    const t = setInterval(load, 10_000);
-    return () => { alive = false; clearInterval(t); };
+    // 30 s : le serveur ne recalcule de toute façon pas plus souvent (quota Vercel Blob)
+    const t = setInterval(() => { if (document.visibilityState === "visible") load(); }, 30_000);
+    const onVis = () => { if (document.visibilityState === "visible") load(); };
+    document.addEventListener("visibilitychange", onVis);
+    return () => { alive = false; clearInterval(t); document.removeEventListener("visibilitychange", onVis); };
   }, [adminKey]);
 
   // podium : les 3 meilleurs parmi ceux qui ont répondu « oui » à la scène
+  const catLine = (r: Row) => cats.map((c) => r.byCat?.[c.id] ? `${c.label} ${r.byCat[c.id].score}/${r.byCat[c.id].total}` : null).filter(Boolean).join(" · ");
   const podium = rows.filter((r) => !r.late && r.scene).slice(0, 3);
   const colors = [YELLOW, RED, BLUE];
 
@@ -59,6 +65,7 @@ export default function Leaderboard({ adminKey, title }: { adminKey: string; tit
                   <div>
                     <div style={{ ...ANTON, fontSize: 38, lineHeight: 0.95, textTransform: "uppercase" }}>{r.prenom}<br />{r.nom}</div>
                     <div style={{ ...MANROPE(800), fontSize: 15, marginTop: 10 }}>{r.score}/{r.total} · {fmt(r.timeMs)}</div>
+                    {cats.length > 1 && <div style={{ ...MANROPE(600), fontSize: 12, marginTop: 4, opacity: 0.75 }}>{catLine(r)}</div>}
                   </div>
                 ) : <div style={{ ...MANROPE(700), opacity: 0.6 }}>En attente…</div>}
               </div>
@@ -68,7 +75,7 @@ export default function Leaderboard({ adminKey, title }: { adminKey: string; tit
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 12 }}>
           <span style={{ ...MANROPE(600), fontSize: 12, color: "rgba(255,255,255,0.45)" }}>
-            Mise à jour auto toutes les 10 s{updated ? ` · ${updated.toLocaleTimeString("fr-FR")}` : ""}
+            Mise à jour auto toutes les 30 s{updated ? ` · ${updated.toLocaleTimeString("fr-FR")}` : ""}
           </span>
           <div style={{ display: "flex", gap: 10 }}>
             <button onClick={() => setShowEmails((v) => !v)} className="pill-btn pill-btn-outline-white" style={{ cursor: "pointer", fontSize: 13 }}>
@@ -85,7 +92,8 @@ export default function Leaderboard({ adminKey, title }: { adminKey: string; tit
               borderTop: i ? "1px solid rgba(255,255,255,0.08)" : "none", background: podium.includes(r) ? "rgba(254,208,0,0.06)" : "transparent", opacity: r.late ? 0.45 : 1 }}>
               <span style={{ ...ANTON, fontSize: 20, color: podium.includes(r) ? YELLOW : "rgba(255,255,255,0.5)" }}>{i + 1}</span>
               <span style={{ ...MANROPE(700), fontSize: 15 }}>
-                {r.prenom} {r.nom} <span style={{ color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>· {r.age} ans{showEmails ? ` · ${r.email}` : ""}{r.late ? " · hors délai" : ""}{!r.scene ? " · pas pour la scène" : ""}</span>
+                {r.prenom} {r.nom} <span style={{ color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>· {r.age} ans{showEmails ? ` · ${r.email}` : ""}{r.late ? " · hors délai" : ""}{!r.scene ? " · pas pour la scène" : ""}
+                {cats.length > 1 && <span style={{ display: "block", color: "rgba(255,255,255,0.45)", fontWeight: 600, fontSize: 12, marginTop: 2 }}>{catLine(r)}</span>}</span>
               </span>
               <span style={{ ...ANTON, fontSize: 22, textAlign: "right" }}>{r.score}<span style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>/{total}</span></span>
               <span style={{ ...MANROPE(700), fontSize: 14, textAlign: "right", color: "rgba(255,255,255,0.7)", fontVariantNumeric: "tabular-nums" }}>{fmt(r.timeMs)}</span>
