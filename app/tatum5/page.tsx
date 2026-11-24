@@ -21,8 +21,8 @@ const ETAPES = [
 ];
 
 const PRIX = [
-  { num: "01", titre: "Un voyage à San Antonio pour 2", texte: "Du 5 au 13 mars 2027, pour toi et la personne de ton choix : vols depuis Paris, hôtel et trois matchs des Spurs, contre les Knicks, les Wizards et les 76ers." },
-  { num: "02", titre: "Une rencontre avec Bilal Coulibaly", texte: "L'occasion de rencontrer l'international français." },
+  { num: "01", titre: "Un voyage à San Antonio pour 2", texte: "Du 5 au 13 mars 2027, pour toi et la personne de ton choix : vols depuis Paris, hôtel et trois matchs des Spurs, contre les Knicks, les Wizards et les 76ers. Trajet jusqu'à Paris non compris." },
+  { num: "02", titre: "Une rencontre avec Bilal Coulibaly", texte: "Autour du match Spurs-Wizards, l'occasion de rencontrer l'international français." },
   { num: "03", titre: "Ta paire offerte", texte: "La Jordan Tatum 5 que tu as personnalisée, offerte." },
 ];
 

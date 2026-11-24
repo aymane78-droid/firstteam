@@ -35,9 +35,10 @@ export const REGLEMENT: { titre: string; paragraphes: string[] }[] = [
     titre: "Article 5 · Dotation",
     paragraphes: [
       "Le gagnant remporte un voyage à San Antonio (États-Unis) pour deux personnes (le gagnant et un accompagnant), du 5 au 13 mars 2027, comprenant les vols aller-retour depuis Paris, l'hébergement et des places pour trois matchs des San Antonio Spurs : contre les New York Knicks, les Washington Wizards et les Philadelphia 76ers.",
-      "Le gagnant remporte également une rencontre avec Bilal Coulibaly et la paire de Jordan Tatum 5 qu'il a personnalisée.",
+      "Le gagnant remporte également une rencontre avec Bilal Coulibaly, organisée autour du match contre les Washington Wizards, ainsi que la paire de Jordan Tatum 5 qu'il a personnalisée.",
+      "Le trajet jusqu'à Paris n'est pas compris dans la dotation et reste à la charge du gagnant et de son accompagnant.",
       "Si le gagnant est mineur, son accompagnant doit être un adulte, son représentant légal ou un tuteur désigné par celui-ci.",
-      "La dotation est nominative, ne peut être ni échangée ni remboursée, et ne peut pas faire l'objet d'une contrepartie financière. Le gagnant et son accompagnant doivent être en possession des documents de voyage nécessaires (passeport valide, autorisation ESTA). En cas de force majeure, First Team pourra remplacer la dotation par une dotation de valeur équivalente.",
+      "La dotation est nominative, ne peut être ni échangée ni remboursée, et ne peut pas faire l'objet d'une contrepartie financière. Le gagnant et son accompagnant doivent être en possession des documents de voyage nécessaires (passeport valide, autorisation ESTA).",
     ],
   },
   {
