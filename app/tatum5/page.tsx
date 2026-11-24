@@ -16,6 +16,7 @@ const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdb2aEdiOC-PFqJKjv6z6
 const ETAPES = [
   { date: "30 nov.", texte: "Les meilleures paires passent en libre antenne" },
   { date: "20 déc.", texte: "Tierlist d'une sélection de paires en plateau" },
+  { date: "4 janv.", texte: "Clôture des candidatures à 00h00" },
   { date: "15 janv.", texte: "Annonce du gagnant du voyage à San Antonio" },
 ];
 
@@ -101,7 +102,7 @@ export default function Tatum5Page() {
       {/* Calendrier */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 0" }}>
         <h2 style={{ ...ANTON, fontSize: 30, textTransform: "uppercase", marginBottom: 18 }}>Le programme</h2>
-        <div className="t5-steps" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        <div className="t5-steps" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
           {ETAPES.map((e) => (
             <div key={e.date} style={{ background: BLACK, color: "#fff", borderRadius: 8, padding: "20px 22px" }}>
               <div style={{ ...ANTON, fontSize: 30, color: PINK, lineHeight: 1 }}>{e.date}</div>
@@ -128,6 +129,7 @@ export default function Tatum5Page() {
 
       <style>{`
         .t5-banner-mobile { display: none; }
+        @media (max-width: 1024px) { .t5-steps { grid-template-columns: 1fr 1fr !important; } }
         @media (max-width: 768px) {
           .t5-banner-desktop { display: none; }
           .t5-banner-mobile { display: block; }
