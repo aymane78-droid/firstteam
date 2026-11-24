@@ -76,8 +76,13 @@ export default function Tatum5Page() {
         <div style={{ height: 2, background: PINK, margin: "12px 0" }} />
         <p style={{ ...ANTON, fontSize: 18, textTransform: "uppercase", lineHeight: 1.1 }}>Et tente de gagner un voyage à</p>
         <p style={{ ...ANTON, fontSize: 46, textTransform: "uppercase", lineHeight: 0.95, color: PINK }}>San Antonio</p>
-        <img src="/media/tatum5/bandeau-mobile.jpg" alt="" style={{ display: "block", width: "100%", height: "auto", marginTop: 20, borderRadius: 8 }} />
+        <img src="/media/tatum5/bandeau-mobile.jpg" alt="" style={{ display: "block", width: "100%", height: "auto", marginTop: 20, borderRadius: "8px 8px 0 0" }} />
       </section>
+
+      {/* Liseré tricolore First Team, comme sur les autres pages */}
+      <div style={{ display: "flex", height: 4 }}>
+        <div style={{ flex: 1, background: "#FE0000" }} /><div style={{ flex: 1, background: "#FED000" }} /><div style={{ flex: 1, background: "#002EFE" }} />
+      </div>
 
       {/* Intro */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 24px 8px" }}>
