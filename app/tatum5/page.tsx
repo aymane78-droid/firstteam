@@ -1,0 +1,136 @@
+import { redirect } from "next/navigation";
+import { TATUM5_ENABLED } from "@/app/lib/flags";
+import { REGLEMENT } from "./reglement";
+
+const ANTON: React.CSSProperties = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
+const MANROPE = (w: number): React.CSSProperties => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
+
+const PINK = "#D6338A";
+const PINK_DARK = "#A8236A";
+const GREY = "#D7DEDA"; // fond du bandeau
+const BLACK = "#0A0A0A";
+
+const NIKE_URL = "https://www.nike.com/fr/u/custom-tatum-5-by-you-10002444";
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdb2aEdiOC-PFqJKjv6z66nkQGWsgXl-2WP0Un75X0V_iedsA/viewform";
+
+const ETAPES = [
+  { date: "30 nov.", texte: "Les meilleures paires passent en libre antenne" },
+  { date: "20 déc.", texte: "Tierlist d'une sélection de paires en plateau" },
+  { date: "15 janv.", texte: "Annonce du gagnant du voyage à San Antonio" },
+];
+
+/** Affiche les passages [[...]] du règlement surlignés « à compléter ». */
+function Texte({ t }: { t: string }) {
+  return (
+    <>
+      {t.split(/(\[\[[^\]]+\]\])/g).map((part, i) =>
+        part.startsWith("[[") ? (
+          <mark key={i} style={{ background: "#FED000", color: BLACK, padding: "0 4px", borderRadius: 3 }}>{part.slice(2, -2)}</mark>
+        ) : (
+          <span key={i}>{part}</span>
+        ),
+      )}
+    </>
+  );
+}
+
+function Carte({ num, titre, texte, bouton, href, couleur }: { num: string; titre: React.ReactNode; texte: string; bouton: string; href: string; couleur: string }) {
+  return (
+    <div className="t5-card" style={{ background: "#fff", borderRadius: 10, padding: "36px 32px", display: "flex", flexDirection: "column", boxShadow: "0 10px 30px rgba(0,0,0,0.06)", borderTop: `6px solid ${couleur}` }}>
+      <span style={{ ...ANTON, fontSize: 56, lineHeight: 1, color: couleur, marginBottom: 14 }}>{num}</span>
+      <h2 style={{ ...ANTON, fontSize: "clamp(30px, 3.2vw, 42px)", lineHeight: 0.95, textTransform: "uppercase", color: BLACK, marginBottom: 16 }}>{titre}</h2>
+      <p style={{ ...MANROPE(500), fontSize: 15, lineHeight: 1.65, color: "rgba(0,0,0,0.68)", marginBottom: 28, flex: 1 }}>{texte}</p>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="pill-btn"
+        style={{ background: couleur, color: "#fff", justifyContent: "center", padding: "17px 24px", fontSize: 15, textAlign: "center" }}>
+        {bouton} ↗
+      </a>
+    </div>
+  );
+}
+
+export default function Tatum5Page() {
+  if (!TATUM5_ENABLED) redirect("/");
+
+  return (
+    <main style={{ background: GREY, color: BLACK, paddingTop: 72 }}>
+      {/* Bandeau : complet sur ordinateur, version recadrée + titre en texte sur mobile */}
+      <section className="t5-banner-desktop" style={{ background: GREY }}>
+        <img src="/media/tatum5/bandeau.jpg" alt="Personnalise ta paire de Tatum 5 et tente de gagner un voyage à San Antonio"
+          style={{ display: "block", width: "100%", maxWidth: 1600, height: "auto", margin: "0 auto" }} />
+      </section>
+      <section className="t5-banner-mobile" style={{ background: GREY, padding: "28px 20px 0" }}>
+        <p style={{ ...ANTON, fontSize: 18, textTransform: "uppercase", lineHeight: 1.1 }}>Personnalise ta paire de</p>
+        <p style={{ ...ANTON, fontSize: 62, textTransform: "uppercase", lineHeight: 0.95, color: PINK }}>Tatum 5</p>
+        <div style={{ height: 2, background: PINK, margin: "12px 0" }} />
+        <p style={{ ...ANTON, fontSize: 18, textTransform: "uppercase", lineHeight: 1.1 }}>Et tente de gagner un voyage à</p>
+        <p style={{ ...ANTON, fontSize: 46, textTransform: "uppercase", lineHeight: 0.95, color: PINK }}>San Antonio</p>
+        <img src="/media/tatum5/bandeau-mobile.jpg" alt="" style={{ display: "block", width: "100%", height: "auto", marginTop: 20, borderRadius: 8 }} />
+      </section>
+
+      {/* Intro */}
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 24px 8px" }}>
+        <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: PINK_DARK }}>· Concours First Team</span>
+        <h1 style={{ ...ANTON, fontSize: "clamp(36px, 5vw, 64px)", lineHeight: 0.95, textTransform: "uppercase", margin: "12px 0 18px" }}>
+          Tatum 5 · <span style={{ color: PINK }}>Custom Challenge</span>
+        </h1>
+        <p style={{ ...MANROPE(500), fontSize: 17, lineHeight: 1.65, color: "rgba(0,0,0,0.72)", maxWidth: 720 }}>
+          Designe ta Jordan Tatum 5, donne-lui un nom et raconte-nous l&apos;histoire derrière ton design.
+          Les meilleures paires passent à l&apos;antenne, et l&apos;une d&apos;elles fera gagner un voyage à San Antonio.
+        </p>
+      </section>
+
+      {/* Les 2 étapes, côte à côte */}
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "32px 24px 0" }}>
+        <div className="t5-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+          <Carte num="01" couleur={PINK} href={NIKE_URL}
+            titre={<>Personnalise<br />ta paire ici</>}
+            texte="Crée ta Jordan Tatum 5 sur Nike By You : couleurs, matières, détails. Une fois ton design terminé, copie le lien de ta paire, tu en auras besoin pour l'étape 2."
+            bouton="Créer ma paire sur Nike By You" />
+          <Carte num="02" couleur={BLACK} href={FORM_URL}
+            titre={<>Remplis ta<br />candidature</>}
+            texte="Colle le lien de ta paire, donne-lui un nom et raconte-nous en hommage à quoi tu l'as créée. Ça prend deux minutes."
+            bouton="Envoyer ma candidature" />
+        </div>
+      </section>
+
+      {/* Calendrier */}
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 0" }}>
+        <h2 style={{ ...ANTON, fontSize: 30, textTransform: "uppercase", marginBottom: 18 }}>Le programme</h2>
+        <div className="t5-steps" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+          {ETAPES.map((e) => (
+            <div key={e.date} style={{ background: BLACK, color: "#fff", borderRadius: 8, padding: "20px 22px" }}>
+              <div style={{ ...ANTON, fontSize: 30, color: PINK, lineHeight: 1 }}>{e.date}</div>
+              <div style={{ ...MANROPE(600), fontSize: 14, lineHeight: 1.5, marginTop: 8, color: "rgba(255,255,255,0.85)" }}>{e.texte}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Règlement */}
+      <section id="reglement" style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 24px 96px" }}>
+        <h2 style={{ ...ANTON, fontSize: 30, textTransform: "uppercase", marginBottom: 18 }}>Règlement du concours</h2>
+        <div style={{ background: "#fff", borderRadius: 10, padding: "32px 32px 12px" }} className="t5-reglement">
+          {REGLEMENT.map((a) => (
+            <div key={a.titre} style={{ marginBottom: 22 }}>
+              <h3 style={{ ...MANROPE(800), fontSize: 14, letterSpacing: 0.3, textTransform: "uppercase", color: PINK_DARK, marginBottom: 8 }}>{a.titre}</h3>
+              {a.paragraphes.map((p, i) => (
+                <p key={i} style={{ ...MANROPE(500), fontSize: 14, lineHeight: 1.7, color: "rgba(0,0,0,0.75)", marginBottom: 6 }}><Texte t={p} /></p>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <style>{`
+        .t5-banner-mobile { display: none; }
+        @media (max-width: 768px) {
+          .t5-banner-desktop { display: none; }
+          .t5-banner-mobile { display: block; }
+          .t5-cards, .t5-steps { grid-template-columns: 1fr !important; }
+          .t5-card { padding: 28px 22px !important; }
+          .t5-reglement { padding: 24px 20px 6px !important; }
+        }
+      `}</style>
+    </main>
+  );
+}
