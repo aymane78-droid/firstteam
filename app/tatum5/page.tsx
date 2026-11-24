@@ -34,9 +34,13 @@ function Texte({ t }: { t: string }) {
   );
 }
 
-function Carte({ num, titre, texte, bouton, href, couleur }: { num: string; titre: React.ReactNode; texte: string; bouton: string; href: string; couleur: string }) {
+function Carte({ num, titre, texte, bouton, href, couleur, image, imageAlt }: { num: string; titre: React.ReactNode; texte: string; bouton: string; href: string; couleur: string; image: string; imageAlt: string }) {
   return (
-    <div className="t5-card" style={{ background: "#fff", borderRadius: 10, padding: "36px 32px", display: "flex", flexDirection: "column", boxShadow: "0 10px 30px rgba(0,0,0,0.06)", borderTop: `6px solid ${couleur}` }}>
+    <div style={{ background: "#fff", borderRadius: 10, overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 10px 30px rgba(0,0,0,0.06)", borderTop: `6px solid ${couleur}` }}>
+      <a href={href} target="_blank" rel="noopener noreferrer" style={{ display: "block", aspectRatio: "4 / 3", overflow: "hidden" }}>
+        <img src={image} alt={imageAlt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      </a>
+      <div className="t5-card" style={{ padding: "30px 32px 34px", display: "flex", flexDirection: "column", flex: 1 }}>
       <span style={{ ...ANTON, fontSize: 56, lineHeight: 1, color: couleur, marginBottom: 14 }}>{num}</span>
       <h2 style={{ ...ANTON, fontSize: "clamp(30px, 3.2vw, 42px)", lineHeight: 0.95, textTransform: "uppercase", color: BLACK, marginBottom: 16 }}>{titre}</h2>
       <p style={{ ...MANROPE(500), fontSize: 15, lineHeight: 1.65, color: "rgba(0,0,0,0.68)", marginBottom: 28, flex: 1 }}>{texte}</p>
@@ -44,6 +48,7 @@ function Carte({ num, titre, texte, bouton, href, couleur }: { num: string; titr
         style={{ background: couleur, color: "#fff", justifyContent: "center", padding: "17px 24px", fontSize: 15, textAlign: "center" }}>
         {bouton} ↗
       </a>
+      </div>
     </div>
   );
 }
@@ -82,11 +87,11 @@ export default function Tatum5Page() {
       {/* Les 2 étapes, côte à côte */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "32px 24px 0" }}>
         <div className="t5-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-          <Carte num="01" couleur={PINK} href={NIKE_URL}
+          <Carte num="01" couleur={PINK} href={NIKE_URL} image="/media/tatum5/chaussure.jpg" imageAlt="Jordan Tatum 5 fuchsia"
             titre={<>Personnalise<br />ta paire ici</>}
             texte="Crée ta Jordan Tatum 5 sur Nike By You : couleurs, matières, détails. Une fois ton design terminé, copie le lien de ta paire, tu en auras besoin pour l'étape 2."
             bouton="Créer ma paire sur Nike By You" />
-          <Carte num="02" couleur={BLACK} href={FORM_URL}
+          <Carte num="02" couleur={BLACK} href={FORM_URL} image="/media/tatum5/san-antonio.jpg" imageAlt="Le River Walk de San Antonio au coucher du soleil"
             titre={<>Remplis ta<br />candidature</>}
             texte="Colle le lien de ta paire, donne-lui un nom et raconte-nous en hommage à quoi tu l'as créée. Ça prend deux minutes."
             bouton="Envoyer ma candidature" />

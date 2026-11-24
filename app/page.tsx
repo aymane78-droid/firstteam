@@ -6,7 +6,7 @@ import { VideoModal } from "./components/VideoModal";
 import MediaBasketSection from "./components/MediaBasketSection";
 import { fetchLatestVideos, fetchVideosByIds, fetchLatestLongVideos, FIRST_TEAM_CHANNEL_ID, OFFENSE_CHANNEL_ID } from "./lib/youtube";
 import type { YTVideo } from "./lib/youtube";
-import { TRAVEL_ENABLED, SHOP_ENABLED } from "./lib/flags";
+import { TRAVEL_ENABLED, SHOP_ENABLED, TATUM5_ENABLED } from "./lib/flags";
 
 const ANTON   = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -102,6 +102,7 @@ const NAV_LINKS = [
   { label: "Nos Contenus",  href: "/contenus" },
   { label: "L'équipe",      href: "/qui-nous-sommes" },
   { label: "Sponsors",      href: "/partenaires" },
+  ...(TATUM5_ENABLED ? [{ label: "Concours", href: "/tatum5" }] : []),
   ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel" }] : []),
 ];
 

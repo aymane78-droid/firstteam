@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { TRAVEL_ENABLED, SHOP_ENABLED } from "../lib/flags";
+import { TRAVEL_ENABLED, SHOP_ENABLED, TATUM5_ENABLED } from "../lib/flags";
 
 const ANTON = { fontFamily: "var(--font-anton), Anton, Impact, sans-serif" };
 const MANROPE = (w: number) => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "Contenus",     href: "/contenus" },
   { label: "L'équipe",     href: "/qui-nous-sommes" },
   { label: "Sponsors",     href: "/partenaires" },
+  ...(TATUM5_ENABLED ? [{ label: "Concours", href: "/tatum5" }] : []),
   ...(SHOP_ENABLED ? [{ label: "Shop", href: "/shop" }] : []),
   ...(TRAVEL_ENABLED ? [{ label: "Travel", href: "/travel" }] : []),
 ];
