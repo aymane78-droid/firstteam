@@ -27,14 +27,15 @@ export const REGLEMENT: { titre: string; paragraphes: string[] }[] = [
   {
     titre: "Article 4 · Sélection et calendrier",
     paragraphes: [
-      "Le gagnant est désigné à l'issue d'un vote de la communauté First Team et des délibérations d'un jury composé de First Team, Mamayo, Bilal Coulibaly et Elias Overtime. Les paires sont évaluées sur la créativité du design, l'originalité et la force de l'histoire racontée.",
-      "30 novembre 2026 : présentation des meilleures paires en libre antenne. 20 décembre 2026 : tierlist d'une sélection de paires en plateau. 4 janvier 2027 à 00h00 : clôture des candidatures. 15 janvier 2027 : annonce du gagnant.",
+      "Le gagnant est désigné à l'issue d'un sondage auprès de la communauté First Team, organisé du 6 au 13 janvier 2027, et des délibérations d'un jury composé de First Team, Mamayo, Bilal Coulibaly et Elias Overtime. Les paires sont évaluées sur la créativité du design, l'originalité et la force de l'histoire racontée.",
+      "Du 23 novembre 2026 au 4 janvier 2027 à 00h00 : candidatures ouvertes. Du 6 au 13 janvier 2027 : sondage communautaire. 15 janvier 2027 : annonce du grand vainqueur. Du 5 au 13 mars 2027 : voyage à San Antonio.",
     ],
   },
   {
     titre: "Article 5 · Dotation",
     paragraphes: [
       "Le gagnant remporte un voyage à San Antonio (États-Unis) pour deux personnes (le gagnant et un accompagnant), du 5 au 13 mars 2027, comprenant les vols aller-retour depuis Paris, l'hébergement et des places pour trois matchs des San Antonio Spurs : contre les New York Knicks, les Washington Wizards et les Philadelphia 76ers.",
+      "Le gagnant remporte également une rencontre avec Bilal Coulibaly et la paire de Jordan Tatum 5 qu'il a personnalisée.",
       "Si le gagnant est mineur, son accompagnant doit être un adulte, son représentant légal ou un tuteur désigné par celui-ci.",
       "La dotation est nominative, ne peut être ni échangée ni remboursée, et ne peut pas faire l'objet d'une contrepartie financière. Le gagnant et son accompagnant doivent être en possession des documents de voyage nécessaires (passeport valide, autorisation ESTA). En cas de force majeure, First Team pourra remplacer la dotation par une dotation de valeur équivalente.",
     ],

@@ -14,10 +14,16 @@ const NIKE_URL = "https://www.nike.com/fr/u/custom-tatum-5-by-you-10002444";
 const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdb2aEdiOC-PFqJKjv6z66nkQGWsgXl-2WP0Un75X0V_iedsA/viewform";
 
 const ETAPES = [
-  { date: "30 nov.", texte: "Les meilleures paires passent en libre antenne" },
-  { date: "20 déc.", texte: "Tierlist d'une sélection de paires en plateau" },
-  { date: "4 janv.", texte: "Clôture des candidatures à 00h00" },
-  { date: "15 janv.", texte: "Annonce du gagnant du voyage à San Antonio" },
+  { date: "23 nov. → 4 janv.", texte: "Candidatures ouvertes (clôture le 4 janvier à 00h00)" },
+  { date: "6 → 13 janv.", texte: "Sondage : la communauté vote pour ses paires préférées" },
+  { date: "15 janv.", texte: "Annonce du grand vainqueur" },
+  { date: "5 → 13 mars", texte: "Le voyage à San Antonio" },
+];
+
+const PRIX = [
+  { num: "01", titre: "Un voyage à San Antonio pour 2", texte: "Du 5 au 13 mars 2027, pour toi et la personne de ton choix : vols depuis Paris, hôtel et trois matchs des Spurs, contre les Knicks, les Wizards et les 76ers." },
+  { num: "02", titre: "Une rencontre avec Bilal Coulibaly", texte: "L'occasion de rencontrer l'international français." },
+  { num: "03", titre: "Ta paire offerte", texte: "La Jordan Tatum 5 que tu as personnalisée, offerte." },
 ];
 
 /** Affiche les passages [[...]] du règlement surlignés « à compléter ». */
@@ -81,7 +87,7 @@ export default function Tatum5Page() {
         </h1>
         <p style={{ ...MANROPE(500), fontSize: 17, lineHeight: 1.65, color: "rgba(0,0,0,0.72)", maxWidth: 720 }}>
           Designe ta Jordan Tatum 5, donne-lui un nom et raconte-nous l&apos;histoire derrière ton design.
-          Les meilleures paires passent à l&apos;antenne, et l&apos;une d&apos;elles fera gagner un voyage à San Antonio.
+          La communauté et notre jury choisiront la meilleure paire, et son créateur s&apos;envolera pour San Antonio.
         </p>
       </section>
 
@@ -99,13 +105,32 @@ export default function Tatum5Page() {
         </div>
       </section>
 
+      {/* Le prix à gagner */}
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "20px 24px 0" }}>
+        <div className="t5-prize" style={{ background: BLACK, color: "#fff", borderRadius: 10, padding: "40px 40px 36px", position: "relative", overflow: "hidden" }}>
+          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: PINK }}>· À gagner</span>
+          <h2 style={{ ...ANTON, fontSize: "clamp(34px, 4.4vw, 56px)", lineHeight: 0.95, textTransform: "uppercase", margin: "10px 0 28px" }}>
+            Le grand prix
+          </h2>
+          <div className="t5-prize-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: 14 }}>
+            {PRIX.map((p) => (
+              <div key={p.titre} style={{ border: "1px solid rgba(255,255,255,0.14)", borderRadius: 8, padding: "22px 22px 24px" }}>
+                <div style={{ ...ANTON, fontSize: 28, lineHeight: 1, color: PINK, marginBottom: 12 }}>{p.num}</div>
+                <div style={{ ...ANTON, fontSize: 24, lineHeight: 1.05, textTransform: "uppercase", marginBottom: 10 }}>{p.titre}</div>
+                <div style={{ ...MANROPE(500), fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.72)" }}>{p.texte}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Calendrier */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 0" }}>
         <h2 style={{ ...ANTON, fontSize: 30, textTransform: "uppercase", marginBottom: 18 }}>Le programme</h2>
         <div className="t5-steps" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
           {ETAPES.map((e) => (
             <div key={e.date} style={{ background: BLACK, color: "#fff", borderRadius: 8, padding: "20px 22px" }}>
-              <div style={{ ...ANTON, fontSize: 30, color: PINK, lineHeight: 1 }}>{e.date}</div>
+              <div style={{ ...ANTON, fontSize: 26, color: PINK, lineHeight: 1.05 }}>{e.date}</div>
               <div style={{ ...MANROPE(600), fontSize: 14, lineHeight: 1.5, marginTop: 8, color: "rgba(255,255,255,0.85)" }}>{e.texte}</div>
             </div>
           ))}
@@ -135,6 +160,8 @@ export default function Tatum5Page() {
           .t5-banner-mobile { display: block; }
           .t5-cards, .t5-steps { grid-template-columns: 1fr !important; }
           .t5-card { padding: 28px 22px !important; }
+          .t5-prize { padding: 30px 22px 26px !important; }
+          .t5-prize-grid { grid-template-columns: 1fr !important; }
           .t5-reglement { padding: 24px 20px 6px !important; }
         }
       `}</style>
