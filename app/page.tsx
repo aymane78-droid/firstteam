@@ -302,7 +302,7 @@ function CategoryPanels() {
         <Link key={i} href={c.href} className="format-panel" aria-label={`Voir la page ${c.label}`}>
           <div className="panel-bg">
             <Image src={c.photo} alt={c.label} fill
-              sizes="(max-width: 768px) 50vw, 20vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               style={{ objectFit: "cover" }}
               priority={i === 0}
             />

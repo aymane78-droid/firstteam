@@ -3,6 +3,7 @@ import { Anton, Manrope, Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import MatchPopup from "./components/MatchPopup";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
 import { OrganizationJsonLd } from "./components/JsonLd";
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
           <Footer />
           <CartDrawer />
+          <MatchPopup />
         </CartProvider>
       </body>
     </html>

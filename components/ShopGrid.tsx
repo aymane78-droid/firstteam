@@ -431,7 +431,7 @@ interface Props {
 export default function ShopGrid({
   products,
   id = "produits",
-  eyebrow = "· SUMMER EDITION 26",
+  eyebrow = "· COLLECTION 10 ANS",
   title = <>L&apos;intégralité<br />du vestiaire.</>,
 }: Props) {
   const [activeGid, setActiveGid] = useState<string | null>(null);

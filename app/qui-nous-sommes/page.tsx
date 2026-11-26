@@ -36,6 +36,8 @@ const TIMELINE: { year: string; label: string; desc: string; accent: string; pho
   { year: "2024", label: "Basketball Africa League",           desc: "Découverte de la BAL à Dakar.",                                                                                    accent: "#FED000", photo: "" }, // TODO: uploader frise/bal-2024 sur Blob
   { year: "2024", label: "JO de Paris",                        desc: "Une quinzaine historique à Paris avec notre record d'audience.",                                                   accent: "#002EFE", photo: "/media/equipe/projets-majeurs/jo-2024.jpg" },
   { year: "2025", label: "Coupe du Monde U19 chez First Team", desc: "Diffusion de la compétition phare des jeunes sur nos chaînes.",                                                   accent: "#FE0000", photo: "" }, // TODO: uploader frise/cdm-u19-2025 sur Blob
+  { year: "2026", label: "L'EuroLeague sur First Team",        desc: "Des matchs d'EuroLeague et d'EuroCup en live et gratuits sur nos chaînes, et le lancement d'EuroLeague & Friends.", accent: "#002EFE", photo: "" }, // À FOURNIR : photo EuroLeague
+  { year: "2026", label: "Les 10 ans de First Team",           desc: "Dix ans de basket entre potes, et notre première collection 100 % First Team.",                                    accent: "#FED000", photo: "/media/shop/merch10/presentation.jpg" },
 ];
 
 const FONDATEURS: { num: string; name: string; role: string; detail: string; color: string; photo: string }[] = [
@@ -51,7 +53,6 @@ const TEAM_CONSULTANTS: { name: string; role: string; photo: string }[] = [
 ];
 
 const TEAM_STAFF: { name: string; role?: string; photo: string }[] = [
-  { name: "Jeremy Raharifidy--Barbe",   photo: "/media/equipe/collaborateurs/jeremy.jpg" },
   { name: "Tom Ciaravino",              photo: "/media/equipe/collaborateurs/tom.jpg" },
   { name: "Aymane El Atchia",           photo: "/media/equipe/collaborateurs/aymane.jpg" },
   { name: "Léo Tilhet-Coartet Vasquez", photo: "/media/equipe/collaborateurs/leo.jpg" },

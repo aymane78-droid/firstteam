@@ -33,10 +33,10 @@ const OFFENSE_PLAYLIST_ID = "PLCdvn6vN4Y1vr8hamwZP5N9je55DAsH98";
 
 // Playlists par concept — ajouter VLOG / TLIST ici quand disponible
 const PLAYLISTS: Record<string, string> = {
-  FDS:   "PLZZC1FUiXWQbTGZsilKj10dmuYkuOtd6j", // NBA First Day Show
+  FDS:   "PLE4VgFWmqHfQ", // NBA First Day Show 2026/2027
   LA:    "PLZZC1FUiXWQaSRoyqGi5bbWMEsIHXCtEh", // Libre Antenne NBA
   DT:    "PLZZC1FUiXWQaPFHYVXRAqAkLnEPoAUg95", // Double Team
-  NBACG: "PLZZC1FUiXWQYC9Zxjo5PmU5y-SfF4j3JT", // NBA Classic Games
+  ELF:   "PLI9s14Epw0gI", // EuroLeague & Friends (remplace NBA Classic Games)
   ITW:   "PLZZC1FUiXWQaPH2xWbcOxw1bHgrm6VRGX", // Les Entretiens
   VLOG:  "PLZZC1FUiXWQbiI-tg7k6bb8tdYqUzY7dD",
   TLIST: "PLZZC1FUiXWQYGwl-C1QZZC0RwM77MHD0v",
@@ -108,6 +108,15 @@ const PLANNING_DAYS: PlanDay[] = [
       nameMain: "Libre", nameAccent: "Antenne",
       meta: "30 min · Replay",
       desc: "30min — Le replay YouTube de l'un des sujets de la Libre Antenne NBA.",
+    },
+    {
+      accent: "#FF7900", photoCls: "pt-ph-orange",
+      // À FOURNIR : visuel EUROLEAGUE & FRIENDS (format portrait)
+      time: "14H00",
+      logoText: "1 SEMAINE SUR 2", logoTextColor: "#FF7900",
+      nameMain: "EuroLeague", nameAccent: "& Friends",
+      meta: "Un mardi sur deux",
+      desc: "Notre rendez-vous EuroLeague, une semaine sur deux : l'actualité de la meilleure compétition européenne, entre potes et avec nos invités.",
     }],
   },
   {
@@ -146,14 +155,6 @@ const PLANNING_DAYS: PlanDay[] = [
   {
     label: "Vendredi",
     tiles: [
-      {
-        accent: "#FF6A2E", photoCls: "pt-ph-offense",
-        photo: "/media/equipe/projets-majeurs/offense.jpg",
-        time: "12H00",
-        nameAccent: "Offense", isOffense: true,
-        meta: "1h · Long format",
-        desc: "1h — Notre nouveau Talk Show autour de Tom Ciaravino avec des invités de prestige et des questions sur le sport que tout le monde se pose.",
-      },
       {
         accent: "#002EFE", photoCls: "pt-ph-clutch",
         // À FOURNIR (image manquante) : visuel CLUTCH — photo: "https://res.cloudinary.com/dg6xo2xwb/image/upload/CLUTCH_-_PROGRAMME_vtwrqk.png",
@@ -215,11 +216,12 @@ const CONCEPTS: Record<string, {
     logo: "/images/emission/libreantenne.png",
     desc: "Le format signature de First Team. Débats sans filtre, opinions tranchées et basketball à l'état pur. Aucun sujet n'est tabou.",
   },
-  NBACG: {
-    title: "NBA Classic Games",
-    color: "#6C35FF",
-    logo: "/images/emission/ClassicGames.png",
-    desc: "Revivez les plus grands matchs de l'histoire NBA. Commentés, analysés et décortiqués par l'équipe First Team comme si vous y étiez.",
+  ELF: {
+    title: "EuroLeague & Friends",
+    color: "#FF7900",
+    // visuel provisoire en attendant le logo officiel
+    logo: "/media/contenus/euroleague-friends.jpg",
+    desc: "Notre rendez-vous EuroLeague, un mardi sur deux à 14h. L'actualité de la meilleure compétition européenne, entre potes et avec nos invités.",
   },
   ITW: {
     title: "Entretiens",
