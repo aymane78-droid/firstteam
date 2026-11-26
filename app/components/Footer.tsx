@@ -45,7 +45,7 @@ const COLS: { title: string; links: FooterLink[] }[] = [
 
 export default function Footer() {
   const pathname = usePathname();
-  if (pathname?.startsWith("/quiz")) return null; // page quiz plein écran
+  if ((pathname?.startsWith("/quiz") || pathname?.startsWith("/tombola"))) return null; // page quiz plein écran
   const linkStyle = { display: "block", ...MANROPE(500), fontSize: 14, color: "rgba(255,255,255,0.7)", textDecoration: "none", marginBottom: 10, transition: "color 0.15s" };
   const hoverIn  = (e: React.MouseEvent) => ((e.target as HTMLElement).style.color = "#FED000");
   const hoverOut = (e: React.MouseEvent) => ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.7)");

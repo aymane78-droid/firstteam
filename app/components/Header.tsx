@@ -37,7 +37,7 @@ export default function Header() {
   useEffect(() => { setOpen(false); }, [pathname]);
 
   if (isHome && !pastVideo) return null;
-  if (pathname?.startsWith("/quiz")) return null; // page quiz plein écran
+  if ((pathname?.startsWith("/quiz") || pathname?.startsWith("/tombola"))) return null; // page quiz plein écran
 
   return (
     <header className="header-wrap" style={{
