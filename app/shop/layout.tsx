@@ -1,8 +1,11 @@
 import { Metadata } from 'next'
+import { SHOP_ENABLED } from '@/app/lib/flags'
 
 export const metadata: Metadata = {
   title: 'Shop — Merch & Produits First Team',
   description: "Commandez les produits officiels First Team. T-shirts, accessoires et collections exclusives pour les fans du meilleur média basket français.",
+  // tant que le Shop est masqué, l'aperçu privé n'est pas indexé par Google
+  ...(SHOP_ENABLED ? {} : { robots: { index: false, follow: false } }),
   alternates: {
     canonical: 'https://firstteam-group.com/shop',
   },
