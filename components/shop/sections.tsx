@@ -110,7 +110,7 @@ export function PresentationSection() {
 // Collection 10 ans : r = largeur / hauteur de la photo (portrait 0.8, paysage 1.25 à 1.5)
 const DEROULANT_SLIDES = [
   { src: "/media/shop/merch10/slide-05.jpg", r: 1.5 },
-  { src: "/media/shop/merch10/slide-17.jpg", r: 0.8 },
+  { src: "/media/shop/merch10/slide-21.jpg", r: 0.8 },
   { src: "/media/shop/merch10/slide-14.jpg", r: 1.25 },
   { src: "/media/shop/merch10/slide-04.jpg", r: 0.8 },
   { src: "/media/shop/merch10/slide-30.jpg", r: 1.5 },
@@ -118,7 +118,7 @@ const DEROULANT_SLIDES = [
   { src: "/media/shop/merch10/slide-08.jpg", r: 1.5 },
   { src: "/media/shop/merch10/slide-12.jpg", r: 0.8 },
   { src: "/media/shop/merch10/slide-28.jpg", r: 1.25 },
-  { src: "/media/shop/merch10/slide-22.jpg", r: 0.8 },
+  { src: "/media/shop/merch10/slide-34.jpg", r: 0.8 },
   { src: "/media/shop/merch10/slide-25.jpg", r: 1.5 },
   { src: "/media/shop/merch10/slide-36.jpg", r: 0.8 },
 ].map((s, i) => ({ ...s, alt: `Collection First Team 10 ans, look ${i + 1}` }));
@@ -198,13 +198,13 @@ export function StudioSection() {
           <div className="studio-fin-cell-large" style={{ gridColumn: "1 / 3", gridRow: 1, overflow: "hidden", aspectRatio: "3 / 2" }}>
             <img src="/media/shop/merch10/fin-32.jpg" alt="La First Team en collection 10 ans" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
-          {/* dos du t-shirt, dans la rue */}
+          {/* dos du sweat */}
           <div className="studio-fin-cell-medium" style={{ gridColumn: 1, gridRow: 2, overflow: "hidden", aspectRatio: "4 / 5" }}>
-            <img src="/media/shop/merch10/fin-34.jpg" alt="Le dos du t-shirt First Team 10 ans, dans la rue" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="/media/shop/merch10/fin-22.jpg" alt="Le dos du sweat First Team 10 ans" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
-          {/* dos du t-shirt */}
+          {/* t-shirt et casquette, portrait */}
           <div className="studio-fin-cell-small" style={{ gridColumn: 2, gridRow: 2, overflow: "hidden", position: "relative", aspectRatio: "4 / 5" }}>
-            <img src="/media/shop/merch10/fin-21.jpg" alt="Le dos du t-shirt First Team 10 ans" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="/media/shop/merch10/fin-17.jpg" alt="Le t-shirt et la casquette First Team 10 ans" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", bottom: 10, left: 10, background: "#FE0000", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
               <span style={{ ...ANTON, fontSize: 22, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>ÉDITION</span>
               <span style={{ ...MANROPE(700), fontSize: 9, color: "rgba(255,255,255,0.85)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 3 }}>LIMITÉE</span>
