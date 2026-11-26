@@ -111,7 +111,7 @@ const PLANNING_DAYS: PlanDay[] = [
     },
     {
       accent: "#FF7900", photoCls: "pt-ph-orange",
-      // À FOURNIR : visuel EUROLEAGUE & FRIENDS (format portrait)
+      photo: "/media/contenus/euroleague-friends-portrait.jpg",
       time: "14H00",
       logoText: "1 SEMAINE SUR 2", logoTextColor: "#FF7900",
       nameMain: "EuroLeague", nameAccent: "& Friends",
@@ -219,7 +219,6 @@ const CONCEPTS: Record<string, {
   ELF: {
     title: "EuroLeague & Friends",
     color: "#FF7900",
-    // visuel provisoire en attendant le logo officiel
     logo: "/media/contenus/euroleague-friends.jpg",
     desc: "Notre rendez-vous EuroLeague, un mardi sur deux à 14h. L'actualité de la meilleure compétition européenne, entre potes et avec nos invités.",
   },
