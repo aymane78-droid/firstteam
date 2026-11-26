@@ -34,7 +34,7 @@ const OFFENSE_PLAYLIST_ID = "PLCdvn6vN4Y1vr8hamwZP5N9je55DAsH98";
 // Playlists par concept — ajouter VLOG / TLIST ici quand disponible
 const PLAYLISTS: Record<string, string> = {
   FDS:   "PLE4VgFWmqHfQ", // NBA First Day Show 2026/2027
-  LA:    "PLZZC1FUiXWQaSRoyqGi5bbWMEsIHXCtEh", // Libre Antenne NBA
+  LA:    "PLHcFOV7mg6xg", // Libre Antenne NBA 2026/2027
   DT:    "PLZZC1FUiXWQaPFHYVXRAqAkLnEPoAUg95", // Double Team
   ELF:   "PLI9s14Epw0gI", // EuroLeague & Friends (remplace NBA Classic Games)
   ITW:   "PLZZC1FUiXWQaPH2xWbcOxw1bHgrm6VRGX", // Les Entretiens
