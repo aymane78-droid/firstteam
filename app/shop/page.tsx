@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { SHOP_ENABLED } from "@/app/lib/flags";
 import ShopGrid from "@/components/ShopGrid";
 import {
+  TeaserVideo,
   AnnouncementBar,
   Hero,
   PresentationSection,
@@ -24,6 +25,7 @@ export default async function ShopPage() {
 
   return (
     <main style={{ background: "#0A0A0A" }}>
+      <TeaserVideo />
       <AnnouncementBar />
       <Hero />
       <PresentationSection />

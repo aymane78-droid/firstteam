@@ -5,15 +5,6 @@ const ANTON: React.CSSProperties = { fontFamily: "var(--font-anton), Anton, Impa
 const MANROPE = (w: number): React.CSSProperties => ({ fontFamily: "var(--font-manrope), Manrope, sans-serif", fontWeight: w });
 const AWESOME = (w: number): React.CSSProperties => ({ fontFamily: "Awesome, Georgia, serif", fontWeight: w });
 
-// Emplacement temporaire en attendant les nouvelles photos
-function PhotoPlaceholder({ style }: { style?: React.CSSProperties }) {
-  return (
-    <div style={{ background: "#000", display: "flex", alignItems: "center", justifyContent: "center", ...style }}>
-      <span style={{ ...ANTON, fontSize: 14, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Photo à venir</span>
-    </div>
-  );
-}
-
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -27,6 +18,21 @@ function useReveal() {
     return () => io.disconnect();
   }, []);
   return ref;
+}
+
+/** Teaser de la collection 10 ans, en boucle, au-dessus du hero (sous la barre de navigation fixe). */
+export function TeaserVideo() {
+  return (
+    <section style={{ background: "#0A0A0A", paddingTop: 72 }}>
+      <video
+        src="/media/shop/merch10/teaser.mp4"
+        poster="/media/shop/merch10/teaser-poster.jpg"
+        autoPlay muted loop playsInline preload="auto"
+        aria-label="Teaser de la collection First Team 10 ans"
+        style={{ display: "block", width: "100%", aspectRatio: "16 / 9", maxHeight: "calc(100svh - 72px)", objectFit: "cover", background: "#0A0A0A" }}
+      />
+    </section>
+  );
 }
 
 export function AnnouncementBar() {
@@ -79,9 +85,10 @@ export function PresentationSection() {
     <section style={{ background: "#0A0A0A", overflow: "hidden" }}>
       <div ref={ref} className="reveal shop-pres-wrap" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", minHeight: 560 }}>
         <div className="shop-pres-photo" style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
-          <PhotoPlaceholder style={{ position: "absolute", inset: 0 }} />
+          <img src="/media/shop/merch10/presentation.jpg" alt="La collection First Team 10 ans" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 30%)" }} />
           <div style={{ position: "absolute", top: 28, left: 28 }}>
-            <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE 10 ANS</span>
+            <span style={{ ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.85)", letterSpacing: 2.5, textTransform: "uppercase" }}>CAPSULE 10 ANS</span>
           </div>
         </div>
         <div className="shop-pres-text" style={{ padding: "72px 60px", display: "flex", flexDirection: "column", justifyContent: "center", background: "#FE0000", position: "relative" }}>
@@ -100,21 +107,27 @@ export function PresentationSection() {
   );
 }
 
+// Collection 10 ans : r = largeur / hauteur de la photo (portrait 0.8, paysage 1.25 à 1.5)
 const DEROULANT_SLIDES = [
-  { src: "/media/shop/deroulant1.jpg", alt: "First Team × Champion — look 1" },
-  { src: "/media/shop/deroulant2.jpg", alt: "First Team × Champion — look 2" },
-  { src: "/media/shop/deroulant3.jpg", alt: "First Team × Champion — look 3" },
-  { src: "/media/shop/deroulant4.jpg", alt: "First Team × Champion — look 4" },
-  { src: "/media/shop/deroulant5.jpg", alt: "First Team × Champion — look 5" },
-  { src: "/media/shop/deroulant6.jpg", alt: "First Team × Champion — look 6" },
-  { src: "/media/shop/deroulant7.jpg", alt: "First Team × Champion — look 7" },
-];
-const SLIDE_WIDTH = 320;
+  { src: "/media/shop/merch10/slide-05.jpg", r: 1.5 },
+  { src: "/media/shop/merch10/slide-17.jpg", r: 0.8 },
+  { src: "/media/shop/merch10/slide-14.jpg", r: 1.25 },
+  { src: "/media/shop/merch10/slide-04.jpg", r: 0.8 },
+  { src: "/media/shop/merch10/slide-30.jpg", r: 1.5 },
+  { src: "/media/shop/merch10/slide-18.jpg", r: 0.8 },
+  { src: "/media/shop/merch10/slide-08.jpg", r: 1.5 },
+  { src: "/media/shop/merch10/slide-12.jpg", r: 0.8 },
+  { src: "/media/shop/merch10/slide-28.jpg", r: 1.25 },
+  { src: "/media/shop/merch10/slide-34.jpg", r: 0.8 },
+  { src: "/media/shop/merch10/slide-25.jpg", r: 1.5 },
+  { src: "/media/shop/merch10/slide-36.jpg", r: 0.8 },
+].map((s, i) => ({ ...s, alt: `Collection First Team 10 ans, look ${i + 1}` }));
+const SLIDE_HEIGHT = 340;
 const SLIDE_GAP = 10;
 
 export function PhotoSlider() {
   const doubled = [...DEROULANT_SLIDES, ...DEROULANT_SLIDES];
-  const trackWidth = DEROULANT_SLIDES.length * (SLIDE_WIDTH + SLIDE_GAP);
+  const trackWidth = DEROULANT_SLIDES.reduce((w, s) => w + Math.round(SLIDE_HEIGHT * s.r) + SLIDE_GAP, 0);
   return (
     <section style={{ background: "#0A0A0A", padding: "40px 0 52px", overflow: "hidden" }}>
       <div
@@ -122,13 +135,12 @@ export function PhotoSlider() {
           display: "flex",
           gap: SLIDE_GAP,
           width: trackWidth * 2,
-          animation: `marquee-photos 60s linear infinite`,
+          animation: `marquee-photos 90s linear infinite`,
         }}
       >
-        {doubled.map((_s, i) => (
-          <div key={i} style={{ flex: `0 0 ${SLIDE_WIDTH}px`, aspectRatio: "5/4" }}>
-            {/* Nouvelles photos à venir : remettre <img src={s.src} … /> une fois uploadées */}
-            <PhotoPlaceholder style={{ width: "100%", height: "100%", borderRadius: 3 }} />
+        {doubled.map((s, i) => (
+          <div key={i} style={{ flex: `0 0 ${Math.round(SLIDE_HEIGHT * s.r)}px`, height: SLIDE_HEIGHT }}>
+            <img src={s.src} alt={i < DEROULANT_SLIDES.length ? s.alt : ""} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 3 }} />
           </div>
         ))}
       </div>
@@ -181,18 +193,18 @@ export function StudioSection() {
             &ldquo;On parle basket entre potes depuis 10 ans. Avec Champion, on a juste voulu essayer d&apos;être bien sapés et permettre à la communauté d&apos;en faire autant.&rdquo;
           </p>
         </div>
-        <div className="studio-fin-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gridTemplateRows: "2fr 1fr", gap: 8, aspectRatio: "1 / 1" }}>
-          {/* fin1 — GRAND : gauche, pleine hauteur */}
-          <div className="studio-fin-cell-large" style={{ gridColumn: 1, gridRow: "1 / 3", overflow: "hidden" }}>
-            <img src="/media/shop/sectionfin1.jpg" alt="First Team × Champion — editorial 1" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <div className="studio-fin-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+          {/* GRAND : la 32 en paysage, en haut sur toute la largeur */}
+          <div className="studio-fin-cell-large" style={{ gridColumn: "1 / 3", gridRow: 1, overflow: "hidden", aspectRatio: "3 / 2" }}>
+            <img src="/media/shop/merch10/fin-32.jpg" alt="La First Team en collection 10 ans" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
-          {/* fin3 — MOYEN : haut droite */}
-          <div className="studio-fin-cell-medium" style={{ gridColumn: 2, gridRow: 1, overflow: "hidden" }}>
-            <img src="/media/shop/sectionfin3.jpg" alt="First Team × Champion — editorial 3" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          {/* dos du sweat */}
+          <div className="studio-fin-cell-medium" style={{ gridColumn: 1, gridRow: 2, overflow: "hidden", aspectRatio: "4 / 5" }}>
+            <img src="/media/shop/merch10/fin-22.jpg" alt="Le dos du sweat First Team 10 ans" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
-          {/* fin2 — PETIT : bas droite */}
-          <div className="studio-fin-cell-small" style={{ gridColumn: 2, gridRow: 2, overflow: "hidden", position: "relative" }}>
-            <img src="/media/shop/sectionfin2.jpg" alt="First Team × Champion — editorial 2" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          {/* dos du t-shirt */}
+          <div className="studio-fin-cell-small" style={{ gridColumn: 2, gridRow: 2, overflow: "hidden", position: "relative", aspectRatio: "4 / 5" }}>
+            <img src="/media/shop/merch10/fin-21.jpg" alt="Le dos du t-shirt First Team 10 ans" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", bottom: 10, left: 10, background: "#FE0000", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
               <span style={{ ...ANTON, fontSize: 22, color: "#fff", letterSpacing: -1, lineHeight: 0.9 }}>ÉDITION</span>
               <span style={{ ...MANROPE(700), fontSize: 9, color: "rgba(255,255,255,0.85)", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 3 }}>LIMITÉE</span>
