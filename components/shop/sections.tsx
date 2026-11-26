@@ -36,7 +36,7 @@ export function TeaserVideo() {
 }
 
 export function AnnouncementBar() {
-  const items = ["LIVRAISON OFFERTE DÈS 100€", "★", "DROP DES 10 ANS DE FIRST TEAM", "★", "MADE IN FRANCE", "★"];
+  const items = ["LIVRAISON OFFERTE DÈS 100€", "★", "DROP DES 10 ANS DE FIRST TEAM", "★"];
   const doubled = [...items, ...items];
   return (
     <div style={{ background: "#0A0A0A", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", padding: "10px 0" }}>
@@ -92,13 +92,12 @@ export function PresentationSection() {
           </div>
         </div>
         <div className="shop-pres-text" style={{ padding: "72px 60px", display: "flex", flexDirection: "column", justifyContent: "center", background: "#FE0000", position: "relative" }}>
-          <div style={{ position: "absolute", top: 24, right: 24, ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.45)", letterSpacing: 2 }}>LE VESTIAIRE FIRST TEAM</div>
-          <h2 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 96px)", lineHeight: 0.86, textTransform: "uppercase", letterSpacing: -2, color: "#fff", marginBottom: 12 }}>
-            Le basket<br />se porte.
-          </h2>
-          <div style={{ height: 8 }} />
-          <p style={{ ...MANROPE(400), fontSize: 14, lineHeight: 1.7, color: "rgba(255,255,255,0.85)", maxWidth: 440, marginBottom: 32 }}>
-            On aura attendu dix ans, mais la voilà : notre première collection 100 % First Team. Pas de grande marque derrière, juste notre logo, notre histoire et dix ans de basket entre potes. Le tout sur des pièces de qualité, faites pour durer.
+          <div style={{ position: "absolute", top: 24, right: 24, ...ANTON, fontSize: 11, color: "rgba(255,255,255,0.55)", letterSpacing: 2 }}>FT / SHOP · SAISON 2026</div>
+          <h1 style={{ ...ANTON, fontSize: "clamp(48px, 6vw, 96px)", lineHeight: 0.86, textTransform: "uppercase", letterSpacing: -2, color: "#fff", marginBottom: 20 }}>
+            Le Vestiaire<br /><span style={{ color: "#0A0A0A" }}>First Team.</span>
+          </h1>
+          <p style={{ ...MANROPE(500), fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.9)", maxWidth: 440, marginBottom: 32 }}>
+            On parle basket, on le porte aussi.
           </p>
           <a href="#produits" className="pill-btn pill-btn-black">Découvrir le Vestiaire →</a>
         </div>
@@ -179,18 +178,12 @@ export function StudioSection() {
     <section className="shop-studio-section" style={{ background: "#F2EEE6", padding: "120px 40px" }}>
       <div ref={ref} className="reveal shop-studio-wrap" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         <div>
-          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 16 }}>· ARCHIVE · SUMMER DROP 26</span>
+          <span style={{ ...MANROPE(800), fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#FE0000", display: "block", marginBottom: 16 }}>· CAPSULE 10 ANS</span>
           <h2 style={{ ...AWESOME(400), fontStyle: "italic", fontSize: "clamp(40px, 5vw, 80px)", lineHeight: 0.95, letterSpacing: -1.5, color: "#0A0A0A", marginBottom: 28 }}>
-            Champion ×<br />First Team.
+            Le basket<br />se porte.
           </h2>
-          <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.75, color: "rgba(0,0,0,0.65)", marginBottom: 18, maxWidth: 440 }}>
-            Champion, c&apos;est la marque qu&apos;on voyait sur le dos de Jordan, de Pippen, des Seattle Sonics de Payton. Le C cousu sur les jerseys NBA pendant 10 ans, ceux qu&apos;on regardait gamins en se disant qu&apos;on aurait bien aimé en avoir un.
-          </p>
-          <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.75, color: "rgba(0,0,0,0.65)", marginBottom: 18, maxWidth: 440 }}>
-            Aujourd&apos;hui Champion est de retour. Coton bio, coupes propres, qualité premium, ce côté vintage qui rappelle les vestiaires des années 90 mais qui se porte très bien de nos jours. Bref, ça nous parle, et c&apos;était une évidence de s&apos;associer avec cette marque iconique.
-          </p>
-          <p style={{ ...MANROPE(700), fontSize: 14, color: "#0A0A0A", marginBottom: 36, fontStyle: "italic" }}>
-            &ldquo;On parle basket entre potes depuis 10 ans. Avec Champion, on a juste voulu essayer d&apos;être bien sapés et permettre à la communauté d&apos;en faire autant.&rdquo;
+          <p style={{ ...MANROPE(400), fontSize: 16, lineHeight: 1.75, color: "rgba(0,0,0,0.65)", marginBottom: 36, maxWidth: 440 }}>
+            On aura attendu dix ans, mais la voilà : notre première collection 100 % First Team. Pas de grande marque derrière, juste notre logo, notre histoire et dix ans de basket entre potes. Le tout sur des pièces de qualité, faites pour durer.
           </p>
         </div>
         <div className="studio-fin-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>

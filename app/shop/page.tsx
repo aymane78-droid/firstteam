@@ -5,7 +5,6 @@ import ShopGrid from "@/components/ShopGrid";
 import {
   TeaserVideo,
   AnnouncementBar,
-  Hero,
   PresentationSection,
   InfoBand,
   PhotoSlider,
@@ -32,7 +31,6 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
     <main style={{ background: "#0A0A0A" }}>
       <TeaserVideo />
       <AnnouncementBar />
-      <Hero />
       <PresentationSection />
       <ShopGrid products={products} />
       <InfoBand />
